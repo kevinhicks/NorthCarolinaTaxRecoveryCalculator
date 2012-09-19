@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthCarolinaTaxRecoveryCalculator", "NorthCarolinaTaxRecoveryCalculator\NorthCarolinaTaxRecoveryCalculator.csproj", "{1784D53F-38F9-4270-9BA5-C39BC4AB1BE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthCarolinaTaxRecoveryCalculator", "NorthCarolinaTaxRecoveryCalculator\NorthCarolinaTaxRecoveryCalculator.csproj", "{1DF625FC-6571-4064-8B78-769FF85492ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthCarolinaTaxRecoveryCalculator.Tests", "NorthCarolinaTaxRecoveryCalculator.Tests\NorthCarolinaTaxRecoveryCalculator.Tests.csproj", "{0B464486-3F88-4A87-B7F3-92A978985A4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthCarolinaTaxRecoveryCalculator.Tests", "NorthCarolinaTaxRecoveryCalculator.Tests\NorthCarolinaTaxRecoveryCalculator.Tests.csproj", "{252F55F1-4FE9-4B42-8508-2A5FC0D03E87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,14 +11,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1784D53F-38F9-4270-9BA5-C39BC4AB1BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1784D53F-38F9-4270-9BA5-C39BC4AB1BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1784D53F-38F9-4270-9BA5-C39BC4AB1BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1784D53F-38F9-4270-9BA5-C39BC4AB1BE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B464486-3F88-4A87-B7F3-92A978985A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B464486-3F88-4A87-B7F3-92A978985A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B464486-3F88-4A87-B7F3-92A978985A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B464486-3F88-4A87-B7F3-92A978985A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DF625FC-6571-4064-8B78-769FF85492ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DF625FC-6571-4064-8B78-769FF85492ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DF625FC-6571-4064-8B78-769FF85492ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DF625FC-6571-4064-8B78-769FF85492ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{252F55F1-4FE9-4B42-8508-2A5FC0D03E87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{252F55F1-4FE9-4B42-8508-2A5FC0D03E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{252F55F1-4FE9-4B42-8508-2A5FC0D03E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{252F55F1-4FE9-4B42-8508-2A5FC0D03E87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
