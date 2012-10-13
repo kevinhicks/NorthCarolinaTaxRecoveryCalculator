@@ -1,0 +1,93 @@
+﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Reciept
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Reciept</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RIF)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RIF)
+            @Html.ValidationMessageFor(model => model.RIF)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateOfSale)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateOfSale)
+            @Html.ValidationMessageFor(model => model.DateOfSale)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StoreName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StoreName)
+            @Html.ValidationMessageFor(model => model.StoreName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SalesTax)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SalesTax)
+            @Html.ValidationMessageFor(model => model.SalesTax)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FoodTax)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FoodTax)
+            @Html.ValidationMessageFor(model => model.FoodTax)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SalesAmount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SalesAmount)
+            @Html.ValidationMessageFor(model => model.SalesAmount)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Notes)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Notes)
+            @Html.ValidationMessageFor(model => model.Notes)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OnBillDetail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OnBillDetail)
+            @Html.ValidationMessageFor(model => model.OnBillDetail)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

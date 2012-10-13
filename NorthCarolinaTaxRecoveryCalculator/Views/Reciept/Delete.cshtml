@@ -1,0 +1,74 @@
+﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Reciept
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Reciept</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RIF)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RIF)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateOfSale)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfSale)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StoreName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StoreName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SalesTax)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SalesTax)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FoodTax)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FoodTax)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SalesAmount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SalesAmount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Notes)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Notes)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OnBillDetail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OnBillDetail)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

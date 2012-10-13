@@ -6,6 +6,9 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Data.Entity;
+using NorthCarolinaTaxRecoveryCalculator.Models;
+using NorthCarolinaTaxRecoveryCalculator.Migrations;
 
 namespace NorthCarolinaTaxRecoveryCalculator
 {
@@ -16,6 +19,8 @@ namespace NorthCarolinaTaxRecoveryCalculator
     {
         protected void Application_Start()
         {
+            //Database.SetInitializer<ApplicationDBContext>(new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>());
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

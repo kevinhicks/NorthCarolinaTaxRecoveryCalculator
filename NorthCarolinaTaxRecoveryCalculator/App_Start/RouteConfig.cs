@@ -12,11 +12,17 @@ namespace NorthCarolinaTaxRecoveryCalculator
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            
+            routes.MapRoute(
+                name: "Reciepts Must Have A Project ID When Creating A New Reciept",
+                url: "Reciept/Create/{ProjectID}",
+                defaults: new { controller = "Reciept", action = "Create", ProjectID = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
-                name: "Reciepts For A Project",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Reciepts", action = "Index", id = -1 }
+                name: "Reciepts Must Have A Project ID",
+                url: "Reciept/{ProjectID}",
+                defaults: new { controller = "Reciept", action = "Index", ProjectID = UrlParameter.Optional }
             );
 
             //When all else fails, route to the HomePage

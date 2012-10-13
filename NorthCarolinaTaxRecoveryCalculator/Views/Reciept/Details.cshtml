@@ -1,0 +1,71 @@
+﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Reciept
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Reciept</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RIF)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RIF)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateOfSale)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfSale)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StoreName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StoreName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SalesTax)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SalesTax)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FoodTax)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FoodTax)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SalesAmount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SalesAmount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Notes)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Notes)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OnBillDetail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OnBillDetail)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

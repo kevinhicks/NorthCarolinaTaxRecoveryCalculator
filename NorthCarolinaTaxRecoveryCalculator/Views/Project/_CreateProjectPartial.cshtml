@@ -1,0 +1,14 @@
+﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Project
+
+@using(Html.BeginForm("Create", "Project", FormMethod.Post))
+{
+    <div>
+        @Html.EditorFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div>
+        @Html.EditorFor(m => m.DateStarted)
+        @Html.ValidationMessageFor(m => m.DateStarted)
+    </div>
+    <input type="submit" value="Create" />
+}

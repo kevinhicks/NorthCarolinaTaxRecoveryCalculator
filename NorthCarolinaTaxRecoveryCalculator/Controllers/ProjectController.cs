@@ -9,104 +9,96 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
-    public class RecieptController : Controller
+    public class ProjectController : Controller
     {
         private ApplicationDBContext db = new ApplicationDBContext();
 
         //
-        // GET: /Reciept/{ProjectID}
+        // GET: /Project/
 
-        public ActionResult Index(int ProjectID)
+        public ActionResult Index()
         {
-            var modal = new ListAndCreateReciept();
-            modal.Reciepts = db.Reciepts.ToList();
-            modal.Reciept = new Reciept();
-
-            modal.Reciept.Project = db.Projects.Find(ProjectID);
-
-            return View(modal);
+            return View(db.Projects.ToList());
         }
 
         //
-        // GET: /Reciept/Details/5
+        // GET: /Project/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            Reciept reciept = db.Reciepts.Find(id);
-            if (reciept == null)
+            Project project = db.Projects.Find(id);
+            if (project == null)
             {
                 return HttpNotFound();
             }
-            return View(reciept);
+            return View(project);
         }
 
         //
-        // POST: /Reciept/Create
+        // POST: /Project/Create
 
         [HttpPost]
-        public ActionResult Create(int ProjectID, ListAndCreateReciept modal)
+        public ActionResult Create(Project project)
         {
-            modal.Reciept.Project = db.Projects.Find(ProjectID);
             if (ModelState.IsValid)
             {
-                db.Reciepts.Add(modal.Reciept);
+                db.Projects.Add(project);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            modal.Reciepts = db.Reciepts.ToList();
-            return View("Index", modal);
+            return View("Index", db.Projects.ToList());
         }
 
         //
-        // GET: /Reciept/Edit/5
+        // GET: /Project/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            Reciept reciept = db.Reciepts.Find(id);
-            if (reciept == null)
+            Project project = db.Projects.Find(id);
+            if (project == null)
             {
                 return HttpNotFound();
             }
-            return View(reciept);
+            return View(project);
         }
 
         //
-        // POST: /Reciept/Edit/5
+        // POST: /Project/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Reciept reciept)
+        public ActionResult Edit(Project project)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(reciept).State = EntityState.Modified;
+                db.Entry(project).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(reciept);
+            return View(project);
         }
 
         //
-        // GET: /Reciept/Delete/5
+        // GET: /Project/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            Reciept reciept = db.Reciepts.Find(id);
-            if (reciept == null)
+            Project project = db.Projects.Find(id);
+            if (project == null)
             {
                 return HttpNotFound();
             }
-            return View(reciept);
+            return View(project);
         }
 
         //
-        // POST: /Reciept/Delete/5
+        // POST: /Project/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Reciept reciept = db.Reciepts.Find(id);
-            db.Reciepts.Remove(reciept);
+            Project project = db.Projects.Find(id);
+            db.Projects.Remove(project);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

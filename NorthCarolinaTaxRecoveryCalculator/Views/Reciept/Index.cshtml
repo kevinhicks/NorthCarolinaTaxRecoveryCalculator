@@ -1,81 +1,259 @@
-﻿@model IEnumerable<NorthCarolinaTaxRecoveryCalculator.Models.RecieptModal>
+﻿@model NorthCarolinaTaxRecoveryCalculator.Models.ListAndCreateReciept
 
-@{
-    ViewBag.Title = "Index";
+<div id="fixedFormDiv">
+    @using (Html.BeginForm("Create", "Reciept", FormMethod.Post, new {name = "reciept"}))
+    {
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.Reciept.Project.ID)
+        @Html.HiddenFor(model => model.Reciept.Project.Name)
+    
+        <fieldset>
+            <legend>Reciept</legend>
+            <div id="inputs">
+                <div class="inputElement">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Reciept.RIF)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Reciept.RIF)
+                        @Html.ValidationMessageFor(model => model.Reciept.RIF)
+                    </div>
+                </div>
+
+                <div class="inputElement">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Reciept.DateOfSale)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Reciept.DateOfSale)
+                        @Html.ValidationMessageFor(model => model.Reciept.DateOfSale)
+                    </div>
+                </div>
+
+                <div class="inputElement">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Reciept.StoreName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Reciept.StoreName)
+                        @Html.ValidationMessageFor(model => model.Reciept.StoreName)
+                    </div>
+                </div>
+
+                <div class="inputElement">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Reciept.County)
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownListFor(model => model.Reciept.County, new SelectList(NorthCarolinaTaxRecoveryCalculator.Models.County.Counties, "ID", "Name"))
+                        @Html.ValidationMessageFor(model => model.Reciept.County)
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="inputElement">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Reciept.SalesTax)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Reciept.SalesTax)
+                        @Html.ValidationMessageFor(model => model.Reciept.SalesTax)
+                    </div>
+                </div>
+
+                <div class="inputElement">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Reciept.FoodTax)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Reciept.FoodTax)
+                        @Html.ValidationMessageFor(model => model.Reciept.FoodTax)
+                    </div>
+                </div>
+
+                <div class="inputElement">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Reciept.SalesAmount)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Reciept.SalesAmount)
+                        @Html.ValidationMessageFor(model => model.Reciept.SalesAmount)
+                    </div>
+                </div>
+
+                <div class="inputElement">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Reciept.Notes)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Reciept.Notes)
+                        @Html.ValidationMessageFor(model => model.Reciept.Notes)
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="inputElement">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Reciept.OnBillDetail)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Reciept.OnBillDetail)
+                        @Html.ValidationMessageFor(model => model.Reciept.OnBillDetail)
+                    </div>
+                </div>
+
+                <div class="right">
+                    <p>
+                        <input type="submit" value="Create" />
+                    </p>
+                </div>
+            </div>
+        </fieldset>
+    }
+    </div>
+
+    <div id="recieptRecords">
+    <table class="tablesorter">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reciept.RIF)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reciept.DateOfSale)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reciept.StoreName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reciept.County)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reciept.SalesTax)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reciept.FoodTax)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reciept.SalesAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reciept.Notes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reciept.OnBillDetail)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Reciepts)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RIF)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfSale)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StoreName)
+                    </td>
+                    <td>
+                        @NorthCarolinaTaxRecoveryCalculator.Models.County.Counties[item.County].Name
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SalesTax)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FoodTax)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SalesAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OnBillDetail)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section scripts {
+<script type="text/javascript">
+    $(function() {
+        //Add watermarks to the input fields
+		$.watermark.options.className = 'watermark';		
+		$.watermark.options.useNative = false;
+		$("#Reciept_RIF").watermark("RIF    ");
+		$("#Reciept_DateOfSale").watermark("Date Of Reciept     ");
+        $("#Reciept_StoreName").watermark("Store Name     ");
+        $("#Reciept_SalesTax").watermark("Sales Tax    ");
+        $("#Reciept_FoodTax").watermark("Food Tax    ");
+        $("#Reciept_SalesAmount").watermark("Sales Amount    ");
+        $("#Reciept_Notes").watermark("Notes    ");
+
+        //Collapse the totals areas
+        $(".collapsible").collapsible();
+
+        $("table").tablesorter({
+            sortList: [[0,0]] //sort by rif automatically
+        });
+        
+        //Load the store names from the database
+        //<?php $reciepts = new RecieptsModal(); ?>
+        //var storeNames = <?php echo json_encode($reciepts->getStoreNames()); ?>;        
+        //Add auto complete to the store names field
+        //$("#storeField").autocomplete({
+        //    source: storeNames
+        //});
+
+        //When we click the cancel button, we want to clear all previously enter field data
+        $("#Cancel").click(function() {
+        	$("#Reciept_RIF").val("");
+        	$("#Reciept_DateOfSale").val("");
+        	$("#Reciept_StoreName").val("");
+        	$("#Reciept_SalesTax").val("");
+        	$("#Reciept_FoodTax").val("");
+        	$("#Reciept_SalesAmount").val("");
+        	$("#Reciept_Notes").val("");
+        });
+        
+		//When we click on an edit icon, fill the form with the values from that row
+        $(".editIcon").click(function() {
+			//Some cross browser options to simply scroll to the top of the page
+        	$(window).scrollTop();
+        	document.body.scrollTop = 0;
+
+        	//Load the field values
+        	$("#Reciept_RIF").val($("tr#" + this.id + " .rifCol").text());
+        	$("#Reciept_DateOfSale").val($("tr#" + this.id + " .dateCol").text());
+        	$("#Reciept_StoreName").val($("tr#" + this.id + " .storeCol").text());
+        	$("#Reciept_SalesTax").val($("tr#" + this.id + " .taxAmtCol").text().substring(1).replace(",", ""));
+        	$("#Reciept_FoodTax").val($("tr#" + this.id + " .foodTaxAmtCol").text().substring(1).replace(",", ""));
+        	$("#Reciept_SalesAmount").val($("tr#" + this.id + " .salesAmtCol").text().substring(1).replace(",", ""));
+        	$("#Reciept_Notes").val($("tr#" + this.id + " .notesCol").text());
+
+        	$("select#Reciept_County option:contains('" + $("tr#" + this.id + " .countyCol").text() + "')").attr('selected', 'selected');
+
+        	$("#Reciept_RIF").select();
+        });
+
+        //Start with the RIF field having the default focus
+        $("#Reciept_RIF").focus();
+    });
+
+
+</script>
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.RIF)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfSale)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StoreName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.County)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SalesTax)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FoodTax)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SalesAmount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Notes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OnBillDetail)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RIF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfSale)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StoreName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.County)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SalesTax)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FoodTax)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SalesAmount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Notes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OnBillDetail)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
-</table>

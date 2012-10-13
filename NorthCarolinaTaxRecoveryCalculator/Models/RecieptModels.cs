@@ -9,8 +9,38 @@ using System.Web.Security;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Models
 {
-    public class RecieptModal
+    public class ListAndCreateReciept
     {
+        public int ProjectID;
+
+        private Reciept m_Reciept = new Reciept();
+        [Required]
+        public Reciept Reciept
+        {
+            get
+            {
+                return m_Reciept;
+            }
+            set
+            {
+                m_Reciept = value;
+            }
+        }
+
+        public IEnumerable<Reciept> Reciepts { get; set; }
+
+        public IEnumerable<County> Counties { get; set; }
+    }
+
+    public class Reciept
+    {
+        [Key]
+        [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
+        [Required]
+        public virtual Project Project { get; set; }
+
         [Required]
         [Display(Name = "RIF")]
         public string RIF { get; set; }
@@ -18,6 +48,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         [Required]
         [Display(Name = "Date On Reciept")]
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public string DateOfSale { get; set; }
 
         [Required]
@@ -26,7 +57,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 
         [Required]
         [Display(Name = "County")]
-        public string County { get; set; }
+        public int County { get; set; }
 
         [Display(Name = "Sales Tax")]
         [DataType(DataType.Currency)]
@@ -41,12 +72,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         [DataType(DataType.Currency)]
         public float SalesAmount { get; set; }
 
-        [Required]
         [Display(Name = "Notes")]
         public string Notes { get; set; }
 
         [Display(Name = "On Bill Detail")]        
         public bool OnBillDetail { get; set; }
-
     }
 }

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<NorthCarolinaTaxRecoveryCalculator.Models.Project>
+
+@{
+    ViewBag.Title = "Projects";
+}
+
+<div id="projects-list-area">
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateStarted)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Index", "Reciept", new { ProjectID = item.ID }, null)                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateStarted)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+
+    </table>
+    @Html.Partial("_CreateProjectPartial", new NorthCarolinaTaxRecoveryCalculator.Models.Project())
+</div>
