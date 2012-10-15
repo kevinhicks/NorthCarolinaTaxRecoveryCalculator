@@ -77,26 +77,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
             return View("Index", reciept);
         }
-        
-        //
-        // POST: /Reciept/Edit/
-
-        [HttpPost]
-        public ActionResult Edit(Reciept reciept)
-        {/*
-            if (ModelState.IsValid)
-            {
-                var original = db.Reciepts.Where(rec => 
-                    rec.RIF == reciept.RIF && 
-                    rec.Project.ID == reciept.Project.ID).First();
-                db.Entry(reciept).State = EntityState.Modified;
-                db.Entry(original).CurrentValues.SetValues(reciept);
-                //db.SaveChanges();
-                return RedirectToAction("Index", new { ProjectID = reciept.Project.ID } );
-            }
-            */
-            return View("Index", reciept);
-        }
 
         //
         // POST: /Reciept/Delete/5

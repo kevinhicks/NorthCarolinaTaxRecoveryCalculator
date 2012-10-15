@@ -7,23 +7,49 @@
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
+        <style type="text/css">
+            div#loginArea 
+            {
+                float:right;
+            }
+            
+            div#top-header
+            {
+                float:left;
+            }
+            
+            ul#menu li
+            {
+                float: left;
+                list-style: none;    
+                margin-right: 5px;            
+            }
+            
+            ul#menu li:hover
+            {
+                background-color: #D7F8F8;
+                
+            }
+            
+        </style>
+        @RenderSection("styles", required: false)
     </head>
     <body>
         <div id="header">
-            <div id="top-header">
-                @RenderSection("top-header", required: false)
-            </div>
-            <div>
-                @Html.Partial("_LoginPartial")
+            <div id="top-header">            
                 <nav>
                     <ul id="menu">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home") </li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     </ul>
                 </nav>
+                @RenderSection("top-header", required: false)
             </div>
-            <div>
+            <div id="loginArea">
+                @Html.Partial("_LoginPartial")                
+            </div>
+            <div class="clear">
                 <h1 class="centered-text">North Carolina Tax Recovery Calculator</h1>
                 <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
             </div>            
