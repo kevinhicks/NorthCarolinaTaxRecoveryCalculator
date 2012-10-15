@@ -1,11 +1,13 @@
-﻿html, * {
+﻿html, *
+{
     font-size: large;
     font-family: sans-serif;
     margin: 0;
     padding: 0;
 }
 
-body {
+body
+{
     color: #494848;
     height: 100%;
     width: 100%;
@@ -13,189 +15,256 @@ body {
     background-color: #E8EAEA;
 }
 
-html, body {
-	height: 100%;
-	overflow: auto;
+html, body
+{
+    height: 100%;
+    overflow: auto;
 }
 
 /** Project->Index */
-div#projects-list-area {
-	width: 500px;
-	margin: auto;
-	margin-top: 25px;
-	background-color: #759CD6;
-	
-	padding: 15px;
+div#projects-list-area
+{
+    width: 500px;
+    margin: auto;
+    margin-top: 25px;
+    background-color: #759CD6;
+    padding: 15px;
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
 }
 
-form#newprojectform {
-	margin-bottom: 20px;
+form#newprojectform
+{
+    margin-bottom: 20px;
 }
 
-div.inputElement 
+div.inputElement
 {
     float: left;
     margin-left: 10px;
 }
 
-.header {
-	font-weight: bold;
-	text-decoration: underline;
+.header
+{
+    font-weight: bold;
+    text-decoration: underline;
 }
 
-.clickable {
-	cursor: pointer;
+.clickable
+{
+    cursor: pointer;
 }
 
 /** Reciepts page*/
-#fixedFormDiv {
-	width: 1000px;
-	margin: auto;
-	padding-top: 15px;
-	background-color: #E8EAEA;
+#fixedFormDiv
+{
+    width: 275px;
+    margin: auto;
+    padding-top: 15px;
+    background-color: #E8EAEA;
+    float: left;
 }
 
-#fixedFormDiv legend {
-	padding: 10px;
+#fixedFormDiv legend
+{
+    padding: 10px;
 }
 
-#fixedFormDiv fieldset {	
-	padding: 10px;
-	
+#fixedFormDiv fieldset
+{
+    padding: 10px;
 }
 
-div#errorMessages {
-	background-color: #F44646;
+div#errorMessages
+{
+    background-color: #F44646;
 }
 
-div#recieptRecords {
-	clear: both;
-	width: 1000px;
-	margin: auto;
-	background-color: #E8EAEA;
+div#content
+{
+    height: 100%;
 }
 
-input[type=text], input[type="text"] {
+div#recieptRecords
+{
+    margin: auto;
+    background-color: #E8EAEA;
+    overflow: scroll;
+}
+
+input[type=text], input[type="text"]
+{
     border: 1px solid #ccc;
     font-size: 1.2em;
     width: 200px;
 }
 
-    
-textarea#notesField {
-	vertical-align: baseline;
+
+textarea#notesField
+{
+    vertical-align: baseline;
 }
 
-.watermark {
-   color: #999 !important;
+.watermark
+{
+    color: #999 !important;
 }
 
-#table {
-	width: 100%;
-	
+#table
+{
+    width: 100%;
 }
 
-div#summary {
-	background-color: #E8EAEA;
-}
-
-div.taxHeaderArea {
-	padding: 10px;	
-}
-
-div.taxHeaderArea:HOVER {
-	background-color: #90B2B2;
-	
+div.note
+{
+    height: 20px;
+    width: 20px;
+    margin: auto;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    background-color: #578fc6;
     border-radius: 5px;
-    -webkit-border-radius:15px;
+    -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
 }
 
-.editIcon {
-	cursor: pointer;	
+div#notePopup 
+{
+    width: 500px;
+    position:absolute;
+    
+    background-color: #a4bfdb;
+    
+    border-style: solid;
+    border-color: Black;
+    border-width: 1px;
+    
+    padding: 20px;
+    
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
 }
 
-.center-text {
-	text-align: center;
+div#summary
+{
+    background-color: #E8EAEA;
 }
 
-.ui-autocomplete, .autocomplete-area {
-	background-color: white;
-	border-color: black;
-	border-style: solid;
-	width: 400px;
-	cursor: pointer;
-	list-style-type: none;
+div.taxHeaderArea
+{
+    padding: 10px;
+}
+
+div.taxHeaderArea:HOVER
+{
+    background-color: #90B2B2;
+    border-radius: 5px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 5px;
+}
+
+.editIcon
+{
+    cursor: pointer;
+}
+
+.center-text
+{
+    text-align: center;
+}
+
+.ui-autocomplete, .autocomplete-area
+{
+    background-color: white;
+    border-color: black;
+    border-style: solid;
+    width: 400px;
+    cursor: pointer;
+    list-style-type: none;
     border-style: groove;
 }
 
-.ui-menu-item:hover {
-	text-decoration: underline;
+.ui-menu-item:hover
+{
+    text-decoration: underline;
 }
 
-.clear {
-	clear: both;
+.clear
+{
+    clear: both;
 }
 
-.left {
-	float: left;
+.left
+{
+    float: left;
 }
 
-.right {
-	float: right;
+.right
+{
+    float: right;
 }
 
-ul {
-   list-style-position: inside;
-   margin-left: 5px;
+ul
+{
+    list-style-position: inside;
+    margin-left: 5px;
 }
 
 /* tables */
-table.tablesorter {
-	font-family:arial;
-	background-color: #CDCDCD;
-	margin:10px 0pt 15px;
-	font-size: 8pt;
-	width: 100%;
-	text-align: left;
+table.tablesorter
+{
+    font-family: arial;
+    background-color: #CDCDCD;
+    margin: 10px 0pt 15px;
+    font-size: 8pt;
+    width: 100%;
+    text-align: left;
 }
-table.tablesorter thead tr th, table.tablesorter tfoot tr th {
-	background-color: #e6EEEE;
-	border: 1px solid #FFF;
-	font-size: 8pt;
-	padding: 4px;
+table.tablesorter thead tr th, table.tablesorter tfoot tr th
+{
+    background-color: #e6EEEE;
+    border: 1px solid #FFF;
+    font-size: 8pt;
+    padding: 4px;
 }
-table.tablesorter thead tr .header {
-	background-image: url(bg.gif);
-	background-repeat: no-repeat;
-	background-position: center right;
-	cursor: pointer;
+table.tablesorter thead tr .header
+{
+    background-image: url(bg.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
 }
-table.tablesorter thead tr .headerSortUp {
-	background-image: url(asc.gif);
+table.tablesorter thead tr .headerSortUp
+{
+    background-image: url(asc.gif);
 }
-table.tablesorter thead tr .headerSortDown {
-	background-image: url(desc.gif);
+table.tablesorter thead tr .headerSortDown
+{
+    background-image: url(desc.gif);
 }
-table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
-	background-color: #8dbdd8;
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp
+{
+    background-color: #8dbdd8;
 }
-table.tablesorter tbody tr.odd td {
-	background-color:#F0F0F6;
+table.tablesorter tbody tr.odd td
+{
+    background-color: #F0F0F6;
 }
-table.tablesorter tbody td {
-	color: #3D3D3D;
-	padding: 4px;
-	/*background-color: #FFF;*/
-	vertical-align: top;
+table.tablesorter tbody td
+{
+    color: #3D3D3D;
+    padding: 4px; /*background-color: #FFF;*/
+    vertical-align: top;
 }
-table.tablesorter tbody tr:nth-child(odd) {
-	background-color: #DCDCDC;
+table.tablesorter tbody tr:nth-child(odd)
+{
+    background-color: #DCDCDC;
 }
-	
-table.tablesorter tbody tr:nth-child(even) {
-	background: #D3D3D3;
+
+table.tablesorter tbody tr:nth-child(even)
+{
+    background: #D3D3D3;
 }
