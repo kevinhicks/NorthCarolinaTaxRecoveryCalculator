@@ -4,9 +4,9 @@ using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
-using NorthCarolinaTaxRecoveryCalculator.Models;
+using MoneyCollecter.Models;
 
-namespace NorthCarolinaTaxRecoveryCalculator.Filters
+namespace MoneyCollecter.Filters
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
     public sealed class InitializeSimpleMembershipAttribute : ActionFilterAttribute
@@ -25,11 +25,11 @@ namespace NorthCarolinaTaxRecoveryCalculator.Filters
         {
             public SimpleMembershipInitializer()
             {
-                //Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<UsersContext>(null);
 
                 try
                 {
-                    using (var context = new ApplicationDBContext())
+                    using (var context = new UsersContext())
                     {
                         if (!context.Database.Exists())
                         {
@@ -38,7 +38,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("ApplicationDBContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {

@@ -7,8 +7,8 @@ using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace NorthCarolinaTaxRecoveryCalculator.Models
-{/*
+namespace MoneyCollecter.Models
+{
     public class UsersContext : DbContext
     {
         public UsersContext()
@@ -17,7 +17,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
-    }*/
+    }
 
     [Table("UserProfile")]
     public class UserProfile

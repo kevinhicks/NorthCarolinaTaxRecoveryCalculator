@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-//using Microsoft.Web.WebPages.OAuth;
 using NorthCarolinaTaxRecoveryCalculator.Models;
+using Microsoft.Web.WebPages.OAuth;
 
 namespace NorthCarolinaTaxRecoveryCalculator
 {
@@ -26,7 +26,7 @@ namespace NorthCarolinaTaxRecoveryCalculator
             //    appId: "",
             //    appSecret: "");
 
-            //OAuthWebSecurity.RegisterGoogleClient();
+            OAuthWebSecurity.RegisterGoogleClient();
         }
     }
 }
