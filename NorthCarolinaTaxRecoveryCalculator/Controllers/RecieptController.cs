@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NorthCarolinaTaxRecoveryCalculator.Models;
+using System.Web.Script.Serialization;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
@@ -20,6 +21,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         {
             var modal = new Reciept();
             modal.Project = db.Projects.Find(ProjectID);
+
+
+            ViewBag.Counties = County.AsJsonArray();
+
             return View(modal);
         }
 

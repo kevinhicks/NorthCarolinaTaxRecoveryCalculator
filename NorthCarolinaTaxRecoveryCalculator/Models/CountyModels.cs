@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.Script.Serialization;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Models
 {
@@ -20,6 +21,19 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         {
             this.ID = ID;
             this.Name = Name;
+        }
+
+        public static string AsJsonArray()
+        {
+            string json = "[";            
+            for (int i = 0; i < Counties.Length; i++)
+            {
+                if (i > 0)
+                    json += ",";
+                json += "'" + Counties[i].Name + "' ";
+            }
+
+            return json + "]";
         }
 
         public static County[] Counties = {

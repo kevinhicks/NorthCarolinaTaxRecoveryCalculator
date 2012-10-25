@@ -5,6 +5,7 @@ using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using NorthCarolinaTaxRecoveryCalculator.Models;
+using NorthCarolinaTaxRecoveryCalculator.Migrations;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Filters
 {
@@ -25,8 +26,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.Filters
         {
             public SimpleMembershipInitializer()
             {
-                //Database.SetInitializer<UsersContext>(null);
-
                 try
                 {
                     using (var context = new ApplicationDBContext())
