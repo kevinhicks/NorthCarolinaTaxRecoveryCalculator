@@ -19,6 +19,8 @@ namespace NorthCarolinaTaxRecoveryCalculator
     {
         protected void Application_Start()
         {
+            //Database.SetInitializer<ApplicationDBContext>(new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>());
+
             Database.SetInitializer<ApplicationDBContext>(new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>());
 
             AreaRegistration.RegisterAllAreas();
@@ -28,6 +30,9 @@ namespace NorthCarolinaTaxRecoveryCalculator
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new RazorViewEngine());
         }
     }
 }

@@ -38,6 +38,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
+        public int ProjectID { get; set; }
         public virtual Project Project { get; set; }
 
         [Required]

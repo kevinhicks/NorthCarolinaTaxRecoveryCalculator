@@ -81,6 +81,17 @@ div#errorMessages
     background-color: #F44646;
 }
 
+span.field-validation-valid
+{
+    color: Red;
+    display: block;
+}
+
+div.editor-label
+{
+    
+}
+
 div#content
 {
     height: 100%;
@@ -136,6 +147,8 @@ div#notePopup
     position:absolute;
     
     background-color: #a4bfdb;
+    
+    display: none;
     
     border-style: solid;
     border-color: Black;
@@ -207,6 +220,11 @@ div.taxHeaderArea:HOVER
     float: right;
 }
 
+.hidden
+{
+    display: none;
+}
+
 ul
 {
     list-style-position: inside;
@@ -267,4 +285,9 @@ table.tablesorter tbody tr:nth-child(odd)
 table.tablesorter tbody tr:nth-child(even)
 {
     background: #D3D3D3;
+}
+
+table.tablesorter tbody tr:hover
+{
+    
 }

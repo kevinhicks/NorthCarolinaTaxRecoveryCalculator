@@ -37,7 +37,7 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr id="@item.ID">
+                <tr data-id="@item.ID">
                     <td>
                         @Html.DisplayFor(modelItem => item.RIF)
                     </td>
@@ -66,6 +66,7 @@
                         }
                     </td>
                     <td>
+                        <span class="hidden">@item.OnBillDetail</span>
                         @Html.DisplayFor(modelItem => item.OnBillDetail)
                     </td>
                     <td>
@@ -76,4 +77,15 @@
                 </tr>
             }
         </tbody>
+        <tfoot>
+            <tr>
+                <th></th><th></th><th></th><th></th>
+                <th id="salesTaxTotal"></th>
+                <th id="foodTaxTotal"></th>
+                <th id="salesAmountTotal"></th>
+                <th></th>
+                <th id="onBillDetailTotal"></th>
+                <th></th>
+            </tr>
+        </tfoot>
     </table>

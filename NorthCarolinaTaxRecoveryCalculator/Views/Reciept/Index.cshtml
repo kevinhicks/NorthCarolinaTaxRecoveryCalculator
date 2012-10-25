@@ -1,6 +1,6 @@
 ﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Reciept
 <div id="fixedFormDiv">
-    @using (Html.BeginForm("Create", "Reciept", FormMethod.Post, new { name = "reciept", id = "form" }))
+    @using (Html.BeginForm())
     {
         @Html.ValidationSummary(true)
 
@@ -13,21 +13,21 @@
                 @Html.LabelFor(model => model.RIF)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.RIF)
+                @Html.EditorFor(model => model.RIF, new { autocomplete = "off" })
                 @Html.ValidationMessageFor(model => model.RIF)
             </div>
             <div class="editor-label">
                 @Html.LabelFor(model => model.DateOfSale)
             </div>
             <div class="editor-field">
-                @Html.TextBoxFor(model => model.DateOfSale)
+                @Html.TextBoxFor(model => model.DateOfSale, new { autocomplete = "off" })
                 @Html.ValidationMessageFor(model => model.DateOfSale)
             </div>
             <div class="editor-label">
                 @Html.LabelFor(model => model.StoreName)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.StoreName)
+                @Html.EditorFor(model => model.StoreName, new { autocomplete = "off" })
                 @Html.ValidationMessageFor(model => model.StoreName)
             </div>
             <div class="editor-label">
@@ -41,28 +41,28 @@
                 @Html.LabelFor(model => model.SalesTax)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.SalesTax)
+                @Html.EditorFor(model => model.SalesTax, new { autocomplete = "off" })
                 @Html.ValidationMessageFor(model => model.SalesTax)
             </div>
             <div class="editor-label">
                 @Html.LabelFor(model => model.FoodTax)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.FoodTax)
+                @Html.EditorFor(model => model.FoodTax, new { autocomplete = "off" })
                 @Html.ValidationMessageFor(model => model.FoodTax)
             </div>
             <div class="editor-label">
                 @Html.LabelFor(model => model.SalesAmount)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.SalesAmount)
+                @Html.EditorFor(model => model.SalesAmount, new { autocomplete = "off" })
                 @Html.ValidationMessageFor(model => model.SalesAmount)
             </div>
             <div class="editor-label">
                 @Html.LabelFor(model => model.Notes)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.Notes)
+                @Html.EditorFor(model => model.Notes, new { autocomplete = "off" })
                 @Html.ValidationMessageFor(model => model.Notes)
             </div>
             <div class="editor-label">
@@ -74,7 +74,6 @@
             </div>
             <p>
                 <input type="submit" value="Create" id="createBtn" />
-                <input type="button" value="Update" id="updateBtn" class="right" />
             </p>
         </fieldset>
     }
@@ -89,20 +88,42 @@
     <input type="hidden" id="RecieptID" /> 
 }
 @section scripts {
+    <script src="~/Scripts/jquery.signalR-0.5.3.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/accounting.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/date.js" type="text/javascript"></script>
+    <script src="~/signalr/hubs" type="text/javascript"></script>
     <script type="text/javascript">
+
+        var hub;
+        function getProjectID() {
+            return @Html.Raw(Model.Project.ID);
+        }
+        
+        //Return an array containing all the county names
+        function getCountyNames() {
+            var names = @Html.Raw(ViewBag.Counties);
+            return names;
+        }
+
         $(function () {
 
             initViewport();
             initWatermarks();
             initTable();
+
+            initNotesPopup();
+            initSignalR();
+            initForm();
+
             initEditButton();
-            initUpdateButton();
             initCancelButton();
             initDeleteButton();
+            initDateFormatting();
             initStoreNameAutoComplete();
-            initNotesPopup();
 
-            //If we want to create a NEW recipet,
+            refreshTotals();
+
+            //If we want to create a NEW reciept,
             //then remove any ID that might be floating 
             //around in the form ;)
             $("#createBtn").click(function () {
@@ -114,10 +135,171 @@
 
             //Start with the RIF field having the default focus
             $("#RIF").focus();
-            //Are we Creating a new reciept, or updataing?
-            //we can tell by weather or not we already have a row int he table with the same RIF
-
+            
+            $(window).resize(function() {
+                initViewport();
+            });
         });
+
+
+        //Setup all the SignalR goodness, and wire up all the events
+        function initSignalR() {
+
+            hub = $.connection.recieptHub;
+            
+            //Start hubbing!
+            $.connection.hub.start();
+
+            hub.recieveReciept = addRowToTable;
+            hub.onRecieptDeleted = deleteRecieptFromTable;
+
+            hub.onNewRecieptSaved = function () {                
+                //clear previous validation errors
+                $("span.field-validation-valid").each(function () {
+                    $(this).empty();
+                });
+
+                //clear all the fields, and get ready to add another reciept
+
+            }
+
+            //Whenever we accedintally submit an invalid Recipet
+            hub.onInvalidReciept = function (validationErrors) {
+                //clear previous validation errors
+                $("span.field-validation-valid").each(function () {
+                    $(this).empty();
+                });
+
+                //display all the current validation errors
+
+                //loop thru all the validation errors the server returned back to us
+                for (var errorIndex = 0; errorIndex < validationErrors.length; errorIndex++) {
+                    var msg = validationErrors[errorIndex].ErrorMessage;
+                    //loop thru all the elements that this error refers to
+                    for (var elemIndex = 0; elemIndex < validationErrors[errorIndex].MemberNames.length; elemIndex++) {
+                        //Append our error message to them
+                        $("span[data-valmsg-for='" + validationErrors[errorIndex].MemberNames[elemIndex] + "']").each(function () {
+                            $(this).text(msg);
+                        });
+                    }
+                }
+            }
+
+            
+            //Send all the reciept information to the server
+            $("#createBtn").click(function () {
+                hub.addReciept({
+                    ProjectID: getProjectID(),
+                    RIF:  $("input#RIF").val(),
+                    DateOfSale: $("input#DateOfSale").val(),
+                    StoreName: $("input#StoreName").val(),
+                    County: $("select#County").val(),
+                    SalesTax: $("input#SalesTax").val(),
+                    FoodTax: $("input#FoodTax").val(),
+                    SalesAmount: $("input#SalesAmount").val() | 0,
+                    OnBillDetail: ($("input#OnBillDetail").is(":checked")),
+                    Notes: $("input#Notes").val()
+                });
+            });
+        }
+
+        //make sure the form NEVER actually submits
+        function initForm() {
+            $("form").submit(function (e) {
+                return false;
+            });
+        }
+
+        //Adds a new row to the table with new reciept information
+        function addRowToTable(reciept) {
+            //formatting
+            reciept.SalesTax = formatMoney(reciept.SalesTax);
+            reciept.FoodTax = formatMoney(reciept.FoodTax);
+            reciept.SalesAmount = formatMoney(reciept.SalesAmount);
+
+            var newRow = "<tr data-id=" + reciept.ID + " class='recieptRecord'>";
+            newRow += "<td>" + reciept.RIF + "</td>";
+            newRow += "<td>" + reciept.DateOfSale + "</td>";
+            newRow += "<td>" + reciept.StoreName + "</td>";
+            newRow += "<td>" + getCountyNames()[reciept.County - 1] + "</td>";
+            newRow += "<td>" + reciept.SalesTax + "</td>";
+            newRow += "<td>" + reciept.FoodTax + "</td>";
+            newRow += "<td>" + reciept.SalesAmount + "</td>";
+            if(reciept.Notes != null && reciept.Notes != "") {
+                newRow += "<td><div class='note' data-note='" + reciept.Notes + "' >!</div>";
+            } else {
+                newRow += "<td></td>";
+            }
+            if(reciept.OnBillDetail) {
+                newRow += "<td><input class='check-box' disabled='disabled' checked type='checkbox' /></td>";
+            } else {
+                newRow += "<td><input class='check-box' disabled='disabled' type='checkbox' /></td>";
+            }
+            newRow += "<td><a href='#' class='editIcon'>Edit</a> | <a href='#' class='deleteIcon'>Delete</a></td></tr>";            console.log(newRow);
+            $("table tbody").append($(newRow));
+
+                
+            //refereshTotals
+            refreshTotals();
+
+            //Allow newly created Delete buttons to create there events
+            initDeleteButton();
+        }
+
+        function deleteRecieptFromTable(recieptID) {
+            $("table tbody tr").each(function() {
+                if($(this).attr("data-id") == recieptID) {
+                    $(this).remove();                
+                }
+            });
+        }
+
+        function formatMoney(number) {
+            return accounting.formatMoney(number, {
+	            precision: 2,
+	            thousand: ",",
+	            format: {
+		            pos : "%s%v",
+		            neg : "%s(%v)",
+		            zero: "%s  --"
+	            }
+            });
+        }
+
+        //Recalculate the totals for the bottom of the table
+        function refreshTotals() {
+            
+            //Sales Tax & Food Tax & Sales Amount Totals
+            for(var column = 4; column < 7; column++) {
+                var total = 0;
+                $("table.tablesorter tr").each(function() {
+                    var txt = $(this).find("td:eq(" + column + ")").text();
+                
+                    //remove Dollarsign and commas
+                    txt = $.trim(txt);
+                    if(txt.substring(0,1) == "$")
+                        txt = txt.substring(1);                    
+                    txt.replace(",", "");
+
+                    total += Number(txt);
+                });
+                
+                $("table.tablesorter tfoot tr").find("th:eq(" + column + ")").text(formatMoney(total));
+            }
+
+            //Number of notes
+            var total = 0;
+            $("table.tablesorter tr").each(function() {
+                var txt = $(this).find("td:eq(7)").text().trim();
+                
+                if(txt != "") {
+                    total++;
+                }
+            });                
+            $("table.tablesorter tfoot tr").find("th:eq(7)").text(total);
+
+            $("table").trigger("update"); 
+        }
 
         function unusedStuff() {
             $("input#createBtn").show();
@@ -148,12 +330,14 @@
             });
         }
 
-        function initViewport() {
+        //Allow the list of recipets to fill the remaining width, and height of the window
+        function initViewport() {   
             var top = $("div#recieptRecords").offset().top;
             var height = $(window).height();
             $("div#recieptRecords").height(height - top);
         }
 
+        //Add the watermarks to the input elements in the New Reciept form
         function initWatermarks() {
             //Add watermarks to the input fields
             $.watermark.options.className = 'watermark';
@@ -167,6 +351,7 @@
             $("input#Notes").watermark("Notes    ");
         }
 
+        //Configure the table containing the list of recipets to be sortable
         function initTable() {
             $("table").tablesorter({
                 sortList: [[0, 0]] //sort by rif automatically
@@ -216,15 +401,7 @@
             });
         }
 
-        //Clicking the update button shoudl UPDATE the record, not create a new one
-        function initUpdateButton() {
-            $("#updateBtn").click(function () {
-                //var projid = $("input#Project_ID").val();
-                //$("#form").attr("action", "/Reciept/Edit/" + projid);
-
-                $("#createBtn").click();
-            });
-        }
+       
         function initCancelButton() {
             //When we click the cancel button, we want to clear all previously enter field data
             $("#Cancel").click(function () {
@@ -240,16 +417,24 @@
 
         function initDeleteButton() {
             $(".deleteIcon").click(function () {
+
                 //Find the id parent tr
-                var id = $(this).parent().parent().attr("id");
+                var id = $(this).parent().parent().attr("data-id");
 
-                //put it in the form
-                $("input#RecieptID").val(id);
+                hub.deleteReciept(id);
+            });
+        }
 
-                $("form#hiddenDeleteForm").attr("action", "/Reciept/Delete/" + id);
+        //Auto-format the date field
+        function initDateFormatting() {
+            $("input#DateOfSale").change(function() {
+                var date = Date.parse( $(this).val() );         
 
-                //and submit it
-                $("form#hiddenDeleteForm").submit();
+                //If we can, convert the entered date into somethnign more pretty, and complete
+                if(date != null) {                                         
+                    date = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();                    
+                    $(this).val(date);
+                }
             });
         }
 
@@ -264,6 +449,7 @@
             //});
         }
 
+        //Setup the Notes popup
         function initNotesPopup() {
             //It shoudl initail be hidden
             $("div#notePopup").hide();
