@@ -1,6 +1,5 @@
 ﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Reciept
 <div id="fixedFormDiv">
-    
     @Html.ValidationSummary(true)
     @using (Html.BeginForm())
     {
@@ -20,7 +19,7 @@
                 @Html.LabelFor(model => model.DateOfSale)
             </div>
             <div class="editor-field">
-                @Html.TextBoxFor(model => model.DateOfSale, new { autocomplete = "off" })
+                @Html.TextBoxFor(model => model.DateOfSale, new { autocomplete = "off", Value = ""})
                 @Html.ValidationMessageFor(model => model.DateOfSale)
             </div>
             <div class="editor-label">
@@ -74,6 +73,7 @@
             </div>
             <p>
                 <input type="submit" value="Create" id="createBtn" />
+                <input type="submit" value="Update" id="updateBtn" />
             </p>
         </fieldset>
     }
@@ -115,6 +115,7 @@
             initSignalR();
             initForm();
 
+            initEditingMode();
             initEditButton();
             initCancelButton();
             initDeleteButton();
@@ -184,23 +185,33 @@
                     }
                 }
             }
-
-            
-            //Send all the reciept information to the server
+                        
+            //Send all the reciept information to the server on CREATE
             $("#createBtn").click(function () {
-                hub.addReciept({
+                hub.addReciept(getFormValues());
+            });
+
+            //Send all the reciept information to the server on UPDATE
+            $("#updateBtn").click(function () {
+                hub.updateReciept(getFormValues());
+            });
+        }
+
+        //Return an object containtn all the form values that may be sumitted to the server
+        function getFormValues() {
+            var v = {
                     ProjectID: getProjectID(),
                     RIF:  $("input#RIF").val(),
                     DateOfSale: $("input#DateOfSale").val(),
                     StoreName: $("input#StoreName").val(),
-                    County: $("select#County").val(),
+                    County: Number($("select#County").val()) - 1,
                     SalesTax: $("input#SalesTax").val(),
                     FoodTax: $("input#FoodTax").val(),
                     SalesAmount: $("input#SalesAmount").val() | 0,
                     OnBillDetail: ($("input#OnBillDetail").is(":checked")),
                     Notes: $("input#Notes").val()
-                });
-            });
+                }
+            return v;
         }
 
         //make sure the form NEVER actually submits
@@ -213,6 +224,8 @@
         //Adds a new row to the table with new reciept information
         function addRowToTable(reciept) {
             //formatting
+            reciept.DateOfSale = new Date(reciept.DateOfSale);
+            reciept.DateOfSale = (Number(reciept.DateOfSale.getMonth()) + 1) + "/" + (Number(reciept.DateOfSale.getDate()) + 1) + "/" + reciept.DateOfSale.getFullYear();
             reciept.SalesTax = formatMoney(reciept.SalesTax);
             reciept.FoodTax = formatMoney(reciept.FoodTax);
             reciept.SalesAmount = formatMoney(reciept.SalesAmount);
@@ -221,7 +234,7 @@
             newRow += "<td>" + reciept.RIF + "</td>";
             newRow += "<td>" + reciept.DateOfSale + "</td>";
             newRow += "<td>" + reciept.StoreName + "</td>";
-            newRow += "<td>" + getCountyNames()[reciept.County - 1] + "</td>";
+            newRow += "<td>" + getCountyNames()[reciept.County] + "</td>";
             newRow += "<td>" + reciept.SalesTax + "</td>";
             newRow += "<td>" + reciept.FoodTax + "</td>";
             newRow += "<td>" + reciept.SalesAmount + "</td>";
@@ -236,15 +249,15 @@
                 newRow += "<td><input class='check-box' disabled='disabled' type='checkbox' /></td>";
             }
             newRow += "<td><a href='#' class='editIcon'>Edit</a> | <a href='#' class='deleteIcon'>Delete</a></td></tr>";
-            console.log(newRow);
             $("table tbody").append($(newRow));
 
                 
             //refereshTotals
             refreshTotals();
 
-            //Allow newly created Delete buttons to create there events
+            //Allow newly created Edit & Delete buttons to create there events
             initDeleteButton();
+            initEditButton();
         }
 
         function deleteRecieptFromTable(recieptID) {
@@ -378,18 +391,48 @@
             });
         }
 
+        //Swith the create button to an update button whenever the current Rif exists, and vice-versa
+        function initEditingMode() {        
+            $("input#updateBtn").hide();               
+            var rifChangeFunction = function() {
+                var rifExists = false;
+                
+                //Find if the RIF exists
+                $("table tbody tr").each(function() {
+                    var rif = $(this).find("td:eq(0)").text().trim();
+                        
+                    if(rif == $("input#RIF").val()) { 
+                        rifExists = true;
+                    }
+                });
+
+
+                //If we are editing a reciept that already esists
+                if(rifExists) {
+                    //Change the button to the 'Editing' button
+                    $("input#createBtn").hide();
+                    $("input#updateBtn").show();                    
+                } else {
+                    //Otherwise, change the button to the 'Creating' button
+                    $("input#createBtn").show();
+                    $("input#updateBtn").hide();                    
+                }
+            };
+
+            $("input#createBtn").click(rifChangeFunction);
+            $("input#updateBtn").click(rifChangeFunction);         
+            $("input#RIF").change(rifChangeFunction);
+            $("input#RIF").keyup(rifChangeFunction);
+        }
         function initEditButton() {
             //When we click on an edit icon, fill the form with the values from that row
             $(".editIcon").click(function () {
-                //Some cross browser options to simply scroll to the top of the page
-                //$(window).scrollTop();
-                //document.body.scrollTop = 0;
 
-                //Load the field values
-
+                //Find the field values
                 var rif = $(this).parent().parent().find("td:eq(0)").text();
                 var date = $(this).parent().parent().find("td:eq(1)").text();
                 var store = $(this).parent().parent().find("td:eq(2)").text();
+                var county = $(this).parent().parent().find("td:eq(3)").text();
                 var salesTax = $(this).parent().parent().find("td:eq(4)").text();
                 var foodTax = $(this).parent().parent().find("td:eq(5)").text();
                 var salesAmt = $(this).parent().parent().find("td:eq(6)").text();
@@ -405,9 +448,16 @@
                 var salesAmt = $.trim(salesAmt).substring(1).replace(",", "");
                 var notes = $.trim(notes);
 
+                
+                //Load them into the Input Fields
                 $("#RIF").val($.trim(rif));
                 $("#DateOfSale").val($.trim(date));
                 $("#StoreName").val($.trim(store));
+                $("#County").each(function () {
+                    if ($(this).html() == county) {
+                        $(this).attr("selected", "selected");                    
+                    }
+                });
                 $("#SalesTax").val($.trim(salesTax));
                 $("#FoodTax").val($.trim(foodTax));
                 $("#SalesAmount").val($.trim(salesAmt));
@@ -420,8 +470,7 @@
                 //$("#RIF").select();
             });
         }
-
-       
+               
         function initCancelButton() {
             //When we click the cancel button, we want to clear all previously enter field data
             $("#Cancel").click(function () {

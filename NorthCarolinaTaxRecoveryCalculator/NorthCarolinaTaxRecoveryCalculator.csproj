@@ -188,6 +188,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\RecieptHub.cs" />
+    <Compile Include="Migrations\201210262002334_Initial Migration.cs" />
+    <Compile Include="Migrations\201210262002334_Initial Migration.Designer.cs">
+      <DependentUpon>201210262002334_Initial Migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CountyModels.cs" />
@@ -355,6 +359,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Reciept\_ListReciepts.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201210262002334_Initial Migration.resx">
+      <DependentUpon>201210262002334_Initial Migration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

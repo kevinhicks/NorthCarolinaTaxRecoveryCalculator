@@ -37,7 +37,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         [Display(Name = "Date On Reciept")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
-        public string DateOfSale { get; set; }
+        public DateTime DateOfSale { get; set; }
 
         [Required]
         [Display(Name = "Store Name")]

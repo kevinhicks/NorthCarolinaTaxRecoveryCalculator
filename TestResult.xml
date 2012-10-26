@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\Kevin\Documents\GitHub\NorthCarolinaTaxRecoveryCalculator\NorthCarolinaTaxRecoveryCalculator.sln" total="2" errors="2" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2012-10-26" time="17:26:09">
+  <environment nunit-version="2.6.1.12217" clr-version="2.0.50727.4016" os-version="Microsoft Windows NT 6.0.6002 Service Pack 2" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.1\bin" machine-name="DEV" user="Kevin" user-domain="Dev" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Project" name="C:\Users\Kevin\Documents\GitHub\NorthCarolinaTaxRecoveryCalculator\NorthCarolinaTaxRecoveryCalculator.sln" executed="True" result="Failure" success="False" time="6.505" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="C:\Users\Kevin\Documents\GitHub\NorthCarolinaTaxRecoveryCalculator\NorthCarolinaTaxRecoveryCalculator.Tests\bin\Debug\NorthCarolinaTaxRecoveryCalculator.Tests.dll" executed="True" result="Failure" success="False" time="6.496" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="NorthCarolinaTaxRecoveryCalculator" executed="True" result="Failure" success="False" time="6.496" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Tests" executed="True" result="Failure" success="False" time="6.496" asserts="0">
+                <results>
+                  <test-suite type="Namespace" name="Models" executed="True" result="Failure" success="False" time="6.495" asserts="0">
+                    <results>
+                      <test-suite type="TestFixture" name="RecieptHubTest" executed="True" result="Failure" success="False" time="6.495" asserts="0">
+                        <results>
+                          <test-case name="NorthCarolinaTaxRecoveryCalculator.Tests.Models.RecieptHubTest.CreateRecieptTest" executed="True" result="Error" success="False" time="6.347" asserts="0">
+                            <failure>
+                              <message><![CDATA[System.InvalidOperationException : The model backing the 'ApplicationDBContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).]]></message>
+                              <stack-trace><![CDATA[at System.Data.Entity.CreateDatabaseIfNotExists`1.InitializeDatabase(TContext context)
+at System.Data.Entity.Internal.InternalContext.<>c__DisplayClass8.<PerformDatabaseInitialization>b__6()
+at System.Data.Entity.Internal.InternalContext.PerformInitializationAction(Action action)
+at System.Data.Entity.Internal.InternalContext.PerformDatabaseInitialization()
+at System.Data.Entity.Internal.LazyInternalContext.<InitializeDatabase>b__4(InternalContext c)
+at System.Data.Entity.Internal.RetryAction`1.PerformAction(TInput input)
+at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabaseAction(Action`1 action)
+at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabase()
+at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+at NorthCarolinaTaxRecoveryCalculator.Hubs.RecieptHub.AddReciept(Reciept reciept) in C:\Users\Kevin\Documents\GitHub\NorthCarolinaTaxRecoveryCalculator\NorthCarolinaTaxRecoveryCalculator\Hubs\RecieptHub.cs:line 33
+at NorthCarolinaTaxRecoveryCalculator.Tests.Models.RecieptHubTest.CreateRecieptTest() in C:\Users\Kevin\Documents\GitHub\NorthCarolinaTaxRecoveryCalculator\NorthCarolinaTaxRecoveryCalculator.Tests\Models\RecieptHubTest.cs:line 63
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                          <test-case name="NorthCarolinaTaxRecoveryCalculator.Tests.Models.RecieptHubTest.UpdateRecieptTest" executed="True" result="Error" success="False" time="0.120" asserts="0">
+                            <failure>
+                              <message><![CDATA[System.InvalidOperationException : The model backing the 'ApplicationDBContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).]]></message>
+                              <stack-trace><![CDATA[at System.Data.Entity.CreateDatabaseIfNotExists`1.InitializeDatabase(TContext context)
+at System.Data.Entity.Internal.InternalContext.<>c__DisplayClass8.<PerformDatabaseInitialization>b__6()
+at System.Data.Entity.Internal.InternalContext.PerformInitializationAction(Action action)
+at System.Data.Entity.Internal.InternalContext.PerformDatabaseInitialization()
+at System.Data.Entity.Internal.LazyInternalContext.<InitializeDatabase>b__4(InternalContext c)
+at System.Data.Entity.Internal.RetryAction`1.PerformAction(TInput input)
+at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabaseAction(Action`1 action)
+at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabase()
+at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+at NorthCarolinaTaxRecoveryCalculator.Hubs.RecieptHub.AddReciept(Reciept reciept) in C:\Users\Kevin\Documents\GitHub\NorthCarolinaTaxRecoveryCalculator\NorthCarolinaTaxRecoveryCalculator\Hubs\RecieptHub.cs:line 33
+at NorthCarolinaTaxRecoveryCalculator.Tests.Models.RecieptHubTest.UpdateRecieptTest() in C:\Users\Kevin\Documents\GitHub\NorthCarolinaTaxRecoveryCalculator\NorthCarolinaTaxRecoveryCalculator.Tests\Models\RecieptHubTest.cs:line 92
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

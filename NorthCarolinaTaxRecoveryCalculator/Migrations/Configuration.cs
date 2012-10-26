@@ -9,7 +9,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(NorthCarolinaTaxRecoveryCalculator.Models.ApplicationDBContext context)

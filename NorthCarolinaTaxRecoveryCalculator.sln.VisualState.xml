@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1000]C:\Users\Kevin\Documents\GitHub\NorthCarolinaTaxRecoveryCalculator\NorthCarolinaTaxRecoveryCalculator.sln</TopNode>
+  <SelectedNode>[0-1003]NorthCarolinaTaxRecoveryCalculator.Tests.Models.RecieptHubTest.CreateRecieptTest</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]C:\Users\Kevin\Documents\GitHub\NorthCarolinaTaxRecoveryCalculator\NorthCarolinaTaxRecoveryCalculator.sln" Expanded="true" />
+    <Node UniqueName="[0-1008]C:\Users\Kevin\Documents\GitHub\NorthCarolinaTaxRecoveryCalculator\NorthCarolinaTaxRecoveryCalculator.Tests\bin\Debug\NorthCarolinaTaxRecoveryCalculator.Tests.dll" Expanded="true" />
+    <Node UniqueName="[0-1009]NorthCarolinaTaxRecoveryCalculator" Expanded="true" />
+    <Node UniqueName="[0-1010]NorthCarolinaTaxRecoveryCalculator.Tests" Expanded="true" />
+    <Node UniqueName="[0-1011]NorthCarolinaTaxRecoveryCalculator.Tests.Models" Expanded="true" />
+    <Node UniqueName="[0-1002]NorthCarolinaTaxRecoveryCalculator.Tests.Models.RecieptHubTest" Expanded="true" />
+    <Node UniqueName="[0-1005]NorthCarolinaTaxRecoveryCalculator.Tests.Models.RecieptTest" Expanded="true" />
+  </Nodes>
+</VisualState>
