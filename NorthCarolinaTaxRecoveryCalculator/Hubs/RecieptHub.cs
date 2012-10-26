@@ -68,7 +68,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
         /// Delete a reciept
         /// </summary>
         /// <param name="RecieptID"></param>
-        public void DeleteReciept(int RecieptID)
+        public void DeleteReciept(Guid RecieptID)
         {
             Reciept reciept = db.Reciepts.Find(RecieptID);
 
