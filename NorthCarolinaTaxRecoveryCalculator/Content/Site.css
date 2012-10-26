@@ -291,3 +291,8 @@ table.tablesorter tbody tr:hover
 {
     
 }
+
+td.centeredText
+{
+    text-align: center;
+}

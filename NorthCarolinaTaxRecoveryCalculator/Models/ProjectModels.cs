@@ -11,9 +11,21 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 {
     public class Project
     {
+        private Guid _guid = Guid.NewGuid();    
+
         [Key]
-        [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        //[DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]        
+        public Guid ID
+        {
+            get
+            {
+                return _guid;
+            }
+            set
+            {
+                _guid = value;
+            }
+        }
 
         [Required]
         [Display(Name = "Project Name")]
@@ -43,7 +55,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         [Required]
         [Display(Name = "Deleted")]
         public bool IsDeleted { get; set; }
-
-        //public virtual ICollection<Reciept> Reciepts { get; set; }
+        
+        public int OwnerID { get; set; }
+        public virtual UserProfile Owner { get; set;}
     }
 }

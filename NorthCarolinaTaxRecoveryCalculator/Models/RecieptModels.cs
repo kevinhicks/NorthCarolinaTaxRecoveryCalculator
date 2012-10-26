@@ -11,7 +11,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 {
     public class ListAndCreateReciept
     {
-        public int ProjectID;
+        public Guid ProjectID;
 
         private Reciept m_Reciept = new Reciept();
         [Required]
@@ -34,11 +34,22 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 
     public class Reciept
     {
-        [Key]
-        [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        private Guid _guid = Guid.NewGuid();
 
-        public int ProjectID { get; set; }
+        [Key]     
+        public Guid ID
+        {
+            get
+            {
+                return _guid;
+            }
+            set
+            {
+                _guid = value;
+            }
+        }
+
+        public Guid ProjectID { get; set; }
         public virtual Project Project { get; set; }
 
         [Required]
@@ -75,7 +86,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         [Display(Name = "Notes")]
         public string Notes { get; set; }
 
-        [Display(Name = "On Bill Detail")]        
+        [Display(Name = "On Bill Detail")]
         public bool OnBillDetail { get; set; }
     }
 }

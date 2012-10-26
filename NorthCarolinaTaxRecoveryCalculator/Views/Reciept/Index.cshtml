@@ -1,11 +1,11 @@
 ﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Reciept
 <div id="fixedFormDiv">
+    
+    @Html.ValidationSummary(true)
     @using (Html.BeginForm())
     {
-        @Html.ValidationSummary(true)
-
-        @Html.HiddenFor(model => model.Project.ID);
-        @Html.HiddenFor(model => model.Project.Name);
+        @Html.HiddenFor(model => model.Project.ID)
+        @Html.HiddenFor(model => model.Project.Name)
     
         <fieldset>
             <legend>Reciept</legend>
@@ -96,7 +96,7 @@
 
         var hub;
         function getProjectID() {
-            return @Html.Raw(Model.Project.ID);
+            return "@Html.Raw(Model.Project.ID)";
         }
         
         //Return an array containing all the county names
@@ -235,7 +235,8 @@
             } else {
                 newRow += "<td><input class='check-box' disabled='disabled' type='checkbox' /></td>";
             }
-            newRow += "<td><a href='#' class='editIcon'>Edit</a> | <a href='#' class='deleteIcon'>Delete</a></td></tr>";            console.log(newRow);
+            newRow += "<td><a href='#' class='editIcon'>Edit</a> | <a href='#' class='deleteIcon'>Delete</a></td></tr>";
+            console.log(newRow);
             $("table tbody").append($(newRow));
 
                 
@@ -269,6 +270,24 @@
         //Recalculate the totals for the bottom of the table
         function refreshTotals() {
             
+            //Simple message for an empty list
+            //We are inclunding it here so that it can be added and removed, as records are
+            var msg = $("<tr id='emptyListMessage'><td colspan='10' class='centeredText'>No Reciepts Have Been Entered Yet For This Project</td></tr>");
+            var count = 0
+            var msgIsDisplayed = false;
+            $("table.tablesorter tr").each(function() {
+                if($(this).attr("id") == "emptyListMessage") {
+                    msgIsDisplayed = true;
+                }
+                count++;
+            });
+
+            if( (count-2) == 0 && !msgIsDisplayed) {
+                $("table.tablesorter tbody").append(msg);
+            } else if((count-3) >= 1 && msgIsDisplayed){
+                $("tr#emptyListMessage").remove();
+            }
+
             //Sales Tax & Food Tax & Sales Amount Totals
             for(var column = 4; column < 7; column++) {
                 var total = 0;
@@ -353,6 +372,7 @@
 
         //Configure the table containing the list of recipets to be sortable
         function initTable() {
+            refreshTotals();
             $("table").tablesorter({
                 sortList: [[0, 0]] //sort by rif automatically
             });

@@ -17,7 +17,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         //
         // GET: /Reciept/{ProjectID}
 
-        public ActionResult Index(int ProjectID)
+        public ActionResult Index(Guid ProjectID)
         {
             var modal = new Reciept();
             modal.Project = db.Projects.Find(ProjectID);
@@ -29,7 +29,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult List(int ProjectID)
+        public ActionResult List(Guid ProjectID)
         {
             var reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID);
             return PartialView("_ListReciepts", reciepts);
@@ -87,11 +87,11 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         // POST: /Reciept/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int RecieptID)
+        public ActionResult DeleteConfirmed(Guid RecieptID)
         {
             Reciept reciept = db.Reciepts.Find(RecieptID);
             db.Entry(reciept).Reference("Project").Load();
-            int rid = reciept.Project.ID;
+            Guid rid = reciept.Project.ID;
 
             db.Reciepts.Remove(reciept);
             db.SaveChanges();
