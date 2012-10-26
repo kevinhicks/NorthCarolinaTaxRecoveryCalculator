@@ -35,9 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxGridScaffolderProvider">
-      <HintPath>..\packages\AjaxGridScaffolder.0.1\resources\AjaxGridScaffolderProvider.dll</HintPath>
-    </Reference>
     <Reference Include="Glimpse.Core">
       <HintPath>..\packages\Glimpse.0.87\lib\net40\Glimpse.Core.dll</HintPath>
     </Reference>
