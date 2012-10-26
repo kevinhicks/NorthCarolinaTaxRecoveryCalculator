@@ -9,29 +9,6 @@ using System.Web.Security;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Models
 {
-    public class ListAndCreateReciept
-    {
-        public Guid ProjectID;
-
-        private Reciept m_Reciept = new Reciept();
-        [Required]
-        public Reciept Reciept
-        {
-            get
-            {
-                return m_Reciept;
-            }
-            set
-            {
-                m_Reciept = value;
-            }
-        }
-
-        public IEnumerable<Reciept> Reciepts { get; set; }
-
-        public IEnumerable<County> Counties { get; set; }
-    }
-
     public class Reciept
     {
         private Guid _guid = Guid.NewGuid();
