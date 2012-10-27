@@ -19,7 +19,7 @@
                 @Html.LabelFor(model => model.DateOfSale)
             </div>
             <div class="editor-field">
-                @Html.TextBoxFor(model => model.DateOfSale, new { autocomplete = "off", Value = ""})
+                @Html.TextBoxFor(model => model.DateOfSale, new { autocomplete = "off", Value = "" })
                 @Html.ValidationMessageFor(model => model.DateOfSale)
             </div>
             <div class="editor-label">
@@ -91,6 +91,7 @@
     <script src="~/Scripts/jquery.signalR-0.5.3.min.js" type="text/javascript"></script>
     <script src="~/Scripts/accounting.min.js" type="text/javascript"></script>
     <script src="~/Scripts/date.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.fixedheadertable.js" type="text/javascript"></script>
     <script src="~/signalr/hubs" type="text/javascript"></script>
     <script type="text/javascript">
 
@@ -306,14 +307,28 @@
                 var total = 0;
                 $("table.tablesorter tr").each(function() {
                     var txt = $(this).find("td:eq(" + column + ")").text();
-                
-                    //remove Dollarsign and commas
                     txt = $.trim(txt);
-                    if(txt.substring(0,1) == "$")
-                        txt = txt.substring(1);                    
+                    //removes commas
+                    txt = txt.replace(/,/g, '');
+
+                    //Is it negative. e.g. (10) == -10
+                    var isNegitive = false;
+                    if(txt.substring(0,1) == "(") {
+                        txt = txt.substring(1);
+                        txt = txt.slice(0,-1);
+                    }
+
+                    //remove Dollarsign and commas
+                    if(txt.substring(0,1) == "$") {
+                        txt = txt.substring(1);    
+                    }                
                     txt.replace(",", "");
 
-                    total += Number(txt);
+                    if(isNegitive) {
+                        total -= Number(txt);
+                    } else {
+                        total += Number(txt);
+                    }
                 });
                 
                 $("table.tablesorter tfoot tr").find("th:eq(" + column + ")").text(formatMoney(total));
