@@ -20,8 +20,14 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         public ActionResult Index(Guid ProjectID)
         {
             var modal = new Reciept();
+            
             modal.Project = db.Projects.Find(ProjectID);
 
+            //We have navigated to a Project that dosnt exist anymore
+            if (modal.Project == null)
+            {
+                return View("Error");
+            }
 
             ViewBag.Counties = County.AsJsonArray();
 
