@@ -33,5 +33,9 @@ namespace NorthCarolinaTaxRecoveryCalculator
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
         }
+
+        void Seed()
+        {
+        }
     }
 }
