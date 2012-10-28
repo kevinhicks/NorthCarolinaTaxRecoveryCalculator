@@ -68,7 +68,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 
 
         /// <summary>
-        /// Calculate the amount of tax that went to the state
+        /// Calculate the dollar amount of tax that went to the state
         /// </summary>
         /// <returns></returns>
         public double StateTaxPortion()
@@ -78,13 +78,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 
 
             double totalTaxRates = TaxContext.TotalTaxRate(County, DateOfSale);
-            double countyRate = TaxContext.CountyTaxRate(County, DateOfSale);
 
-            return SalesTax * (TaxContext.StateTaxRate / totalTaxRates);
+            return Math.Round(SalesTax * (TaxContext.StateTaxRate / totalTaxRates),2);
         }
         
         /// <summary>
-        /// Calculate the amount of tax that went to the county
+        /// Calculate the dollar amount of tax that went to the county
         /// </summary>
         /// <returns></returns>
         public double CountyTaxPortion()
@@ -96,7 +95,25 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             double totalTaxRates = TaxContext.TotalTaxRate(County, DateOfSale);
             double countyRate = TaxContext.CountyTaxRate(County, DateOfSale);
 
-            return SalesTax * (countyRate / totalTaxRates);
+            return Math.Round(SalesTax * (countyRate / totalTaxRates), 2);
+        }
+
+        /// <summary>
+        /// Calculate the dollar amount of tax that went to transit Tax
+        /// </summary>
+        /// <returns></returns>
+        public double TransitTaxPortion()
+        {
+            //Only Mecklenbur has any transit tax
+            if (County != NorthCarolinaTaxRecoveryCalculator.Models.County.MECKLENBURG)
+            {
+                return 0;
+            }
+
+
+            double totalTaxRates = TaxContext.TotalTaxRate(County, DateOfSale);
+
+            return Math.Round(SalesTax * (TaxContext.TransitTaxRate / totalTaxRates), 2);
         }
     }
 }

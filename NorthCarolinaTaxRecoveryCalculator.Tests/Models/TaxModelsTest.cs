@@ -61,5 +61,39 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
             //On Apr 1, 2012, Mecklenburg tax rate = 2.0 + 4.75 + .5 = 7.25
             Assert.AreEqual(7.25, TaxContext.TotalTaxRate(County.MECKLENBURG, new DateTime(2012, 4, 1)));
         }
+
+        [TestMethod]
+        public void TestCountyTaxRateWithOutOfRangeCounty()
+        {
+            try
+            {
+                Assert.AreEqual(2.0, TaxContext.CountyTaxRate(County.ASHE + 1209012, new DateTime(2012, 10, 28)));
+                Assert.Fail();
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+            }
+            catch (Exception e)
+            {
+                Assert.Fail();
+            }
+        }
+
+        [TestMethod]
+        public void TestCountyTaxRateWithOutOfRangeDate()
+        {
+            try
+            {
+                Assert.AreEqual(2.0, TaxContext.CountyTaxRate(County.ASHE, new DateTime(2000, 10, 28)));
+                Assert.Fail();
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+            }
+            catch (Exception e)
+            {
+                Assert.Fail();
+            }
+        }
     }
 }

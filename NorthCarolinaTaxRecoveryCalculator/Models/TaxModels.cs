@@ -41,6 +41,17 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         }
 
         /// <summary>
+        /// The constant tax rate the that always goes to Transittax
+        /// </summary>
+        public static double TransitTaxRate
+        {
+            get
+            {
+                return .5;
+            }
+        }
+
+        /// <summary>
         /// Find the total RATE(or percentage) of the sales amount that was tax
         /// </summary>
         /// <param name="county"></param>
@@ -63,7 +74,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         public static double CountyTransitTaxRate(int county)
         {
             if (county == County.MECKLENBURG)
-                return .5;
+                return TransitTaxRate;
             else
                 return 0;
         }
@@ -166,30 +177,37 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 			    return 2.0;
 			
 		    //Period beginning January 1, 2011
-		    } else if(dateOfSale >= TaxPeriods[3]) {
-			    if( county == County.ALEXANDER || 
-				    county == County.CATAWBA || 
-				    county == County.CUMBERLAND || 
-				    county == County.DUPLIN || 
-				    county == County.HAYWOOD || 
-				    county == County.HERTFORD || 
-				    county == County.LEE || 
-				    county == County.MARTIN || 
-				    county == County.NEW_HANOVER || 
-				    county == County.ONSLOW || 
-				    county == County.PITT || 
-				    county == County.RANDOLPH || 
-				    county == County.ROBESON || 
-				    county == County.ROWAN ||  
-				    county == County.SAMPSON ||  
-				    county == County.SURRY ||  
-				    county == County.WILKES ) {
-				    return 2.25;
-			    } 		
-			
-			    //All other counties
-			    return 2.0;		
-		    }
+            }
+            else if (dateOfSale >= TaxPeriods[3])
+            {
+                if (county == County.ALEXANDER ||
+                    county == County.CATAWBA ||
+                    county == County.CUMBERLAND ||
+                    county == County.DUPLIN ||
+                    county == County.HAYWOOD ||
+                    county == County.HERTFORD ||
+                    county == County.LEE ||
+                    county == County.MARTIN ||
+                    county == County.NEW_HANOVER ||
+                    county == County.ONSLOW ||
+                    county == County.PITT ||
+                    county == County.RANDOLPH ||
+                    county == County.ROBESON ||
+                    county == County.ROWAN ||
+                    county == County.SAMPSON ||
+                    county == County.SURRY ||
+                    county == County.WILKES)
+                {
+                    return 2.25;
+                }
+
+                //All other counties
+                return 2.0;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("Date");
+            }
 
             //We have NOOO Idea.... :/
             throw new Exception("Something is wrong here..");
