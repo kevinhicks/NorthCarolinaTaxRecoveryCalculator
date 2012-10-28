@@ -9,22 +9,63 @@ using System.Web.Security;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Models
 {
-    public class TaxPeriods
+    public class TaxContext
     {
         /// <summary>
-        /// Return an array of DateTimes with the start of each new tax period
+        /// An array of DateTimes with the start of each new tax period
         /// </summary>
-        /// <returns></returns>
-        public DateTime[] GetTaxPeriods()
+        public static DateTime[] TaxPeriods
         {
-            DateTime[] periods = { 
+            get
+            {
+                DateTime[] periods = { 
                     new DateTime(2012, 4, 4), 
                     new DateTime(2012, 1, 1), 
                     new DateTime(2011, 10, 1), 
                     new DateTime(2011, 1, 1) 
-            };
+                };
 
-            return periods;
+                return periods;
+            }
+        }
+
+        /// <summary>
+        /// The constant tax rate the that State Always gets
+        /// </summary>
+        public static double StateTaxRate
+        {
+            get
+            {
+                return 4.75;
+            }
+        }
+
+        /// <summary>
+        /// Find the total RATE(or percentage) of the sales amount that was tax
+        /// </summary>
+        /// <param name="county"></param>
+        /// <param name="dateOfSale"></param>
+        /// <returns></returns>
+        public static double TotalTaxRate(int county, DateTime dateOfSale)
+        {
+            double total = 0;
+            total += CountyTaxRate(county, dateOfSale);
+            total += CountyTransitTaxRate(county);
+            total += StateTaxRate;
+            return total;
+        }
+
+        /// <summary>
+        /// Return the Rate of tax that is paid for Transit Tax for a county
+        /// </summary>
+        /// <param name="county"></param>
+        /// <returns></returns>
+        public static double CountyTransitTaxRate(int county)
+        {
+            if (county == County.MECKLENBURG)
+                return .5;
+            else
+                return 0;
         }
 
         /// <summary>
@@ -32,18 +73,16 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         /// E.g. 2.0 or 2.25 etc
         /// </summary>
         /// <param name="county"></param>
-        /// <param name="DateOfSale"></param>
-        public double getTaxRate(int county, DateTime DateOfSale)
+        /// <param name="dateOfSale"></param>
+        public static double CountyTaxRate(int county, DateTime dateOfSale)
         {
             if (county < 1 || county > 101)
             {
                 throw new ArgumentOutOfRangeException("County");
             }
-
-            DateTime[] periods = GetTaxPeriods();
-		
+            		
 		    //Period beginning April 1, 2012
-		    if(DateOfSale >= periods[0]) {
+		    if(dateOfSale >= TaxPeriods[0]) {
 			    if( county == County.ALEXANDER || 
 				    county == County.BUNCOMBE || 
 				    county == County.CARBARRUS || 
@@ -74,7 +113,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 			    return 2.0;			
 			
 		    //Period beginning January 1, 2012
-		    } else if(DateOfSale >= periods[1]) {
+		    } else if(dateOfSale >= TaxPeriods[1]) {
 			    if( county == County.ALEXANDER || 
 				    county == County.CARBARRUS || 
 				    county == County.CATAWBA || 
@@ -101,7 +140,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 			    return 2.0;
 		
 		    //Period beginning October 1, 2011
-		    } else if(DateOfSale >= periods[2]) {
+		    } else if(dateOfSale >= TaxPeriods[2]) {
 			    if( county == County.ALEXANDER || 
 				    county == County.CARBARRUS || 
 				    county == County.CATAWBA || 
@@ -127,7 +166,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 			    return 2.0;
 			
 		    //Period beginning January 1, 2011
-		    } else if(DateOfSale >= periods[3]) {
+		    } else if(dateOfSale >= TaxPeriods[3]) {
 			    if( county == County.ALEXANDER || 
 				    county == County.CATAWBA || 
 				    county == County.CUMBERLAND || 
@@ -156,6 +195,5 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             throw new Exception("Something is wrong here..");
         }
 
-        
     }
 }

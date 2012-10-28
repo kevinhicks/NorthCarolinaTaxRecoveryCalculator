@@ -65,5 +65,38 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 
         [Display(Name = "On Bill Detail")]
         public bool OnBillDetail { get; set; }
+
+
+        /// <summary>
+        /// Calculate the amount of tax that went to the state
+        /// </summary>
+        /// <returns></returns>
+        public double StateTaxPortion()
+        {
+            if (County < 1 || County > 101)
+                throw new ArgumentOutOfRangeException("County");
+
+
+            double totalTaxRates = TaxContext.TotalTaxRate(County, DateOfSale);
+            double countyRate = TaxContext.CountyTaxRate(County, DateOfSale);
+
+            return SalesTax * (TaxContext.StateTaxRate / totalTaxRates);
+        }
+        
+        /// <summary>
+        /// Calculate the amount of tax that went to the county
+        /// </summary>
+        /// <returns></returns>
+        public double CountyTaxPortion()
+        {
+            if (County < 1 || County > 101)
+                throw new ArgumentOutOfRangeException("County");
+
+
+            double totalTaxRates = TaxContext.TotalTaxRate(County, DateOfSale);
+            double countyRate = TaxContext.CountyTaxRate(County, DateOfSale);
+
+            return SalesTax * (countyRate / totalTaxRates);
+        }
     }
 }
