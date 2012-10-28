@@ -19,7 +19,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             get
             {
                 DateTime[] periods = { 
-                    new DateTime(2012, 4, 4), 
+                    new DateTime(2012, 4, 1), 
                     new DateTime(2012, 1, 1), 
                     new DateTime(2011, 10, 1), 
                     new DateTime(2011, 1, 1) 

@@ -114,6 +114,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Security\AuthenticationTest.cs" />
+    <Compile Include="Models\RecieptModelsTest.cs" />
     <Compile Include="Models\TaxModelsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />

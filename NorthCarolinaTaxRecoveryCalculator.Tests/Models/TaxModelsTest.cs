@@ -24,9 +24,17 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
         public void TestCountyTaxRate()
         {
             //On Oct 28, 2012, Ashe tax rate = 2.0
-            Assert.AreEqual(TaxContext.CountyTaxRate(County.ASHE, new DateTime(2012, 10, 28)), 2.0);
+            Assert.AreEqual(2.0, TaxContext.CountyTaxRate(County.ASHE, new DateTime(2012, 10, 28)));
+            //On Dec 31, 2011, Halifax tax rate = 2.0
+            Assert.AreEqual(2.0, TaxContext.CountyTaxRate(County.HALIFAX, new DateTime(2011, 12, 31)));
+            //On Jan 1, 2012, Halifax tax rate = 2.25
+            Assert.AreEqual(2.25, TaxContext.CountyTaxRate(County.HALIFAX, new DateTime(2012, 1, 1)));
+            //On Mar 31, 2012, Durham tax rate = 2.0
+            Assert.AreEqual(2.0, TaxContext.CountyTaxRate(County.DURHAM, new DateTime(2012, 3, 31)));
+            //On Apr 1, 2012, Durham tax rate = 2.25
+            Assert.AreEqual(2.25, TaxContext.CountyTaxRate(County.DURHAM, new DateTime(2012, 4, 1)));
             //On Feb 2, 2012, Halifax tax rate = 2.25
-            Assert.AreEqual(TaxContext.CountyTaxRate(County.HALIFAX, new DateTime(2012, 2, 19)), 2.25);
+            Assert.AreEqual(2.25, TaxContext.CountyTaxRate(County.HALIFAX, new DateTime(2012, 2, 19)));
         }
 
         [TestMethod]
@@ -35,6 +43,23 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
             Assert.AreEqual(TaxContext.StateTaxRate, 4.75);
         }
 
-
+        [TestMethod]
+        public void TestTotalTaxRate()
+        {
+            //On Oct 28, 2012, Ashe tax rate = 2.0 + 4.75 = 6.75
+            Assert.AreEqual(6.75, TaxContext.TotalTaxRate(County.ASHE, new DateTime(2012, 10, 28)));
+            //On Dec 31, 2011, Halifax tax rate = 2.0 + 4.75 = 6.75
+            Assert.AreEqual(6.75, TaxContext.TotalTaxRate(County.HALIFAX, new DateTime(2011, 12, 31)));
+            //On Jan 1, 2012, Halifax tax rate = 2.25 + 4.75 = 7.0
+            Assert.AreEqual(7.0, TaxContext.TotalTaxRate(County.HALIFAX, new DateTime(2012, 1, 1)));
+            //On Mar 31, 2012, Durham tax rate = 2.0 + 4.75 = 6.75
+            Assert.AreEqual(6.75, TaxContext.TotalTaxRate(County.DURHAM, new DateTime(2012, 3, 31)));
+            //On Apr 1, 2012, Durham tax rate = 2.25 + 4.75 = 7.0
+            Assert.AreEqual(7.0, TaxContext.TotalTaxRate(County.DURHAM, new DateTime(2012, 4, 1)));
+            //On Feb 2, 2012, Halifax tax rate = 2.25 + 4.75 = 7.0
+            Assert.AreEqual(7.0, TaxContext.TotalTaxRate(County.HALIFAX, new DateTime(2012, 2, 19)));
+            //On Apr 1, 2012, Mecklenburg tax rate = 2.0 + 4.75 + .5 = 7.25
+            Assert.AreEqual(7.25, TaxContext.TotalTaxRate(County.MECKLENBURG, new DateTime(2012, 4, 1)));
+        }
     }
 }
