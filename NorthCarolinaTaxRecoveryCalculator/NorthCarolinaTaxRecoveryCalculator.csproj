@@ -195,6 +195,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\TaxModels.cs" />
     <Compile Include="Models\CountyModels.cs" />
     <Compile Include="Models\DBConfig.cs" />
     <Compile Include="Models\ProjectModels.cs" />
