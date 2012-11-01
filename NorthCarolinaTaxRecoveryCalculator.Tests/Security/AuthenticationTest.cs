@@ -8,7 +8,7 @@ using NorthCarolinaTaxRecoveryCalculator;
 using NorthCarolinaTaxRecoveryCalculator.Controllers;
 using NorthCarolinaTaxRecoveryCalculator.Models;
 
-namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
+namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
 {
     [TestClass]
     public class AuthenticationTest

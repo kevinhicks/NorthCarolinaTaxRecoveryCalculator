@@ -91,118 +91,126 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             {
                 throw new ArgumentOutOfRangeException("County");
             }
-            		
-		    //Period beginning April 1, 2012
-		    if(dateOfSale >= TaxPeriods[0]) {
-			    if( county == County.ALEXANDER || 
-				    county == County.BUNCOMBE || 
-				    county == County.CARBARRUS || 
-				    county == County.CATAWBA || 
-				    county == County.CUMBERLAND || 
-				    county == County.DUPLIN ||  
-				    county == County.DURHAM || 
-				    county == County.HALIFAX || 
-				    county == County.HAYWOOD || 
-				    county == County.HERTFORD || 
-				    county == County.LEE || 
-				    county == County.MARTIN || 
-				    county == County.MONTGOMERY || 
-				    county == County.NEW_HANOVER || 
-				    county == County.ONSLOW || 
-				    county == County.ORANGE || 
-				    county == County.PITT || 
-				    county == County.RANDOLPH || 
-				    county == County.ROBESON || 
-				    county == County.ROWAN ||  
-				    county == County.SAMPSON ||  
-				    county == County.SURRY ||  
-				    county == County.WILKES ) {
-				    return 2.25;
-			    } 	
-			
-			    //All other counties
-			    return 2.0;			
-			
-		    //Period beginning January 1, 2012
-		    } else if(dateOfSale >= TaxPeriods[1]) {
-			    if( county == County.ALEXANDER || 
-				    county == County.CARBARRUS || 
-				    county == County.CATAWBA || 
-				    county == County.CUMBERLAND || 
-				    county == County.DUPLIN || 
-				    county == County.HALIFAX || 
-				    county == County.HAYWOOD || 
-				    county == County.HERTFORD || 
-				    county == County.LEE || 
-				    county == County.MARTIN || 
-				    county == County.NEW_HANOVER || 
-				    county == County.ONSLOW || 
-				    county == County.PITT || 
-				    county == County.RANDOLPH || 
-				    county == County.ROBESON || 
-				    county == County.ROWAN ||  
-				    county == County.SAMPSON ||  
-				    county == County.SURRY ||  
-				    county == County.WILKES ) {
-				    return 2.25;
-			    } 		
-			
-			    //All other counties
-			    return 2.0;
-		
-		    //Period beginning October 1, 2011
-		    } else if(dateOfSale >= TaxPeriods[2]) {
-			    if( county == County.ALEXANDER || 
-				    county == County.CARBARRUS || 
-				    county == County.CATAWBA || 
-				    county == County.CUMBERLAND || 
-				    county == County.DUPLIN || 
-				    county == County.HAYWOOD || 
-				    county == County.HERTFORD || 
-				    county == County.LEE || 
-				    county == County.MARTIN || 
-				    county == County.NEW_HANOVER || 
-				    county == County.ONSLOW || 
-				    county == County.PITT || 
-				    county == County.RANDOLPH || 
-				    county == County.ROBESON || 
-				    county == County.ROWAN ||  
-				    county == County.SAMPSON ||  
-				    county == County.SURRY ||  
-				    county == County.WILKES ) {
-				    return 2.25;
-			    } 		
-			
-			    //All other counties
-			    return 2.0;
-			
-		    //Period beginning January 1, 2011
+
+            //Period beginning April 1, 2012
+            if (dateOfSale >= TaxPeriods[0])
+            {
+                switch (county)
+                {
+                    case County.ALEXANDER:
+                    case County.BUNCOMBE:
+                    case County.CARBARRUS:
+                    case County.CATAWBA:
+                    case County.CUMBERLAND:
+                    case County.DUPLIN:
+                    case County.DURHAM:
+                    case County.HALIFAX:
+                    case County.HAYWOOD:
+                    case County.HERTFORD:
+                    case County.LEE:
+                    case County.MARTIN:
+                    case County.MONTGOMERY:
+                    case County.NEW_HANOVER:
+                    case County.ONSLOW:
+                    case County.ORANGE:
+                    case County.PITT:
+                    case County.RANDOLPH:
+                    case County.ROBESON:
+                    case County.ROWAN:
+                    case County.SAMPSON:
+                    case County.SURRY:
+                    case County.WILKES:
+                        return 2.25;
+                    default:
+                        return 2.0;
+                }
+
+                //Period beginning January 1, 2012
+            }
+            else if (dateOfSale >= TaxPeriods[1])
+            {
+                switch (county)
+                {
+                    case County.ALEXANDER:
+                    case County.CARBARRUS:
+                    case County.CATAWBA:
+                    case County.CUMBERLAND:
+                    case County.DUPLIN:
+                    case County.HALIFAX:
+                    case County.HAYWOOD:
+                    case County.HERTFORD:
+                    case County.LEE:
+                    case County.MARTIN:
+                    case County.NEW_HANOVER:
+                    case County.ONSLOW:
+                    case County.PITT:
+                    case County.RANDOLPH:
+                    case County.ROBESON:
+                    case County.ROWAN:
+                    case County.SAMPSON:
+                    case County.SURRY:
+                    case County.WILKES:
+                        return 2.25;
+                    default:
+                        return 2.0;
+                }
+
+                //Period beginning October 1, 2011
+            }
+            else if (dateOfSale >= TaxPeriods[2])
+            {
+                switch (county)
+                {
+                    case County.ALEXANDER:
+                    case County.CARBARRUS:
+                    case County.CATAWBA:
+                    case County.CUMBERLAND:
+                    case County.DUPLIN:
+                    case County.HAYWOOD:
+                    case County.HERTFORD:
+                    case County.LEE:
+                    case County.MARTIN:
+                    case County.NEW_HANOVER:
+                    case County.ONSLOW:
+                    case County.PITT:
+                    case County.RANDOLPH:
+                    case County.ROBESON:
+                    case County.ROWAN:
+                    case County.SAMPSON:
+                    case County.SURRY:
+                    case County.WILKES:
+                        return 2.25;
+                    default:
+                        return 2.0;
+                }
+
+                //Period beginning January 1, 2011
             }
             else if (dateOfSale >= TaxPeriods[3])
             {
-                if (county == County.ALEXANDER ||
-                    county == County.CATAWBA ||
-                    county == County.CUMBERLAND ||
-                    county == County.DUPLIN ||
-                    county == County.HAYWOOD ||
-                    county == County.HERTFORD ||
-                    county == County.LEE ||
-                    county == County.MARTIN ||
-                    county == County.NEW_HANOVER ||
-                    county == County.ONSLOW ||
-                    county == County.PITT ||
-                    county == County.RANDOLPH ||
-                    county == County.ROBESON ||
-                    county == County.ROWAN ||
-                    county == County.SAMPSON ||
-                    county == County.SURRY ||
-                    county == County.WILKES)
+                switch (county)
                 {
-                    return 2.25;
+                    case County.ALEXANDER:
+                    case County.CATAWBA:
+                    case County.CUMBERLAND:
+                    case County.DUPLIN:
+                    case County.HAYWOOD:
+                    case County.HERTFORD:
+                    case County.LEE:
+                    case County.MARTIN:
+                    case County.NEW_HANOVER:
+                    case County.ONSLOW:
+                    case County.PITT:
+                    case County.RANDOLPH:
+                    case County.ROBESON:
+                    case County.ROWAN:
+                    case County.SAMPSON:
+                    case County.SURRY:
+                    case County.WILKES:
+                        return 2.25;
+                    default:
+                        return 2.0;
                 }
-
-                //All other counties
-                return 2.0;
             }
             else
             {
@@ -212,6 +220,5 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             //We have NOOO Idea.... :/
             throw new Exception("Something is wrong here..");
         }
-
     }
 }

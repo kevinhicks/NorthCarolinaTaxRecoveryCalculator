@@ -10,6 +10,12 @@ namespace CSVReader
     {
         static void Main(string[] args)
         {
+            //generateProdInsertCode();
+            generateTestInsertCode();
+            
+        }
+
+        static void generateProdInsertCode() {
             var reader = new TextFieldParser("C:\\sql2.sql");
             reader.TextFieldType = FieldType.Delimited;
 
@@ -72,6 +78,58 @@ namespace CSVReader
             }
             Console.WriteLine("db.SaveChanges();");
             Console.WriteLine("}\n}");
+
+            //Console.ReadKey();
+        }
+
+        static void generateTestInsertCode()
+        {
+            
+            var reader = new TextFieldParser("C:\\sql2.sql");
+            reader.TextFieldType = FieldType.Delimited;
+
+            string[] delimeters = { "," };
+            reader.Delimiters = delimeters;  
+            Console.WriteLine("Reciept reciept = null;");
+
+            while (!reader.EndOfData)
+            {
+                try
+                {
+                    string[] row = reader.ReadFields();
+
+                    Console.WriteLine();
+                    //reciept = new Reciept();
+                    Console.WriteLine("reciept = new Reciept();");
+                    //reciept.RIF = ?;
+                    Console.WriteLine("reciept.RIF = \"" + row[1] + "\";");
+                    //reciept.StoreName = ?;
+                    Console.WriteLine("reciept.StoreName = \"" + row[2] + "\";");
+                    //reciept.Date = ?;
+                    Console.WriteLine("reciept.DateOfSale = DateTime.Parse(\"" + row[3] + "\");");
+                    //reciept.SalesTax = ?;
+                    Console.WriteLine("reciept.SalesTax = " + row[4] + "f;");
+                    //reciept.FoodTax = ?;
+                    Console.WriteLine("reciept.FoodTax = " + row[5] + "f;");
+                    //reciept.ProjectID = ?;
+                    Console.WriteLine("reciept.ProjectID = project.ID;");
+                    //reciept.Project = ?;
+                    Console.WriteLine("reciept.Project = project;");
+                    //reciept.SalesAmount = ?;
+                    Console.WriteLine("reciept.SalesAmount = " + row[7] + "f;");
+                    //reciept.County = ?;
+                    Console.WriteLine("reciept.County = " + row[8] + " - 1;");
+                    //reciept.Notes = ?;
+                    Console.WriteLine("reciept.Notes = \"\";");
+                    //db.Reciepts.Add(reciept);
+                    Console.WriteLine("Reciepts.Add(reciept);");
+                }
+
+                catch (MalformedLineException e)
+                {
+                    Console.WriteLine("Error: " + e.Message);
+                }
+            }
 
             //Console.ReadKey();
         }

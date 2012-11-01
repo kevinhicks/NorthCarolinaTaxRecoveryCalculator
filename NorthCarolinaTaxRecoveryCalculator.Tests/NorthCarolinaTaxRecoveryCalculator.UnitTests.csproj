@@ -114,6 +114,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ProjectModelsTest.cs" />
+    <Compile Include="Models\TestProjectsData.cs" />
     <Compile Include="Security\AuthenticationTest.cs" />
     <Compile Include="Models\RecieptModelsTest.cs" />
     <Compile Include="Models\TaxModelsTest.cs" />

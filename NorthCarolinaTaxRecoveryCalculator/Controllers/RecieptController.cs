@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using NorthCarolinaTaxRecoveryCalculator.Models;
 using System.Web.Script.Serialization;
+using System.Data.Objects;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
@@ -28,7 +29,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             {
                 return View("Error");
             }
-
+            
             ViewBag.Counties = County.AsJsonArray();
 
             return View(modal);
@@ -68,7 +69,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
                 var queryForOriginal = db.Reciepts.Where(rec =>
                     rec.RIF == reciept.RIF &&
                     rec.Project.ID == reciept.Project.ID);
-
 
                 //Then remove it
                 if (queryForOriginal.Count() > 0)

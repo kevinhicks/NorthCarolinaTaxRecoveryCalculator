@@ -75,11 +75,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         {
             if (County < 1 || County > 101)
                 throw new ArgumentOutOfRangeException("County");
-
+            if (County == NorthCarolinaTaxRecoveryCalculator.Models.County.NON_TAXABLE)
+                return 0;
 
             double totalTaxRates = TaxContext.TotalTaxRate(County, DateOfSale);
 
-            return Math.Round(SalesTax * (TaxContext.StateTaxRate / totalTaxRates),2);
+            return (SalesTax * (TaxContext.StateTaxRate / totalTaxRates));
         }
         
         /// <summary>
@@ -90,12 +91,13 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         {
             if (County < 1 || County > 101)
                 throw new ArgumentOutOfRangeException("County");
-
+            if (County == NorthCarolinaTaxRecoveryCalculator.Models.County.NON_TAXABLE)
+                return 0;
 
             double totalTaxRates = TaxContext.TotalTaxRate(County, DateOfSale);
             double countyRate = TaxContext.CountyTaxRate(County, DateOfSale);
 
-            return Math.Round(SalesTax * (countyRate / totalTaxRates), 2);
+            return (SalesTax * (countyRate / totalTaxRates));
         }
 
         /// <summary>
@@ -113,7 +115,24 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 
             double totalTaxRates = TaxContext.TotalTaxRate(County, DateOfSale);
 
-            return Math.Round(SalesTax * (TaxContext.TransitTaxRate / totalTaxRates), 2);
+            return (SalesTax * (TaxContext.TransitTaxRate / totalTaxRates));
+        }
+
+        /// <summary>
+        /// Return the Tax period that this reciept is in
+        /// </summary>
+        /// <returns></returns>
+        public int GetTaxPeriod()
+        {
+            for (int i = 0; i < TaxContext.TaxPeriods.Length; i++)
+            {
+                if (this.DateOfSale >= TaxContext.TaxPeriods[i])
+                {
+                    return i;
+                }
+            }
+
+            throw new Exception("We do not calculate tax on a recipet so old.");
         }
     }
 }
