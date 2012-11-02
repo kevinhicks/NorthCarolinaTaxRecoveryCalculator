@@ -90,7 +90,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             expectedTotalCountyTax += (81 * 296.2962963);  //81 counties at 2%
             expectedTotalCountyTax += (18 * 321.4285714);  //18 counties at 2.25%
             expectedTotalCountyTax += (1 * 275.862069);  //1 counties at 2.25% with transit tax
-            
+
 
             /* Periods Beginning January 1, 2012 through March 31, 2012
              * All counties are subject to the 2.0% sales and use tax rate except:
@@ -139,6 +139,100 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             //All the reciepts in this project, that are BEFORE the second oldest tax period
             reciepts = TestProjectsData.GetInstance().Reciepts;
             Assert.AreEqual(Math.Round(expectedTotalCountyTax, 2), Math.Round(project.GetTotalCountyTax(reciepts), 2), .001);
+        }
+
+        [TestMethod]
+        public void TestAllRecieptsInAllTaxPeriodsForStateTax()
+        {
+            Project project = TestProjectsData.GetInstance().Projects[3];
+            double expectedTotalCountyTax = 0;
+
+            var reciepts = TestProjectsData.GetInstance().Reciepts.Where(rec => rec.ProjectID == project.ID);
+            Assert.AreEqual(707, reciepts.Count());
+
+            /* Periods Beginning January 1, 2011 through September 30, 2011
+             * All counties are subject to the 2.0% sales and use tax rate except:
+             * Alexander, Catawba, Cumberland, Duplin, Haywood, Hertford, 
+             * Lee, Martin, New Hanover, Onslow, Pitt, Randolph, Robeson, Rowan, 
+             * Sampson, Surry, and Wilkes 
+             * which are subject to the 2.25% sales and use tax rate.
+             */
+
+            //One After
+            expectedTotalCountyTax += (82 * 296.2962963);  //82 counties at 2%
+            expectedTotalCountyTax += (17 * 321.4285714);  //17 counties at 2.25%
+            expectedTotalCountyTax += (1 * 275.862069);  //11 counties at 2.25% with transit tax
+
+            /* Periods Beginning October 1, 2011 through December 31, 2011
+             * All counties are subject to the 2.0% sales and use tax rate except:
+             * Alexander, Cabarrus, Catawba, Cumberland, Duplin, Haywood, 
+             * Hertford, Lee, Martin, New Hanover, Onslow, Pitt, Randolph, Robeson, Rowan, 
+             * Sampson, Surry, and Wilkes 
+             * which are subject to the 2.25% sales and use tax rate.
+             */
+
+            //One Before
+            expectedTotalCountyTax += (82 * 296.2962963);  //82 counties at 2%
+            expectedTotalCountyTax += (17 * 321.4285714);  //17 counties at 2.25%
+            expectedTotalCountyTax += (1 * 275.862069);  //1 counties at 2.25% with transit tax
+
+            //All the reciepts in this project, that are BEFORE the second oldest tax period
+            reciepts = TestProjectsData.GetInstance().Reciepts.Where(rec => rec.DateOfSale < TaxContext.TaxPeriods[2]);
+            Assert.AreEqual(Math.Round(expectedTotalCountyTax, 2), Math.Round(project.GetTotalCountyTax(reciepts), 2), .001);
+
+            //One After
+            expectedTotalCountyTax += (81 * 296.2962963);  //81 counties at 2%
+            expectedTotalCountyTax += (18 * 321.4285714);  //18 counties at 2.25%
+            expectedTotalCountyTax += (1 * 275.862069);  //1 counties at 2.25% with transit tax
+
+
+            /* Periods Beginning January 1, 2012 through March 31, 2012
+             * All counties are subject to the 2.0% sales and use tax rate except:
+             * Alexander, Cabarrus, Catawba, Cumberland, Duplin, Halifax, 
+             * Haywood, Hertford, Lee, Martin, New Hanover, Onslow, Pitt, Randolph, Robeson, 
+             * Rowan, Sampson, Surry, and Wilkes
+             * which are subject to the 2.25% sales and use tax rate.
+             */
+
+            //One Before
+            expectedTotalCountyTax += (81 * 296.2962963);  //81 counties at 2%
+            expectedTotalCountyTax += (18 * 321.4285714);  //18 counties at 2.25%
+            expectedTotalCountyTax += (1 * 275.862069);  //1 counties at 2.25% with transit tax
+
+            //All the reciepts in this project, that are BEFORE the second oldest tax period
+            reciepts = TestProjectsData.GetInstance().Reciepts.Where(rec => rec.DateOfSale < TaxContext.TaxPeriods[1]);
+            Assert.AreEqual(Math.Round(expectedTotalCountyTax, 2), Math.Round(project.GetTotalCountyTax(reciepts), 2), .001);
+
+            //One After
+            expectedTotalCountyTax += (80 * 296.2962963);  //80 counties at 2%
+            expectedTotalCountyTax += (19 * 321.4285714);  //19 counties at 2.25%
+            expectedTotalCountyTax += (1 * 275.862069);  //1 counties at 2.25% with transit tax
+
+            /* Periods Beginning April 1, 2012
+             * All counties are subject to the 2.0% sales and use tax rate except:
+             * Alexander, Buncombe, Cabarrus, Catawba, Cumberland, Duplin, Durham, Halifax, 
+             * Haywood, Hertford, Lee, Martin, Montgomery, New Hanover, Onslow, Orange, 
+             * Pitt, Randolph, Robeson, Rowan, Sampson, Surry, and Wilkes 
+             * which are subject to the 2.25% sales and use tax rate.
+             */
+
+            //One Before
+            expectedTotalCountyTax += (80 * 296.2962963);  //80 counties at 2%
+            expectedTotalCountyTax += (19 * 321.4285714);  //19 counties at 2.25%
+            expectedTotalCountyTax += (1 * 275.862069);  //1 counties at 2.25% with transit tax
+
+            //All the reciepts in this project, that are BEFORE the second oldest tax period
+            reciepts = TestProjectsData.GetInstance().Reciepts.Where(rec => rec.DateOfSale < TaxContext.TaxPeriods[0]);
+            Assert.AreEqual(Math.Round(expectedTotalCountyTax, 2), Math.Round(project.GetTotalCountyTax(reciepts), 2), .001);
+
+            //One After
+            expectedTotalCountyTax += (76 * 296.2962963);  //76 counties at 2%
+            expectedTotalCountyTax += (23 * 321.4285714);  //23 counties at 2.25%
+            expectedTotalCountyTax += (1 * 275.862069);  //1 counties at 2.25% with transit tax
+
+            //All the reciepts in this project, that are BEFORE the second oldest tax period
+            reciepts = TestProjectsData.GetInstance().Reciepts;
+            Assert.AreEqual(Math.Round(expectedTotalCountyTax, 2), Math.Round(project.GetTotalStateTax(reciepts), 2), .001);
         }
 
 
