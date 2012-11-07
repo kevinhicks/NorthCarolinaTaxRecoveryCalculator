@@ -62,7 +62,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         /// <summary>
         /// Return the total dollar amount that went to all counties during all time periods
         /// </summary>
-        /// <param name="County"></param>
         /// <param name="Reciepts"></param>
         /// <returns></returns>
         public double GetTotalCountyTax(IEnumerable<Reciept> Reciepts)
@@ -79,6 +78,52 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
                 }
 
                 totalSalesTax += reciept.CountyTaxPortion();
+            }
+            return totalSalesTax;
+        }
+
+        /// <summary>
+        /// Return the total dollar amount that went to the state during all time periods
+        /// </summary>
+        /// <param name="Reciepts"></param>
+        /// <returns></returns>
+        public double GetTotalStateTax(IEnumerable<Reciept> Reciepts)
+        {
+            double totalSalesTax = 0;
+
+            //Loop thru all the reciepts in the project
+            foreach (Reciept reciept in Reciepts)
+            {
+                //First, make sure that it belongs to this project!
+                if (reciept.Project.ID != ID)
+                {
+                    continue;
+                }
+
+                totalSalesTax += reciept.StateTaxPortion();
+            }
+            return totalSalesTax;
+        }
+
+        /// <summary>
+        /// Return the total dollar amount that went to transit tax during all time periods
+        /// </summary>
+        /// <param name="Reciepts"></param>
+        /// <returns></returns>
+        public double GetTotalTransitTax(IEnumerable<Reciept> Reciepts)
+        {
+            double totalSalesTax = 0;
+
+            //Loop thru all the reciepts in the project
+            foreach (Reciept reciept in Reciepts)
+            {
+                //First, make sure that it belongs to this project!
+                if (reciept.Project.ID != ID)
+                {
+                    continue;
+                }
+
+                totalSalesTax += reciept.TransitTaxPortion();
             }
             return totalSalesTax;
         }

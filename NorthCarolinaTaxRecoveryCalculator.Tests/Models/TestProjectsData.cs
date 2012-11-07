@@ -16,6 +16,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         public List<Project> Projects { get; set; }
         public List<Reciept> Reciepts { get; set; }
 
+        public Project FirstProjectToTestSecurity = null;
+        public Project SecondProjectToTestSecurity = null;
+
+        public UserProfile FirstUserToTestSecurity = null;
+        public UserProfile SecondUserToTestSecurity = null;
+
         private TestProjectsData() 
         {
             //Create the lists
@@ -54,6 +60,34 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             project.OwnerID = 0;
             Projects.Add(project);
             generateTaxDataToTestEveryTaxPeriodBoundry(project);
+
+            //Security Testing
+
+            FirstUserToTestSecurity = new UserProfile();
+            FirstUserToTestSecurity.UserId = 1;
+            FirstUserToTestSecurity.UserName = "Mary";
+
+            SecondUserToTestSecurity = new UserProfile();
+            SecondUserToTestSecurity.UserId = 2;
+            SecondUserToTestSecurity.UserName = "John";
+
+            FirstProjectToTestSecurity = new Project();
+            FirstProjectToTestSecurity.Name = "First Project to test security";
+            FirstProjectToTestSecurity.DateStarted = DateTime.Now;
+            FirstProjectToTestSecurity.IsDeleted = false;
+            FirstProjectToTestSecurity.Owner = FirstUserToTestSecurity;
+            FirstProjectToTestSecurity.OwnerID = FirstUserToTestSecurity.UserId;
+            Projects.Add(FirstProjectToTestSecurity);
+
+            SecondProjectToTestSecurity = new Project();
+            SecondProjectToTestSecurity.Name = "Second Project to test security";
+            SecondProjectToTestSecurity.DateStarted = DateTime.Now;
+            SecondProjectToTestSecurity.IsDeleted = false;
+            SecondProjectToTestSecurity.Owner = SecondUserToTestSecurity;
+            SecondProjectToTestSecurity.OwnerID = SecondUserToTestSecurity.UserId;
+            Projects.Add(SecondProjectToTestSecurity);
+
+            generateTaxDataToTestSecurity(FirstProjectToTestSecurity, SecondProjectToTestSecurity, FirstUserToTestSecurity, SecondUserToTestSecurity);
         }
 
         private static TestProjectsData _instance = null;
@@ -2208,6 +2242,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
                 Reciepts.Add(reciept);
             }
         }
+
         /// <summary>
         /// Generates records for every county for $1000 before, and after every tax period boundry for every county
         /// </summary>
@@ -2253,9 +2288,100 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
                     reciept.SalesAmount = 1000f;
                     reciept.County = county;
                     reciept.Notes = "";
-                    Reciepts.Add(reciept);                    
+                    Reciepts.Add(reciept);
                 }
-            }            
+            }
+        }
+
+        /// <summary>
+        /// Generates records to test security
+        /// </summary>
+        /// <param name="project"></param>
+        private void generateTaxDataToTestSecurity(Project firstProject, Project secondProject, UserProfile firstUser, UserProfile secondUser)
+        {
+            Reciept reciept;
+
+            //Generate recipets for both projects
+            //First
+            reciept = new Reciept();
+            reciept.RIF = "1";
+            reciept.StoreName = "Lowe's";
+            reciept.DateOfSale = DateTime.Parse("2012-06-16");
+            reciept.SalesTax = 7.29f;
+            reciept.FoodTax = 0.00f;
+            reciept.ProjectID = firstProject.ID;
+            reciept.Project = firstProject;
+            reciept.SalesAmount = 111.43f;
+            reciept.County = 80 - 1;
+            reciept.Notes = "";
+            Reciepts.Add(reciept);
+
+            reciept = new Reciept();
+            reciept.RIF = "2";
+            reciept.StoreName = "Lowe's";
+            reciept.DateOfSale = DateTime.Parse("2012-06-16");
+            reciept.SalesTax = 1.91f;
+            reciept.FoodTax = 0.00f;
+            reciept.ProjectID = firstProject.ID;
+            reciept.Project = firstProject;
+            reciept.SalesAmount = 29.13f;
+            reciept.County = 80 - 1;
+            reciept.Notes = "";
+            Reciepts.Add(reciept);
+
+            reciept = new Reciept();
+            reciept.RIF = "3";
+            reciept.StoreName = "Lowe's";
+            reciept.DateOfSale = DateTime.Parse("2012-06-18");
+            reciept.SalesTax = 16.76f;
+            reciept.FoodTax = 0.00f;
+            reciept.ProjectID = firstProject.ID;
+            reciept.Project = firstProject;
+            reciept.SalesAmount = 256.12f;
+            reciept.County = 80 - 1;
+            reciept.Notes = "";
+            Reciepts.Add(reciept);
+            
+            //Second
+            reciept = new Reciept();
+            reciept.RIF = "1";
+            reciept.StoreName = "Lowe's";
+            reciept.DateOfSale = DateTime.Parse("2012-06-16");
+            reciept.SalesTax = 7.29f;
+            reciept.FoodTax = 0.00f;
+            reciept.ProjectID = secondProject.ID;
+            reciept.Project = secondProject;
+            reciept.SalesAmount = 111.43f;
+            reciept.County = 80 - 1;
+            reciept.Notes = "";
+            Reciepts.Add(reciept);
+
+            reciept = new Reciept();
+            reciept.RIF = "2";
+            reciept.StoreName = "Lowe's";
+            reciept.DateOfSale = DateTime.Parse("2012-06-16");
+            reciept.SalesTax = 1.91f;
+            reciept.FoodTax = 0.00f;
+            reciept.ProjectID = secondProject.ID;
+            reciept.Project = secondProject;
+            reciept.SalesAmount = 29.13f;
+            reciept.County = 80 - 1;
+            reciept.Notes = "";
+            Reciepts.Add(reciept);
+
+            reciept = new Reciept();
+            reciept.RIF = "3";
+            reciept.StoreName = "Lowe's";
+            reciept.DateOfSale = DateTime.Parse("2012-06-18");
+            reciept.SalesTax = 16.76f;
+            reciept.FoodTax = 0.00f;
+            reciept.ProjectID = secondProject.ID;
+            reciept.Project = secondProject;
+            reciept.SalesAmount = 256.12f;
+            reciept.County = 80 - 1;
+            reciept.Notes = "";
+            Reciepts.Add(reciept);
+            
         }
     }
 }

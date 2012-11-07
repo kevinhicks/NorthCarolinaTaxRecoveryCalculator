@@ -15,7 +15,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
         //
         // GET: /Project/
-
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Projects.ToList());
@@ -23,7 +23,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
         //
         // GET: /Project/Details/5
-
+        [Authorize]
         public ActionResult Details(int id = 0)
         {
             Project project = db.Projects.Find(id);
@@ -36,7 +36,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
         //
         // POST: /Project/Create
-
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Project project)
         {
@@ -52,7 +52,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
         //
         // GET: /Project/Edit/5
-
+        [Authorize]
         public ActionResult Edit(int id = 0)
         {
             Project project = db.Projects.Find(id);
@@ -65,7 +65,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
         //
         // POST: /Project/Edit/5
-
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(Project project)
         {
@@ -80,7 +80,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
         //
         // GET: /Project/Delete/5
-
+        [Authorize]
         public ActionResult Delete(int id = 0)
         {
             Project project = db.Projects.Find(id);
@@ -93,7 +93,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
         //
         // POST: /Project/Delete/5
-
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
