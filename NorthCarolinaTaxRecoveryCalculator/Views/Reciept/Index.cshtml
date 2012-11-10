@@ -401,10 +401,48 @@
 
         //Configure the table containing the list of recipets to be sortable
         function initTable() {
-            refreshTotals();
             $("table").tablesorter({
-                sortList: [[0, 0]] //sort by rif automatically
+                sortList: [[0, 0]], //sort by rif automatically
+                headers: {
+                    4: {
+                        sorter: 'accountingNumbers'
+                    },
+                    5: {
+                        sorter: 'accountingNumbers'
+                    },
+                    6: {
+                        sorter: 'accountingNumbers'
+                    }
+                }
+                    
             });
+            
+            $.tablesorter.addParser({ 
+                // set a unique id 
+                id: 'accountingNumbers', 
+                is: function(s) { 
+                    // return false so this parser is not auto detected 
+                    return false; 
+                }, 
+                format: function(s) { 
+                    var neg = false;
+                    if(s.slice(0,1) == "(") {
+                        neg = true;
+                    }
+
+                    s = unformat(s);
+
+                    if (neg == true) {
+                        s = 0-s;
+                    }
+
+                    return s;
+                }, 
+                // set type, either numeric or text 
+                type: 'numeric' 
+            }); 
+
+            refreshTotals();
         }
 
         //Swith the create button to an update button whenever the current Rif exists, and vice-versa
