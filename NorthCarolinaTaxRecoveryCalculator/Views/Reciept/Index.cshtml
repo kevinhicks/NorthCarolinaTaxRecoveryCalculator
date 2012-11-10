@@ -308,28 +308,19 @@
                 var total = 0;
                 $("table.tablesorter tr").each(function() {
                     var txt = $(this).find("td:eq(" + column + ")").text();
-                    txt = $.trim(txt);
-                    //removes commas
-                    txt = txt.replace(/,/g, '');
+                    txt = $.trim(txt);                   
 
                     //Is it negative. e.g. (10) == -10
                     var isNegitive = false;
                     if(txt.substring(0,1) == "(") {
-                        txt = txt.substring(1);
-                        txt = txt.slice(0,-1);
+                        isNegitive = true;
                     }
 
                     //remove Dollarsign and commas
-                    if(txt.substring(0,1) == "$") {
-                        txt = txt.substring(1);    
-                    }                
-                    txt.replace(",", "");
+                    txt = accounting.unformat(txt);
 
-                    if(isNegitive) {
-                        total -= Number(txt);
-                    } else {
-                        total += Number(txt);
-                    }
+                    total += Number(txt);
+                    
                 });
                 
                 $("table.tablesorter tfoot tr").find("th:eq(" + column + ")").text(formatMoney(total));
@@ -430,7 +421,7 @@
                         neg = true;
                     }
 
-                    s = unformat(s);
+                    s = accounting.unformat(s);
 
                     if (neg == true) {
                         s = 0-s;
