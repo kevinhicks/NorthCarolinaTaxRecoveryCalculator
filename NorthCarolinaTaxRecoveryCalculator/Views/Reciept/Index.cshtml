@@ -416,17 +416,7 @@
                     return false; 
                 }, 
                 format: function(s) { 
-                    var neg = false;
-                    if(s.slice(0,1) == "(") {
-                        neg = true;
-                    }
-
-                    s = accounting.unformat(s);
-
-                    if (neg == true) {
-                        s = 0-s;
-                    }
-
+                    s = accounting.unformat(s);                    
                     return s;
                 }, 
                 // set type, either numeric or text 
@@ -488,9 +478,9 @@
                 var rif = $.trim(rif);
                 var date = $.trim(date);
                 var store = $.trim(store);
-                var salesTax = $.trim(salesTax).substring(1).replace(",", "");
-                var foodTax = $.trim(foodTax).substring(1).replace(",", "");
-                var salesAmt = $.trim(salesAmt).substring(1).replace(",", "");
+                var salesTax = accounting.unformat(salesTax);
+                var foodTax = accounting.unformat(foodTax);
+                var salesAmt = accounting.unformat(salesAmt);
                 var notes = $.trim(notes);
 
                 
