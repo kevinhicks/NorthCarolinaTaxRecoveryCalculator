@@ -44,7 +44,7 @@
 <h2>Details</h2>
 <fieldset>
     <legend>Project Overview</legend>
-    @Html.ActionLink("Reciepts List", "Index", "Reciept" , new { id = Model.ID }, null) 
+    @Html.ActionLink("Reciepts List", "Index", "Reciept", new { ProjectID = Model.ID }, null) 
     <div class="display-label">
         @Html.DisplayNameFor(model => model.Name)
     </div>
