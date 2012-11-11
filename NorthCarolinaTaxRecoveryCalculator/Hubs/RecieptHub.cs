@@ -22,7 +22,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
         /// so that they can fix them.
         /// </summary>
         /// <param name="reciept"></param>
-        public void AddReciept(Reciept reciept)
+        public void AddReciept(RecieptEntity reciept)
         {
 
             var context = new ValidationContext(reciept, null, null);
@@ -69,7 +69,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
         /// If the recipet dosnt exist, then go ahead and create it
         /// </summary>
         /// <param name="reciept"></param>
-        public void UpdateReciept(Reciept reciept)
+        public void UpdateReciept(RecieptEntity reciept)
         {
 
             var context = new ValidationContext(reciept, null, null);
@@ -122,7 +122,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
         /// <param name="RecieptID"></param>
         public void DeleteReciept(Guid RecieptID)
         {
-            Reciept reciept = db.Reciepts.Find(RecieptID);
+            RecieptEntity reciept = db.Reciepts.Find(RecieptID);
 
             db.Reciepts.Remove(reciept);
             db.SaveChanges();

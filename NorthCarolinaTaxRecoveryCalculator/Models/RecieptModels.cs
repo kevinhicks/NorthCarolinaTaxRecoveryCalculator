@@ -9,62 +9,19 @@ using System.Web.Security;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Models
 {
-    public class Reciept
+    public class RecieptDTO
     {
-        private Guid _guid = Guid.NewGuid();
+        public virtual Guid ID { get; set; }
+        public virtual string RIF { get; set; }
+        public virtual DateTime DateOfSale { get; set; }
+        public virtual string StoreName { get; set; }
+        public virtual int County { get; set; }
+        public virtual float SalesTax { get; set; }
+        public virtual float FoodTax { get; set; }
+        public virtual float SalesAmount { get; set; }
+        public virtual string Notes { get; set; }
+        public virtual bool OnBillDetail { get; set; }
 
-        [Key]     
-        public Guid ID
-        {
-            get
-            {
-                return _guid;
-            }
-            set
-            {
-                _guid = value;
-            }
-        }
-
-        public Guid ProjectID { get; set; }
-        public virtual Project Project { get; set; }
-
-        [Required]
-        [Display(Name = "RIF")]
-        public string RIF { get; set; }
-
-        [Required]
-        [Display(Name = "Date On Reciept")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
-        public DateTime DateOfSale { get; set; }
-
-        [Required]
-        [Display(Name = "Store Name")]
-        public string StoreName { get; set; }
-
-        [Required]
-        [Display(Name = "County")]
-        public int County { get; set; }
-
-        [Display(Name = "Sales Tax")]
-        [DataType(DataType.Currency)]
-        public float SalesTax { get; set; }
-
-        [Display(Name = "Food Tax")]
-        [DataType(DataType.Currency)]
-        public float FoodTax { get; set; }
-
-        [Required]
-        [Display(Name = "Sales Amount")]
-        [DataType(DataType.Currency)]
-        public float SalesAmount { get; set; }
-
-        [Display(Name = "Notes")]
-        public string Notes { get; set; }
-
-        [Display(Name = "On Bill Detail")]
-        public bool OnBillDetail { get; set; }
 
 
         /// <summary>
@@ -82,7 +39,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 
             return (SalesTax * (TaxContext.StateTaxRate / totalTaxRates));
         }
-        
+
         /// <summary>
         /// Calculate the dollar amount of tax that went to the county
         /// </summary>
@@ -134,5 +91,65 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 
             throw new Exception("We do not calculate tax on a recipet so old.");
         }
+    }
+
+    [Table("Reciepts")]
+    public class RecieptEntity : RecieptDTO
+    {
+        private Guid _guid = Guid.NewGuid();
+
+        [Key]
+        public override Guid ID
+        {
+            get
+            {
+                return _guid;
+            }
+            set
+            {
+                _guid = value;
+            }
+        }
+
+        public Guid ProjectID { get; set; }
+        public virtual Project Project { get; set; }
+
+        [Required]
+        [Display(Name = "RIF")]
+        public override string RIF { get; set; }
+
+        [Required]
+        [Display(Name = "Date On Reciept")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
+        public override DateTime DateOfSale { get; set; }
+
+        [Required]
+        [Display(Name = "Store Name")]
+        public override string StoreName { get; set; }
+
+        [Required]
+        [Display(Name = "County")]
+        public override int County { get; set; }
+
+        [Display(Name = "Sales Tax")]
+        [DataType(DataType.Currency)]
+        public override float SalesTax { get; set; }
+
+        [Display(Name = "Food Tax")]
+        [DataType(DataType.Currency)]
+        public override float FoodTax { get; set; }
+
+        [Required]
+        [Display(Name = "Sales Amount")]
+        [DataType(DataType.Currency)]
+        public override float SalesAmount { get; set; }
+
+        [Display(Name = "Notes")]
+        public override string Notes { get; set; }
+
+        [Display(Name = "On Bill Detail")]
+        public override bool OnBillDetail { get; set; }
+
     }
 }

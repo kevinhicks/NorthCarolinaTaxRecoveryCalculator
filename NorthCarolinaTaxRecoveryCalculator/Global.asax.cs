@@ -35,7 +35,8 @@ namespace NorthCarolinaTaxRecoveryCalculator
         }
 
         void Seed()
-        {
+        {
+
         }
     }
 }

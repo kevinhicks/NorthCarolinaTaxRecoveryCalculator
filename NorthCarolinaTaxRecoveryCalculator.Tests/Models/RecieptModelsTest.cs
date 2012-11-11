@@ -17,7 +17,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         public void TestStateTaxPortion()
         {
             //A recipet from durham on the 31st of march should return 351.85
-            Reciept reciept = new Reciept();
+            RecieptEntity reciept = new RecieptEntity();
             reciept.DateOfSale = new DateTime(2012, 3, 21);
             reciept.County = County.DURHAM;
             reciept.SalesTax = 500;
@@ -35,7 +35,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         public void TestCountyTaxPortion()
         {
             //A recipet from durham on the 31st of march should return 351.85
-            Reciept reciept = new Reciept();
+            RecieptEntity reciept = new RecieptEntity();
             reciept.DateOfSale = new DateTime(2012, 3, 21);
             reciept.County = County.DURHAM;
             reciept.SalesTax = 500;
@@ -52,7 +52,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         public void TestTransitTaxPortion()
         {
             //A recipet from Mecklenburg on the 31st of march should return 34.48
-            Reciept reciept = new Reciept();
+            RecieptEntity reciept = new RecieptEntity();
             reciept.DateOfSale = new DateTime(2012, 3, 21);
             reciept.County = County.MECKLENBURG;
             reciept.SalesTax = 500;
@@ -75,7 +75,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         public void TestTotalTaxPortions()
         {
             //The total portions of tax shoud be the same as the sales tax paid
-            Reciept reciept = new Reciept();
+            RecieptEntity reciept = new RecieptEntity();
             reciept.DateOfSale = new DateTime(2012, 3, 21);
             reciept.County = County.DURHAM;
             reciept.SalesTax = 500;
@@ -92,7 +92,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
                                               reciept.TransitTaxPortion(), .001);
 
             //The total portions of tax shoud be the same as the sales tax paid
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.DateOfSale = new DateTime(2012, 3, 21);
             reciept.County = County.MECKLENBURG;
             reciept.SalesTax = 500;
@@ -113,7 +113,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         [TestMethod]
         public void TestGetTaxPeriod()
         {
-            Reciept reciept = new Reciept();
+            RecieptEntity reciept = new RecieptEntity();
 
             reciept.DateOfSale = new DateTime(2012, 4, 2);
             Assert.AreEqual(0, reciept.GetTaxPeriod());

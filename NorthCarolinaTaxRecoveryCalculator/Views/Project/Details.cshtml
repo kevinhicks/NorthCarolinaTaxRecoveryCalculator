@@ -1,0 +1,70 @@
+﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Project
+@{
+    ViewBag.Title = "Details";
+}
+@section styles {
+    <style>
+        legend
+        {
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            background-color: #999CFF;
+            padding: 5px;
+            margin-left: 20px;
+        }
+        
+        fieldset
+        {
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-width: 1px;
+            border-color: black;
+            border-style: solid;
+            padding: 5px;
+        }
+        
+        h3#taxPeriodHeader
+        {
+            text-align:center;
+        }
+    </style>
+}
+@section scripts {
+<script src="~//Scripts/jquery.collapsible.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".collapible").collapsible({ defaultOpen: 'taxPeriodHeader'});
+        $("table").tablesorter({sortList: [[0, 0]]}) //sort by county automatically
+    });
+</script>
+}
+
+<h2>Details</h2>
+<fieldset>
+    <legend>Project Overview</legend>
+    @Html.ActionLink("Reciepts List", "Index", "Reciept" , new { id = Model.ID }, null) 
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.DateStarted)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateStarted)
+    </div>
+    
+    @{Html.RenderAction("ProjectTotals", new { ProjectID = Model.ID });}
+</fieldset>
+<fieldset>
+    <legend>Project Contributors</legend>
+    
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -37,6 +37,24 @@ namespace NorthCarolinaTaxRecoveryCalculator
                 defaults: new { controller = "Reciept", action = "Delete", RecieptID = UrlParameter.Optional }
             );
 
+            routes.MapRoute(
+                name: "TO: Project",
+                url: "Project/",
+                defaults: new { controller = "Project", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "TO: Details of Project",
+                url: "Project/Details/{ProjectID}",
+                defaults: new { controller = "Project", action = "Details", ProjectID = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "TO: Edit a Project",
+                url: "Project/Edit/{ProjectID}",
+                defaults: new { controller = "Project", action = "Edit", ProjectID = UrlParameter.Optional }
+            );
+
             //When all else fails, route to the HomePage
             routes.MapRoute(
                 name: "Default",

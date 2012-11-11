@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NorthCarolinaTaxRecoveryCalculator.Models;
+using System.Web.Security;
+using WebMatrix.WebData;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
@@ -24,9 +26,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         //
         // GET: /Project/Details/5
         [Authorize]
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(Guid ProjectID)
         {
-            Project project = db.Projects.Find(id);
+            Project project = db.Projects.Find(ProjectID);
             if (project == null)
             {
                 return HttpNotFound();
@@ -42,6 +44,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         {
             if (ModelState.IsValid)
             {
+                project.OwnerID = WebSecurity.CurrentUserId;
                 db.Projects.Add(project);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -53,9 +56,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         //
         // GET: /Project/Edit/5
         [Authorize]
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(Guid ProjectID)
         {
-            Project project = db.Projects.Find(id);
+            Project project = db.Projects.Find(ProjectID);
             if (project == null)
             {
                 return HttpNotFound();
@@ -81,9 +84,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         //
         // GET: /Project/Delete/5
         [Authorize]
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(Guid ProjectID)
         {
-            Project project = db.Projects.Find(id);
+            Project project = db.Projects.Find(ProjectID);
             if (project == null)
             {
                 return HttpNotFound();
@@ -95,12 +98,75 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         // POST: /Project/Delete/5
         [Authorize]
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid ProjectID)
         {
-            Project project = db.Projects.Find(id);
+            Project project = db.Projects.Find(ProjectID);
             db.Projects.Remove(project);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        [ChildActionOnly]
+        public ActionResult ProjectTotals(Guid ProjectID)
+        {
+            var reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID).ToList();
+            
+            var project = db.Projects.Find(ProjectID);
+            ViewBag.Project = project;
+
+            ViewBag.TaxPeriods = new IEnumerable<RecieptDTO>[TaxContext.TaxPeriods.Count()];
+
+            for (int taxPeriod = 0; taxPeriod < TaxContext.TaxPeriods.Count(); taxPeriod++)
+            {
+                ViewBag.TaxPeriods[taxPeriod] = CalcProjectTotalsByTaxPeriodForAllCounties(project, taxPeriod);
+            }
+
+            return PartialView("_ProjectTotals", reciepts);
+        }
+
+        private IEnumerable<RecieptDTO> CalcProjectTotalsByTaxPeriodForAllCounties(Project project, int taxPeriod)
+        {
+            //Invalid Tax Period?
+            if (taxPeriod < 0 || taxPeriod > TaxContext.TaxPeriods.Count())
+            {
+                throw new ArgumentOutOfRangeException("taxPeriod");
+            }
+
+            //We want all the recipets AFTER the Start Date, And BEFORE the END DATE (or today)
+            DateTime start;
+            DateTime end;
+
+            start = TaxContext.TaxPeriods[taxPeriod];
+            //If the taxperiod is the first one, then we want to calc all taex from the start untill today
+            if (taxPeriod == 0)
+            {
+                end = DateTime.Now;
+            }
+            //Otherwise, get all the taxes untill the start of the next tax period
+            else
+            {
+                end = TaxContext.TaxPeriods[taxPeriod - 1];
+            }
+
+            //This will hold, and be use to retunr our list of reciepts.
+            //One for each county in this tax period
+            var reciepts = new List<RecieptDTO>();
+
+            //Get the reciepts from the data source
+            reciepts = db.Reciepts
+                            .Where(rec => rec.ProjectID == project.ID && rec.DateOfSale >= start && rec.DateOfSale < end)
+                            .GroupBy(rec => rec.County)
+	                        .Select(counties => new RecieptDTO {
+		                        County = counties.Key,
+                                DateOfSale = start,
+		                        SalesTax = counties.Sum(rec => rec.SalesTax),
+		                        FoodTax = counties.Sum(rec => rec.FoodTax),
+		                        SalesAmount = counties.Sum(rec => rec.SalesAmount)
+	                        })
+                            .ToList();
+
+            return reciepts;
         }
 
         protected override void Dispose(bool disposing)

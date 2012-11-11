@@ -59,17 +59,19 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         public int OwnerID { get; set; }
         public virtual UserProfile Owner { get; set; }
 
+        public virtual IEnumerable<RecieptEntity> Reciepts { get; set; }
+
         /// <summary>
         /// Return the total dollar amount that went to all counties during all time periods
         /// </summary>
         /// <param name="Reciepts"></param>
         /// <returns></returns>
-        public double GetTotalCountyTax(IEnumerable<Reciept> Reciepts)
+        public double GetTotalCountyTax(IEnumerable<RecieptEntity> Reciepts)
         {
             double totalSalesTax = 0;
 
             //Loop thru all the reciepts in the project
-            foreach (Reciept reciept in Reciepts)
+            foreach (RecieptEntity reciept in Reciepts)
             {
                 //First, make sure that it belongs to this project!
                 if (reciept.Project.ID != ID)
@@ -87,12 +89,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         /// </summary>
         /// <param name="Reciepts"></param>
         /// <returns></returns>
-        public double GetTotalStateTax(IEnumerable<Reciept> Reciepts)
+        public double GetTotalStateTax(IEnumerable<RecieptEntity> Reciepts)
         {
             double totalSalesTax = 0;
 
             //Loop thru all the reciepts in the project
-            foreach (Reciept reciept in Reciepts)
+            foreach (RecieptEntity reciept in Reciepts)
             {
                 //First, make sure that it belongs to this project!
                 if (reciept.Project.ID != ID)
@@ -110,12 +112,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         /// </summary>
         /// <param name="Reciepts"></param>
         /// <returns></returns>
-        public double GetTotalTransitTax(IEnumerable<Reciept> Reciepts)
+        public double GetTotalTransitTax(IEnumerable<RecieptEntity> Reciepts)
         {
             double totalSalesTax = 0;
 
             //Loop thru all the reciepts in the project
-            foreach (Reciept reciept in Reciepts)
+            foreach (RecieptEntity reciept in Reciepts)
             {
                 //First, make sure that it belongs to this project!
                 if (reciept.Project.ID != ID)
@@ -126,6 +128,29 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
                 totalSalesTax += reciept.TransitTaxPortion();
             }
             return totalSalesTax;
+        }
+
+        /// <summary>
+        /// Return the total dollar amount that went to Food tax during all time periods
+        /// </summary>
+        /// <param name="Reciepts"></param>
+        /// <returns></returns>
+        public double GetTotalFoodTax(IEnumerable<RecieptEntity> Reciepts)
+        {
+            double totalFoodTax = 0;
+
+            //Loop thru all the reciepts in the project
+            foreach (RecieptEntity reciept in Reciepts)
+            {
+                //First, make sure that it belongs to this project!
+                if (reciept.Project.ID != ID)
+                {
+                    continue;
+                }
+
+                totalFoodTax += reciept.FoodTax;
+            }
+            return totalFoodTax;
         }
 
         /// <summary>
@@ -150,5 +175,11 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         {
             return false;
         }
+    }
+
+    public class MyProjectsListViewModal
+    {
+        public IEnumerable<Project> MyProjects { get; set; }
+        public IEnumerable<Project> SharedProjects { get; set; }
     }
 }

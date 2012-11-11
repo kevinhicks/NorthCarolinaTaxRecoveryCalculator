@@ -5,7 +5,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    sealed class Configuration : DbMigrationsConfiguration<NorthCarolinaTaxRecoveryCalculator.Models.ApplicationDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<NorthCarolinaTaxRecoveryCalculator.Models.ApplicationDBContext>
     {
         public Configuration()
         {

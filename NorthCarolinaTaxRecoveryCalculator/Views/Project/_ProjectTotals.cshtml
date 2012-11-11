@@ -1,0 +1,96 @@
+﻿@model IEnumerable<NorthCarolinaTaxRecoveryCalculator.Models.RecieptEntity>
+@using NorthCarolinaTaxRecoveryCalculator.Models
+@{Project project = ViewBag.Project;}
+<div>
+    Total County Tax: @project.GetTotalCountyTax(Model).ToString("C")
+</div>
+<div>
+    Total State Tax: @project.GetTotalStateTax(Model).ToString("C")
+</div>
+<div>
+    Total Food Tax: @project.GetTotalFoodTax(Model).ToString("C")
+</div>
+<div>
+    Total Transit Tax: @project.GetTotalTransitTax(Model).ToString("C")
+</div>
+@{  
+    foreach (var TaxPeriod in ViewBag.TaxPeriods)
+    {
+        if (TaxPeriod.Count > 0)
+        {
+            <h3 class="collapible clickable" id="taxPeriodHeader">
+                For Tax Period:<br />
+                @TaxContext.TaxPeriods[TaxPeriod[0].GetTaxPeriod()].ToShortDateString()
+                -
+                @if(TaxPeriod[0].GetTaxPeriod() != 0)           
+                {         
+                    @TaxContext.TaxPeriods[TaxPeriod[0].GetTaxPeriod() - 1].ToShortDateString()
+                }
+                else 
+                {
+                    <text>Now</text>
+                }
+            </h3>
+            <div id="countyList">
+                <table class="tablesorter">
+                    <thead>
+                        <tr>
+                            <th>
+                                County
+                            </th>
+                            <th>
+                                County Tax
+                            </th>
+                            <th>
+                                State Tax
+                            </th>
+                            <th>
+                                Food Tax
+                            </th>
+                            <th>
+                                Transit Tax
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            double totalCounty = 0;
+                            double totalState = 0;
+                            double totalFood = 0;
+                            double totalTransit = 0;
+                        }
+                        @foreach (RecieptDTO county in TaxPeriod)
+                        {
+                            double _county = county.CountyTaxPortion();
+                            double _state = county.StateTaxPortion();
+                            double _food = county.FoodTax;
+                            double _transit = county.TransitTaxPortion();
+
+                            totalCounty += _county;
+                            totalState +=_state;
+                            totalFood +=_food;
+                            totalTransit +=_transit;
+                            
+                            <tr>
+                                <td>@County.Counties[county.County].Name</td>
+                                <td>@_county.ToString("C")</td>
+                                <td>@_state.ToString("C")</td>
+                                <td>@_food.ToString("C")</td>
+                                <td>@_transit.ToString("C")</td>
+                            </tr>
+                        }   
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th>@totalCounty.ToString("C")</th>
+                            <th>@totalState.ToString("C")</th>
+                            <th>@totalFood.ToString("C")</th>
+                            <th>@totalTransit.ToString("C")</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        }
+    }
+}

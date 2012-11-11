@@ -19,14 +19,14 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.ActionLink(item.Name, "Index", "Reciept", new { ProjectID = item.ID }, null)                
+                @Html.ActionLink(item.Name, "Details", "Project", new { ProjectID = item.ID }, null)                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateStarted)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+                @Html.ActionLink("Edit", "Edit", new { ProjectID = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { ProjectID = item.ID })
             </td>
         </tr>
     }

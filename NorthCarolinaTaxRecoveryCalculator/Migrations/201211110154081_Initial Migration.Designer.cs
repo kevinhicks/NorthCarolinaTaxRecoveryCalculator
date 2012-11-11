@@ -5,13 +5,13 @@ namespace NorthCarolinaTaxRecoveryCalculator.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    public sealed partial class ExistingRecords : IMigrationMetadata
+    public sealed partial class InitialMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ExistingRecords));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201210271654272_Existing Records"; }
+            get { return "201211110154081_Initial Migration"; }
         }
         
         string IMigrationMetadata.Source

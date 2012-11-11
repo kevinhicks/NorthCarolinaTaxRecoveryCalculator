@@ -14,7 +14,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
     public class TestProjectsData
     {
         public List<Project> Projects { get; set; }
-        public List<Reciept> Reciepts { get; set; }
+        public List<RecieptEntity> Reciepts { get; set; }
 
         public Project FirstProjectToTestSecurity = null;
         public Project SecondProjectToTestSecurity = null;
@@ -26,7 +26,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         {
             //Create the lists
             Projects = new List<Project>();
-            Reciepts = new List<Reciept>();            
+            Reciepts = new List<RecieptEntity>();            
 
             //Create the data
             Project project = new Project();
@@ -107,9 +107,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         /// <param name="project"></param>
         private void generateData(Project project)
         {
-            Reciept reciept = null;
+            RecieptEntity reciept = null;
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "1";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-06-16");
@@ -122,7 +122,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "2";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-06-16");
@@ -135,7 +135,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "3";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-06-18");
@@ -148,7 +148,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "4";
             reciept.StoreName = "DESCO Inc.";
             reciept.DateOfSale = DateTime.Parse("2012-06-20");
@@ -161,7 +161,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "5";
             reciept.StoreName = "KnoxBox";
             reciept.DateOfSale = DateTime.Parse("2012-07-05");
@@ -174,7 +174,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "6";
             reciept.StoreName = "Quickscrews International";
             reciept.DateOfSale = DateTime.Parse("2012-06-22");
@@ -187,7 +187,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "7";
             reciept.StoreName = "ABC Supply Company";
             reciept.DateOfSale = DateTime.Parse("2012-06-22");
@@ -200,7 +200,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "8";
             reciept.StoreName = "Concrete Supply Company";
             reciept.DateOfSale = DateTime.Parse("2012-07-03");
@@ -213,7 +213,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "9";
             reciept.StoreName = "Concrete Supply Company";
             reciept.DateOfSale = DateTime.Parse("2012-07-07");
@@ -226,7 +226,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "10";
             reciept.StoreName = "Concrete Supply Company";
             reciept.DateOfSale = DateTime.Parse("2012-07-07");
@@ -239,7 +239,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "11";
             reciept.StoreName = "Guaranteed Supply Company";
             reciept.DateOfSale = DateTime.Parse("2012-07-05");
@@ -252,7 +252,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "12";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-07-02");
@@ -265,7 +265,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "13";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-07-02");
@@ -278,7 +278,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "14";
             reciept.StoreName = "United Rentals";
             reciept.DateOfSale = DateTime.Parse("2012-07-03");
@@ -291,7 +291,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "15";
             reciept.StoreName = "United Rentals";
             reciept.DateOfSale = DateTime.Parse("2012-07-13");
@@ -304,7 +304,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "16";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-07-13");
@@ -317,7 +317,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "17";
             reciept.StoreName = "United Rentals";
             reciept.DateOfSale = DateTime.Parse("2012-07-16");
@@ -330,7 +330,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "18";
             reciept.StoreName = "Concrete Supply Company";
             reciept.DateOfSale = DateTime.Parse("2012-07-14");
@@ -343,7 +343,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "19";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-07-14");
@@ -356,7 +356,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "20";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-07-21");
@@ -369,7 +369,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "21";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-07-21");
@@ -382,7 +382,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "22";
             reciept.StoreName = "Hoffman & Hoffman";
             reciept.DateOfSale = DateTime.Parse("2012-07-18");
@@ -395,7 +395,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "23";
             reciept.StoreName = "Office Depot";
             reciept.DateOfSale = DateTime.Parse("2012-07-11");
@@ -408,7 +408,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "24";
             reciept.StoreName = "Suburban Propane";
             reciept.DateOfSale = DateTime.Parse("2012-07-10");
@@ -421,7 +421,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "25";
             reciept.StoreName = "Concrete Supply Company";
             reciept.DateOfSale = DateTime.Parse("2012-06-28");
@@ -434,7 +434,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "26";
             reciept.StoreName = "Concrete Supply Company";
             reciept.DateOfSale = DateTime.Parse("2012-06-28");
@@ -447,7 +447,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "27";
             reciept.StoreName = "Concrete Supply Company";
             reciept.DateOfSale = DateTime.Parse("2012-07-02");
@@ -460,7 +460,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "28";
             reciept.StoreName = "Concrete Supply Company";
             reciept.DateOfSale = DateTime.Parse("2012-07-21");
@@ -473,7 +473,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "29";
             reciept.StoreName = "DESCO Inc.";
             reciept.DateOfSale = DateTime.Parse("2012-07-20");
@@ -486,7 +486,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "30";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-07-20");
@@ -499,7 +499,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "31";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-11");
@@ -512,7 +512,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "32";
             reciept.StoreName = "Sheetz";
             reciept.DateOfSale = DateTime.Parse("2012-06-30");
@@ -525,7 +525,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "33";
             reciept.StoreName = "Office Depot";
             reciept.DateOfSale = DateTime.Parse("2012-08-11");
@@ -538,7 +538,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "34";
             reciept.StoreName = "Office Depot";
             reciept.DateOfSale = DateTime.Parse("2012-08-11");
@@ -551,7 +551,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "35";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-10");
@@ -564,7 +564,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "36";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-10");
@@ -577,7 +577,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "37";
             reciept.StoreName = "Sam's Club";
             reciept.DateOfSale = DateTime.Parse("2012-08-10");
@@ -590,7 +590,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "38";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-10");
@@ -603,7 +603,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "39";
             reciept.StoreName = "Office Depot";
             reciept.DateOfSale = DateTime.Parse("2012-08-11");
@@ -616,7 +616,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "40";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-11");
@@ -629,7 +629,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "41";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-11");
@@ -642,7 +642,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "42";
             reciept.StoreName = "Sherwin-Williams";
             reciept.DateOfSale = DateTime.Parse("2012-08-11");
@@ -655,7 +655,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "43";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-12");
@@ -668,7 +668,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "44";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-12");
@@ -681,7 +681,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "45";
             reciept.StoreName = "Sherwin-Williams";
             reciept.DateOfSale = DateTime.Parse("2012-08-12");
@@ -694,7 +694,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "46";
             reciept.StoreName = "Sheetz";
             reciept.DateOfSale = DateTime.Parse("2012-08-12");
@@ -707,7 +707,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "47";
             reciept.StoreName = "Sheetz";
             reciept.DateOfSale = DateTime.Parse("2012-08-12");
@@ -720,7 +720,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "48";
             reciept.StoreName = "Office Depot";
             reciept.DateOfSale = DateTime.Parse("2012-08-12");
@@ -733,7 +733,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "49";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-12");
@@ -746,7 +746,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "50";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-12");
@@ -759,7 +759,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "51";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-14");
@@ -772,7 +772,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "52";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-12");
@@ -785,7 +785,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "53";
             reciept.StoreName = "Southeastern Concrete Products";
             reciept.DateOfSale = DateTime.Parse("2012-08-13");
@@ -798,7 +798,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "54";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-17");
@@ -811,7 +811,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "55";
             reciept.StoreName = "Earp's";
             reciept.DateOfSale = DateTime.Parse("2012-08-17");
@@ -824,7 +824,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "56";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-17");
@@ -837,7 +837,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "57";
             reciept.StoreName = "Home Depot";
             reciept.DateOfSale = DateTime.Parse("2012-08-17");
@@ -850,7 +850,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "58";
             reciept.StoreName = "DESCO Inc.";
             reciept.DateOfSale = DateTime.Parse("2012-08-17");
@@ -863,7 +863,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "59";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-13");
@@ -876,7 +876,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "60";
             reciept.StoreName = "Sheetz";
             reciept.DateOfSale = DateTime.Parse("2012-08-11");
@@ -889,7 +889,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "61";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-13");
@@ -902,7 +902,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "62";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-13");
@@ -915,7 +915,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "63";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-17");
@@ -928,7 +928,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "64";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-16");
@@ -941,7 +941,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "65";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-16");
@@ -954,7 +954,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "66";
             reciept.StoreName = "WilcoHess";
             reciept.DateOfSale = DateTime.Parse("2012-08-15");
@@ -967,7 +967,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "67";
             reciept.StoreName = "Sheetz";
             reciept.DateOfSale = DateTime.Parse("2012-08-16");
@@ -980,7 +980,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "68";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-16");
@@ -993,7 +993,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "69";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-17");
@@ -1006,7 +1006,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "70";
             reciept.StoreName = "Sheetz";
             reciept.DateOfSale = DateTime.Parse("2012-08-16");
@@ -1019,7 +1019,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "71";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-16");
@@ -1032,7 +1032,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "72";
             reciept.StoreName = "Sheetz";
             reciept.DateOfSale = DateTime.Parse("2012-08-16");
@@ -1045,7 +1045,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "73";
             reciept.StoreName = "United Rentals";
             reciept.DateOfSale = DateTime.Parse("2012-08-15");
@@ -1058,7 +1058,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "74";
             reciept.StoreName = "Pop Shoppe";
             reciept.DateOfSale = DateTime.Parse("2012-08-15");
@@ -1071,7 +1071,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "75";
             reciept.StoreName = "Swicegoods Paper";
             reciept.DateOfSale = DateTime.Parse("2012-08-15");
@@ -1084,7 +1084,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "76";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-15");
@@ -1097,7 +1097,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "77";
             reciept.StoreName = "Fastenal";
             reciept.DateOfSale = DateTime.Parse("2012-08-15");
@@ -1110,7 +1110,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "78";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-14");
@@ -1123,7 +1123,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "79";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-14");
@@ -1136,7 +1136,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "80";
             reciept.StoreName = "Food Lion";
             reciept.DateOfSale = DateTime.Parse("2012-08-14");
@@ -1149,7 +1149,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "81";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-14");
@@ -1162,7 +1162,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "82";
             reciept.StoreName = "Earp's";
             reciept.DateOfSale = DateTime.Parse("2012-08-14");
@@ -1175,7 +1175,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "83";
             reciept.StoreName = "Pops Country Store";
             reciept.DateOfSale = DateTime.Parse("2012-08-11");
@@ -1188,7 +1188,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "84";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-12");
@@ -1201,7 +1201,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "85";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-13");
@@ -1214,7 +1214,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "86";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-12");
@@ -1227,7 +1227,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "87";
             reciept.StoreName = "Food Lion";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1240,7 +1240,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "88";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-17");
@@ -1253,7 +1253,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "89";
             reciept.StoreName = "Sheetz";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1266,7 +1266,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "90";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1279,7 +1279,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "91";
             reciept.StoreName = "Concrete Supply Company";
             reciept.DateOfSale = DateTime.Parse("2012-07-21");
@@ -1292,7 +1292,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "92";
             reciept.StoreName = "GrandinRoad";
             reciept.DateOfSale = DateTime.Parse("2012-08-11");
@@ -1305,7 +1305,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "93";
             reciept.StoreName = "Sunbelt Rentals";
             reciept.DateOfSale = DateTime.Parse("2012-08-14");
@@ -1318,7 +1318,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "94";
             reciept.StoreName = "Thermo King Central";
             reciept.DateOfSale = DateTime.Parse("2012-07-14");
@@ -1331,7 +1331,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "95";
             reciept.StoreName = "Hertz Equipment Rental";
             reciept.DateOfSale = DateTime.Parse("2012-08-16");
@@ -1344,7 +1344,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "96";
             reciept.StoreName = "WeGotLites";
             reciept.DateOfSale = DateTime.Parse("2012-07-23");
@@ -1357,7 +1357,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "97";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1370,7 +1370,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "98";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1383,7 +1383,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "99";
             reciept.StoreName = "Sheetz";
             reciept.DateOfSale = DateTime.Parse("2012-08-17");
@@ -1396,7 +1396,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "100";
             reciept.StoreName = "Sheetz";
             reciept.DateOfSale = DateTime.Parse("2012-08-17");
@@ -1409,7 +1409,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "101";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1422,7 +1422,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "102";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1435,7 +1435,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "103";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1448,7 +1448,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "104";
             reciept.StoreName = "Sunnyside Ice and Fuel Co., Inc";
             reciept.DateOfSale = DateTime.Parse("2012-08-14");
@@ -1461,7 +1461,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "105";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1474,7 +1474,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "106";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1487,7 +1487,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "107";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1500,7 +1500,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "108";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1513,7 +1513,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "109";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1526,7 +1526,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "110";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1539,7 +1539,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "111";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1552,7 +1552,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "112";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1565,7 +1565,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "113";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1578,7 +1578,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "114";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1591,7 +1591,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "115";
             reciept.StoreName = "Target.com";
             reciept.DateOfSale = DateTime.Parse("2012-08-24");
@@ -1604,7 +1604,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "116";
             reciept.StoreName = "Home Depot";
             reciept.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1617,7 +1617,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "117";
             reciept.StoreName = "Home Depot";
             reciept.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1630,7 +1630,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "118";
             reciept.StoreName = "Marathon";
             reciept.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1643,7 +1643,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "119";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1656,7 +1656,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "120";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-20");
@@ -1669,7 +1669,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "121";
             reciept.StoreName = "Subway";
             reciept.DateOfSale = DateTime.Parse("2012-08-20");
@@ -1682,7 +1682,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "122";
             reciept.StoreName = "Chckfila";
             reciept.DateOfSale = DateTime.Parse("2012-08-20");
@@ -1695,7 +1695,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "123";
             reciept.StoreName = "Fastenal";
             reciept.DateOfSale = DateTime.Parse("2012-08-20");
@@ -1708,7 +1708,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "124";
             reciept.StoreName = "Ruehlen Supply Co";
             reciept.DateOfSale = DateTime.Parse("2012-08-20");
@@ -1721,7 +1721,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "125";
             reciept.StoreName = "Derrick Travel Plaza";
             reciept.DateOfSale = DateTime.Parse("2012-08-21");
@@ -1734,7 +1734,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "126";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-21");
@@ -1747,7 +1747,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "127";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-22");
@@ -1760,7 +1760,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "128";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-22");
@@ -1773,7 +1773,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "129";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-22");
@@ -1786,7 +1786,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "130";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1799,7 +1799,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "131";
             reciept.StoreName = "Staples";
             reciept.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1812,7 +1812,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "132";
             reciept.StoreName = "Staples";
             reciept.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1825,7 +1825,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "133";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1838,7 +1838,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "134";
             reciept.StoreName = "Rushco Food";
             reciept.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1851,7 +1851,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "135";
             reciept.StoreName = "WilcoHess";
             reciept.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1864,7 +1864,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "136";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-22");
@@ -1877,7 +1877,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "137";
             reciept.StoreName = "Sheetz";
             reciept.DateOfSale = DateTime.Parse("2012-08-24");
@@ -1890,7 +1890,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "138";
             reciept.StoreName = "Sheetz";
             reciept.DateOfSale = DateTime.Parse("2012-08-24");
@@ -1903,7 +1903,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "139";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-24");
@@ -1916,7 +1916,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "140";
             reciept.StoreName = "Sherwin-Williams";
             reciept.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1929,7 +1929,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "141";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1942,7 +1942,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "142";
             reciept.StoreName = "Sam's Club";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1955,7 +1955,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "143";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-17");
@@ -1968,7 +1968,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "144";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-14");
@@ -1981,7 +1981,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "145";
             reciept.StoreName = "Sam's Club";
             reciept.DateOfSale = DateTime.Parse("2012-08-15");
@@ -1994,7 +1994,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "146";
             reciept.StoreName = "Rastaurant Depot";
             reciept.DateOfSale = DateTime.Parse("2012-08-13");
@@ -2007,7 +2007,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "147";
             reciept.StoreName = "WilcoHess";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -2020,7 +2020,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "148";
             reciept.StoreName = "Auto Zone";
             reciept.DateOfSale = DateTime.Parse("2012-08-14");
@@ -2033,7 +2033,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "149";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -2046,7 +2046,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "150";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -2059,7 +2059,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "151";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-19");
@@ -2072,7 +2072,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "152";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-17");
@@ -2085,7 +2085,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "153";
             reciept.StoreName = "Walmart";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -2098,7 +2098,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "154";
             reciept.StoreName = "Sandy's One Stop";
             reciept.DateOfSale = DateTime.Parse("2012-08-19");
@@ -2111,7 +2111,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "155";
             reciept.StoreName = "Subway";
             reciept.DateOfSale = DateTime.Parse("2012-08-21");
@@ -2124,7 +2124,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "156";
             reciept.StoreName = "Sunnyside Ice and Fuel Co., Inc";
             reciept.DateOfSale = DateTime.Parse("2012-08-18");
@@ -2137,7 +2137,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "157";
             reciept.StoreName = "Sam's Club";
             reciept.DateOfSale = DateTime.Parse("2012-08-13");
@@ -2150,7 +2150,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "158";
             reciept.StoreName = "Trane";
             reciept.DateOfSale = DateTime.Parse("2012-08-10");
@@ -2163,7 +2163,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "159";
             reciept.StoreName = "The Glass Shop";
             reciept.DateOfSale = DateTime.Parse("2012-07-16");
@@ -2176,7 +2176,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "160";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-24");
@@ -2189,7 +2189,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "161";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-23");
@@ -2202,7 +2202,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "162";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-08-24");
@@ -2224,11 +2224,11 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         /// <param name="project"></param>
         private void generateMultiTaxPeriodData(Project project)
         {
-            Reciept reciept;
+            RecieptEntity reciept;
 
             for (int i = 0; i < TaxContext.TaxPeriods.Count(); i++)
             {
-                reciept = new Reciept();
+                reciept = new RecieptEntity();
                 reciept.RIF = "" + i;
                 reciept.StoreName = "Lowe's";
                 reciept.DateOfSale = TaxContext.TaxPeriods[i].AddDays(1);
@@ -2249,7 +2249,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         /// <param name="project"></param>
         private void generateTaxDataToTestEveryTaxPeriodBoundry(Project project)
         {
-            Reciept reciept;
+            RecieptEntity reciept;
 
             //For every county
             for (int county = 1; county <= 101; county++)
@@ -2258,7 +2258,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
                 for (int period = 0; period < TaxContext.TaxPeriods.Count(); period++)
                 {
                     //One Before
-                    reciept = new Reciept();
+                    reciept = new RecieptEntity();
                     reciept.RIF = county + "" + period + "" + 1;
                     reciept.StoreName = "Lowe's";
                     reciept.DateOfSale = TaxContext.TaxPeriods[period].AddMinutes(-1);
@@ -2277,7 +2277,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
                     }
 
                     //One After
-                    reciept = new Reciept();
+                    reciept = new RecieptEntity();
                     reciept.RIF = county + "" + period + "" + 2;
                     reciept.StoreName = "Lowe's";
                     reciept.DateOfSale = TaxContext.TaxPeriods[period].AddMinutes(1);
@@ -2299,11 +2299,11 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         /// <param name="project"></param>
         private void generateTaxDataToTestSecurity(Project firstProject, Project secondProject, UserProfile firstUser, UserProfile secondUser)
         {
-            Reciept reciept;
+            RecieptEntity reciept;
 
             //Generate recipets for both projects
             //First
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "1";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-06-16");
@@ -2316,7 +2316,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "2";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-06-16");
@@ -2329,7 +2329,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "3";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-06-18");
@@ -2343,7 +2343,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             Reciepts.Add(reciept);
             
             //Second
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "1";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-06-16");
@@ -2356,7 +2356,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "2";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-06-16");
@@ -2369,7 +2369,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
 
-            reciept = new Reciept();
+            reciept = new RecieptEntity();
             reciept.RIF = "3";
             reciept.StoreName = "Lowe's";
             reciept.DateOfSale = DateTime.Parse("2012-06-18");
