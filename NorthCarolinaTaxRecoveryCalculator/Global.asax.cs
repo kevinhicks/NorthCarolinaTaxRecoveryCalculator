@@ -22,10 +22,10 @@ namespace NorthCarolinaTaxRecoveryCalculator
             ApplicationDBContext db = new ApplicationDBContext();
 
             //Init the datbase
-            var createDBInit = new CreateDatabaseIfNotExists<ApplicationDBContext>();
+            //var createDBInit = new CreateDatabaseIfNotExists<ApplicationDBContext>();
             var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
 
-            createDBInit.InitializeDatabase(db);
+            //createDBInit.InitializeDatabase(db);
             updateDBInit.InitializeDatabase(db);
 
             AreaRegistration.RegisterAllAreas();
