@@ -19,7 +19,14 @@ namespace NorthCarolinaTaxRecoveryCalculator
     {
         protected void Application_Start()
         {
-            Database.SetInitializer<ApplicationDBContext>(new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>());
+            ApplicationDBContext db = new ApplicationDBContext();
+
+            //Init the datbase
+            var createDBInit = new CreateDatabaseIfNotExists<ApplicationDBContext>();
+            var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
+
+            createDBInit.InitializeDatabase(db);
+            updateDBInit.InitializeDatabase(db);
 
             AreaRegistration.RegisterAllAreas();
 
