@@ -16,8 +16,39 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         public virtual DateTime DateOfSale { get; set; }
         public virtual string StoreName { get; set; }
         public virtual int County { get; set; }
-        public virtual float SalesTax { get; set; }
-        public virtual float FoodTax { get; set; }
+
+        private float _salesTax = 0;
+        public virtual float SalesTax
+        {
+            get
+            {
+                if(County == NorthCarolinaTaxRecoveryCalculator.Models.County.NON_TAXABLE)
+                    return 0;
+                else 
+                    return _salesTax;
+            }
+            set
+            {
+                _salesTax = value;
+            }
+        }
+
+        private float _foodTax = 0;
+        public virtual float FoodTax
+        {
+            get
+            {
+                if (County == NorthCarolinaTaxRecoveryCalculator.Models.County.NON_TAXABLE)
+                    return 0;
+                else
+                    return _foodTax;
+            }
+            set
+            {
+                _foodTax = value;
+            }
+        }
+
         public virtual float SalesAmount { get; set; }
         public virtual string Notes { get; set; }
         public virtual bool OnBillDetail { get; set; }

@@ -151,5 +151,15 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             }
 
         }
+        
+        [TestMethod]
+        public void TestNonTaxableItemsShouldNotBeIncludedInTheTotal()
+        {
+            Project project = TestProjectsData.GetInstance().ProjectToTestNonTaxable;
+
+            Assert.AreEqual(0, project.GetTotalStateTax(TestProjectsData.GetInstance().Reciepts));
+            Assert.AreEqual(0, project.GetTotalCountyTax(TestProjectsData.GetInstance().Reciepts));
+            Assert.AreEqual(0, project.GetTotalTransitTax(TestProjectsData.GetInstance().Reciepts));
+        }
     }
 }

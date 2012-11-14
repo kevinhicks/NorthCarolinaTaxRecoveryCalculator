@@ -33,7 +33,7 @@
                 @Html.LabelFor(model => model.County)
             </div>
             <div class="editor-field">
-                @Html.DropDownListFor(model => model.County, new SelectList(NorthCarolinaTaxRecoveryCalculator.Models.County.Counties, "ID", "Name"))
+                @Html.DropDownListFor(model => model.County, new SelectList(NorthCarolinaTaxRecoveryCalculator.Models.County.Counties.Where(c => c.ID >= 1), "ID", "Name"))
                 @Html.ValidationMessageFor(model => model.County)
             </div>
             <div class="editor-label">
@@ -204,7 +204,7 @@
                     RIF:  $("input#RIF").val(),
                     DateOfSale: $("input#DateOfSale").val(),
                     StoreName: $("input#StoreName").val(),
-                    County: Number($("select#County").val()) - 1,
+                    County: Number($("select#County").val()),
                     SalesTax: $("input#SalesTax").val(),
                     FoodTax: $("input#FoodTax").val(),
                     SalesAmount: $("input#SalesAmount").val(),
@@ -392,8 +392,11 @@
 
         //Configure the table containing the list of recipets to be sortable
         function initTable() {
+        try {
             $("table").tablesorter({
-                sortList: [[0, 0]], //sort by rif automatically
+                sortList: [[0, 0]]
+                
+                /*, //sort by rif automatically
                 headers: {
                     4: {
                         sorter: 'accountingNumbers'
@@ -404,9 +407,10 @@
                     6: {
                         sorter: 'accountingNumbers'
                     }
-                }
+                }*/
                     
             });
+            } catch(err) {}
             
             $.tablesorter.addParser({ 
                 // set a unique id 

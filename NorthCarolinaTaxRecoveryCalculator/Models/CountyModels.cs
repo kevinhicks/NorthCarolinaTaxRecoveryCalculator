@@ -37,6 +37,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         }
 
         public static County[] Counties = {
+            new County(),
             new County(1, "Alamance"),
             new County(2, "Alexander"),
             new County(3, "Alleghany"),

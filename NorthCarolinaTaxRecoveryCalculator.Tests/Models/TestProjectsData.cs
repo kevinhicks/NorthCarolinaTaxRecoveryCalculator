@@ -19,6 +19,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         public Project FirstProjectToTestSecurity = null;
         public Project SecondProjectToTestSecurity = null;
 
+        public Project ProjectToTestNonTaxable = null;
+
         public UserProfile FirstUserToTestSecurity = null;
         public UserProfile SecondUserToTestSecurity = null;
 
@@ -88,6 +90,15 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             Projects.Add(SecondProjectToTestSecurity);
 
             generateTaxDataToTestSecurity(FirstProjectToTestSecurity, SecondProjectToTestSecurity, FirstUserToTestSecurity, SecondUserToTestSecurity);
+
+            //Non taxable
+            ProjectToTestNonTaxable = new Project();
+            ProjectToTestNonTaxable.Name = "Project to test Non-Taxable";
+            ProjectToTestNonTaxable.DateStarted = DateTime.Now;
+            ProjectToTestNonTaxable.IsDeleted = false;
+            Projects.Add(ProjectToTestNonTaxable);
+
+            generateNonTaxableData(ProjectToTestNonTaxable);
         }
 
         private static TestProjectsData _instance = null;
@@ -2382,6 +2393,27 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             reciept.Notes = "";
             Reciepts.Add(reciept);
             
+        }
+
+
+
+        private void generateNonTaxableData(Project ProjectToTestNonTaxable)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                var reciept = new RecieptEntity();
+                reciept.RIF = i + "";
+                reciept.StoreName = "Lowe's";
+                reciept.DateOfSale = DateTime.Parse("2012-06-18");
+                reciept.SalesTax = 1000f;
+                reciept.FoodTax = 1000f;
+                reciept.ProjectID = ProjectToTestNonTaxable.ID;
+                reciept.Project = ProjectToTestNonTaxable;
+                reciept.SalesAmount = 1000f;
+                reciept.County = County.NON_TAXABLE;
+                reciept.Notes = "";
+                Reciepts.Add(reciept);
+            }
         }
     }
 }
