@@ -43,6 +43,7 @@
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home") </li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@WebSecurity.CurrentUserId</li>
                     </ul>
                 </nav>
                 @RenderSection("top-header", required: false)
