@@ -40,7 +40,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 111.43f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -52,7 +52,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 29.13f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -64,7 +64,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 256.12f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -76,7 +76,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 82.00f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -88,7 +88,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 437.68f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -100,7 +100,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 110.76f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -112,7 +112,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 3803.55f;
-            RecieptEntity.County = 60 - 1;
+            RecieptEntity.County = 60;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -124,7 +124,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 2927.52f;
-            RecieptEntity.County = 60 - 1;
+            RecieptEntity.County = 60;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -136,7 +136,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 921.27f;
-            RecieptEntity.County = 60 - 1;
+            RecieptEntity.County = 60;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -148,7 +148,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 24762.21f;
-            RecieptEntity.County = 60 - 1;
+            RecieptEntity.County = 60;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -160,7 +160,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 1213.38f;
-            RecieptEntity.County = 41 - 1;
+            RecieptEntity.County = 41;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -172,7 +172,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 54.57f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -184,7 +184,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 187.87f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -196,7 +196,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 293.09f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -208,7 +208,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 65.29f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -220,7 +220,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 163.38f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -232,7 +232,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 322.71f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -244,7 +244,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 30157.96f;
-            RecieptEntity.County = 60 - 1;
+            RecieptEntity.County = 60;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -256,7 +256,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 206.08f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -268,7 +268,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 174.77f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -280,7 +280,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 182.10f;
-            RecieptEntity.County = 13 - 1;
+            RecieptEntity.County = 13;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -292,7 +292,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 9560.45f;
-            RecieptEntity.County = 41 - 1;
+            RecieptEntity.County = 41;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -304,7 +304,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 11.79f;
-            RecieptEntity.County = 60 - 1;
+            RecieptEntity.County = 60;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -316,7 +316,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 1634.52f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -328,7 +328,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 507.72f;
-            RecieptEntity.County = 60 - 1;
+            RecieptEntity.County = 60;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -340,7 +340,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 5460.24f;
-            RecieptEntity.County = 60 - 1;
+            RecieptEntity.County = 60;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -352,7 +352,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 720.64f;
-            RecieptEntity.County = 60 - 1;
+            RecieptEntity.County = 60;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -364,7 +364,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 15100.00f;
-            RecieptEntity.County = 60 - 1;
+            RecieptEntity.County = 60;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -376,7 +376,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 9.87f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -388,7 +388,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 247.15f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -400,7 +400,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 201.01f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -412,7 +412,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 56.59f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -424,7 +424,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 308.12f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -436,7 +436,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = -249.27f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -448,7 +448,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 21.38f;
-            RecieptEntity.County = 13 - 1;
+            RecieptEntity.County = 13;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -460,7 +460,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 27.11f;
-            RecieptEntity.County = 13 - 1;
+            RecieptEntity.County = 13;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -472,7 +472,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 392.56f;
-            RecieptEntity.County = 13 - 1;
+            RecieptEntity.County = 13;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -484,7 +484,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 122.37f;
-            RecieptEntity.County = 13 - 1;
+            RecieptEntity.County = 13;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -496,7 +496,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 249.27f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -508,7 +508,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 482.15f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -520,7 +520,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 29.66f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -532,7 +532,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 404.35f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -544,7 +544,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 162.27f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -556,7 +556,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 10.57f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -568,7 +568,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 161.74f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -580,7 +580,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 30.00f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -592,7 +592,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 67.21f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -604,7 +604,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 8.97f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -616,7 +616,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 365.62f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -628,7 +628,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 42.16f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -640,7 +640,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 157.83f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -652,7 +652,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 11.60f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -664,7 +664,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 235.54f;
-            RecieptEntity.County = 49 - 1;
+            RecieptEntity.County = 49;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -676,7 +676,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 51.60f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -688,7 +688,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 45.67f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -700,7 +700,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 150.42f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -712,7 +712,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 92.63f;
-            RecieptEntity.County = 13 - 1;
+            RecieptEntity.County = 13;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -724,7 +724,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 208.78f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -736,7 +736,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 25.36f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -748,7 +748,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 25.04f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -760,7 +760,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 58.53f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -772,7 +772,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.78f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 39.98f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -784,7 +784,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 24.02f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -796,7 +796,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 130.89f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -808,7 +808,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 11.51f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -820,7 +820,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 24.99f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -832,7 +832,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 68.83f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -844,7 +844,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 1.85f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 94.45f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -856,7 +856,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 163.57f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -868,7 +868,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 55.28f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -880,7 +880,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.80f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 40.60f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -892,7 +892,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 29.17f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -904,7 +904,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 105.11f;
-            RecieptEntity.County = 49 - 1;
+            RecieptEntity.County = 49;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -916,7 +916,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 62.24f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -928,7 +928,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 103.58f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -940,7 +940,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 174.89f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -952,7 +952,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 146.89f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -964,7 +964,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 65.74f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -976,7 +976,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.39f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 19.99f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -988,7 +988,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.86f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 43.76f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1000,7 +1000,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 63.59f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1012,7 +1012,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 44.31f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1024,7 +1024,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 85.55f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1036,7 +1036,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 321.41f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1048,7 +1048,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 165.40f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1060,7 +1060,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = -365.62f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1072,7 +1072,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 144.05f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1084,7 +1084,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 2.24f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 114.14f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1096,7 +1096,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 58.78f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1108,7 +1108,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 108.63f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1120,7 +1120,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 8599.68f;
-            RecieptEntity.County = 60 - 1;
+            RecieptEntity.County = 60;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1132,7 +1132,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 373.32f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1144,7 +1144,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 1094.61f;
-            RecieptEntity.County = 13 - 1;
+            RecieptEntity.County = 13;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1156,7 +1156,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 180.47f;
-            RecieptEntity.County = 60 - 1;
+            RecieptEntity.County = 60;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1168,7 +1168,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 429.07f;
-            RecieptEntity.County = 60 - 1;
+            RecieptEntity.County = 60;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1180,7 +1180,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 678.00f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1192,7 +1192,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = -139.81f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1204,7 +1204,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = -154.40f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1216,7 +1216,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 50.31f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1228,7 +1228,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 17.95f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1240,7 +1240,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 27.79f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1252,7 +1252,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 71.23f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1264,7 +1264,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 139.81f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1276,7 +1276,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 930.00f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1288,7 +1288,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 139.81f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1300,7 +1300,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 9.87f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1312,7 +1312,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 196.95f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1324,7 +1324,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 77.43f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1336,7 +1336,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 185.28f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1348,7 +1348,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 112.71f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1360,7 +1360,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 41.41f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1372,7 +1372,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 202.87f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1384,7 +1384,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 14.04f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1396,7 +1396,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 40.80f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1408,7 +1408,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 92.58f;
-            RecieptEntity.County = 34 - 1;
+            RecieptEntity.County = 34;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1420,7 +1420,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 21.36f;
-            RecieptEntity.County = 13 - 1;
+            RecieptEntity.County = 13;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1432,7 +1432,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 49.56f;
-            RecieptEntity.County = 13 - 1;
+            RecieptEntity.County = 13;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1444,7 +1444,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 34.23f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1456,7 +1456,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 33.91f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1468,7 +1468,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 386.57f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1480,7 +1480,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 36.27f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1492,7 +1492,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 7.37f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1504,7 +1504,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 58.75f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1516,7 +1516,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 36.57f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1528,7 +1528,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 30.01f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1540,7 +1540,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 15.94f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1552,7 +1552,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 40.38f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1564,7 +1564,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 21.31f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1576,7 +1576,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 11.11f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1588,7 +1588,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 83.20f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1600,7 +1600,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 74.88f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1612,7 +1612,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 30.49f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1624,7 +1624,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 102.33f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1636,7 +1636,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 39.52f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1648,7 +1648,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 75.00f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1660,7 +1660,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = -7.07f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1672,7 +1672,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 50.37f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1684,7 +1684,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 36.01f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1696,7 +1696,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 27.69f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1708,7 +1708,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 305.51f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1720,7 +1720,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 106.33f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1732,7 +1732,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 2.46f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 307.29f;
-            RecieptEntity.County = 13 - 1;
+            RecieptEntity.County = 13;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1744,7 +1744,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 150.02f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1756,7 +1756,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 1.51f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 97.19f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1768,7 +1768,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.78f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 72.92f;
-            RecieptEntity.County = 13 - 1;
+            RecieptEntity.County = 13;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1780,7 +1780,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 138.26f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1792,7 +1792,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 1.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 49.80f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1804,7 +1804,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 20.83f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1816,7 +1816,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 29.64f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1828,7 +1828,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.43f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 34.80f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1840,7 +1840,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 2.04f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 103.80f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1852,7 +1852,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 77.58f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1864,7 +1864,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 1.06f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 53.96f;
-            RecieptEntity.County = 13 - 1;
+            RecieptEntity.County = 13;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1876,7 +1876,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 20.30f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1888,7 +1888,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 65.81f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1900,7 +1900,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 69.50f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1912,7 +1912,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 5.80f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 369.91f;
-            RecieptEntity.County = 13 - 1;
+            RecieptEntity.County = 13;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1924,7 +1924,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 16481.00f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1936,7 +1936,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 1752.00f;
-            RecieptEntity.County = 101 - 1;
+            RecieptEntity.County = 101;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1948,7 +1948,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 54.64f;
-            RecieptEntity.County = 13 - 1;
+            RecieptEntity.County = 13;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1960,7 +1960,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 53.90f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
@@ -1972,7 +1972,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
             RecieptEntity.FoodTax = 0.00f;
             RecieptEntity.ProjectID = project.ID;
             RecieptEntity.SalesAmount = 14.15f;
-            RecieptEntity.County = 80 - 1;
+            RecieptEntity.County = 80;
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
             db.SaveChanges();
