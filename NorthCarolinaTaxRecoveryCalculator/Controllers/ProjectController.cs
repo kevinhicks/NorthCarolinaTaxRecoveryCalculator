@@ -55,11 +55,20 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         public ActionResult Details(Guid ProjectID)
         {
             Project project = db.Projects.Find(ProjectID);
-            if (project == null)
+
+            //Only the Project owner whould see the overview page
+            if (project.BelongsTo(WebSecurity.CurrentUserId))
             {
-                return HttpNotFound();
+                if (project == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(project);
             }
-            return View(project);
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         //
