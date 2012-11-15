@@ -95,4 +95,20 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         public string ProviderDisplayName { get; set; }
         public string ProviderUserId { get; set; }
     }
+
+    /// <summary>
+    /// This table maps the relation of Users that have been invited to share a project.
+    /// Invited users have less prvliges then Owners
+    /// </summary>
+    public class UsersAccessProjects
+    {
+        [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+        public Guid ProjectID { get; set; }
+        public int UserID { get; set; }
+        public string Email { get; set; }
+        public bool invitationAccepted { get; set; }
+    }
+
 }

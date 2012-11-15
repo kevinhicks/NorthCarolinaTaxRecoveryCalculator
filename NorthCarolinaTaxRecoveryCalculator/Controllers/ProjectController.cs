@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using NorthCarolinaTaxRecoveryCalculator.Models;
 using System.Web.Security;
 using WebMatrix.WebData;
+using NorthCarolinaTaxRecoveryCalculator.ViewModels.Project;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
@@ -20,7 +21,32 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View(db.Projects.ToList());
+            int userID = WebSecurity.CurrentUserId;
+
+            //We should ONLY show MY Projects & the Projects SHARED with me
+            var ViewModel = new OwnedAndSharedProjectViewModels();
+
+            //My Projects
+            var myProjects = db.Projects
+                .Where(proj => proj.OwnerID == 1)
+                .ToList();
+
+            ViewModel.MyProjects = myProjects;
+
+
+            //Shared Projects
+            var acls = db.UsersAccessProjects
+                .Where(acl => acl.UserID == 1)
+                .Select(acl => acl.ProjectID)
+                .ToList();
+
+            var sharedProjects = db.Projects
+                .Where(proj => acls.Contains(proj.ID))
+                .ToList();
+
+            ViewModel.SharedProjects = sharedProjects;
+
+            return View(ViewModel);
         }
 
         //

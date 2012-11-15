@@ -196,6 +196,14 @@
     <Compile Include="Migrations\201211110211016_Exisiting Records.Designer.cs">
       <DependentUpon>201211110211016_Exisiting Records.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201211141707480_User Access Projects ACL.cs" />
+    <Compile Include="Migrations\201211141707480_User Access Projects ACL.Designer.cs">
+      <DependentUpon>201211141707480_User Access Projects ACL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201211150054414_Add Email To ACL.cs" />
+    <Compile Include="Migrations\201211150054414_Add Email To ACL.Designer.cs">
+      <DependentUpon>201211150054414_Add Email To ACL.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\TaxModels.cs" />
@@ -204,6 +212,7 @@
     <Compile Include="Models\ProjectModels.cs" />
     <Compile Include="Models\RecieptModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ProjectViewModels.cs" />
     <None Include="_AppStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -351,6 +360,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ViewModels\Project\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -378,6 +388,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201211110211016_Exisiting Records.resx">
       <DependentUpon>201211110211016_Exisiting Records.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201211141707480_User Access Projects ACL.resx">
+      <DependentUpon>201211141707480_User Access Projects ACL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201211150054414_Add Email To ACL.resx">
+      <DependentUpon>201211150054414_Add Email To ACL.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

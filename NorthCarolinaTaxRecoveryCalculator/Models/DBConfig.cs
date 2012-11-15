@@ -14,5 +14,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         public DbSet<RecieptEntity> Reciepts { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<UsersAccessProjects> UsersAccessProjects { get; set; }
     }
 }

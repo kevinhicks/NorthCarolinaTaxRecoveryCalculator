@@ -62,38 +62,16 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             Assert.AreEqual(7.25, TaxContext.TotalTaxRate(County.MECKLENBURG, new DateTime(2012, 4, 1)));
         }
 
-        [TestMethod]
+        [TestMethod, ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestCountyTaxRateWithOutOfRangeCounty()
         {
-            try
-            {
-                Assert.AreEqual(2.0, TaxContext.CountyTaxRate(County.ASHE + 1209012, new DateTime(2012, 10, 28)));
-                Assert.Fail();
-            }
-            catch (ArgumentOutOfRangeException e)
-            {
-            }
-            catch (Exception e)
-            {
-                Assert.Fail();
-            }
+            Assert.AreEqual(2.0, TaxContext.CountyTaxRate(County.ASHE + 1209012, new DateTime(2012, 10, 28)));
         }
 
-        [TestMethod]
+        [TestMethod, ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestCountyTaxRateWithOutOfRangeDate()
         {
-            try
-            {
-                Assert.AreEqual(2.0, TaxContext.CountyTaxRate(County.ASHE, new DateTime(2000, 10, 28)));
-                Assert.Fail();
-            }
-            catch (ArgumentOutOfRangeException e)
-            {
-            }
-            catch (Exception e)
-            {
-                Assert.Fail();
-            }
+            Assert.AreEqual(2.0, TaxContext.CountyTaxRate(County.ASHE, new DateTime(2000, 10, 28)));
         }
     }
 }

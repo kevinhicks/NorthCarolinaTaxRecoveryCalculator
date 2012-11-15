@@ -1,36 +1,91 @@
-﻿@model IEnumerable<NorthCarolinaTaxRecoveryCalculator.Models.Project>
-
+﻿@model NorthCarolinaTaxRecoveryCalculator.ViewModels.Project.OwnedAndSharedProjectViewModels
 @{
     ViewBag.Title = "Projects";
 }
-
+@section style {
+    <style>
+        /** Project->Index */
+        div#projects-list-area
+        {
+            width: 500px;
+            margin: auto;
+            margin-top: 25px;
+            background-color: #759CD6;
+            padding: 15px;
+            border-radius: 15px;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+        }
+        
+        form#newprojectform
+        {
+            margin-bottom: 20px;
+        }
+    </style>
+}
 <div id="projects-list-area">
     <table>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
+            <th colspan="3">
+                My Projects
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateStarted)
-            </th>
-            <th></th>
         </tr>
-
-    @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.ActionLink(item.Name, "Details", "Project", new { ProjectID = item.ID }, null)                
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateStarted)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { ProjectID = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { ProjectID = item.ID })
-            </td>
+            <th>
+                Project Name
+            </th>
+            <th>
+                Started On
+            </th>
+            <th>
+            </th>
         </tr>
-    }
+        @foreach (var item in Model.MyProjects)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Name, "Details", "Project", new { ProjectID = item.ID }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateStarted)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { ProjectID = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { ProjectID = item.ID })
+                </td>
+            </tr>
+        }
+    </table>
 
+    <table>
+        <tr>
+            <th colspan="3">
+                Projects Shared With Me
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Project Name
+            </th>
+            <th>
+                Owner
+            </th>
+        </tr>
+        @foreach (var item in Model.SharedProjects)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Name, "Details", "Project", new { ProjectID = item.ID }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateStarted)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { ProjectID = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { ProjectID = item.ID })
+                </td>
+            </tr>
+        }
     </table>
     @Html.Partial("_CreateProjectPartial", new NorthCarolinaTaxRecoveryCalculator.Models.Project())
 </div>

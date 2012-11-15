@@ -21,24 +21,6 @@ html, body
     overflow: auto;
 }
 
-/** Project->Index */
-div#projects-list-area
-{
-    width: 500px;
-    margin: auto;
-    margin-top: 25px;
-    background-color: #759CD6;
-    padding: 15px;
-    border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-}
-
-form#newprojectform
-{
-    margin-bottom: 20px;
-}
-
 div.inputElement
 {
     float: left;
