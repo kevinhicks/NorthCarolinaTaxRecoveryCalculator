@@ -9,6 +9,7 @@ using System.Web.Routing;
 using System.Data.Entity;
 using NorthCarolinaTaxRecoveryCalculator.Models;
 using NorthCarolinaTaxRecoveryCalculator.Migrations;
+using WebMatrix.WebData;
 
 namespace NorthCarolinaTaxRecoveryCalculator
 {
@@ -20,6 +21,13 @@ namespace NorthCarolinaTaxRecoveryCalculator
         protected void Application_Start()
         {
             ApplicationDBContext db = new ApplicationDBContext();
+
+            //Init Security
+            if (!WebSecurity.Initialized)
+            {
+                WebSecurity.InitializeDatabaseConnection("ApplicationDBContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+
+            }
 
             //Init the datbase
             var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
