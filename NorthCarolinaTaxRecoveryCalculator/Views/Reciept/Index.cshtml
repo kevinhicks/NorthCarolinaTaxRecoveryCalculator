@@ -394,10 +394,8 @@
         function initTable() {
         try {
             $("table").tablesorter({
-                sortList: [[0, 0]]
-                
-                /*, //sort by rif automatically
-                headers: {
+                sortList: [[0, 0]], //sort by rif automatically
+                headers: {          //This is for sorting large accounting-formatted numbers correctly
                     4: {
                         sorter: 'accountingNumbers'
                     },
@@ -407,7 +405,7 @@
                     6: {
                         sorter: 'accountingNumbers'
                     }
-                }*/
+                }
                     
             });
             } catch(err) {}
