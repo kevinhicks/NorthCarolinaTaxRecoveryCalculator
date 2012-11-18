@@ -37,7 +37,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("ApplicationDBContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    if (!WebSecurity.Initialized)
+                    {
+                        WebSecurity.InitializeDatabaseConnection("ApplicationDBContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    }
                 }
                 catch (Exception ex)
                 {
