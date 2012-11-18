@@ -141,6 +141,16 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             return RedirectToAction("Index");
         }
 
+        //
+        // GET: /Project/AcceptInvite/???
+        [Authorize]
+        public ActionResult AcceptInvite(Guid ProjectID)
+        {
+            Project project = db.Projects.Find(ProjectID);
+
+            return View(project);
+        }
+
         [Authorize]
         [ChildActionOnly]
         public ActionResult ProjectTotals(Guid ProjectID)

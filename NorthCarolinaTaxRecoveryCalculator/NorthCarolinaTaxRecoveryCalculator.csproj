@@ -213,6 +213,7 @@
     <Compile Include="Models\RecieptModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ProjectViewModels.cs" />
+    <Content Include="Views\Project\AcceptInvite.cshtml" />
     <None Include="_AppStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
