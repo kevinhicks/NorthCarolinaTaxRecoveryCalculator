@@ -1,5 +1,5 @@
 ﻿@{
-     if (!WebSecurity.Initialized)
+    if (!WebSecurity.Initialized)
     {
         WebSecurity.InitializeDatabaseConnection("ApplicationDBContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
     }
