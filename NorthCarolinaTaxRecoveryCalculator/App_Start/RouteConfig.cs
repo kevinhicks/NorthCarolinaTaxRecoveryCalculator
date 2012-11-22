@@ -56,6 +56,12 @@ namespace NorthCarolinaTaxRecoveryCalculator
             );
 
             routes.MapRoute(
+                name: "TO: Send an invitaion to a project",
+                url: "Project/SendInvitation/{ProjectID}",
+                defaults: new { controller = "Project", action = "SendInvitation", ProjectID = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "TO: Accept an invitaion to a project",
                 url: "Project/AcceptInvite/{ProjectID}",
                 defaults: new { controller = "Project", action = "AcceptInvite", ProjectID = UrlParameter.Optional }

@@ -45,6 +45,9 @@
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.4.5.10\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="SignalR">
       <HintPath>..\packages\SignalR.Server.0.5.3\lib\net40\SignalR.dll</HintPath>
     </Reference>
@@ -208,8 +211,13 @@
     <Compile Include="Migrations\201211221938255_Refer to User from ACL.Designer.cs">
       <DependentUpon>201211221938255_Refer to User from ACL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201211222112454_Remove Forien Key From ACL to User Profile.cs" />
+    <Compile Include="Migrations\201211222112454_Remove Forien Key From ACL to User Profile.Designer.cs">
+      <DependentUpon>201211222112454_Remove Forien Key From ACL to User Profile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Misc\EmailSender.cs" />
     <Compile Include="Models\TaxModels.cs" />
     <Compile Include="Models\CountyModels.cs" />
     <Compile Include="Models\DBConfig.cs" />
@@ -402,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201211221938255_Refer to User from ACL.resx">
       <DependentUpon>201211221938255_Refer to User from ACL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201211222112454_Remove Forien Key From ACL to User Profile.resx">
+      <DependentUpon>201211222112454_Remove Forien Key From ACL to User Profile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -9,6 +9,7 @@ using NorthCarolinaTaxRecoveryCalculator.Models;
 using System.Web.Security;
 using WebMatrix.WebData;
 using NorthCarolinaTaxRecoveryCalculator.ViewModels.Project;
+using NorthCarolinaTaxRecoveryCalculator.Misc;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
@@ -85,7 +86,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
                 return RedirectToAction("Index");
             }
         }
-
+        
         //
         // POST: /Project/Create
         [Authorize]
@@ -157,13 +158,43 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         }
 
         //
-        // GET: /Project/AcceptInvite/???
+        // POST: /Project/SendInvitation
         [Authorize]
-        public ActionResult AcceptInvite(Guid ProjectID)
+        [HttpPost]
+        public ActionResult SendInvitation(FormCollection inputs, Guid ProjectID)
         {
-            Project project = db.Projects.Find(ProjectID);
+            string email = inputs["emailAddress"];
 
-            return View(project);
+            var acl = new UsersAccessProjects();
+            acl.Email = email;
+            acl.invitationAccepted = false;
+            acl.ProjectID = ProjectID;
+            acl.UserID = null;
+            db.UsersAccessProjects.Add(acl);
+            db.SaveChanges();
+
+            string body;
+            body = "You have been invited to a new project.\n";
+            body += "Click the link to accept the invitation.\n";
+            body += "http://northcarolinataxrecoverycalculator.apphb.com /Project/AcceptInvite/" + acl.ID;
+
+            EmailSender.SendEmail(email, "You have been invited to a project", body);
+
+            return RedirectToAction("Details", new { ProjectID = ProjectID });
+        }
+
+        //
+        // GET: /Project/AcceptInvite/{aclID}
+        [Authorize]
+        public ActionResult AcceptInvite(Guid AclID)
+        {
+            UsersAccessProjects acl = db.UsersAccessProjects.Find(AclID);
+            acl.UserID = WebSecurity.CurrentUserId;
+            acl.invitationAccepted = true;
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         [Authorize]

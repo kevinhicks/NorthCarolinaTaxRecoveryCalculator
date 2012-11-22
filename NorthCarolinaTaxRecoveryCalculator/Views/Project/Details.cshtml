@@ -75,6 +75,13 @@
             }
         }
     </ol>
+
+    Add Collaborator
+    @using(Html.BeginForm("SendInvitation", "Project", FormMethod.Post, new { ProjectID = Model.Project.ID }))
+    {
+        <input name="emailAddress" type="email" />
+        <input type="submit" />
+    }
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Project.ID }) |
