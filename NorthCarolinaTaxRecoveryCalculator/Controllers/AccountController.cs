@@ -61,8 +61,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         // GET: /Account/Register
 
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult Register(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -72,7 +73,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(RegisterModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +82,15 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    if (returnUrl != null && returnUrl != "")
+                    {
+                        return RedirectPermanent(returnUrl);
+                    }
+                    else
+                    {
+
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 catch (MembershipCreateUserException e)
                 {

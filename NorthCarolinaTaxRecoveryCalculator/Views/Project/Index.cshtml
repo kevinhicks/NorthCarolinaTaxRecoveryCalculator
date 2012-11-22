@@ -78,11 +78,7 @@
                     @Html.ActionLink(item.Name, "Index", "Reciept", new { ProjectID = item.ID }, null)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateStarted)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { ProjectID = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { ProjectID = item.ID })
+                    @Html.DisplayFor(modelItem => item.Owner.UserName)
                 </td>
             </tr>
         }
