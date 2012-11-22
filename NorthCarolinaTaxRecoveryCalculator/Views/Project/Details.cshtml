@@ -62,10 +62,19 @@
 </fieldset>
 <fieldset>
     <legend>Project Contributors</legend>
-    @foreach (var user in Model.UsersAccessProjects)
-    {
-        @user.User.UserName
-    }
+    <ol id="collaboratorsList">
+        @foreach (var user in Model.UsersAccessProjects)
+        {
+            if (user != null && user.User != null && user.User.UserName != null)
+            {
+                <li>@user.User.UserName</li>
+            }
+            else
+            {
+                <li>@user.Email</li>
+            }
+        }
+    </ol>
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Project.ID }) |

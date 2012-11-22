@@ -73,7 +73,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
                 //Find all the collaborators on this project
                 var collaborators = db.UsersAccessProjects
-                    .Where(acl => ProjectID == _projID)
+                    .Where(acl => acl.ProjectID == _projID)
                     .ToList();
 
                 ViewModel.UsersAccessProjects = collaborators;
