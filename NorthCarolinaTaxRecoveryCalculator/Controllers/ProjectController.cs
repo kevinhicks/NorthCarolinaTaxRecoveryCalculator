@@ -28,7 +28,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
             //My Projects
             var myProjects = db.Projects
-                .Where(proj => proj.OwnerID == 1)
+                .Where(proj => proj.OwnerID == userID)
                 .ToList();
 
             ViewModel.MyProjects = myProjects;
@@ -36,7 +36,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
             //Shared Projects
             var acls = db.UsersAccessProjects
-                .Where(acl => acl.UserID == 1)
+                .Where(acl => acl.UserID == userID)
                 .Select(acl => acl.ProjectID)
                 .ToList();
 
