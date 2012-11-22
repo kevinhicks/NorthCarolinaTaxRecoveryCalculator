@@ -1,4 +1,4 @@
-﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Project
+﻿@model NorthCarolinaTaxRecoveryCalculator.ViewModels.Project.ProjectOverviewAndCollaboratorsViewModels
 @{
     ViewBag.Title = "Details";
 }
@@ -44,27 +44,30 @@
 <h2>Details</h2>
 <fieldset>
     <legend>Project Overview</legend>
-    @Html.ActionLink("Reciepts List", "Index", "Reciept", new { ProjectID = Model.ID }, null) 
+    @Html.ActionLink("Reciepts List", "Index", "Reciept", new { ProjectID = Model.Project.ID }, null) 
     <div class="display-label">
-        @Html.DisplayNameFor(model => model.Name)
+        @Html.DisplayNameFor(model => model.Project.Name)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
+        @Html.DisplayFor(model => model.Project.Name)
     </div>
     <div class="display-label">
-        @Html.DisplayNameFor(model => model.DateStarted)
+        @Html.DisplayNameFor(model => model.Project.DateStarted)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.DateStarted)
+        @Html.DisplayFor(model => model.Project.DateStarted)
     </div>
     
-    @{Html.RenderAction("ProjectTotals", new { ProjectID = Model.ID });}
+    @{Html.RenderAction("ProjectTotals", new { ProjectID = Model.Project.ID });}
 </fieldset>
 <fieldset>
     <legend>Project Contributors</legend>
-    
+    @foreach (var user in Model.UsersAccessProjects)
+    {
+        @user.User.UserName
+    }
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Project.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

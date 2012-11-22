@@ -107,6 +107,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         public int ID { get; set; }
         public Guid ProjectID { get; set; }
         public int UserID { get; set; }
+        public virtual UserProfile User { get; set;}
         public string Email { get; set; }
         public bool invitationAccepted { get; set; }
     }

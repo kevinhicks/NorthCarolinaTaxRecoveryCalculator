@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201211150054414_Add Email To ACL.Designer.cs">
       <DependentUpon>201211150054414_Add Email To ACL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201211221938255_Refer to User from ACL.cs" />
+    <Compile Include="Migrations\201211221938255_Refer to User from ACL.Designer.cs">
+      <DependentUpon>201211221938255_Refer to User from ACL.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\TaxModels.cs" />
@@ -395,6 +399,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201211150054414_Add Email To ACL.resx">
       <DependentUpon>201211150054414_Add Email To ACL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201211221938255_Refer to User from ACL.resx">
+      <DependentUpon>201211221938255_Refer to User from ACL.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

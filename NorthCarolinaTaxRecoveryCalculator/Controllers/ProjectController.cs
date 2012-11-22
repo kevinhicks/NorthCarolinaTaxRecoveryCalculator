@@ -46,6 +46,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
             ViewModel.SharedProjects = sharedProjects;
 
+
             return View(ViewModel);
         }
 
@@ -54,16 +55,30 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [Authorize]
         public ActionResult Details(Guid ProjectID)
         {
-            Project project = db.Projects.Find(ProjectID);
+            var ViewModel = new ProjectOverviewAndCollaboratorsViewModels();
+            
+            ViewModel.Project = db.Projects.Find(ProjectID);
 
             //Only the Project owner whould see the overview page
-            if (project.BelongsTo(WebSecurity.CurrentUserId))
+            if (ViewModel.Project.BelongsTo(WebSecurity.CurrentUserId))
             {
-                if (project == null)
+                if (ViewModel.Project == null)
                 {
                     return HttpNotFound();
                 }
-                return View(project);
+
+
+                //Used to save confusion in the following query
+                Guid _projID = ProjectID;
+
+                //Find all the collaborators on this project
+                var collaborators = db.UsersAccessProjects
+                    .Where(acl => ProjectID == _projID)
+                    .ToList();
+
+                ViewModel.UsersAccessProjects = collaborators;
+
+                return View(ViewModel);
             }
             else
             {
