@@ -176,7 +176,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             string body;
             body = "You have been invited to a new project.\n";
             body += "Click the link to accept the invitation.\n";
-            body += "http://northcarolinataxrecoverycalculator.apphb.com /Project/AcceptInvite/" + acl.ID;
+            body += "http://northcarolinataxrecoverycalculator.apphb.com/Project/AcceptInvite/" + acl.ID;
 
             EmailSender.SendEmail(email, "You have been invited to a project", body);
 
