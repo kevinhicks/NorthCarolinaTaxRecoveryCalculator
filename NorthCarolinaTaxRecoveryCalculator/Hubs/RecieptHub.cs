@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SignalR.Hubs;
 using NorthCarolinaTaxRecoveryCalculator.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Threading.Tasks;
+using Microsoft.AspNet.SignalR.Hubs;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Hubs
 {
 
-    [HubName("RecieptHub")]
+    [HubName("recieptHub")]
     public class RecieptHub : Hub
     {
 
@@ -43,10 +44,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
                 db.SaveChanges();
 
                 //ALL clients should get the new record
-                Clients.RecieveReciept(reciept);
+                Clients.Group(reciept.ProjectID.ToString()).RecieveReciept(reciept);
 
                 //Let the client who just submitted the information know that it was succesful
-                Caller.OnNewRecieptSaved();
+                Clients.Caller.OnNewRecieptSaved();
             }
             //Otherwise, report all validation errors
             else
@@ -60,7 +61,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
                 }
 
                 //Only the offending client shoud get the validation errors
-                Caller.OnInvalidReciept(validationErrors);
+                Clients.Caller.OnInvalidReciept(validationErrors);
             }
         }
 
@@ -101,17 +102,17 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
                 db.SaveChanges();
 
                 //ALL clients should get the new updated record
-                Clients.OnRecieptDeleted(reciept.ID);
-                Clients.RecieveReciept(reciept);
+                Clients.Group(reciept.ProjectID.ToString()).OnRecieptDeleted(reciept.ID);
+                Clients.Group(reciept.ProjectID.ToString()).RecieveReciept(reciept);
 
                 //Let the client who just submitted the information know that it was succesful
-                Caller.OnNewRecieptSaved();
+                Clients.Caller.OnNewRecieptSaved();
             }
             //Otherwise, report all validation errors
             else
             {
                 //Only the offending client shoud get the validation errors
-                Caller.OnInvalidReciept(validationErrors);
+                Clients.Caller.OnInvalidReciept(validationErrors);
             }
         }
 
@@ -127,9 +128,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
             db.Reciepts.Remove(reciept);
             db.SaveChanges();
 
-            Clients.OnRecieptDeleted(RecieptID);
+            Clients.Group(reciept.ProjectID.ToString()).OnRecieptDeleted(RecieptID);
         }
 
-
+        public void Join(string ProjectID)
+        {
+            Groups.Add(Context.ConnectionId, ProjectID.ToString());
+        }
     }
 }
