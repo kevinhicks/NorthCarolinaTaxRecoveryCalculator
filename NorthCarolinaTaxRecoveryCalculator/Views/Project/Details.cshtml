@@ -62,22 +62,24 @@
 </fieldset>
 <fieldset>
     <legend>Project Contributors</legend>
-    <ol id="collaboratorsList">
-        @foreach (var user in Model.UsersAccessProjects)
-        {
-            if (user != null && user.User != null && user.User.UserName != null)
+    @foreach (var acl in Model.UsersAccessProjects)
+    {
+        <div class="collabEntry">
+            <span class="collabAction">@Html.ActionLink("Resend", "ResendInvitation", new { AclID = acl.ID })</span>
+            <span class="collabAction">@Html.ActionLink("Revoke", "RevokeInvitation", new { AclID = acl.ID })</span>
+            @if (acl != null && acl.User != null && acl.User.UserName != null)
             {
-                <li>@user.User.UserName</li>
+                <span class="collabAction">@acl.User.UserName</span>
             }
             else
             {
-                <li>@user.Email</li>
+                <span class="collabAction">@acl.Email</span>
             }
-        }
-    </ol>
+        </div>
+    }
 
     Add Collaborator
-    @using(Html.BeginForm("SendInvitation", "Project", FormMethod.Post, new { ProjectID = Model.Project.ID }))
+    @using (Html.BeginForm("SendInvitation", "Project", FormMethod.Post, new { ProjectID = Model.Project.ID }))
     {
         <input name="emailAddress" type="email" />
         <input type="submit" />
