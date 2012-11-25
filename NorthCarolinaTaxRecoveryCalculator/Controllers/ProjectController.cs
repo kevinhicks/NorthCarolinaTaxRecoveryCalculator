@@ -165,20 +165,25 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         {
             string email = inputs["emailAddress"];
 
-            var acl = new UsersAccessProjects();
-            acl.Email = email;
-            acl.invitationAccepted = false;
-            acl.ProjectID = ProjectID;
-            acl.UserID = null;
-            db.UsersAccessProjects.Add(acl);
-            db.SaveChanges();
+            //as long as there isnt already an invitaion sent
+            if (db.UsersAccessProjects.Where(acl => acl.Email == email).Count() == 0)
+            {
 
-            string body;
-            body = "You have been invited to a new project.\n";
-            body += "Click the link to accept the invitation.\n";
-            body += "http://northcarolinataxrecoverycalculator.apphb.com/Project/AcceptInvite/" + acl.ID;
+                var acl = new UsersAccessProjects();
+                acl.Email = email;
+                acl.invitationAccepted = false;
+                acl.ProjectID = ProjectID;
+                acl.UserID = null;
+                db.UsersAccessProjects.Add(acl);
+                db.SaveChanges();
 
-            EmailSender.SendEmail(email, "You have been invited to a project", body);
+                string body;
+                body = "You have been invited to a new project.\n";
+                body += "Click the link to accept the invitation.\n";
+                body += "http://northcarolinataxrecoverycalculator.apphb.com/Project/AcceptInvite/" + acl.ID;
+
+                EmailSender.SendEmail(email, "You have been invited to a project", body);
+            }
 
             return RedirectToAction("Details", new { ProjectID = ProjectID });
         }
