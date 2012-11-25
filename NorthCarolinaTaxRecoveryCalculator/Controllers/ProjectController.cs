@@ -186,7 +186,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         //
         // GET: /Project/AcceptInvite/{aclID}
         [Authorize]
-        public ActionResult AcceptInvite(Guid AclID)
+        public ActionResult AcceptInvite(int AclID)
         {
             UsersAccessProjects acl = db.UsersAccessProjects.Find(AclID);
             acl.UserID = WebSecurity.CurrentUserId;
