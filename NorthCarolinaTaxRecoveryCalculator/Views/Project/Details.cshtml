@@ -67,6 +67,14 @@
         <div class="collabEntry">
             <span class="collabAction">@Html.ActionLink("Resend", "ResendInvitation", new { AclID = acl.ID })</span>
             <span class="collabAction">@Html.ActionLink("Revoke", "RevokeInvitation", new { AclID = acl.ID })</span>
+             @if (acl.invitationAccepted)
+            {
+                <span class="collabAction">Accepted</span>
+            }
+            else
+            {
+                <span class="collabAction">Not Accepted</span>
+            }
             @if (acl != null && acl.User != null && acl.User.UserName != null)
             {
                 <span class="collabAction">@acl.User.UserName</span>
