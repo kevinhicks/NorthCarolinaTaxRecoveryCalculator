@@ -235,10 +235,15 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         public ActionResult AcceptInvite(int AclID)
         {
             UsersAccessProjects acl = db.UsersAccessProjects.Find(AclID);
-            acl.UserID = WebSecurity.CurrentUserId;
-            acl.invitationAccepted = true;
 
-            db.SaveChanges();
+            //is the inviation still valid? maeby it was revoked?
+            if (acl != null)
+            {
+                acl.UserID = WebSecurity.CurrentUserId;
+                acl.invitationAccepted = true;
+
+                db.SaveChanges();
+            }
 
             return RedirectToAction("Index");
         }
