@@ -78,14 +78,22 @@
         </fieldset>
     }
 </div>
-<div id="recieptRecords">
-    @{Html.RenderAction("List", new { ProjectID = Model.Project.ID });}
-</div>
 <div id="notePopup">
 </div>
 @using (Html.BeginForm("Delete", "Reciept", FormMethod.Post, new { id = "hiddenDeleteForm" }))
 {
     <input type="hidden" id="RecieptID" /> 
+}
+<div id="recieptRecords">
+    @{Html.RenderAction("List", new { ProjectID = Model.Project.ID });}
+</div>
+@section style {
+<style type="text/css">    
+    table.tablesorter tbody tr td
+    {
+        white-space: nowrap;
+    }
+</style>
 }
 @section scripts {
     <script src="~/Scripts/jquery.signalR-1.0.0-alpha2.min.js" type="text/javascript"></script>
@@ -118,7 +126,7 @@
             initEditingMode();
             initEditButton();
             initCancelButton();
-            initDeleteButton();
+            //initDeleteButton();
             initDateFormatting();
             initStoreNameAutoComplete();
 
