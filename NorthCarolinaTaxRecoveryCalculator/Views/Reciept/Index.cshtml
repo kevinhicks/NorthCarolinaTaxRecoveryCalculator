@@ -26,7 +26,9 @@
                 @Html.LabelFor(model => model.StoreName)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.StoreName, new { autocomplete = "off" })
+                <span class=".autocomplete-area">
+                    @Html.EditorFor(model => model.StoreName, new { @class = "ui-autocomplete-input", autocomplete = "off" })
+                </span>
                 @Html.ValidationMessageFor(model => model.StoreName)
             </div>
             <div class="editor-label">
@@ -98,6 +100,22 @@
     {
         color: Red;
     }
+    
+    .ui-autocomplete, .autocomplete-area {
+	    background-color: white;
+	    border-color: black;
+	    border-style: solid;
+	    width: 400px;
+	    cursor: pointer;
+	    list-style-type: none;
+        border-style: groove;
+    }
+    
+    
+    .ui-menu-item:hover {
+	    text-decoration: underline;
+    }
+    
 </style>
 }
 @section scripts {
@@ -114,7 +132,12 @@
         
         //Return an array containing all the county names
         function getCountyNames() {
-            var names = @Html.Raw(ViewBag.Counties);
+            return @Html.Raw(ViewBag.Counties);
+        }
+
+        //Return an array containing all the store names
+        function getStoreNames() {
+            var names = @Html.Raw(ViewBag.Stores);
             return names;
         }
 
@@ -159,6 +182,8 @@
         //Setup all the SignalR goodness, and wire up all the events
         function initSignalR() {
          
+
+            
             //Enable SignalR Logging
             $.connection.hub.logging = true;
 
@@ -220,17 +245,21 @@
                 }
                 reloadPage();
             });
-
+            //connection.start({ transport: ['longPolling','webSockets'] });
             //Start the signalR conversation!
-            $.connection.hub.start(function() {
-                //Join this project specifc group
-                hub.server.join("@Model.Project.ID");
-            });
+            $.connection.hub.start()//{ waitForPageLoad: true, transport: ['longPolling','webSockets'] })
+                    .done(function() {
+                        //Join this project specifc group
+                        hub.server.join("@Model.Project.ID");
+                    })
+                    .fail(function() {
+                        alert("SingalR Error");
+                    });
         }
 
         //refresh the page
         function reloadPage() {
-            location.reload();
+            //location.reload();
         }
 
         //Return an object containtn all the form values that may be sumitted to the server
@@ -596,15 +625,11 @@
             });
         }
 
+        //Load the list of store names into the auto-complete list
         function initStoreNameAutoComplete() {
-
-            //Load the store names from the database
-            //<?php $reciepts = new RecieptsModal(); ?>
-            //var storeNames = <?php echo json_encode($reciepts->getStoreNames()); ?>;        
-            //Add auto complete to the store names field
-            //$("#storeField").autocomplete({
-            //    source: storeNames
-            //});
+            $("input#StoreName").autocomplete({
+                source: getStoreNames()
+            });
         }
 
         //Setup the Notes popup

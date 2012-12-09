@@ -125,9 +125,13 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
         {
             RecieptEntity reciept = db.Reciepts.Find(RecieptID);
 
-            db.Reciepts.Remove(reciept);
-            db.SaveChanges();
+            if (reciept != null)
+            {
+                db.Reciepts.Remove(reciept);
+                db.SaveChanges();
+            }
 
+            //Obviously the client THINKS there is a recipet to delete, let them THINK that we NOW deleted it
             Clients.Group(reciept.ProjectID.ToString()).OnRecieptDeleted(RecieptID);
         }
 

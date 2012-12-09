@@ -31,7 +31,13 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
                 return View("Error");
             }
             
+            //All the counties
             ViewBag.Counties = County.AsJsonArray();
+
+            //All the stores in this project
+            var stores = db.Reciepts.Where(rec => rec.ProjectID == ProjectID).Select(rec => rec.StoreName).Distinct().ToList();
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            ViewBag.Stores = jss.Serialize(stores);
 
             return View(modal);
         }
