@@ -44,7 +44,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
                 db.SaveChanges();
 
                 //ALL clients should get the new record
-                Clients.Group("foo").RecieveReciept(reciept);
+                Clients.Group(reciept.ProjectID.ToString()).RecieveReciept(reciept);
 
                 //Let the client who just submitted the information know that it was succesful
                 Clients.Caller.OnNewRecieptSaved();
@@ -102,8 +102,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
                 db.SaveChanges();
 
                 //ALL clients should get the new updated record
-                Clients.Group("foo").OnRecieptDeleted(reciept.ID);
-                Clients.Group("foo").RecieveReciept(reciept);
+                Clients.Group(reciept.ProjectID.ToString()).OnRecieptDeleted(reciept.ID);
+                Clients.Group(reciept.ProjectID.ToString()).RecieveReciept(reciept);
 
                 //Let the client who just submitted the information know that it was succesful
                 Clients.Caller.OnNewRecieptSaved();
@@ -128,12 +128,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
             db.Reciepts.Remove(reciept);
             db.SaveChanges();
 
-            Clients.Group("foo").OnRecieptDeleted(RecieptID);
+            Clients.Group(reciept.ProjectID.ToString()).OnRecieptDeleted(RecieptID);
         }
 
         public void Join(string ProjectID)
         {
-            Groups.Add(Context.ConnectionId, "foo");
+            Groups.Add(Context.ConnectionId, ProjectID);
         }
     }
 }
