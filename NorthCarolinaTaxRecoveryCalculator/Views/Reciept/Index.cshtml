@@ -247,7 +247,7 @@
             });
             //connection.start({ transport: ['longPolling','webSockets'] });
             //Start the signalR conversation!
-            $.connection.hub.start()//{ waitForPageLoad: true, transport: ['longPolling','webSockets'] })
+            $.connection.hub.start()
                     .done(function() {
                         //Join this project specifc group
                         hub.server.join("@Model.Project.ID");
