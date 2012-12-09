@@ -195,11 +195,13 @@
             //Send all the reciept information to the server on CREATE
             $("#createBtn").click(function () {
                 hub.server.addReciept(getFormValues());
+                reloadPage();
             });
 
             //Send all the reciept information to the server on UPDATE
             $("#updateBtn").click(function () {
                 hub.server.updateReciept(getFormValues());
+                reloadPage();
             });
 
             //Send all the reciept information to the server on UPDATE
@@ -211,6 +213,7 @@
                 if(confirm("Are you sure you want to delete this reciept? This action CANNOT be undone!")) {                
                     hub.server.deleteReciept(id);
                 }
+                reloadPage();
             });
 
             //Start the signalR conversation!
@@ -218,6 +221,11 @@
                 //Join this project specifc group
                 hub.server.join("@Model.Project.ID");
             });
+        }
+
+        //refresh the page
+        function reloadPage() {
+            location.reload();
         }
 
         //Return an object containtn all the form values that may be sumitted to the server
