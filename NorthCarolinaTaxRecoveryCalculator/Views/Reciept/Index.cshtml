@@ -170,34 +170,7 @@
                 });
 
                 //clear all the fields, and get ready to add another reciept
-            }
-            hub.client.onNewRecieptSaved = function () {                
-                //clear previous validation errors
-                $("span.field-validation-valid").each(function () {
-                    $(this).empty();
-                });
-
-                //clear all the fields, and get ready to add another reciept
-
-            }
-            hub.client.onNewRecieptSaved = function () {                
-                //clear previous validation errors
-                $("span.field-validation-valid").each(function () {
-                    $(this).empty();
-                });
-
-                //clear all the fields, and get ready to add another reciept
-
-            }
-            hub.client.onNewRecieptSaved = function () {                
-                //clear previous validation errors
-                $("span.field-validation-valid").each(function () {
-                    $(this).empty();
-                });
-
-                //clear all the fields, and get ready to add another reciept
-
-            }
+            }           
             //Whenever we accedintally submit an invalid Recipet
             hub.client.onInvalidReciept = function (validationErrors) {
                 //clear previous validation errors
@@ -306,7 +279,7 @@
             refreshTotals();
 
             //Allow newly created Edit & Delete buttons to create there events
-            initDeleteButton();
+            //initDeleteButton();
             initEditButton();
             $("input#RIF").keyup();
         }

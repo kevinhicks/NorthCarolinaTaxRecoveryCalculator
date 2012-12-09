@@ -133,7 +133,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
 
         public void Join(string ProjectID)
         {
-            Groups.Add(Context.ConnectionId, ProjectID.ToString());
+            Groups.Add(Context.ConnectionId, ProjectID);
         }
     }
 }
