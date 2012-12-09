@@ -46,7 +46,7 @@ namespace NorthCarolinaTaxRecoveryCalculator
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
 
-            GlobalHost.Configuration.KeepAlive = TimeSpan.FromSeconds(15);
+            Microsoft.AspNet.SignalR.GlobalHost.Configuration.KeepAlive = TimeSpan.FromSeconds(15);
         }
 
         void Seed()
