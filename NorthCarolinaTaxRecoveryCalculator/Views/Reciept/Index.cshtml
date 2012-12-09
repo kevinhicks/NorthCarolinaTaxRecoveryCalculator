@@ -93,6 +93,11 @@
     {
         white-space: nowrap;
     }
+    
+    table.tablesorter tbody tr td.negitiveNumber
+    {
+        color: Red;
+    }
 </style>
 }
 @section scripts {
@@ -340,7 +345,8 @@
             for(var column = 4; column < 7; column++) {
                 var total = 0;
                 $("table.tablesorter tr").each(function() {
-                    var txt = $(this).find("td:eq(" + column + ")").text();
+                    var cell = $(this).find("td:eq(" + column + ")");
+                    var txt = $(cell).text();
                     txt = $.trim(txt);                   
 
                     //Is it negative. e.g. (10) == -10
@@ -354,6 +360,12 @@
 
                     total += Number(txt);
                     
+                    //highlight negitive numbers in red
+                    if(isNegitive) {
+                        $(cell).addClass("negitiveNumber");
+                    } else {
+
+                    }
                 });
                 
                 $("table.tablesorter tfoot tr").find("th:eq(" + column + ")").text(formatMoney(total));
