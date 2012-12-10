@@ -44,10 +44,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
                 db.SaveChanges();
 
                 //ALL clients should get the new record
-                Clients.Group(reciept.ProjectID.ToString()).RecieveReciept(reciept);
+                Clients.Group(reciept.ProjectID.ToString()).recieveReciept(reciept);
 
                 //Let the client who just submitted the information know that it was succesful
-                Clients.Caller.OnNewRecieptSaved();
+                Clients.Caller.onNewRecieptSaved();
             }
             //Otherwise, report all validation errors
             else
@@ -61,7 +61,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
                 }
 
                 //Only the offending client shoud get the validation errors
-                Clients.Caller.OnInvalidReciept(validationErrors);
+                Clients.Caller.onInvalidReciept(validationErrors);
             }
         }
 
@@ -102,17 +102,17 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
                 db.SaveChanges();
 
                 //ALL clients should get the new updated record
-                Clients.Group(reciept.ProjectID.ToString()).OnRecieptDeleted(reciept.ID);
-                Clients.Group(reciept.ProjectID.ToString()).RecieveReciept(reciept);
+                Clients.Group(reciept.ProjectID.ToString()).onRecieptDeleted(reciept.ID);
+                Clients.Group(reciept.ProjectID.ToString()).recieveReciept(reciept);
 
                 //Let the client who just submitted the information know that it was succesful
-                Clients.Caller.OnNewRecieptSaved();
+                Clients.Caller.onNewRecieptSaved();
             }
             //Otherwise, report all validation errors
             else
             {
                 //Only the offending client shoud get the validation errors
-                Clients.Caller.OnInvalidReciept(validationErrors);
+                Clients.Caller.onInvalidReciept(validationErrors);
             }
         }
 
@@ -132,7 +132,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
             }
 
             //Obviously the client THINKS there is a recipet to delete, let them THINK that we NOW deleted it
-            Clients.Group(reciept.ProjectID.ToString()).OnRecieptDeleted(RecieptID);
+            Clients.Group(reciept.ProjectID.ToString()).onRecieptDeleted(RecieptID);
         }
 
         public void Join(string ProjectID)
