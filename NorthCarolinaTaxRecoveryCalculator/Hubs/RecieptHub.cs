@@ -44,7 +44,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
                 db.SaveChanges();
 
                 //ALL clients should get the new record
-                Clients.Group(reciept.ProjectID.ToString()).recieveReciept(reciept);
+                //Clients.Group(reciept.ProjectID.ToString()).recieveReciept(reciept);
+                Clients.All.recieveReciept(reciept);
 
                 //Let the client who just submitted the information know that it was succesful
                 Clients.Caller.onNewRecieptSaved();
@@ -102,8 +103,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
                 db.SaveChanges();
 
                 //ALL clients should get the new updated record
-                Clients.Group(reciept.ProjectID.ToString()).onRecieptDeleted(reciept.ID);
-                Clients.Group(reciept.ProjectID.ToString()).recieveReciept(reciept);
+                //Clients.Group(reciept.ProjectID.ToString()).onRecieptDeleted(reciept.ID);
+                //Clients.Group(reciept.ProjectID.ToString()).recieveReciept(reciept);
+                Clients.All.onRecieptDeleted(reciept.ID);
+                Clients.All.recieveReciept(reciept);
 
                 //Let the client who just submitted the information know that it was succesful
                 Clients.Caller.onNewRecieptSaved();
@@ -132,7 +135,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
             }
 
             //Obviously the client THINKS there is a recipet to delete, let them THINK that we NOW deleted it
-            Clients.Group(reciept.ProjectID.ToString()).onRecieptDeleted(RecieptID);
+            //Clients.Group(reciept.ProjectID.ToString()).onRecieptDeleted(RecieptID);
+            Clients.All.onRecieptDeleted(RecieptID);
         }
 
         public void Join(string ProjectID)
