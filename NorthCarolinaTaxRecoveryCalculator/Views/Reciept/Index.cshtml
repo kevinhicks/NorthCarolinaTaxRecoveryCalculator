@@ -188,9 +188,10 @@
             $.connection.hub.logging = true;
 
             //Init Functions
-            var hub = $.connection.recieptHub;            
-            hub.client.recieveReciept = addRowToTable;
-            hub.client.onRecieptDeleted = deleteRecieptFromTable;
+            var hub = $.connection.recieptHub;  
+            hub.client.userJoined = function(v1, v2) {
+                alert(v1 + ", " + v2);
+            }          
             hub.client.recieveReciept = addRowToTable;
             hub.client.onRecieptDeleted = deleteRecieptFromTable;
             hub.client.onNewRecieptSaved = function () {                

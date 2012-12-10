@@ -138,6 +138,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Hubs
         public void Join(string ProjectID)
         {
             Groups.Add(Context.ConnectionId, ProjectID);
+            //Let EVERYONE know that someone elsed joined
+            Clients.All.userJoined(Context.ConnectionId, ProjectID);
         }
     }
 }
