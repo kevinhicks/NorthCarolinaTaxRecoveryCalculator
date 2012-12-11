@@ -252,13 +252,17 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [ChildActionOnly]
         public ActionResult ProjectTotals(Guid ProjectID)
         {
+            //Find all the reciepts for this project
             var reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID).ToList();
             
+            //Load all related infomation to this project
             var project = db.Projects.Find(ProjectID);
             ViewBag.Project = project;
 
+            //used to hold all the tax periods
             ViewBag.TaxPeriods = new IEnumerable<RecieptDTO>[TaxContext.TaxPeriods.Count()];
 
+            //save each reciept for each tax period 
             for (int taxPeriod = 0; taxPeriod < TaxContext.TaxPeriods.Count(); taxPeriod++)
             {
                 ViewBag.TaxPeriods[taxPeriod] = CalcProjectTotalsByTaxPeriodForAllCounties(project, taxPeriod);
@@ -267,6 +271,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             return PartialView("_ProjectTotals", reciepts);
         }
 
+        /// <summary>
+        /// Calculate the taxes for All reciepts => in a project => in a single tax period
+        /// </summary>
+        /// <param name="project"></param>
+        /// <param name="taxPeriod"></param>
+        /// <returns></returns>
         private IEnumerable<RecieptDTO> CalcProjectTotalsByTaxPeriodForAllCounties(Project project, int taxPeriod)
         {
             //Invalid Tax Period?
@@ -275,15 +285,15 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
                 throw new ArgumentOutOfRangeException("taxPeriod");
             }
 
-            //We want all the recipets AFTER the Start Date, And BEFORE the END DATE (or today)
+            //We want all the recipets AFTER the Start Date, And BEFORE the END DATE (or END-Of-TIME)
             DateTime start;
             DateTime end;
 
             start = TaxContext.TaxPeriods[taxPeriod];
-            //If the taxperiod is the first one, then we want to calc all taex from the start untill today
+            //If the taxperiod is the first one, then we want to calc all taex from the start untill the end of time
             if (taxPeriod == 0)
             {
-                end = DateTime.Now;
+                end = DateTime.MaxValue;
             }
             //Otherwise, get all the taxes untill the start of the next tax period
             else

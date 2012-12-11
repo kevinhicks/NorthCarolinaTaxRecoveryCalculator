@@ -57,8 +57,9 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Project.DateStarted)
     </div>
-    
-    @{Html.RenderAction("ProjectTotals", new { ProjectID = Model.Project.ID });}
+    <div>
+        @{Html.RenderAction("ProjectTotals", new { ProjectID = Model.Project.ID });}
+    </div>
 </fieldset>
 <fieldset>
     <legend>Project Contributors</legend>
