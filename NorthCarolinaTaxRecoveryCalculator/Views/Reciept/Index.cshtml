@@ -1,7 +1,7 @@
 ﻿@model NorthCarolinaTaxRecoveryCalculator.Models.RecieptEntity
 <div id="fixedFormDiv">
     @Html.ValidationSummary(true)
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("AddUpdate", "Reciept", FormMethod.Post ))
     {
         @Html.HiddenFor(model => model.Project.ID)
         @Html.HiddenFor(model => model.Project.Name)
@@ -74,8 +74,7 @@
                 @Html.ValidationMessageFor(model => model.OnBillDetail)
             </div>
             <p>
-                <input type="submit" value="Create" id="createBtn" />
-                <input type="submit" value="Update" id="updateBtn" />
+                <input type="submit" value="Add/Update" id="addUpdateBtn" />
             </p>
         </fieldset>
     }
@@ -148,13 +147,13 @@
             initTable();
 
             initNotesPopup();
-            initSignalR();
-            initForm();
+            //initSignalR();
+            //initForm();
 
             initEditingMode();
             initEditButton();
             initCancelButton();
-            //initDeleteButton();
+            initDeleteButton();
             initDateFormatting();
             initStoreNameAutoComplete();
 
@@ -280,10 +279,17 @@
             return v;
         }
 
-        //make sure the form NEVER actually submits
+        //make sure the form ONLY submits if there is an RIF entered, and then append the rif to the end of the form action
         function initForm() {
             $("form").submit(function (e) {
-                return false;
+               if($("input#RIF").val().trim() != "") {
+                   var url = $("form").attr("action");
+                   var rif = $("input#RIF").val();
+                   $("form").attr("action", url + "/" + rif);
+                   return true;
+                } else {
+                    return false;
+                }
             });
         }
 
@@ -599,7 +605,23 @@
                 //$("#RIF").select();
             });
         }
-               
+        
+        function initDeleteButton() {
+            //When we click on an edit icon, fill the form with the values from that row
+            $(".deleteIcon").click(function () {  
+                
+                //Find the id parent tr
+                var id = $(this).parent().parent().attr("data-id");
+                
+                $("input#RecieptID").val(id);
+                var url = $("#hiddenDeleteForm").attr("action");
+                
+                $("form").attr("action", url + "/" + id);
+
+                $("#hiddenDeleteForm").submit();
+            });
+        }
+
         function initCancelButton() {
             //When we click the cancel button, we want to clear all previously enter field data
             $("#Cancel").click(function () {

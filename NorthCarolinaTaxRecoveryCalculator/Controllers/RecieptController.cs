@@ -46,7 +46,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [ChildActionOnly]
         public ActionResult List(Guid ProjectID)
         {
-            var reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID);
+            var reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID).OrderBy(rec => rec.RIF);
             return PartialView("_ListReciepts", reciepts);
         }
 
@@ -65,11 +65,11 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         }
 
         //
-        // POST: /Reciept/Create
+        // POST: /Reciept/AddUpdate
 
         [Authorize]
         [HttpPost]
-        public ActionResult Create(int ProjectID, RecieptEntity reciept)
+        public ActionResult AddUpdate(RecieptEntity reciept)
         {
             
             if (ModelState.IsValid)
@@ -77,7 +77,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
                 //Is it already in the database?
                 var queryForOriginal = db.Reciepts.Where(rec =>
                     rec.RIF == reciept.RIF &&
-                    rec.Project.ID == reciept.Project.ID);
+                    rec.Project.ID == reciept.ProjectID);
 
                 //Then remove it
                 if (queryForOriginal.Count() > 0)
@@ -89,11 +89,20 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
                 }
 
                 //replace  it with the new values
-                reciept.Project = db.Projects.Find(ProjectID);
+                reciept.Project = db.Projects.Find(reciept.ProjectID);
                 db.Reciepts.Add(reciept);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            //General information used on this page:
+           //All the counties
+            ViewBag.Counties = County.AsJsonArray();
+
+            //All the stores in this project
+            var stores = db.Reciepts.Where(rec => rec.ProjectID == reciept.ProjectID).Select(rec => rec.StoreName).Distinct().ToList();
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            ViewBag.Stores = jss.Serialize(stores);
 
             return View("Index", reciept);
         }
