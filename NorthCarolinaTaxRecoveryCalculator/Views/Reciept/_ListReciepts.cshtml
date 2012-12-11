@@ -67,7 +67,7 @@
                     </td>
                     <td>
                         <span class="hidden">@item.OnBillDetail</span>
-                        @Html.DisplayFor(modelItem => item.OnBillDetail)
+                        @Html.CheckBoxFor(modelItem => item.OnBillDetail, new { @class = "onBillDetailChkBox", disabled = "disabled" })
                     </td>
                     <td>
                         <a href="#" class="editIcon">Edit</a> 

@@ -421,6 +421,19 @@
             });                
             $("table.tablesorter tfoot tr").find("th:eq(7)").text(total);
 
+            //Number of bills cleared
+            var totalBills = 0;
+            $("input.onBillDetailChkBox").each(function() {
+                totalBills++;                   
+            });  
+            var totalCleared = 0;
+            $("input.onBillDetailChkBox:checked").each(function() {
+                totalCleared++;                   
+            });  
+            var percentage = Math.round( (totalCleared / totalBills) * 100);
+            var totalText = "(" +  totalCleared + "/" + totalBills + ") " + percentage + "%";
+            $("table.tablesorter tfoot tr").find("th:eq(8)").text(totalText);
+
             $("table").trigger("update"); 
         }
 
