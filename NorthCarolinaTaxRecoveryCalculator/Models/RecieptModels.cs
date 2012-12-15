@@ -53,8 +53,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         public virtual string Notes { get; set; }
         public virtual bool OnBillDetail { get; set; }
 
-
-
         /// <summary>
         /// Calculate the dollar amount of tax that went to the state
         /// </summary>
@@ -99,7 +97,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             {
                 return 0;
             }
-
 
             double totalTaxRates = TaxContext.TotalTaxRate(County, DateOfSale);
 

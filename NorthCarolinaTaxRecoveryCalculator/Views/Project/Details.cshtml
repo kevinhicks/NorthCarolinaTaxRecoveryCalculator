@@ -22,12 +22,17 @@
             border-width: 1px;
             border-color: black;
             border-style: solid;
-            padding: 5px;
+            padding: 15px;
         }
         
         h3#taxPeriodHeader
         {
             text-align:center;
+        }
+        
+        div#contributorsArea, div#taxPeriodsOverviewArea
+        {
+            margin: 10px;
         }
     </style>
 }
@@ -41,60 +46,63 @@
 </script>
 }
 
-<h2>Details</h2>
-<fieldset>
-    <legend>Project Overview</legend>
-    @Html.ActionLink("Reciepts List", "Index", "Reciept", new { ProjectID = Model.Project.ID }, null) 
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.Project.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Project.Name)
-    </div>
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.Project.DateStarted)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Project.DateStarted)
-    </div>
-    <div>
-        @{Html.RenderAction("ProjectTotals", new { ProjectID = Model.Project.ID });}
-    </div>
-</fieldset>
-<fieldset>
-    <legend>Project Contributors</legend>
-    @foreach (var acl in Model.UsersAccessProjects)
-    {
-        <div class="collabEntry">
-            <span class="collabAction">@Html.ActionLink("Resend", "ResendInvitation", new { AclID = acl.ID })</span>
-            <span class="collabAction">@Html.ActionLink("Revoke", "RevokeInvitation", new { AclID = acl.ID })</span>
-             @if (acl.invitationAccepted)
-            {
-                <span class="collabAction">Accepted</span>
-            }
-            else
-            {
-                <span class="collabAction">Not Accepted</span>
-            }
-            @if (acl != null && acl.User != null && acl.User.UserName != null)
-            {
-                <span class="collabAction">@acl.User.UserName</span>
-            }
-            else
-            {
-                <span class="collabAction">@acl.Email</span>
-            }
+<div id="taxPeriodsOverviewArea">   
+    <fieldset>
+        <legend>County Taxes By Period(s)</legend>
+        @Html.ActionLink("Reciepts List", "Index", "Reciept", new { ProjectID = Model.Project.ID }, null) 
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Project.Name)
         </div>
-    }
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Project.Name)
+        </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Project.DateStarted)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Project.DateStarted)
+        </div>
+        <div>
+            @{Html.RenderAction("ProjectTotals", new { ProjectID = Model.Project.ID });}
+        </div>
+    </fieldset>
+</div>
+<div id="contributorsArea">
+    <fieldset>
+        <legend>Project Contributors</legend>
+        @foreach (var acl in Model.UsersAccessProjects)
+        {
+            <div class="collabEntry">
+                <span class="collabAction">@Html.ActionLink("Resend", "ResendInvitation", new { AclID = acl.ID })</span>
+                <span class="collabAction">@Html.ActionLink("Revoke", "RevokeInvitation", new { AclID = acl.ID })</span>
+                 @if (acl.invitationAccepted)
+                {
+                    <span class="collabAction">Accepted</span>
+                }
+                else
+                {
+                    <span class="collabAction">Not Accepted</span>
+                }
+                @if (acl != null && acl.User != null && acl.User.UserName != null)
+                {
+                    <span class="collabAction">@acl.User.UserName</span>
+                }
+                else
+                {
+                    <span class="collabAction">@acl.Email</span>
+                }
+            </div>
+        }
 
-    Add Collaborator
-    @using (Html.BeginForm("SendInvitation", "Project", FormMethod.Post, new { ProjectID = Model.Project.ID }))
-    {
-        <input name="emailAddress" type="email" />
-        <input type="submit" />
-    }
-</fieldset>
+        Add Collaborator
+        @using (Html.BeginForm("SendInvitation", "Project", FormMethod.Post, new { ProjectID = Model.Project.ID }))
+        {
+            <input name="emailAddress" type="email" />
+            <input type="submit" />
+        }
+    </fieldset>
+</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Project.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit Project Information", "Edit", new { id = Model.Project.ID }) |
+    @Html.ActionLink("Back to List of Projects", "Index")
 </p>
