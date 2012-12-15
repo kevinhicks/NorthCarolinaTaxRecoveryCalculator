@@ -283,3 +283,8 @@ td.centeredText
 {
     text-align: center;
 }
+
+a.blueLink
+{
+  color:blue;
+}

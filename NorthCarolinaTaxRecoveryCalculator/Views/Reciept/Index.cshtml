@@ -39,7 +39,7 @@
             </div>
             <div class="editor-field">
                 @Html.DropDownListFor(model => model.County, new SelectList(NorthCarolinaTaxRecoveryCalculator.Models.County.Counties.Where(c => c.ID >= 1), "ID", "Name"))
-                <a href="http://www.dor.state.nc.us/downloads/Gen562.pdf" target="_blank">Look-Up</a>
+                <a href="http://www.dor.state.nc.us/downloads/Gen562.pdf" class="blueLink" target="_blank">Look-Up</a>
                 @Html.ValidationMessageFor(model => model.County)
             </div>
             <div class="editor-label">
