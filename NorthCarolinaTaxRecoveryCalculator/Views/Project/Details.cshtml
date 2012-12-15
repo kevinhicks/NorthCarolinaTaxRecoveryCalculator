@@ -49,7 +49,7 @@
 <div id="taxPeriodsOverviewArea">   
     <fieldset>
         <legend>County Taxes By Period(s)</legend>
-        @Html.ActionLink("Reciepts List", "Index", "Reciept", new { ProjectID = Model.Project.ID }, null) 
+        @Html.ActionLink("Reciepts List", "Index", "Reciept", new { ProjectID = Model.Project.ID }, new { @class = "blueLink" }) 
         <div class="display-label">
             @Html.DisplayNameFor(model => model.Project.Name)
         </div>
@@ -73,8 +73,8 @@
         @foreach (var acl in Model.UsersAccessProjects)
         {
             <div class="collabEntry">
-                <span class="collabAction">@Html.ActionLink("Resend", "ResendInvitation", new { AclID = acl.ID })</span>
-                <span class="collabAction">@Html.ActionLink("Revoke", "RevokeInvitation", new { AclID = acl.ID })</span>
+                <span class="collabAction">@Html.ActionLink("Resend", "ResendInvitation", new { AclID = acl.ID }, new { @class = "blueLink" })</span>
+                <span class="collabAction">@Html.ActionLink("Revoke", "RevokeInvitation", new { AclID = acl.ID }, new { @class = "blueLink" })</span>
                  @if (acl.invitationAccepted)
                 {
                     <span class="collabAction">Accepted</span>

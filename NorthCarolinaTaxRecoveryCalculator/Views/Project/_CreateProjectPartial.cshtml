@@ -1,14 +1,27 @@
 ﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Project
 
+@section style {
+<style>
+    .fieldZone
+    {
+        float: left;
+    }    
+</style>
+}
+
 @using(Html.BeginForm("Create", "Project", FormMethod.Post))
 {
-    <div>
+    <div class="fieldZone">
+        Project Name:<br />
         @Html.EditorFor(m => m.Name)
         @Html.ValidationMessageFor(m => m.Name)
     </div>
-    <div>
+    <div class="fieldZone">
+        Date:<br />
         @Html.EditorFor(m => m.DateStarted)
         @Html.ValidationMessageFor(m => m.DateStarted)
+    </div>    
+    <div class="fieldZone">
+        <input type="submit" value="Create" />
     </div>
-    <input type="submit" value="Create" />
 }
