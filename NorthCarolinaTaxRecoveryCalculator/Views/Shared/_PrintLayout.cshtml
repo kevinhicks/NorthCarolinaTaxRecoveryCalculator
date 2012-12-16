@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>North Carolina Tax Recovery Calculator :: @ViewBag.Title</title>        
+        <style type="text/css">
+            div#loginArea 
+            {
+                float:right;
+            }
+            
+            div#top-header
+            {
+                float:left;
+            }
+            
+            ul#menu li
+            {
+                float: left;
+                list-style: none;    
+                margin-right: 5px;            
+            }
+            
+            ul#menu li:hover
+            {
+                background-color: #D7F8F8;
+                
+            }
+            
+            body 
+            {
+                width: 100%;
+            }
+        </style>
+        @RenderSection("styles", required: false)
+        @RenderSection("style", required: false)
+    </head>
+    <body>
+      
+                @RenderBody()
+    </body>
+</html>

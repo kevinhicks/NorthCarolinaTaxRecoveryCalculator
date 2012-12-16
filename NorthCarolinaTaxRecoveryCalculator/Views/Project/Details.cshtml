@@ -49,7 +49,8 @@
 <div id="taxPeriodsOverviewArea">   
     <fieldset>
         <legend>County Taxes By Period(s)</legend>
-        @Html.ActionLink("Reciepts List", "Index", "Reciept", new { ProjectID = Model.Project.ID }, new { @class = "blueLink" }) 
+        <div>@Html.ActionLink("Reciepts List", "Index", "Reciept", new { ProjectID = Model.Project.ID }, new { @class = "blueLink" }) </div>
+        <div>@Html.ActionLink("Reciepts To PDF", "PrintRecieptsPDF", "Project", new { ProjectID = Model.Project.ID }, new { @class = "blueLink" })</div>
         <div class="display-label">
             @Html.DisplayNameFor(model => model.Project.Name)
         </div>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<NorthCarolinaTaxRecoveryCalculator.Models.RecieptEntity>
+
+@{
+    ViewBag.Title = "PrintReciepts";
+    Layout = "~/Views/Shared/_PrintLayout.cshtml";
+}
+
+<h2>PrintReciepts</h2>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RIF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfSale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StoreName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.County)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesTax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FoodTax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OnBillDetail)
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RIF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfSale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoreName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.County)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesTax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FoodTax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OnBillDetail)
+        </td>
+    </tr>
+}
+
+</table>
