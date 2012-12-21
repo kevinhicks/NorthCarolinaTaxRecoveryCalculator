@@ -168,7 +168,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             string email = inputs["emailAddress"];
 
             //as long as there isnt already an invitaion sent
-            if (db.UsersAccessProjects.Where(acl => acl.Email == email).Count() == 0)
+            if (db.UsersAccessProjects.Where(acl => acl.Email == email && acl.ProjectID == ProjectID).Count() == 0)
             {
 
                 var acl = new UsersAccessProjects();
