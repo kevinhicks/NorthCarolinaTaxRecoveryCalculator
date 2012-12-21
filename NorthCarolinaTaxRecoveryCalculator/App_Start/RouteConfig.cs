@@ -50,9 +50,15 @@ namespace NorthCarolinaTaxRecoveryCalculator
             );
 
             routes.MapRoute(
-                name: "TO: Print Reciepts of a Project",
+                name: "TO: Print Reciepts of a Project As A PDF",
                 url: "PrintRecieptsPDF/{ProjectID}",
                 defaults: new { controller = "Project", action = "PrintRecieptsPDF", ProjectID = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "TO: Print Reciepts of a Project",
+                url: "PrintReciepts/{ProjectID}",
+                defaults: new { controller = "Project", action = "PrintReciepts", ProjectID = UrlParameter.Optional }
             );
 
             routes.MapRoute(
