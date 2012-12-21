@@ -353,8 +353,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         {
             Guid p = ProjectID;
 
-            var pdf = new ActionAsPdf("PrintReciepts", new { ProjectID = p }) { FileName = "Invoice.pdf" };
-
+            var reciepts = db.Reciepts.Where(rec => rec.ProjectID == ProjectID).AsEnumerable().OrderBy(rec => rec.RIF, new NaturalSortComparer<string>()).ToList();
+            var pdf = new ViewAsPdf("PrintReciepts", reciepts) { FileName = "Invoice.pdf" };
             var bin = pdf.BuildPdf(this.ControllerContext);
 
             return File(bin, "application/pdf");
