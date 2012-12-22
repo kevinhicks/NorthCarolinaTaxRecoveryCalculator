@@ -28,6 +28,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Filters
             {
                 try
                 {
+
+                    if (!WebSecurity.Initialized)
+                    {
+                        WebSecurity.InitializeDatabaseConnection("ApplicationDBContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    }
+
                     using (var context = new ApplicationDBContext())
                     {
                         if (!context.Database.Exists())
@@ -35,11 +41,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.Filters
                             // Create the SimpleMembership database without Entity Framework migration schema
                             ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
                         }
-                    }
-
-                    if (!WebSecurity.Initialized)
-                    {
-                        WebSecurity.InitializeDatabaseConnection("ApplicationDBContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
                     }
                 }
                 catch (Exception ex)
