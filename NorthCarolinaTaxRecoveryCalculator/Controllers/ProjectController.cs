@@ -335,6 +335,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// Print a list of the reciepts
         /// </summary>
         /// <returns></returns>
+        [Authorize]
         public ActionResult PrintReciepts(Guid ProjectID)
         {
             //All the recipets in THIS project, sorted correctly
@@ -349,12 +350,25 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// Print a list of the reciepts as a PDF
         /// </summary>
         /// <returns></returns>
+        [Authorize]
         public ActionResult PrintRecieptsPDF(Guid ProjectID)
         {
             Guid p = ProjectID;
 
+            //The name of the project
+            ViewBag.ProjectName = db.Projects.Find(ProjectID).Name;
+
+            //find all the reciepts in this project
             var reciepts = db.Reciepts.Where(rec => rec.ProjectID == ProjectID).AsEnumerable().OrderBy(rec => rec.RIF, new NaturalSortComparer<string>()).ToList();
-            var pdf = new ViewAsPdf("PrintReciepts", reciepts) { FileName = "Invoice.pdf" };
+            
+            //create a PDF of the list of reciepts
+            var pdf = new ViewAsPdf("PrintReciepts", reciepts)
+            {
+                FileName = "Invoice.pdf",
+                CustomSwitches = "--print-media-type"
+            };
+            
+            //generate a binary to stream it to the browser. e.g NOT a download, but rather opens as a page
             var bin = pdf.BuildPdf(this.ControllerContext);
 
             return File(bin, "application/pdf");

@@ -23,6 +23,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             this.Name = Name;
         }
 
+        /// <summary>
+        /// Returns All the county names as a JSon Array
+        /// </summary>
+        /// <returns></returns>
         public static string AsJsonArray()
         {
             string json = "[";            
