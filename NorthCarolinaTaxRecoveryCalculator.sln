@@ -1,11 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthCarolinaTaxRecoveryCalculator", "NorthCarolinaTaxRecoveryCalculator\NorthCarolinaTaxRecoveryCalculator.csproj", "{1DF625FC-6571-4064-8B78-769FF85492ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthCarolinaTaxRecoveryCalculator.UnitTests", "NorthCarolinaTaxRecoveryCalculator.Tests\NorthCarolinaTaxRecoveryCalculator.UnitTests.csproj", "{252F55F1-4FE9-4B42-8508-2A5FC0D03E87}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVReader", "CSVReader\CSVReader.csproj", "{B3A54558-DE2C-44CD-B1E9-DE2E0EA04CDE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DA7DF51E-0C71-4B13-B252-6C84AB1D171F}"
 	ProjectSection(SolutionItems) = preProject
@@ -47,16 +45,6 @@ Global
 		{252F55F1-4FE9-4B42-8508-2A5FC0D03E87}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{252F55F1-4FE9-4B42-8508-2A5FC0D03E87}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{252F55F1-4FE9-4B42-8508-2A5FC0D03E87}.Release|x86.ActiveCfg = Release|Any CPU
-		{B3A54558-DE2C-44CD-B1E9-DE2E0EA04CDE}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{B3A54558-DE2C-44CD-B1E9-DE2E0EA04CDE}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{B3A54558-DE2C-44CD-B1E9-DE2E0EA04CDE}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{B3A54558-DE2C-44CD-B1E9-DE2E0EA04CDE}.Debug|x86.ActiveCfg = Debug|x86
-		{B3A54558-DE2C-44CD-B1E9-DE2E0EA04CDE}.Debug|x86.Build.0 = Debug|x86
-		{B3A54558-DE2C-44CD-B1E9-DE2E0EA04CDE}.Release|Any CPU.ActiveCfg = Release|x86
-		{B3A54558-DE2C-44CD-B1E9-DE2E0EA04CDE}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{B3A54558-DE2C-44CD-B1E9-DE2E0EA04CDE}.Release|Mixed Platforms.Build.0 = Release|x86
-		{B3A54558-DE2C-44CD-B1E9-DE2E0EA04CDE}.Release|x86.ActiveCfg = Release|x86
-		{B3A54558-DE2C-44CD-B1E9-DE2E0EA04CDE}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

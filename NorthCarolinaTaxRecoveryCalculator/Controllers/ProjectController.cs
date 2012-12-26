@@ -12,6 +12,7 @@ using NorthCarolinaTaxRecoveryCalculator.ViewModels.Project;
 using NorthCarolinaTaxRecoveryCalculator.Misc;
 using Rotativa;
 using System.Text.RegularExpressions;
+using OfficeOpenXml;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
@@ -349,7 +350,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// 
         /// Print a list of the reciepts as a PDF
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A binary stream dirctly to the client (PDF)</returns>
         [Authorize]
         public ActionResult PrintRecieptsPDF(Guid ProjectID)
         {
@@ -372,6 +373,42 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             var bin = pdf.BuildPdf(this.ControllerContext);
 
             return File(bin, "application/pdf");
+        }
+
+        /// <summary>
+        /// Get: /Project/ExportToExcel/{ProjectID}
+        /// 
+        /// Export the list of recipets the an excel file for offline viewing
+        /// 
+        /// </summary>
+        /// <param name="ProjectID"></param>
+        /// <returns>A binary stream dirctly to the client (Excel)</returns>
+        public ActionResult ExportToExcel(Guid ProjectID)
+        {
+
+            var project = db.Projects.Find(ProjectID);
+
+            //What if the ProjectID is invalid?
+            if(project == null) {
+                RedirectToAction("Details", new {ProjectID = ProjectID});
+            }
+
+            //This is what will be sent back to the client
+            byte[] response = null;
+
+            //Create the excel file
+            using (ExcelPackage excel = new ExcelPackage())
+            {
+
+                ExcelWorksheet recieptsWorksheet = excel.Workbook.Worksheets.Add("Reciepts");
+
+                
+                //save the contents before disposing the Excel Builder
+                response = excel.GetAsByteArray();
+            }
+
+            //return the file contens to the client
+            return File(response, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", project.Name + " Tax Recovery");
         }
     }
 
