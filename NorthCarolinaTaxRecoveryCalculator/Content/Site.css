@@ -33,6 +33,10 @@ div.inputElement
     text-decoration: underline;
 }
 
+img#banner {
+    height: 60px;
+}
+
 .clickable
 {
     cursor: pointer;

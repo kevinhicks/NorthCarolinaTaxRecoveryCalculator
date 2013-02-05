@@ -13,6 +13,7 @@ using NorthCarolinaTaxRecoveryCalculator.Misc;
 using Rotativa;
 using System.Text.RegularExpressions;
 using OfficeOpenXml;
+using System.Globalization;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
@@ -396,12 +397,82 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             //This is what will be sent back to the client
             byte[] response = null;
 
+            //all the reciepts for this project
+            var reciepts = db.Reciepts.Where(rec => rec.ProjectID == ProjectID).AsEnumerable().OrderBy(rec => rec.RIF, new NaturalSortComparer<string>()).ToList();
+
             //Create the excel file
             using (ExcelPackage excel = new ExcelPackage())
             {
-
+                
+                //Add a new workesheet
                 ExcelWorksheet recieptsWorksheet = excel.Workbook.Worksheets.Add("Reciepts");
 
+                //Count the rows
+                int row = 1;
+
+                //Hold the columns
+                string rifCol = "A";
+                string dateCol = "B";
+                string storeCol = "C";
+                string countyCol = "D";
+                string stateTaxCol = "E";
+                string foodTaxCol = "F";
+                string totalAmtCol = "G";
+                string clearedCol = "H";
+                                
+                //For each recipet, enter a new row
+                foreach (var reciept in reciepts)
+                {
+                    recieptsWorksheet.Cells[rifCol + row].Value = reciept.RIF;
+                    recieptsWorksheet.Cells[dateCol + row].Value = reciept.DateOfSale;
+                    recieptsWorksheet.Cells[storeCol + row].Value = reciept.StoreName;
+                    if (reciept.County == County.NON_TAXABLE)
+                    {
+                        recieptsWorksheet.Cells[countyCol + row].Value = County.Counties[reciept.County].Name.ToUpper();
+                    }
+                    else
+                    {
+                        recieptsWorksheet.Cells[countyCol + row].Value = "  " + County.Counties[reciept.County].Name.ToUpper();
+                    }
+                    recieptsWorksheet.Cells[stateTaxCol + row].Value = Math.Round(reciept.SalesTax, 2);
+                    recieptsWorksheet.Cells[foodTaxCol + row].Value = Math.Round(reciept.FoodTax, 2);
+                    recieptsWorksheet.Cells[totalAmtCol + row].Value = Math.Round(reciept.SalesAmount, 2);
+                    if (reciept.OnBillDetail)
+                    {
+                        recieptsWorksheet.Cells[clearedCol + row].Value = "x";
+                    }
+
+
+                    row++;
+                }
+
+                //Pretty formatting
+                string currencyFormat = "@";//"$#,##0.00_);[Red]($#,##0.00)";
+
+                //Rif
+                recieptsWorksheet.Column(1).BestFit = true;
+
+                //Date
+                recieptsWorksheet.Column(2).Style.Numberformat.Format = "mm/dd/yy";
+                recieptsWorksheet.Column(2).BestFit = true;
+
+                //Store
+                recieptsWorksheet.Column(3).BestFit = true;
+
+                //County
+                recieptsWorksheet.Column(3).BestFit = true;
+
+                //State tax
+                //recieptsWorksheet.Column(5).Style.Numberformat.Format = currencyFormat;
+                recieptsWorksheet.Column(3).BestFit = true;
+
+                //Food Tax
+                //recieptsWorksheet.Column(6).Style.Numberformat.Format = currencyFormat;
+                recieptsWorksheet.Column(3).BestFit = true;
+
+                //Total Amount
+                //recieptsWorksheet.Column(7).Style.Numberformat.Format = currencyFormat;
+                recieptsWorksheet.Column(3).BestFit = true;
                 
                 //save the contents before disposing the Excel Builder
                 response = excel.GetAsByteArray();
