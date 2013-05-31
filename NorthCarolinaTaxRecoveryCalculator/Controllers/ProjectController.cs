@@ -55,10 +55,22 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 			return View(ViewModel);
 		}
 
-		//
-		// GET: /Project/Details/5
+        /// <summary>
+        /// GET: /Project/Details/5
+        /// This is the project overview page
+        /// </summary>
+        /// <param name="ProjectID"></param>
+        /// <param name="filterStartDate">
+        ///     This will limit reciept totals to anything after the start-date, 
+        ///     and will be passed on to the child-view
+        /// </param>
+        /// <param name="filterEndDate">
+        ///     This will limit reciept totals to anything before the end-date, 
+        ///     and will be passed on to the child-view
+        /// </param>
+        /// <returns></returns>
 		[Authorize]
-		public ActionResult Details(Guid ProjectID)
+        public ActionResult Details(Guid ProjectID, DateTime? filterStartDate, DateTime? filterEndDate)
 		{
 			var ViewModel = new ProjectOverviewAndCollaboratorsViewModels();
 			
@@ -252,11 +264,20 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 			return RedirectToAction("Index");
 		}
 
+        /// <summary>
+        /// This display all the totals, and the break down for a specific project.
+        /// It shoudl ONLY be viewable to the Project Owner
+        /// </summary>
+        /// <param name="ProjectID"></param>
+        /// <param name="filterStartDate"></param>
+        /// <param name="filterEndDate"></param>
+        /// <returns></returns>
 		[Authorize]
 		[ChildActionOnly]
-		public ActionResult ProjectTotals(Guid ProjectID)
+        public ActionResult ProjectTotals(Guid ProjectID, DateTime? filterStartDate, DateTime? filterEndDate)
 		{
 			//Find all the reciepts for this project
+            //
 			var reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID).ToList();
 			
 			//Load all related infomation to this project

@@ -42,14 +42,14 @@ namespace NorthCarolinaTaxRecoveryCalculator.Migrations
                 .ForeignKey("dbo.UserProfile", t => t.Owner_UserId)
                 .Index(t => t.Owner_UserId);
             
-          /*  CreateTable(
+            CreateTable(
                 "dbo.UserProfile",
                 c => new
                     {
                         UserId = c.Int(nullable: false, identity: true),
                         UserName = c.String(),
                     })
-                .PrimaryKey(t => t.UserId);*/
+                .PrimaryKey(t => t.UserId);
             
         }
         
