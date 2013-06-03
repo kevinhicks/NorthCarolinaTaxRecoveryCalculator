@@ -94,7 +94,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 					.ToList();
 
 				ViewModel.UsersAccessProjects = collaborators;
-
+                ViewModel.FilterStartDate = filterStartDate;
+                ViewModel.FilterEndDate = filterEndDate;
 				return View(ViewModel);
 			}
 			else
@@ -277,8 +278,35 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         public ActionResult ProjectTotals(Guid ProjectID, DateTime? filterStartDate, DateTime? filterEndDate)
 		{
 			//Find all the reciepts for this project
-            //
-			var reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID).ToList();
+            List<RecieptEntity> reciepts = null;
+            
+            //If there was both a start & end date 
+            if (filterStartDate != null &&
+               filterEndDate != null)
+            {
+                reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID &&
+                                         rec.DateOfSale >= filterStartDate &&
+                                         rec.DateOfSale < filterEndDate).ToList();
+            }
+            //If there was only a start date 
+            else if (filterStartDate != null &&
+               filterEndDate == null)
+            {
+                reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID &&
+                                         rec.DateOfSale >= filterStartDate).ToList();
+            }
+            //If there was only a end date 
+            else if (filterStartDate == null &&
+               filterEndDate != null)
+            {
+                reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID &&
+                                         rec.DateOfSale < filterEndDate).ToList();
+            }
+            //If there was no date filter set
+            else
+            {
+                reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID).ToList();
+            }
 			
 			//Load all related infomation to this project
 			var project = db.Projects.Find(ProjectID);

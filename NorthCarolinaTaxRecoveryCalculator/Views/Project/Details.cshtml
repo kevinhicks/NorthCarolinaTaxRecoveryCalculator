@@ -49,7 +49,7 @@
 <div id="taxPeriodsOverviewArea">   
     <fieldset>
         <legend>County Taxes By Period(s)</legend>
-        <div><form>@Html.EditorFor(model => model.FilterStartDate) @Html.EditorFor(model => model.FilterStartDate)<input type="submit" /></form></div>
+        <div><form>@Html.EditorFor(model => model.FilterStartDate) @Html.EditorFor(model => model.FilterEndDate)<input type="submit" /></form></div>
         <div>@Html.ActionLink("Reciepts List", "Index", "Reciept", new { ProjectID = Model.Project.ID }, new { @class = "blueLink" }) </div>
         <div>@Html.ActionLink("Reciepts To PDF", "PrintRecieptsPDF", "Project", new { ProjectID = Model.Project.ID }, new { @class = "blueLink" })</div>
         <div>@Html.ActionLink("Reciepts To Excel", "ExportToExcel", "Project", new { ProjectID = Model.Project.ID }, new { @class = "blueLink" })</div>
@@ -66,7 +66,7 @@
             @Html.DisplayFor(model => model.Project.DateStarted)
         </div>
         <div>
-            @{Html.RenderAction("ProjectTotals", new { ProjectID = Model.Project.ID });}
+            @{Html.RenderAction("ProjectTotals", new { ProjectID = Model.Project.ID, filterStartDate = Model.FilterStartDate, filterEndDate = Model.FilterEndDate });}
         </div>
     </fieldset>
 </div>
