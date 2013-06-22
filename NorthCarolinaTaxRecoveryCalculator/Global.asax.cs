@@ -22,20 +22,22 @@ namespace NorthCarolinaTaxRecoveryCalculator
         {
             ApplicationDBContext db = new ApplicationDBContext();
 
+            //Init the datbase, and apply any pending updates/changes 
+            //NOTE: Entity Framework MUST update the database BEFORE the following WebSecurity block.
+            //  If Entity Framework does not find that database thet why it left it, then it gets testy
+            var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
+            updateDBInit.InitializeDatabase(db);
+
+
             //Init Security
+            //NOTE: Entity Framework MUST update the database BEFORE this WebSecurity block.
+            //  If Entity Framework does not find that database thet why it left it, then it gets testy
             if (!WebSecurity.Initialized)
             {
                 WebSecurity.InitializeDatabaseConnection("ApplicationDBContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
-
             }
 
-            //Init the datbase
-            var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
-
-            updateDBInit.InitializeDatabase(db);
-
             AreaRegistration.RegisterAllAreas();
-
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
