@@ -8,6 +8,9 @@ namespace Data
 {
     public class RecieptManager
     {
-        
+        public List<Reciept> FindAllRecieptsByProjectID(Guid ProjectID)
+        {
+            return null;
+        }
     }
 }

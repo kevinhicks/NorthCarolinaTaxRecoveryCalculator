@@ -18,7 +18,7 @@ namespace Data.Tests
         [TestMethod]
         public void FindAllRecieptsByProjectID_ReturnsNotNull()
         {
-            //Assert.IsNotNull(recieptManager.FindAllProjectsOwnedByUser(9999));
+            Assert.IsNotNull(recieptManager.FindAllRecieptsByProjectID(Guid.NewGuid()));
         }
     }
 }
