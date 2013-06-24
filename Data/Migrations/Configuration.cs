@@ -1,19 +1,18 @@
-namespace Data
+namespace Data.Migrations
 {
-    using Data;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Data.ApplicationDBContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ApplicationDBContext context)
+        protected override void Seed(Data.ApplicationDBContext context)
         {
             //  This method will be called after migrating to the latest version.
 
