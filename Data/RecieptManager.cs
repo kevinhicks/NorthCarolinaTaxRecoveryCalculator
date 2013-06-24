@@ -8,9 +8,16 @@ namespace Data
 {
     public class RecieptManager
     {
-        public List<Reciept> FindAllRecieptsByProjectID(Guid ProjectID)
+        private ApplicationDBContext database = null;
+
+        public RecieptManager()
         {
-            return null;
+            database = new ApplicationDBContext();
         }
+
+        /*public List<Reciept> FindAllRecieptsByProjectID(Guid ProjectID)
+        {
+            return database.Reciepts.Where(cols => cols.ProjectID == ProjectID).ToList();    
+        }*/
     }
 }

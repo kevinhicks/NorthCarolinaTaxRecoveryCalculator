@@ -17,19 +17,19 @@ namespace Data
         public int OwnerID { get; set; }
         public virtual UserProfile Owner { get; set; }
 
-        public virtual IEnumerable<RecieptEntity> Reciepts { get; set; }
+        public virtual IEnumerable<Reciept> Reciepts { get; set; }
 
         /// <summary>
         /// Return the total dollar amount that went to all counties during all time periods
         /// </summary>
         /// <param name="Reciepts"></param>
         /// <returns></returns>
-        public double GetTotalCountyTax(IEnumerable<RecieptEntity> Reciepts)
+        public double GetTotalCountyTax(IEnumerable<Reciept> Reciepts)
         {
             double totalSalesTax = 0;
 
             //Loop thru all the reciepts in the project
-            foreach (RecieptEntity reciept in Reciepts)
+            foreach (Reciept reciept in Reciepts)
             {
                 //First, make sure that it belongs to this project!
                 if (reciept.Project.ID != ID)
@@ -47,12 +47,12 @@ namespace Data
         /// </summary>
         /// <param name="Reciepts"></param>
         /// <returns></returns>
-        public double GetTotalStateTax(IEnumerable<RecieptEntity> Reciepts)
+        public double GetTotalStateTax(IEnumerable<Reciept> Reciepts)
         {
             double totalSalesTax = 0;
 
             //Loop thru all the reciepts in the project
-            foreach (RecieptEntity reciept in Reciepts)
+            foreach (Reciept reciept in Reciepts)
             {
                 //First, make sure that it belongs to this project!
                 if (reciept.Project.ID != ID)
@@ -70,12 +70,12 @@ namespace Data
         /// </summary>
         /// <param name="Reciepts"></param>
         /// <returns></returns>
-        public double GetTotalTransitTax(IEnumerable<RecieptEntity> Reciepts)
+        public double GetTotalTransitTax(IEnumerable<Reciept> Reciepts)
         {
             double totalSalesTax = 0;
 
             //Loop thru all the reciepts in the project
-            foreach (RecieptEntity reciept in Reciepts)
+            foreach (Reciept reciept in Reciepts)
             {
                 //First, make sure that it belongs to this project!
                 if (reciept.Project.ID != ID)
@@ -93,12 +93,12 @@ namespace Data
         /// </summary>
         /// <param name="Reciepts"></param>
         /// <returns></returns>
-        public double GetTotalFoodTax(IEnumerable<RecieptEntity> Reciepts)
+        public double GetTotalFoodTax(IEnumerable<Reciept> Reciepts)
         {
             double totalFoodTax = 0;
 
             //Loop thru all the reciepts in the project
-            foreach (RecieptEntity reciept in Reciepts)
+            foreach (Reciept reciept in Reciepts)
             {
                 //First, make sure that it belongs to this project!
                 if (reciept.Project.ID != ID)
@@ -146,7 +146,7 @@ namespace Data
         public bool IsDeleted { get; set; }
         public int OwnerID { get; set; }
         public virtual UserProfile Owner { get; set; }
-        public virtual IEnumerable<RecieptEntity> Reciepts { get; set; }
+        public virtual IEnumerable<Reciept> Reciepts { get; set; }
 
         public Project() {
             //Sensible Defaults

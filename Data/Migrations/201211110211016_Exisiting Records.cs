@@ -29,9 +29,9 @@ namespace Data.Migrations
             db.Projects.Add(project);
             db.SaveChanges();
 
-            RecieptEntity RecieptEntity = null;
+            Reciept RecieptEntity = null;
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "1";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-06-16");
@@ -43,7 +43,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "2";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-06-16");
@@ -55,7 +55,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "3";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-06-18");
@@ -67,7 +67,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "4";
             RecieptEntity.StoreName = "DESCO Inc.";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-06-20");
@@ -79,7 +79,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "5";
             RecieptEntity.StoreName = "KnoxBox";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-05");
@@ -91,7 +91,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "6";
             RecieptEntity.StoreName = "Quickscrews International";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-06-22");
@@ -103,7 +103,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "7";
             RecieptEntity.StoreName = "ABC Supply Company";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-06-22");
@@ -115,7 +115,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "8";
             RecieptEntity.StoreName = "Concrete Supply Company";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-03");
@@ -127,7 +127,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "9";
             RecieptEntity.StoreName = "Concrete Supply Company";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-07");
@@ -139,7 +139,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "10";
             RecieptEntity.StoreName = "Concrete Supply Company";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-07");
@@ -151,7 +151,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "11";
             RecieptEntity.StoreName = "Guaranteed Supply Company";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-05");
@@ -163,7 +163,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "12";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-02");
@@ -175,7 +175,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "13";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-02");
@@ -187,7 +187,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "14";
             RecieptEntity.StoreName = "United Rentals";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-03");
@@ -199,7 +199,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "15";
             RecieptEntity.StoreName = "United Rentals";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-13");
@@ -211,7 +211,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "16";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-13");
@@ -223,7 +223,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "17";
             RecieptEntity.StoreName = "United Rentals";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-16");
@@ -235,7 +235,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "18";
             RecieptEntity.StoreName = "Concrete Supply Company";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-14");
@@ -247,7 +247,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "19";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-14");
@@ -259,7 +259,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "20";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-21");
@@ -271,7 +271,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "21";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-21");
@@ -283,7 +283,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "22";
             RecieptEntity.StoreName = "Hoffman & Hoffman";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-18");
@@ -295,7 +295,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "23";
             RecieptEntity.StoreName = "Office Depot";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-11");
@@ -307,7 +307,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "24";
             RecieptEntity.StoreName = "Suburban Propane";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-10");
@@ -319,7 +319,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "25";
             RecieptEntity.StoreName = "Concrete Supply Company";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-06-28");
@@ -331,7 +331,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "26";
             RecieptEntity.StoreName = "Concrete Supply Company";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-06-28");
@@ -343,7 +343,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "27";
             RecieptEntity.StoreName = "Concrete Supply Company";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-02");
@@ -355,7 +355,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "28";
             RecieptEntity.StoreName = "Concrete Supply Company";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-21");
@@ -367,7 +367,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "29";
             RecieptEntity.StoreName = "DESCO Inc.";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-20");
@@ -379,7 +379,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "30";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-20");
@@ -391,7 +391,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "31";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-11");
@@ -403,7 +403,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "32";
             RecieptEntity.StoreName = "Sheetz";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-06-30");
@@ -415,7 +415,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "33";
             RecieptEntity.StoreName = "Office Depot";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-11");
@@ -427,7 +427,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "34";
             RecieptEntity.StoreName = "Office Depot";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-11");
@@ -439,7 +439,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "35";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-10");
@@ -451,7 +451,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "36";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-10");
@@ -463,7 +463,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "37";
             RecieptEntity.StoreName = "Sam's Club";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-10");
@@ -475,7 +475,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "38";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-10");
@@ -487,7 +487,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "39";
             RecieptEntity.StoreName = "Office Depot";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-11");
@@ -499,7 +499,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "40";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-11");
@@ -511,7 +511,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "41";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-11");
@@ -523,7 +523,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "42";
             RecieptEntity.StoreName = "Sherwin-Williams";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-11");
@@ -535,7 +535,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "43";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-12");
@@ -547,7 +547,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "44";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-12");
@@ -559,7 +559,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "45";
             RecieptEntity.StoreName = "Sherwin-Williams";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-12");
@@ -571,7 +571,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "46";
             RecieptEntity.StoreName = "Sheetz";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-12");
@@ -583,7 +583,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "47";
             RecieptEntity.StoreName = "Sheetz";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-12");
@@ -595,7 +595,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "48";
             RecieptEntity.StoreName = "Office Depot";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-12");
@@ -607,7 +607,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "49";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-12");
@@ -619,7 +619,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "50";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-12");
@@ -631,7 +631,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "51";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-14");
@@ -643,7 +643,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "52";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-12");
@@ -655,7 +655,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "53";
             RecieptEntity.StoreName = "Southeastern Concrete Products";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-13");
@@ -667,7 +667,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "54";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-17");
@@ -679,7 +679,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "55";
             RecieptEntity.StoreName = "Earp's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-17");
@@ -691,7 +691,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "56";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-17");
@@ -703,7 +703,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "57";
             RecieptEntity.StoreName = "Home Depot";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-17");
@@ -715,7 +715,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "58";
             RecieptEntity.StoreName = "DESCO Inc.";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-17");
@@ -727,7 +727,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "59";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-13");
@@ -739,7 +739,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "60";
             RecieptEntity.StoreName = "Sheetz";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-11");
@@ -751,7 +751,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "61";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-13");
@@ -763,7 +763,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "62";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-13");
@@ -775,7 +775,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "63";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-17");
@@ -787,7 +787,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "64";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-16");
@@ -799,7 +799,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "65";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-16");
@@ -811,7 +811,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "66";
             RecieptEntity.StoreName = "WilcoHess";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-15");
@@ -823,7 +823,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "67";
             RecieptEntity.StoreName = "Sheetz";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-16");
@@ -835,7 +835,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "68";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-16");
@@ -847,7 +847,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "69";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-17");
@@ -859,7 +859,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "70";
             RecieptEntity.StoreName = "Sheetz";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-16");
@@ -871,7 +871,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "71";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-16");
@@ -883,7 +883,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "72";
             RecieptEntity.StoreName = "Sheetz";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-16");
@@ -895,7 +895,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "73";
             RecieptEntity.StoreName = "United Rentals";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-15");
@@ -907,7 +907,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "74";
             RecieptEntity.StoreName = "Pop Shoppe";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-15");
@@ -919,7 +919,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "75";
             RecieptEntity.StoreName = "Swicegoods Paper";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-15");
@@ -931,7 +931,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "76";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-15");
@@ -943,7 +943,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "77";
             RecieptEntity.StoreName = "Fastenal";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-15");
@@ -955,7 +955,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "78";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-14");
@@ -967,7 +967,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "79";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-14");
@@ -979,7 +979,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "80";
             RecieptEntity.StoreName = "Food Lion";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-14");
@@ -991,7 +991,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "81";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-14");
@@ -1003,7 +1003,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "82";
             RecieptEntity.StoreName = "Earp's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-14");
@@ -1015,7 +1015,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "83";
             RecieptEntity.StoreName = "Pops Country Store";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-11");
@@ -1027,7 +1027,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "84";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-12");
@@ -1039,7 +1039,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "85";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-13");
@@ -1051,7 +1051,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "86";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-12");
@@ -1063,7 +1063,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "87";
             RecieptEntity.StoreName = "Food Lion";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1075,7 +1075,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "88";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-17");
@@ -1087,7 +1087,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "89";
             RecieptEntity.StoreName = "Sheetz";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1099,7 +1099,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "90";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1111,7 +1111,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "91";
             RecieptEntity.StoreName = "Concrete Supply Company";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-21");
@@ -1123,7 +1123,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "92";
             RecieptEntity.StoreName = "GrandinRoad";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-11");
@@ -1135,7 +1135,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "93";
             RecieptEntity.StoreName = "Sunbelt Rentals";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-14");
@@ -1147,7 +1147,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "94";
             RecieptEntity.StoreName = "Thermo King Central";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-14");
@@ -1159,7 +1159,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "95";
             RecieptEntity.StoreName = "Hertz Equipment Rental";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-16");
@@ -1171,7 +1171,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "96";
             RecieptEntity.StoreName = "WeGotLites";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-23");
@@ -1183,7 +1183,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "97";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1195,7 +1195,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "98";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1207,7 +1207,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "99";
             RecieptEntity.StoreName = "Sheetz";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-17");
@@ -1219,7 +1219,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "100";
             RecieptEntity.StoreName = "Sheetz";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-17");
@@ -1231,7 +1231,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "101";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1243,7 +1243,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "102";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1255,7 +1255,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "103";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1267,7 +1267,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "104";
             RecieptEntity.StoreName = "Sunnyside Ice and Fuel Co., Inc";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-14");
@@ -1279,7 +1279,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "105";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1291,7 +1291,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "106";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1303,7 +1303,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "107";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1315,7 +1315,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "108";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1327,7 +1327,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "109";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1339,7 +1339,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "110";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1351,7 +1351,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "111";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1363,7 +1363,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "112";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1375,7 +1375,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "113";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1387,7 +1387,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "114";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1399,7 +1399,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "115";
             RecieptEntity.StoreName = "Target.com";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-24");
@@ -1411,7 +1411,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "116";
             RecieptEntity.StoreName = "Home Depot";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1423,7 +1423,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "117";
             RecieptEntity.StoreName = "Home Depot";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1435,7 +1435,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "118";
             RecieptEntity.StoreName = "Marathon";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1447,7 +1447,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "119";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1459,7 +1459,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "120";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-20");
@@ -1471,7 +1471,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "121";
             RecieptEntity.StoreName = "Subway";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-20");
@@ -1483,7 +1483,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "122";
             RecieptEntity.StoreName = "Chckfila";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-20");
@@ -1495,7 +1495,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "123";
             RecieptEntity.StoreName = "Fastenal";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-20");
@@ -1507,7 +1507,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "124";
             RecieptEntity.StoreName = "Ruehlen Supply Co";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-20");
@@ -1519,7 +1519,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "125";
             RecieptEntity.StoreName = "Derrick Travel Plaza";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-21");
@@ -1531,7 +1531,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "126";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-21");
@@ -1543,7 +1543,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "127";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-22");
@@ -1555,7 +1555,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "128";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-22");
@@ -1567,7 +1567,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "129";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-22");
@@ -1579,7 +1579,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "130";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1591,7 +1591,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "131";
             RecieptEntity.StoreName = "Staples";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1603,7 +1603,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "132";
             RecieptEntity.StoreName = "Staples";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1615,7 +1615,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "133";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1627,7 +1627,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "134";
             RecieptEntity.StoreName = "Rushco Food";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1639,7 +1639,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "135";
             RecieptEntity.StoreName = "WilcoHess";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1651,7 +1651,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "136";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-22");
@@ -1663,7 +1663,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "137";
             RecieptEntity.StoreName = "Sheetz";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-24");
@@ -1675,7 +1675,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "138";
             RecieptEntity.StoreName = "Sheetz";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-24");
@@ -1687,7 +1687,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "139";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-24");
@@ -1699,7 +1699,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "140";
             RecieptEntity.StoreName = "Sherwin-Williams";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1711,7 +1711,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "141";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1723,7 +1723,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "142";
             RecieptEntity.StoreName = "Sam's Club";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1735,7 +1735,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "143";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-17");
@@ -1747,7 +1747,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "144";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-14");
@@ -1759,7 +1759,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "145";
             RecieptEntity.StoreName = "Sam's Club";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-15");
@@ -1771,7 +1771,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "146";
             RecieptEntity.StoreName = "Rastaurant Depot";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-13");
@@ -1783,7 +1783,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "147";
             RecieptEntity.StoreName = "WilcoHess";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1795,7 +1795,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "148";
             RecieptEntity.StoreName = "Auto Zone";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-14");
@@ -1807,7 +1807,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "149";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1819,7 +1819,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "150";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1831,7 +1831,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "151";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1843,7 +1843,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "152";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-17");
@@ -1855,7 +1855,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "153";
             RecieptEntity.StoreName = "Walmart";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1867,7 +1867,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "154";
             RecieptEntity.StoreName = "Sandy's One Stop";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-19");
@@ -1879,7 +1879,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "155";
             RecieptEntity.StoreName = "Subway";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-21");
@@ -1891,7 +1891,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "156";
             RecieptEntity.StoreName = "Sunnyside Ice and Fuel Co., Inc";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-18");
@@ -1903,7 +1903,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "157";
             RecieptEntity.StoreName = "Sam's Club";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-13");
@@ -1915,7 +1915,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "158";
             RecieptEntity.StoreName = "Trane";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-10");
@@ -1927,7 +1927,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "159";
             RecieptEntity.StoreName = "The Glass Shop";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-07-16");
@@ -1939,7 +1939,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "160";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-24");
@@ -1951,7 +1951,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "161";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-23");
@@ -1963,7 +1963,7 @@ namespace Data.Migrations
             RecieptEntity.Notes = "";
             db.Reciepts.Add(RecieptEntity);
 
-            RecieptEntity = new RecieptEntity();
+            RecieptEntity = new Reciept();
             RecieptEntity.RIF = "162";
             RecieptEntity.StoreName = "Lowe's";
             RecieptEntity.DateOfSale = DateTime.Parse("2012-08-24");

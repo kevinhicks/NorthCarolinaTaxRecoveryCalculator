@@ -120,76 +120,21 @@ namespace Data
     }
 
     [Table("Reciepts")]
-    public class RecieptEntity : RecieptDTO
+    public class Reciept : RecieptDTO
     {
-        private Guid _guid = Guid.NewGuid();
 
-        [Key]
-        public override Guid ID
-        {
-            get
-            {
-                return _guid;
-            }
-            set
-            {
-                _guid = value;
-            }
-        }
-
-        public Guid ProjectID { get; set; }
-        public virtual Project Project { get; set; }
-
-        [Required]
-        [Display(Name = "RIF")]
-        public override string RIF { get; set; }
-
-        [Required]
-        [Display(Name = "Date On Reciept")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
-        public override DateTime DateOfSale { get; set; }
-
-        [Required]
-        [Display(Name = "Store Name")]
-        public override string StoreName { get; set; }
-
-        [Required]
-        [Display(Name = "County")]
-        public override int County { get; set; }
-
-        [Display(Name = "Sales Tax")]
-        [DataType(DataType.Currency)]
-        public override float SalesTax { get; set; }
-
-        [Display(Name = "Food Tax")]
-        [DataType(DataType.Currency)]
-        public override float FoodTax { get; set; }
-
-        [Required]
-        [Display(Name = "Sales Amount")]
-        [DataType(DataType.Currency)]
-        public override float SalesAmount { get; set; }
-
-        [Display(Name = "Notes")]
-        public override string Notes { get; set; }
-
-        [Display(Name = "On Bill Detail")]
-        public override bool OnBillDetail { get; set; }
-
-    }
-
-    [Table("Reciepts")]
-    public class Reciept
-    {
 
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.None)]
         public Guid ID { get; set; }
+        [Required]
         public Guid ProjectID { get; set; }
         public virtual Project Project { get; set; }
+        [Required]
         public string RIF { get; set; }
+        [Required]
         public DateTime DateOfSale { get; set; }
+        [Required]
         public string StoreName { get; set; }
         public int County { get; set; }
         public float SalesTax { get; set; }
@@ -209,6 +154,5 @@ namespace Data
             ProjectID = projectID;
             DateOfSale = DateTime.Now;
         }
-
     }
 }

@@ -87,6 +87,10 @@
     <Compile Include="Migrations\201306240528113_I Will Generate Project ID Still.Designer.cs">
       <DependentUpon>201306240528113_I Will Generate Project ID Still.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306241913176_Changing Reciept Type.cs" />
+    <Compile Include="Migrations\201306241913176_Changing Reciept Type.Designer.cs">
+      <DependentUpon>201306241913176_Changing Reciept Type.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjectManager.cs" />
     <Compile Include="ProjectModels.cs" />
@@ -122,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306240528113_I Will Generate Project ID Still.resx">
       <DependentUpon>201306240528113_I Will Generate Project ID Still.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306241913176_Changing Reciept Type.resx">
+      <DependentUpon>201306241913176_Changing Reciept Type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
