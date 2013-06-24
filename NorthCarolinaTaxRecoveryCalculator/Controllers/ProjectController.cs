@@ -5,7 +5,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using NorthCarolinaTaxRecoveryCalculator.Models;
 using System.Web.Security;
 using WebMatrix.WebData;
 using NorthCarolinaTaxRecoveryCalculator.ViewModels.Project;
@@ -14,6 +13,7 @@ using Rotativa;
 using System.Text.RegularExpressions;
 using OfficeOpenXml;
 using System.Globalization;
+using Data;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
@@ -29,7 +29,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 			int userID = WebSecurity.CurrentUserId;
 
 			//We should ONLY show MY Projects & the Projects SHARED with me
-			var ViewModel = new OwnedAndSharedProjectViewModels();
+			var ViewModel = new OwnedAndSharedProjectViewModel();
 
 			//My Projects
 			var myProjects = db.Projects
@@ -72,7 +72,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 		[Authorize]
         public ActionResult Details(Guid ProjectID, DateTime? filterStartDate, DateTime? filterEndDate)
 		{
-			var ViewModel = new ProjectOverviewAndCollaboratorsViewModels();
+			var ViewModel = new ProjectOverviewAndCollaboratorsViewModel();
 			
 			ViewModel.Project = db.Projects.Find(ProjectID);
 

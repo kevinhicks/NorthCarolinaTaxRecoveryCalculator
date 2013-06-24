@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NorthCarolinaTaxRecoveryCalculator.Models;
 using Microsoft.Web.WebPages.OAuth;
 
 namespace NorthCarolinaTaxRecoveryCalculator

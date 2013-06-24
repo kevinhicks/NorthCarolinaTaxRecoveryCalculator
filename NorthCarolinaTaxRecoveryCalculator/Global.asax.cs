@@ -7,9 +7,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Data.Entity;
-using NorthCarolinaTaxRecoveryCalculator.Models;
-using NorthCarolinaTaxRecoveryCalculator.Migrations;
 using WebMatrix.WebData;
+using Data;
 
 namespace NorthCarolinaTaxRecoveryCalculator
 {
@@ -25,9 +24,7 @@ namespace NorthCarolinaTaxRecoveryCalculator
             //Init the datbase, and apply any pending updates/changes 
             //NOTE: Entity Framework MUST update the database BEFORE the following WebSecurity block.
             //  If Entity Framework does not find that database thet why it left it, then it gets testy
-            var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
-            updateDBInit.InitializeDatabase(db);
-
+            db.UpdateDatabaseToLatestVersion();
 
             //Init Security
             //NOTE: Entity Framework MUST update the database BEFORE this WebSecurity block.
