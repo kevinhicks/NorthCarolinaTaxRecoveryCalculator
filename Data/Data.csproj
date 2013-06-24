@@ -75,6 +75,18 @@
     <Compile Include="Migrations\201211222112454_Remove Forien Key From ACL to User Profile.Designer.cs">
       <DependentUpon>201211222112454_Remove Forien Key From ACL to User Profile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306240504116_DB Generated Key For Projects Table.cs" />
+    <Compile Include="Migrations\201306240504116_DB Generated Key For Projects Table.Designer.cs">
+      <DependentUpon>201306240504116_DB Generated Key For Projects Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306240510333_Cleaned Up Projects Table.cs" />
+    <Compile Include="Migrations\201306240510333_Cleaned Up Projects Table.Designer.cs">
+      <DependentUpon>201306240510333_Cleaned Up Projects Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306240528113_I Will Generate Project ID Still.cs" />
+    <Compile Include="Migrations\201306240528113_I Will Generate Project ID Still.Designer.cs">
+      <DependentUpon>201306240528113_I Will Generate Project ID Still.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjectManager.cs" />
     <Compile Include="ProjectModels.cs" />
@@ -100,6 +112,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201211222112454_Remove Forien Key From ACL to User Profile.resx">
       <DependentUpon>201211222112454_Remove Forien Key From ACL to User Profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306240504116_DB Generated Key For Projects Table.resx">
+      <DependentUpon>201306240504116_DB Generated Key For Projects Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306240510333_Cleaned Up Projects Table.resx">
+      <DependentUpon>201306240510333_Cleaned Up Projects Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306240528113_I Will Generate Project ID Still.resx">
+      <DependentUpon>201306240528113_I Will Generate Project ID Still.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

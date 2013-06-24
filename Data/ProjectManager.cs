@@ -26,7 +26,8 @@ namespace Data
         /// <returns></returns>
         public List<Project> FindAllProjectsOwnedByUser(int UserID)
         {
-            return database.Projects.Where(cols => cols.OwnerID == UserID).ToList();
+            //TODO: Allow searching for deleted Projects
+            return database.Projects.Where(cols => cols.OwnerID == UserID && cols.IsDeleted == false).ToList();
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace Data
             List<Guid> projectIDs = database.UsersAccessProjects.Where(cols => cols.UserID == UserID && cols.invitationAccepted == true).Select(col => col.ProjectID).ToList();
 
             //New return the a list of projects matching the IDs
-            return database.Projects.Where(cols => projectIDs.Contains(cols.ID)).ToList();
+            return database.Projects.Where(cols => projectIDs.Contains(cols.ID) && cols.IsDeleted == false).ToList();
         }
 
         /// <summary>
@@ -52,7 +53,8 @@ namespace Data
         /// <returns></returns>
         public Project FindProjectByID(Guid ProjectID)
         {
-            return database.Projects.FirstOrDefault(cols => cols.ID == ProjectID);
+            //TODO: Allow searching for deleted Projects
+            return database.Projects.FirstOrDefault(cols => cols.ID == ProjectID && cols.IsDeleted == false);
         }
 
         /// <summary>
@@ -65,6 +67,23 @@ namespace Data
             var result = database.Projects.Add(project);
             database.SaveChanges();
             return result;
+        }
+
+        /// <summary>
+        /// Saves any changes to the database records
+        /// </summary>
+        /// <param name="project"></param>
+        public void UpdateProject(Project project) {
+            database.SaveChanges();
+        }
+
+        /// <summary>
+        /// Removes a Project From the database
+        /// </summary>
+        /// <param name="project"></param>
+        public void DeleteProject(Project project) {
+            project.IsDeleted = true;
+            database.SaveChanges();
         }
     }
 }

@@ -136,50 +136,23 @@ namespace Data
 
     }
 
-    public class Project : ProjectDTO
+    public class Project
     {
-        private Guid _guid = Guid.NewGuid();
-
         [Key]
-        public override Guid ID
-        {
-            get
-            {
-                return _guid;
-            }
-            set
-            {
-                _guid = value;
-            }
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.None)]
+        public Guid ID { get; set; }
+        public string Name { get; set; }
+        public DateTime DateStarted { get; set; }
+        public bool IsDeleted { get; set; }
+        public int OwnerID { get; set; }
+        public virtual UserProfile Owner { get; set; }
+        public virtual IEnumerable<RecieptEntity> Reciepts { get; set; }
+
+        public Project() {
+            //Sensible Defaults
+            ID = Guid.NewGuid();
+            DateStarted = DateTime.Now;
+            IsDeleted = false;
         }
-
-        [Required]
-        [Display(Name = "Project Name")]
-        public override string Name { get; set; }
-
-        /// <summary>
-        /// Default value for DateStarted is today
-        /// </summary>
-        private DateTime _DateStarted = DateTime.Now;
-
-        [Required]
-        [Display(Name = "Date Started")]
-        [DataType(DataType.Date)]
-        public override DateTime DateStarted
-        {
-            get
-            {
-                return _DateStarted;
-            }
-            set
-            {
-                _DateStarted = value;
-            }
-
-        }
-
-        [Required]
-        [Display(Name = "Deleted")]
-        public override bool IsDeleted { get; set; }
     }
 }

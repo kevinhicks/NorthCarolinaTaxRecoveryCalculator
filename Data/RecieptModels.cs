@@ -22,7 +22,7 @@ namespace Data
             {
                 if (County == Data.County.NON_TAXABLE)
                     return 0;
-                else 
+                else
                     return _salesTax;
             }
             set
@@ -176,6 +176,39 @@ namespace Data
 
         [Display(Name = "On Bill Detail")]
         public override bool OnBillDetail { get; set; }
+
+    }
+
+    [Table("Reciepts")]
+    public class Reciept
+    {
+
+        [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.None)]
+        public Guid ID { get; set; }
+        public Guid ProjectID { get; set; }
+        public virtual Project Project { get; set; }
+        public string RIF { get; set; }
+        public DateTime DateOfSale { get; set; }
+        public string StoreName { get; set; }
+        public int County { get; set; }
+        public float SalesTax { get; set; }
+        public float FoodTax { get; set; }
+        public float SalesAmount { get; set; }
+        public string Notes { get; set; }
+        public bool OnBillDetail { get; set; }
+
+        public Reciept()
+            : this(Guid.NewGuid())
+        { }
+
+        public Reciept(Guid projectID)
+        {
+            //Sensible Defaults
+            ID = Guid.NewGuid();
+            ProjectID = projectID;
+            DateOfSale = DateTime.Now;
+        }
 
     }
 }
