@@ -5,10 +5,10 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NorthCarolinaTaxRecoveryCalculator.Models;
 using System.Web.Script.Serialization;
 using System.Data.Objects;
 using System.Web.Security;
-using Data;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {

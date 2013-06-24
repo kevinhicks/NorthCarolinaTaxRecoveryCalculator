@@ -9,7 +9,7 @@ using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using NorthCarolinaTaxRecoveryCalculator.Filters;
-using Data;
+using NorthCarolinaTaxRecoveryCalculator.Models;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
