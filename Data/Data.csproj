@@ -1,53 +1,114 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-	<PropertyGroup>
-		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-		<ProjectGuid>7bd95c77-3efe-470c-8cdb-d1f5c739e132</ProjectGuid>
-		<OutputType>Library</OutputType>
-		<AppDesignerFolder>Properties</AppDesignerFolder>
-		<RootNamespace>Data</RootNamespace>
-		<AssemblyName>Data</AssemblyName>
-		<TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-		<FileAlignment>512</FileAlignment>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>full</DebugType>
-		<Optimize>false</Optimize>
-		<OutputPath>bin\Debug\</OutputPath>
-		<DefineConstants>DEBUG;TRACE</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<DebugType>pdbonly</DebugType>
- 		<Optimize>true</Optimize>
-		<OutputPath>bin\Release\</OutputPath>
-		<DefineConstants>TRACE</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-	</PropertyGroup>
-	<ItemGroup>
-		<Reference Include="System"/>
-		
-		<Reference Include="System.Core"/>
-		<Reference Include="System.Xml.Linq"/>
-		<Reference Include="System.Data.DataSetExtensions"/>
-		
-		
-		<Reference Include="Microsoft.CSharp"/>
- 		
-		<Reference Include="System.Data"/>
-		<Reference Include="System.Xml"/>
-	</ItemGroup>
-	<ItemGroup>
-		<Compile Include="Class1.cs" />
-
-		<Compile Include="Properties\AssemblyInfo.cs" />
-	</ItemGroup>
-	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6209B547-64B1-4CD9-9742-E8C6AAC5987F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Data</RootNamespace>
+    <AssemblyName>Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountModels.cs" />
+    <Compile Include="CountyModels.cs" />
+    <Compile Include="DBConfig.cs" />
+    <Compile Include="Migrations\201211110154081_Initial Migration.cs" />
+    <Compile Include="Migrations\201211110154081_Initial Migration.Designer.cs">
+      <DependentUpon>201211110154081_Initial Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201211110211016_Exisiting Records.cs" />
+    <Compile Include="Migrations\201211110211016_Exisiting Records.Designer.cs">
+      <DependentUpon>201211110211016_Exisiting Records.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201211141707480_User Access Projects ACL.cs" />
+    <Compile Include="Migrations\201211141707480_User Access Projects ACL.Designer.cs">
+      <DependentUpon>201211141707480_User Access Projects ACL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201211150054414_Add Email To ACL.cs" />
+    <Compile Include="Migrations\201211150054414_Add Email To ACL.Designer.cs">
+      <DependentUpon>201211150054414_Add Email To ACL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201211221938255_Refer to User from ACL.cs" />
+    <Compile Include="Migrations\201211221938255_Refer to User from ACL.Designer.cs">
+      <DependentUpon>201211221938255_Refer to User from ACL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201211222112454_Remove Forien Key From ACL to User Profile.cs" />
+    <Compile Include="Migrations\201211222112454_Remove Forien Key From ACL to User Profile.Designer.cs">
+      <DependentUpon>201211222112454_Remove Forien Key From ACL to User Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ProjectManager.cs" />
+    <Compile Include="ProjectModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecieptModels.cs" />
+    <Compile Include="TaxModels.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201211110154081_Initial Migration.resx">
+      <DependentUpon>201211110154081_Initial Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201211110211016_Exisiting Records.resx">
+      <DependentUpon>201211110211016_Exisiting Records.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201211141707480_User Access Projects ACL.resx">
+      <DependentUpon>201211141707480_User Access Projects ACL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201211150054414_Add Email To ACL.resx">
+      <DependentUpon>201211150054414_Add Email To ACL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201211221938255_Refer to User from ACL.resx">
+      <DependentUpon>201211221938255_Refer to User from ACL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201211222112454_Remove Forien Key From ACL to User Profile.resx">
+      <DependentUpon>201211222112454_Remove Forien Key From ACL to User Profile.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -55,5 +116,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
- </Project>
+</Project>
