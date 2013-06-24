@@ -12,7 +12,7 @@ namespace Data.Tests
         [TestInitialize]
         public void TestStartUp()
         {
-            projectManager = A.Fake<ProjectManager>();
+            projectManager = new ProjectManager();
         }
 
         [TestMethod]
