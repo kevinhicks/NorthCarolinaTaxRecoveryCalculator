@@ -22,17 +22,17 @@ namespace NorthCarolinaTaxRecoveryCalculator
         {
             ApplicationDBContext db = new ApplicationDBContext();
 
+            //Init the datbase
+            var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
+
+            updateDBInit.InitializeDatabase(db);
+
             //Init Security
             if (!WebSecurity.Initialized)
             {
                 WebSecurity.InitializeDatabaseConnection("ApplicationDBContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
 
             }
-
-            //Init the datbase
-            var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
-
-            updateDBInit.InitializeDatabase(db);
 
             AreaRegistration.RegisterAllAreas();
 
@@ -42,11 +42,12 @@ namespace NorthCarolinaTaxRecoveryCalculator
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
+            Bootstrapper.Initialise();
+
             //Remove all but the Razor View Engine for some extra Perf
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
 
-            Microsoft.AspNet.SignalR.GlobalHost.Configuration.KeepAlive = TimeSpan.FromSeconds(15);
         }
 
         void Seed()

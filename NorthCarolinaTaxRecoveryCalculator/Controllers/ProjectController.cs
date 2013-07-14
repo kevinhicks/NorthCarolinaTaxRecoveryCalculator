@@ -21,6 +21,13 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 	{
 		private ApplicationDBContext db = new ApplicationDBContext();
 
+        IEmailSender emailSender;
+
+        public ProjectController(IEmailSender emailSender)
+        {
+            this.emailSender = emailSender;
+        }
+
 		//
 		// GET: /Project/
 		[Authorize]
@@ -199,7 +206,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 				body += "Click the link to accept the invitation.\n";
 				body += "http://northcarolinataxrecoverycalculator.apphb.com/Project/AcceptInvite/" + acl.ID;
 
-				EmailSender.SendEmail(email, "You have been invited to a project", body);
+                emailSender.SendMail(email, "You have been invited to a project", body);
 			}
 
 			return RedirectToAction("Details", new { ProjectID = ProjectID });
@@ -221,7 +228,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 				body += "Click the link to accept the invitation.\n";
 				body += "http://northcarolinataxrecoverycalculator.apphb.com/Project/AcceptInvite/" + acl.ID;
 
-				EmailSender.SendEmail(acl.Email, "You have been invited to a project", body);
+                emailSender.SendMail(acl.Email, "You have been invited to a project", body);
 			}
 
 			return RedirectToAction("Details", new { ProjectID = acl.ProjectID });
