@@ -24,7 +24,6 @@ namespace NorthCarolinaTaxRecoveryCalculator
             // it is NOT necessary to register your controllers
 
             // e.g. container.RegisterType<ITestService, TestService>();   
-            container.RegisterType<IEmailSender, SendGridEmailSender>();
             RegisterTypes(container);
 
             return container;
@@ -32,7 +31,7 @@ namespace NorthCarolinaTaxRecoveryCalculator
 
         public static void RegisterTypes(IUnityContainer container)
         {
-
+            container.RegisterType<IEmailSender, SendGridEmailSender>();
         }
     }
 }
