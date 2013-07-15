@@ -22,22 +22,17 @@ namespace NorthCarolinaTaxRecoveryCalculator
         {
             ApplicationDBContext db = new ApplicationDBContext();
 
-<<<<<<< HEAD
             //Init the datbase, and apply any pending updates/changes 
             //NOTE: Entity Framework MUST update the database BEFORE the following WebSecurity block.
             //  If Entity Framework does not find that database thet why it left it, then it gets testy
             var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
             updateDBInit.InitializeDatabase(db);
 
-
-||||||| merged common ancestors
-=======
             //Init the datbase
             var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
 
             updateDBInit.InitializeDatabase(db);
 
->>>>>>> origin/new-email-provider
             //Init Security
             //NOTE: Entity Framework MUST update the database BEFORE this WebSecurity block.
             //  If Entity Framework does not find that database thet why it left it, then it gets testy
