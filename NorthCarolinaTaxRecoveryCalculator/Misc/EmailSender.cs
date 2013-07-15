@@ -18,6 +18,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Misc
         void SendMail(string to, string subject, string body);
     }
 
+    /// <summary>
+    /// Send an email usng the 'Send Grid' providor
+    /// </summary>
     public class SendGridEmailSender : IEmailSender
     {
         public void SendMail(string to, string subject, string body)
@@ -32,8 +35,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Misc
             email.Html = body;
 
             //send the email
-            var username = "2de7cc96-f065-487e-bdfd-653b03f4da4e@apphb.com";
-            var password = "deeipxb6";
+            var username = ConfigurationManager.AppSettings["SENDGRID_USERNAME"];
+            var password = ConfigurationManager.AppSettings["SENDGRID_PASSWORD"];
 
             var credentials = new NetworkCredential(username, password);
 
@@ -43,6 +46,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Misc
         }
     }
 
+    /// <summary>
+    /// Send an email usng the 'Mail Gun' providor
+    /// </summary>
     public class MailGunEmailSender : IEmailSender
     {
         public void SendMail(string to, string subject, string body)
