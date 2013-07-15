@@ -28,11 +28,6 @@ namespace NorthCarolinaTaxRecoveryCalculator
             var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
             updateDBInit.InitializeDatabase(db);
 
-            //Init the datbase
-            var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
-
-            updateDBInit.InitializeDatabase(db);
-
             //Init Security
             //NOTE: Entity Framework MUST update the database BEFORE this WebSecurity block.
             //  If Entity Framework does not find that database thet why it left it, then it gets testy
