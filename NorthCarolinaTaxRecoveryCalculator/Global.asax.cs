@@ -22,6 +22,7 @@ namespace NorthCarolinaTaxRecoveryCalculator
         {
             ApplicationDBContext db = new ApplicationDBContext();
 
+<<<<<<< HEAD
             //Init the datbase, and apply any pending updates/changes 
             //NOTE: Entity Framework MUST update the database BEFORE the following WebSecurity block.
             //  If Entity Framework does not find that database thet why it left it, then it gets testy
@@ -29,6 +30,14 @@ namespace NorthCarolinaTaxRecoveryCalculator
             updateDBInit.InitializeDatabase(db);
 
 
+||||||| merged common ancestors
+=======
+            //Init the datbase
+            var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
+
+            updateDBInit.InitializeDatabase(db);
+
+>>>>>>> origin/new-email-provider
             //Init Security
             //NOTE: Entity Framework MUST update the database BEFORE this WebSecurity block.
             //  If Entity Framework does not find that database thet why it left it, then it gets testy
@@ -44,11 +53,12 @@ namespace NorthCarolinaTaxRecoveryCalculator
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
+            Bootstrapper.Initialise();
+
             //Remove all but the Razor View Engine for some extra Perf
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
 
-            Microsoft.AspNet.SignalR.GlobalHost.Configuration.KeepAlive = TimeSpan.FromSeconds(15);
         }
 
         void Seed()

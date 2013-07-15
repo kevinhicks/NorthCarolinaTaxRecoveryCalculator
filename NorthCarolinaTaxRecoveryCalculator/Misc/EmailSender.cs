@@ -1,20 +1,57 @@
-﻿using System;
+﻿using RestSharp;
+using SendGridMail;
+using SendGridMail.Transport;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
-using System.Text;
+using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
-using System.Net;
-using RestSharp;
+using System.Text;
 using System.Web;
-using System.Configuration;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Misc
 {
-    public class EmailSender
+    public interface IEmailSender
     {
+        void SendMail(string to, string subject, string body);
+    }
 
-        public static void SendEmail(string to, string subject, string body)
+    /// <summary>
+    /// Send an email usng the 'Send Grid' providor
+    /// </summary>
+    public class SendGridEmailSender : IEmailSender
+    {
+        public void SendMail(string to, string subject, string body)
+        {
+            //create the email
+            var email = SendGrid.GetInstance();
+
+            email.From = new MailAddress("kevin@keyholeservices.com");
+            email.AddTo(new List<string> {to});
+            email.Subject = subject;
+            email.Text = body;
+            email.Html = body;
+
+            //send the email
+            var username = ConfigurationManager.AppSettings["SENDGRID_USERNAME"];
+            var password = ConfigurationManager.AppSettings["SENDGRID_PASSWORD"];
+
+            var credentials = new NetworkCredential(username, password);
+
+            var transport = SMTP.GetInstance(credentials);
+            transport.Deliver(email);
+
+        }
+    }
+
+    /// <summary>
+    /// Send an email usng the 'Mail Gun' providor
+    /// </summary>
+    public class MailGunEmailSender : IEmailSender
+    {
+        public void SendMail(string to, string subject, string body)
         {
             RestClient client = new RestClient();
             client.BaseUrl = "https://api.mailgun.net/v2";
@@ -34,6 +71,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.Misc
             request.Method = Method.POST;
 
             client.Execute(request);
-        }        
+        }
     }
 }
