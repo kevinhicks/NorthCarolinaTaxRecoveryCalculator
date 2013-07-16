@@ -18,8 +18,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.ViewModels.Project
     {
         public NorthCarolinaTaxRecoveryCalculator.Models.Project Project { get; set; }
         public IEnumerable<NorthCarolinaTaxRecoveryCalculator.Models.UsersAccessProjects> UsersAccessProjects { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]        
+
+        [Display(Name = "Filter By Recipets After")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? FilterStartDate { get; set; }
+        
+        [Display(Name = "Filter By Recipets Before")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? FilterEndDate { get; set; }
     }
