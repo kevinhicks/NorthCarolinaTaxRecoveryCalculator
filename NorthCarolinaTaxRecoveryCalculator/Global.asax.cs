@@ -43,12 +43,15 @@ namespace NorthCarolinaTaxRecoveryCalculator
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
+            //Init IoC(unity)
             Bootstrapper.Initialise();
 
             //Remove all but the Razor View Engine for some extra Perf
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
 
+            //Load Tax Periods into globaly available static structure
+            TaxPeriods.Load();
         }
 
         void Seed()

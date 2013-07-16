@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.VisualBasic.FileIO;
+using System.Xml;
 
 namespace CSVReader
 {
@@ -11,8 +12,140 @@ namespace CSVReader
         static void Main(string[] args)
         {
             //generateProdInsertCode();
-            generateTestInsertCode();
+            //generateTestInsertCode();
+
+            generateXML();
             
+        }
+
+        static string[] names = {
+                   "Alamance",
+                   "Alexander",
+                   "Alleghany",
+                   "Anson",
+                   "Ashe",
+                   "Avery",
+                   "Beaufort",
+                   "Bertie",
+                   "Bladen",
+                   "Brunswick",
+                   "Buncombe",
+                   "Burke",
+                   "Carbarrus",
+                   "Caldwell",
+                   "Camden",
+                   "Carteret",
+                   "Caswell",
+                   "Catawba",
+                   "Chatham",
+                   "Cherokee",
+                   "Chowan",
+                   "Clay",
+                   "Cleveland",
+                   "Columbus",
+                   "Craven",
+                   "Cumberland",
+                   "Currituck",
+                   "Dare",
+                   "Davidson",
+                   "Davie",
+                   "Duplin",
+                   "Durham",
+                   "Edgecombe",
+                   "Forsyth",
+                   "Franklin",
+                   "Gaston",
+                   "Gates",
+                   "Graham",
+                   "Granville",
+                   "Greene",
+                   "Guilford",
+                   "Halifax",
+                   "Harnett",
+                   "Haywood",
+                   "Henderson",
+                   "Hertford",
+                   "Hoke",
+                   "Hyde",
+                   "Iredell",
+                   "Jackson",
+                   "Johnston",
+                   "Jones",
+                   "Lee",
+                   "Lenoir",
+                   "Lincoln",
+                   "Macon",
+                   "Madison",
+                   "Martin",
+                   "McDowell",
+                   "Mecklenburg",
+                   "Mitchell",
+                   "Montgomery",
+                   "Moore",
+                   "Nash",
+                   "New Hanover",
+                   "Northhampton",
+                   "Onslow",
+                   "Orange",
+                   "Pamlico",
+                   "Pasquotank",
+                   "Pender",
+                   "Perquimans",
+                   "Person",
+                   "Pitt",
+                   "Polk",
+                   "Randolph",
+                   "Richmond",
+                   "Robeson",
+                   "Rockingham",
+                   "Rowan",
+                   "Rutherford",
+                   "Sampson",
+                   "Scotland",
+                   "Stanley",
+                   "Stokes",
+                   "Surry",
+                   "Swain",
+                   "Transylvania",
+                   "Tyrrell",
+                   "Union",
+                   "Vance",
+                   "Wake",
+                   "Warren",
+                   "Washington",
+                   "Watauga",
+                   "Wayne",
+                   "Wilkes",
+                   "Wilson",
+                   "Yadkin",
+                   "Yancey"
+                                };
+
+        static void generateXML()
+        {
+            var xmlSettings = new XmlWriterSettings();
+            xmlSettings.Indent = true;
+
+
+            var xmlOut = XmlWriter.Create("TaxPeriods.xml", xmlSettings);
+            xmlOut.WriteStartDocument();
+                xmlOut.WriteStartElement("TaxPeriods");
+                    xmlOut.WriteStartElement("TaxPeriod");
+                    xmlOut.WriteAttributeString("starting", "1/1/12");
+
+                    foreach (string name in names)
+                    {
+                        xmlOut.WriteStartElement("County");
+                        xmlOut.WriteAttributeString("Name", name);
+                        xmlOut.WriteAttributeString("TaxRate", "2.0");
+                        xmlOut.WriteEndElement();
+                    }
+                    xmlOut.WriteEndElement();
+                xmlOut.WriteEndElement();
+            xmlOut.WriteEndDocument();
+
+            xmlOut.Flush();
+            xmlOut.Close();
         }
 
         static void generateProdInsertCode() {
