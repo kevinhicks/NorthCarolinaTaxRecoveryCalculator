@@ -105,11 +105,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ProjectModelsTest.cs" />
-    <Compile Include="Models\TestProjectsData.cs" />
+    <Compile Include="Models\Data\ProjectModelsTest.cs" />
+    <Compile Include="Models\Data\TestProjectsData.cs" />
+    <Compile Include="Models\Service\TaxServicesTest.cs" />
     <Compile Include="Security\AuthenticationTest.cs" />
-    <Compile Include="Models\RecieptModelsTest.cs" />
-    <Compile Include="Models\TaxModelsTest.cs" />
+    <Compile Include="Models\Data\RecieptModelsTest.cs" />
+    <Compile Include="Models\Data\TaxModelsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

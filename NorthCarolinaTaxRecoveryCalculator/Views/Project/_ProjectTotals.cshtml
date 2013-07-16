@@ -19,17 +19,8 @@
         if (TaxPeriod.Count > 0)
         {
             <h3 class="collapible clickable" id="taxPeriodHeader">
-                For Tax Period:<br />
-                @TaxContext.TaxPeriods[TaxPeriod[0].GetTaxPeriod()].ToShortDateString()
-                -
-                @if(TaxPeriod[0].GetTaxPeriod() != 0)           
-                {         
-                    @TaxContext.TaxPeriods[TaxPeriod[0].GetTaxPeriod() - 1].ToShortDateString()
-                }
-                else 
-                {
-                    <text>Now</text>
-                }
+                For Tax Period Staring:<br />
+                @TaxPeriods.Periods[0].StartOfPeriod.ToShortDateString()               
             </h3>
             <div id="countyList">
                 <table class="tablesorter">

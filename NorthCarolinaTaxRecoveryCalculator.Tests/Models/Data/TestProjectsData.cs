@@ -2237,12 +2237,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         {
             RecieptEntity reciept;
 
-            for (int i = 0; i < TaxContext.TaxPeriods.Count(); i++)
+            for (int i = 0; i < TaxPeriods.Periods.Count(); i++)
             {
                 reciept = new RecieptEntity();
                 reciept.RIF = "" + i;
                 reciept.StoreName = "Lowe's";
-                reciept.DateOfSale = TaxContext.TaxPeriods[i].AddDays(1);
+                reciept.DateOfSale = TaxPeriods.Periods[i].StartOfPeriod.AddDays(1);
                 reciept.SalesTax = 100f;
                 reciept.FoodTax = 100f;
                 reciept.ProjectID = project.ID;
@@ -2266,13 +2266,13 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             for (int county = 1; county <= 101; county++)
             {
                 //Add a reciept BEFORE and AFTER the tax period
-                for (int period = 0; period < TaxContext.TaxPeriods.Count(); period++)
+                for (int period = 0; period < TaxPeriods.Periods.Count(); period++)
                 {
                     //One Before
                     reciept = new RecieptEntity();
                     reciept.RIF = county + "" + period + "" + 1;
                     reciept.StoreName = "Lowe's";
-                    reciept.DateOfSale = TaxContext.TaxPeriods[period].AddMinutes(-1);
+                    reciept.DateOfSale = TaxPeriods.Periods[period].StartOfPeriod.AddMinutes(-1);
                     reciept.SalesTax = 1000f;
                     reciept.FoodTax = 1000f;
                     reciept.ProjectID = project.ID;
@@ -2282,7 +2282,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
                     reciept.Notes = "";
 
                     //Dont add a reciept that is BEFORE the oldest tax period
-                    if (period != TaxContext.TaxPeriods.Count() - 1)
+                    if (period != TaxPeriods.Periods.Count() - 1)
                     {
                         Reciepts.Add(reciept);
                     }
@@ -2291,7 +2291,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
                     reciept = new RecieptEntity();
                     reciept.RIF = county + "" + period + "" + 2;
                     reciept.StoreName = "Lowe's";
-                    reciept.DateOfSale = TaxContext.TaxPeriods[period].AddMinutes(1);
+                    reciept.DateOfSale = TaxPeriods.Periods[period].StartOfPeriod.AddMinutes(1);
                     reciept.SalesTax = 1000f;
                     reciept.FoodTax = 1000f;
                     reciept.ProjectID = project.ID;

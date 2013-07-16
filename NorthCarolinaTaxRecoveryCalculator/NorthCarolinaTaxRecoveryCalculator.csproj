@@ -244,13 +244,14 @@
       <DependentUpon>201211222112454_Remove Forien Key From ACL to User Profile.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Data\AccountModels.cs" />
     <Compile Include="Misc\EmailSender.cs" />
-    <Compile Include="Models\TaxModels.cs" />
-    <Compile Include="Models\CountyModels.cs" />
+    <Compile Include="Models\Data\TaxModels.cs" />
+    <Compile Include="Models\Service\TaxServices.cs" />
+    <Compile Include="Models\Data\CountyModels.cs" />
     <Compile Include="Models\DBConfig.cs" />
-    <Compile Include="Models\ProjectModels.cs" />
-    <Compile Include="Models\RecieptModels.cs" />
+    <Compile Include="Models\Data\ProjectModels.cs" />
+    <Compile Include="Models\Data\RecieptModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ProjectViewModels.cs" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />

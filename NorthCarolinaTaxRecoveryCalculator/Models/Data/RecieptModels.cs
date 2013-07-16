@@ -64,9 +64,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             if (County == NorthCarolinaTaxRecoveryCalculator.Models.County.NON_TAXABLE)
                 return 0;
 
-            double totalTaxRates = TaxContext.TotalTaxRate(County, DateOfSale);
+            double totalTaxRates = TaxCalculator.TotalTaxRate(County, DateOfSale);
 
-            return (SalesTax * (TaxContext.StateTaxRate / totalTaxRates));
+            return (SalesTax * (TaxCalculator.StateTaxRate / totalTaxRates));
         }
 
         /// <summary>
@@ -80,8 +80,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             if (County == NorthCarolinaTaxRecoveryCalculator.Models.County.NON_TAXABLE)
                 return 0;
 
-            double totalTaxRates = TaxContext.TotalTaxRate(County, DateOfSale);
-            double countyRate = TaxContext.CountyTaxRate(County, DateOfSale);
+            double totalTaxRates = TaxCalculator.TotalTaxRate(County, DateOfSale);
+            double countyRate = TaxCalculator.CountyTaxRate(County, DateOfSale);
 
             return (SalesTax * (countyRate / totalTaxRates));
         }
@@ -98,27 +98,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
                 return 0;
             }
 
-            double totalTaxRates = TaxContext.TotalTaxRate(County, DateOfSale);
+            double totalTaxRates = TaxCalculator.TotalTaxRate(County, DateOfSale);
+            double transitRate = TaxCalculator.CountyTransitTaxRate(County, DateOfSale);
 
-            return (SalesTax * (TaxContext.TransitTaxRate / totalTaxRates));
+            return (SalesTax * (transitRate / totalTaxRates));
         }
 
-        /// <summary>
-        /// Return the Tax period that this reciept is in
-        /// </summary>
-        /// <returns></returns>
-        public int GetTaxPeriod()
-        {
-            for (int i = 0; i < TaxContext.TaxPeriods.Length; i++)
-            {
-                if (this.DateOfSale >= TaxContext.TaxPeriods[i])
-                {
-                    return i;
-                }
-            }
-
-            throw new Exception("We do not calculate tax on a recipet so old.");
-        }
     }
 
     [Table("Reciepts")]

@@ -12,7 +12,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
 {
     [TestClass]
     public class RecieptModelsTest
-    {
+    {/*
         [TestMethod]
         public void TestStateTaxPortion()
         {
@@ -108,8 +108,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
                                               reciept.CountyTaxPortion() +
                                               reciept.TransitTaxPortion(), .001);
 
-        }
-
+        }*/
+        /*
         [TestMethod]
         public void TestGetTaxPeriod()
         {
@@ -160,6 +160,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             Assert.AreEqual(0, project.GetTotalStateTax(TestProjectsData.GetInstance().Reciepts));
             Assert.AreEqual(0, project.GetTotalCountyTax(TestProjectsData.GetInstance().Reciepts));
             Assert.AreEqual(0, project.GetTotalTransitTax(TestProjectsData.GetInstance().Reciepts));
-        }
+        }*/
     }
 }
