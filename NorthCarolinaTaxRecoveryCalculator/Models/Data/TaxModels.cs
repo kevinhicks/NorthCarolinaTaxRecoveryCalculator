@@ -42,7 +42,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             var settings = new XmlReaderSettings();
             settings.IgnoreWhitespace = true;
             settings.IgnoreComments = true;
-            var xmlIn = XmlReader.Create(System.AppDomain.CurrentDomain.BaseDirectory + "TaxPeriods.xml", settings);
+            var xmlIn = XmlReader.Create(System.AppDomain.CurrentDomain.BaseDirectory + "/TaxPeriods.xml", settings);
 
             //get XML header stuff out of the way
             xmlIn.Read();
