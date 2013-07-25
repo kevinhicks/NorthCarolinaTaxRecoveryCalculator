@@ -368,10 +368,11 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// </summary>
         /// <returns></returns>
         [Authorize]
-        public ActionResult PrintReciepts(Guid ProjectID)
+        public ActionResult PrintReciepts(Guid ProjectID, DateTime? filterStartDate, DateTime? filterEndDate)
         {
             //All the recipets in THIS project, sorted correctly
-            var reciepts = db.Reciepts.Where(rec => rec.ProjectID == ProjectID).AsEnumerable().OrderBy(rec => rec.RIF, new NaturalSortComparer<string>()).ToList();
+            var project = db.Projects.Find(ProjectID);
+            var reciepts = project.FindReciepts(filterStartDate, filterEndDate).OrderBy(rec => rec.RIF, new NaturalSortComparer<string>()).ToList();
 
             return View(reciepts);
         }
@@ -383,15 +384,11 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// </summary>
         /// <returns>A binary stream dirctly to the client (PDF)</returns>
         [Authorize]
-        public ActionResult PrintRecieptsPDF(Guid ProjectID)
+        public ActionResult PrintRecieptsPDF(Guid ProjectID, DateTime? filterStartDate, DateTime? filterEndDate)
         {
-            Guid p = ProjectID;
-
-            //The name of the project
-            ViewBag.ProjectName = db.Projects.Find(ProjectID).Name;
-
-            //find all the reciepts in this project
-            var reciepts = db.Reciepts.Where(rec => rec.ProjectID == ProjectID).AsEnumerable().OrderBy(rec => rec.RIF, new NaturalSortComparer<string>()).ToList();
+            //find all the reciepts in this project            
+            var project = db.Projects.Find(ProjectID);
+            var reciepts = project.FindReciepts(filterStartDate, filterEndDate).OrderBy(rec => rec.RIF, new NaturalSortComparer<string>()).ToList();
 
             //create a PDF of the list of reciepts
             var pdf = new ViewAsPdf("PrintReciepts", reciepts)
@@ -414,7 +411,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// </summary>
         /// <param name="ProjectID"></param>
         /// <returns>A binary stream dirctly to the client (Excel)</returns>
-        public ActionResult ExportToExcel(Guid ProjectID)
+        public ActionResult ExportToExcel(Guid ProjectID, DateTime? filterStartDate, DateTime? filterEndDate)
         {
 
             var project = db.Projects.Find(ProjectID);
@@ -429,7 +426,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             byte[] response = null;
 
             //all the reciepts for this project
-            var reciepts = db.Reciepts.Where(rec => rec.ProjectID == ProjectID).AsEnumerable().OrderBy(rec => rec.RIF, new NaturalSortComparer<string>()).ToList();
+            var reciepts = project.FindReciepts(filterStartDate, filterEndDate).OrderBy(rec => rec.RIF, new NaturalSortComparer<string>()).ToList();
 
             //Create the excel file
             using (ExcelPackage excel = new ExcelPackage())

@@ -20,11 +20,13 @@ namespace NorthCarolinaTaxRecoveryCalculator.ViewModels.Project
         public IEnumerable<NorthCarolinaTaxRecoveryCalculator.Models.UsersAccessProjects> UsersAccessProjects { get; set; }
 
         [Display(Name = "Filter By Recipets After")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yy}")]
         public DateTime? FilterStartDate { get; set; }
-        
+
         [Display(Name = "Filter By Recipets Before")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yy}")]
         public DateTime? FilterEndDate { get; set; }
 
         public IEnumerable<CountyTotals> CountyTotals { get; set; }

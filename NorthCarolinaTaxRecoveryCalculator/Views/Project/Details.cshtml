@@ -38,6 +38,13 @@
         $(function () {
             $(".collapible").collapsible({ defaultOpen: 'taxPeriodHeader' });
             $("table").tablesorter({ sortList: [[0, 0]] }) //sort by county automatically
+
+            $("#clearFiltersButton").click(function () {
+                $("#FilterStartDate").val("");
+                $("#FilterEndDate").val("");
+
+                $("#filtersForm").submit();
+            });
         });
     </script>
 }
@@ -46,17 +53,18 @@
     <fieldset>
         <legend>County Taxes By Period(s)</legend>
         <div>
-            <form>
+            <form id="filtersForm">
                 @Html.DisplayNameFor(model => model.FilterStartDate)
                 @Html.EditorFor(model => model.FilterStartDate)
                 @Html.DisplayNameFor(model => model.FilterEndDate)
                 @Html.EditorFor(model => model.FilterEndDate)
-                <input type="submit" />
+                <input type="submit" value="Filter By Date(s)" />
+                <input type="button" id="clearFiltersButton" value="Clear Filters"/>
             </form>
         </div>
         <div>@Html.ActionLink("Reciepts List", "Index", "Reciept", new { ProjectID = Model.Project.ID }, new { @class = "blueLink" }) </div>
-        <div>@Html.ActionLink("Reciepts To PDF", "PrintRecieptsPDF", "Project", new { ProjectID = Model.Project.ID }, new { @class = "blueLink" })</div>
-        <div>@Html.ActionLink("Reciepts To Excel", "ExportToExcel", "Project", new { ProjectID = Model.Project.ID }, new { @class = "blueLink" })</div>
+        <div>@Html.ActionLink("Reciepts To PDF", "PrintRecieptsPDF", "Project", new { ProjectID = Model.Project.ID , filterStartDate = Model.FilterStartDate, filterEndDate = Model.FilterEndDate }, new { @class = "blueLink" })</div>
+        <div>@Html.ActionLink("Reciepts To Excel", "ExportToExcel", "Project", new { ProjectID = Model.Project.ID , filterStartDate = Model.FilterStartDate, filterEndDate = Model.FilterEndDate}, new { @class = "blueLink" })</div>
         <div class="display-label">
             @Html.DisplayNameFor(model => model.Project.Name)
         </div>
