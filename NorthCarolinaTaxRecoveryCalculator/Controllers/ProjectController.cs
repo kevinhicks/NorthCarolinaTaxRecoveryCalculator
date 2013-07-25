@@ -102,13 +102,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             var reciepts = project.FindReciepts(filterStartDate, filterEndDate);
 
             //Used to hold all the tax periods
-            ViewModel.TaxPeriods = new IEnumerable<RecieptEntity>[TaxPeriods.Periods.Count()];
-
-            //save each reciept for each tax period 
-            for (int i = 0; i < TaxPeriods.Periods.Count(); i++)
-            {
-                ViewModel.TaxPeriods[i] = CalcProjectTotalsByTaxPeriodForAllCounties(reciepts, TaxPeriods.Periods[i]);
-            }
+            ViewModel.CountyTotals =  CalcProjectTotalsByTaxPeriodForAllCounties(reciepts);
+            
 
             //Find all the collaborators on this project            
             ViewModel.UsersAccessProjects = new ACLManager().FindAllCollaborators(ProjectID);
@@ -310,49 +305,54 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             //save each reciept for each tax period 
             for(int i = 0; i < TaxPeriods.Periods.Count(); i++)
             {
-                ViewBag.TaxPeriods[i] = CalcProjectTotalsByTaxPeriodForAllCounties(reciepts, TaxPeriods.Periods[i]);
+                //ViewBag.TaxPeriods[i] = CalcProjectTotalsByTaxPeriodForAllCounties(reciepts, TaxPeriods.Periods[i]);
             }
 
             return PartialView("_ProjectTotals", reciepts);
         }
 
         /// <summary>
-        /// Calculate the taxes for All reciepts => in a project => in a single tax period
+        /// Calculate the taxes for All reciepts  in a project 
         /// </summary>
         /// <param name="project"></param>
-        /// <param name="taxPeriod"></param>
         /// <returns>
         /// A list of reciepts. One for each county. Each county is the total of ALL reciepts 
-        /// in that county for the specifyied tax period
+        /// in that county
         /// </returns>
-        private IEnumerable<RecieptEntity> CalcProjectTotalsByTaxPeriodForAllCounties(IEnumerable<RecieptEntity> reciepts, TaxPeriod taxPeriod)
-        {
-            var results = new List<RecieptEntity>();
-            foreach (var reciept in reciepts)
+        private IEnumerable<CountyTotals> CalcProjectTotalsByTaxPeriodForAllCounties(IEnumerable<RecieptEntity> reciepts)
+        {   
+            //Hold the totals for 100 counties + non taxable
+            var countyTotals = new CountyTotals[101];
+
+            for (int i = 0; i < 101; i++)
             {
-                //We only care about reciepts in THIS tax period
-                if (TaxPeriods.GetPeriodByDate(reciept.DateOfSale).StartOfPeriod != taxPeriod.StartOfPeriod)
+                countyTotals[i] = new CountyTotals();
+
+                //Get all the reciepts for a single county
+                var recipetsFromACounty = reciepts.Where(rec => rec.County == i - 1);
+
+                //Total the taex for all recitpes of this county
+                foreach (var reciept in recipetsFromACounty)
                 {
-                    continue;
+                    countyTotals[i].CountyTax += reciept.CountyTaxPortion();
+                    countyTotals[i].StateTax += reciept.StateTaxPortion();
+                    countyTotals[i].FoodTax += reciept.FoodTax;
+                    countyTotals[i].TransitTax += reciept.TransitTaxPortion();
+                    countyTotals[i].Name = reciept.CountyName;
                 }
-
-                //If it is in this tax period, then save it in a list off all reciepts in this tax period
-                results.Add(reciept);
             }
+            return countyTotals;
 
-            //Now the magic.
             //Group the list by county. and sum the totals for each county
-            return results.GroupBy(rec => rec.County)
+            /*return reciepts.GroupBy(rec => rec.County)
                    .Select(counties => new RecieptEntity
                    {
                        County = counties.Key,
-                       DateOfSale = taxPeriod.StartOfPeriod,
                        SalesTax = counties.Sum(rec => rec.SalesTax),
                        FoodTax = counties.Sum(rec => rec.FoodTax),
                        SalesAmount = counties.Sum(rec => rec.SalesAmount)
                    })
-                   .ToList();
-
+                   .ToList();*/
         }
 
         protected override void Dispose(bool disposing)

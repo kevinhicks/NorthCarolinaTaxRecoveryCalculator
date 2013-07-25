@@ -95,7 +95,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         [Display(Name = "On Bill Detail")]
         public bool OnBillDetail { get; set; }
 
-        public string Name
+        public string CountyName
         {
             get
             {
@@ -149,12 +149,11 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         /// <returns></returns>
         public double TransitTaxPortion()
         {
-            //Only Mecklenbur has any transit tax
-            if (County != NorthCarolinaTaxRecoveryCalculator.Models.County.MECKLENBURG)
-            {
+            if (County < 1 || County > 101)
+                throw new ArgumentOutOfRangeException("County");
+            if (County == NorthCarolinaTaxRecoveryCalculator.Models.County.NON_TAXABLE)
                 return 0;
-            }
-
+            
             double totalTaxRates = TaxCalculator.TotalTaxRate(County, DateOfSale);
             double transitRate = TaxCalculator.CountyTransitTaxRate(County, DateOfSale);
 
