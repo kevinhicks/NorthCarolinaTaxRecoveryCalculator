@@ -50,7 +50,7 @@
                             double totalFood = 0;
                             double totalTransit = 0;
                         }
-                        @foreach (RecieptDTO county in TaxPeriod)
+                        @foreach (RecieptEntity county in TaxPeriod)
                         {
                             double _county = county.CountyTaxPortion();
                             double _state = county.StateTaxPortion();

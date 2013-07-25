@@ -81,34 +81,47 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         {
             var ViewModel = new ProjectOverviewAndCollaboratorsViewModels();
 
-            ViewModel.Project = db.Projects.Find(ProjectID);
+            var project = db.Projects.Find(ProjectID);
+            var projectManager = new ProjectManager();
+
+            //Make sure that it is a valid ProjectID 
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewModel.Project = project;
 
             //Only the Project owner whould see the overview page
-            if (ViewModel.Project.BelongsTo(WebSecurity.CurrentUserId))
-            {
-                if (ViewModel.Project == null)
-                {
-                    return HttpNotFound();
-                }
-
-
-                //Used to save confusion in the following query
-                Guid _projID = ProjectID;
-
-                //Find all the collaborators on this project
-                var collaborators = db.UsersAccessProjects
-                    .Where(acl => acl.ProjectID == _projID)
-                    .ToList();
-
-                ViewModel.UsersAccessProjects = collaborators;
-                ViewModel.FilterStartDate = filterStartDate;
-                ViewModel.FilterEndDate = filterEndDate;
-                return View(ViewModel);
-            }
-            else
+            if (!project.BelongsTo(WebSecurity.CurrentUserId))
             {
                 return RedirectToAction("Index");
             }
+
+            //Find all the reciepts for this view
+            var reciepts = project.FindReciepts(filterStartDate, filterEndDate);
+
+            //Used to hold all the tax periods
+            ViewModel.TaxPeriods = new IEnumerable<RecieptEntity>[TaxPeriods.Periods.Count()];
+
+            //save each reciept for each tax period 
+            for (int i = 0; i < TaxPeriods.Periods.Count(); i++)
+            {
+                ViewModel.TaxPeriods[i] = CalcProjectTotalsByTaxPeriodForAllCounties(reciepts, TaxPeriods.Periods[i]);
+            }
+
+            //Find all the collaborators on this project            
+            ViewModel.UsersAccessProjects = new ACLManager().FindAllCollaborators(ProjectID);
+            
+            ViewModel.FilterStartDate = filterStartDate;
+            ViewModel.FilterEndDate = filterEndDate;
+
+            ViewModel.TotalCountyTaxForProject = project.GetTotalCountyTax(reciepts);
+            ViewModel.TotalStateTaxForProject = project.GetTotalStateTax(reciepts);
+            ViewModel.TotalFoodTaxForProject = project.GetTotalFoodTax(reciepts);
+            ViewModel.TotalTransitTaxForProject = project.GetTotalTransitTax(reciepts);
+
+            return View(ViewModel);
         }
 
         //
@@ -285,44 +298,14 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         public ActionResult ProjectTotals(Guid ProjectID, DateTime? filterStartDate, DateTime? filterEndDate)
         {
             //Find all the reciepts for this project
-            List<RecieptEntity> reciepts = null;
-            /*
-            //If there was both a start & end date 
-            if (filterStartDate != null &&
-               filterEndDate != null)
-            {
-                reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID &&
-                                         rec.DateOfSale >= filterStartDate &&
-                                         rec.DateOfSale < filterEndDate).ToList();
-            }
-            //If there was only a start date 
-            else if (filterStartDate != null &&
-               filterEndDate == null)
-            {
-                reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID &&
-                                         rec.DateOfSale >= filterStartDate).ToList();
-            }
-            //If there was only a end date 
-            else if (filterStartDate == null &&
-               filterEndDate != null)
-            {
-                reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID &&
-                                         rec.DateOfSale < filterEndDate).ToList();
-            }
-            //If there was no date filter set
-            else
-            {
-                reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID).ToList();
-            }
-            */
-            reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID).ToList();
+            List<RecieptEntity> reciepts = db.Reciepts.Where(rec => rec.Project.ID == ProjectID).ToList();
 
             //Load all related infomation to this project
             var project = db.Projects.Find(ProjectID);
             ViewBag.Project = project;
 
             //used to hold all the tax periods
-            ViewBag.TaxPeriods = new IEnumerable<RecieptDTO>[TaxPeriods.Periods.Count()];
+            ViewBag.TaxPeriods = new IEnumerable<RecieptEntity>[TaxPeriods.Periods.Count()];
             
             //save each reciept for each tax period 
             for(int i = 0; i < TaxPeriods.Periods.Count(); i++)
@@ -342,9 +325,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// A list of reciepts. One for each county. Each county is the total of ALL reciepts 
         /// in that county for the specifyied tax period
         /// </returns>
-        private IEnumerable<RecieptDTO> CalcProjectTotalsByTaxPeriodForAllCounties(List<RecieptEntity> reciepts, TaxPeriod taxPeriod)
+        private IEnumerable<RecieptEntity> CalcProjectTotalsByTaxPeriodForAllCounties(IEnumerable<RecieptEntity> reciepts, TaxPeriod taxPeriod)
         {
-            var results = new List<RecieptDTO>();
+            var results = new List<RecieptEntity>();
             foreach (var reciept in reciepts)
             {
                 //We only care about reciepts in THIS tax period
@@ -360,7 +343,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             //Now the magic.
             //Group the list by county. and sum the totals for each county
             return results.GroupBy(rec => rec.County)
-                   .Select(counties => new RecieptDTO
+                   .Select(counties => new RecieptEntity
                    {
                        County = counties.Key,
                        DateOfSale = taxPeriod.StartOfPeriod,

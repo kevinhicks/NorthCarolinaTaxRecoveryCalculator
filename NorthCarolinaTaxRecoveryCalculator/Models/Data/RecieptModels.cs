@@ -9,22 +9,55 @@ using System.Web.Security;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Models
 {
-    public class RecieptDTO
+    [Table("Reciepts")]
+    public class RecieptEntity
     {
-        public virtual Guid ID { get; set; }
-        public virtual string RIF { get; set; }
-        public virtual DateTime DateOfSale { get; set; }
-        public virtual string StoreName { get; set; }
-        public virtual int County { get; set; }
+        private Guid _guid = Guid.NewGuid();
 
-        private float _salesTax = 0;
-        public virtual float SalesTax
+        [Key]
+        public Guid ID
         {
             get
             {
-                if(County == NorthCarolinaTaxRecoveryCalculator.Models.County.NON_TAXABLE)
+                return _guid;
+            }
+            set
+            {
+                _guid = value;
+            }
+        }
+
+        public Guid ProjectID { get; set; }
+        public virtual Project Project { get; set; }
+
+        [Required]
+        [Display(Name = "RIF")]
+        public string RIF { get; set; }
+
+        [Required]
+        [Display(Name = "Date On Reciept")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
+        public DateTime DateOfSale { get; set; }
+
+        [Required]
+        [Display(Name = "Store Name")]
+        public string StoreName { get; set; }
+
+        [Required]
+        [Display(Name = "County")]
+        public int County { get; set; }
+
+        [Display(Name = "Sales Tax")]
+        [DataType(DataType.Currency)]
+        private float _salesTax = 0;
+        public float SalesTax
+        {
+            get
+            {
+                if (County == NorthCarolinaTaxRecoveryCalculator.Models.County.NON_TAXABLE)
                     return 0;
-                else 
+                else
                     return _salesTax;
             }
             set
@@ -33,8 +66,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             }
         }
 
+        [Display(Name = "Food Tax")]
+        [DataType(DataType.Currency)]
         private float _foodTax = 0;
-        public virtual float FoodTax
+        public float FoodTax
         {
             get
             {
@@ -49,9 +84,31 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             }
         }
 
-        public virtual float SalesAmount { get; set; }
-        public virtual string Notes { get; set; }
-        public virtual bool OnBillDetail { get; set; }
+        [Required]
+        [Display(Name = "Sales Amount")]
+        [DataType(DataType.Currency)]
+        public float SalesAmount { get; set; }
+
+        [Display(Name = "Notes")]
+        public string Notes { get; set; }
+
+        [Display(Name = "On Bill Detail")]
+        public bool OnBillDetail { get; set; }
+
+        public string Name
+        {
+            get
+            {
+                if (County > 0 && County < 101)
+                {
+                    return NorthCarolinaTaxRecoveryCalculator.Models.County.Counties[County].Name;
+                }
+                else
+                {
+                    return "Unknown";
+                }
+            }
+        }
 
         /// <summary>
         /// Calculate the dollar amount of tax that went to the state
@@ -103,66 +160,5 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
 
             return (SalesTax * (transitRate / totalTaxRates));
         }
-
-    }
-
-    [Table("Reciepts")]
-    public class RecieptEntity : RecieptDTO
-    {
-        private Guid _guid = Guid.NewGuid();
-
-        [Key]
-        public override Guid ID
-        {
-            get
-            {
-                return _guid;
-            }
-            set
-            {
-                _guid = value;
-            }
-        }
-
-        public Guid ProjectID { get; set; }
-        public virtual Project Project { get; set; }
-
-        [Required]
-        [Display(Name = "RIF")]
-        public override string RIF { get; set; }
-
-        [Required]
-        [Display(Name = "Date On Reciept")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
-        public override DateTime DateOfSale { get; set; }
-
-        [Required]
-        [Display(Name = "Store Name")]
-        public override string StoreName { get; set; }
-
-        [Required]
-        [Display(Name = "County")]
-        public override int County { get; set; }
-
-        [Display(Name = "Sales Tax")]
-        [DataType(DataType.Currency)]
-        public override float SalesTax { get; set; }
-
-        [Display(Name = "Food Tax")]
-        [DataType(DataType.Currency)]
-        public override float FoodTax { get; set; }
-
-        [Required]
-        [Display(Name = "Sales Amount")]
-        [DataType(DataType.Currency)]
-        public override float SalesAmount { get; set; }
-
-        [Display(Name = "Notes")]
-        public override string Notes { get; set; }
-
-        [Display(Name = "On Bill Detail")]
-        public override bool OnBillDetail { get; set; }
-
     }
 }

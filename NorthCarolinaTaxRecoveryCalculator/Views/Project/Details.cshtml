@@ -4,8 +4,7 @@
 }
 @section styles {
     <style>
-        legend
-        {
+        legend {
             border-radius: 10px;
             -moz-border-radius: 10px;
             -webkit-border-radius: 10px;
@@ -13,9 +12,8 @@
             padding: 5px;
             margin-left: 20px;
         }
-        
-        fieldset
-        {
+
+        fieldset {
             border-radius: 10px;
             -moz-border-radius: 10px;
             -webkit-border-radius: 10px;
@@ -24,35 +22,33 @@
             border-style: solid;
             padding: 15px;
         }
-        
-        h3#taxPeriodHeader
-        {
-            text-align:center;
+
+        h3#taxPeriodHeader {
+            text-align: center;
         }
-        
-        div#contributorsArea, div#taxPeriodsOverviewArea
-        {
+
+        div#contributorsArea, div#taxPeriodsOverviewArea {
             margin: 10px;
         }
     </style>
 }
 @section scripts {
-<script src="~//Scripts/jquery.collapsible.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(function () {
-        $(".collapible").collapsible({ defaultOpen: 'taxPeriodHeader'});
-        $("table").tablesorter({sortList: [[0, 0]]}) //sort by county automatically
-    });
-</script>
+    <script src="~//Scripts/jquery.collapsible.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".collapible").collapsible({ defaultOpen: 'taxPeriodHeader' });
+            $("table").tablesorter({ sortList: [[0, 0]] }) //sort by county automatically
+        });
+    </script>
 }
 
-<div id="taxPeriodsOverviewArea">   
+<div id="taxPeriodsOverviewArea">
     <fieldset>
         <legend>County Taxes By Period(s)</legend>
         <div>
             <form>
                 @Html.DisplayNameFor(model => model.FilterStartDate)
-                @Html.EditorFor(model => model.FilterStartDate) 
+                @Html.EditorFor(model => model.FilterStartDate)
                 @Html.DisplayNameFor(model => model.FilterEndDate)
                 @Html.EditorFor(model => model.FilterEndDate)
                 <input type="submit" />
@@ -74,7 +70,84 @@
             @Html.DisplayFor(model => model.Project.DateStarted)
         </div>
         <div>
-            @{Html.RenderAction("ProjectTotals", new { ProjectID = Model.Project.ID, filterStartDate = Model.FilterStartDate, filterEndDate = Model.FilterEndDate });}
+            <div>
+                Total County Tax: @Model.TotalCountyTaxForProject.ToString("C")
+            </div>
+            <div>
+                Total State Tax: @Model.TotalStateTaxForProject.ToString("C")
+            </div>
+            <div>
+                Total Food Tax: @Model.TotalFoodTaxForProject.ToString("C")
+            </div>
+            <div>
+                Total Transit Tax: @Model.TotalTransitTaxForProject.ToString("C")
+            </div>
+            @{  
+                foreach (var TaxPeriod in Model.TaxPeriods)
+                {
+                    if (TaxPeriod.Count() > 0)
+                    {
+                <h3 class="collapible clickable" id="taxPeriodHeader">For Tax Period Staring:<br />
+                    @TaxPeriod.ElementAt(0).DateOfSale.ToShortDateString()
+                </h3>
+                <div id="countyList">
+                    <table class="tablesorter">
+                        <thead>
+                            <tr>
+                                <th>County
+                                </th>
+                                <th>County Tax
+                                </th>
+                                <th>State Tax
+                                </th>
+                                <th>Food Tax
+                                </th>
+                                <th>Transit Tax
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                        double totalCounty = 0;
+                        double totalState = 0;
+                        double totalFood = 0;
+                        double totalTransit = 0;
+                            }
+                            @foreach (NorthCarolinaTaxRecoveryCalculator.Models.RecieptEntity county in TaxPeriod)
+                            {
+                                double _county = county.CountyTaxPortion();
+                                double _state = county.StateTaxPortion();
+                                double _food = county.FoodTax;
+                                double _transit = county.TransitTaxPortion();
+
+                                totalCounty += _county;
+                                totalState += _state;
+                                totalFood += _food;
+                                totalTransit += _transit;
+                            
+                                <tr>
+                                    <td>@county.Name</td>
+                                    <td>@_county.ToString("C")</td>
+                                    <td>@_state.ToString("C")</td>
+                                    <td>@_food.ToString("C")</td>
+                                    <td>@_transit.ToString("C")</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th>@totalCounty.ToString("C")</th>
+                                <th>@totalState.ToString("C")</th>
+                                <th>@totalFood.ToString("C")</th>
+                                <th>@totalTransit.ToString("C")</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                    }
+                }
+            }
         </div>
     </fieldset>
 </div>
@@ -86,7 +159,7 @@
             <div class="collabEntry">
                 <span class="collabAction">@Html.ActionLink("Resend", "ResendInvitation", new { AclID = acl.ID }, new { @class = "blueLink" })</span>
                 <span class="collabAction">@Html.ActionLink("Revoke", "RevokeInvitation", new { AclID = acl.ID }, new { @class = "blueLink" })</span>
-                 @if (acl.invitationAccepted)
+                @if (acl.invitationAccepted)
                 {
                     <span class="collabAction">Accepted</span>
                 }

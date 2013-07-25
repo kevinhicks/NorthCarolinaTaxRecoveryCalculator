@@ -26,5 +26,13 @@ namespace NorthCarolinaTaxRecoveryCalculator.ViewModels.Project
         [Display(Name = "Filter By Recipets Before")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? FilterEndDate { get; set; }
+
+        public IEnumerable<RecieptEntity>[] TaxPeriods { get; set; }
+
+        public double TotalCountyTaxForProject { get; set; }
+        public double TotalStateTaxForProject { get; set; }
+        public double TotalFoodTaxForProject { get; set; }
+        public double TotalTransitTaxForProject { get; set; }
+        public double TotalSpentOnProject { get; set; }
     }
 }
