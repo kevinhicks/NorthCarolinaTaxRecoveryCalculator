@@ -213,6 +213,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentVoucherController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\RecieptController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -247,6 +248,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Data\AccountModels.cs" />
     <Compile Include="Misc\EmailSender.cs" />
+    <Compile Include="Models\Data\PaymentVoucherModels.cs" />
     <Compile Include="Models\Data\TaxModels.cs" />
     <Compile Include="Models\Service\AccountServices.cs" />
     <Compile Include="Models\Service\ProjectServices.cs" />
@@ -345,6 +347,8 @@
     <Content Include="App_Browsers\qt.browser" />
     <Content Include="Views\Project\PrintReciepts.cshtml" />
     <Content Include="Views\Shared\_PrintLayout.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PaymentVoucherEntry.cshtml" />
+    <Content Include="Views\PaymentVoucher\Index.cshtml" />
     <None Include="_AppStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
