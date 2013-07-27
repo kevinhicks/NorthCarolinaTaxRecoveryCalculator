@@ -1,103 +1,107 @@
-﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Data.PaymentVoucher
+﻿@model IEnumerable<NorthCarolinaTaxRecoveryCalculator.Models.Data.PaymentVoucher>
 
 @{
     ViewBag.Title = "Index";
 }
+@section style {
+    <style>
+        div#paymentVoucherList {
+            width: 200px;
+            float: left;
+        }
 
-<h2>Index</h2>
-
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>PaymentVoucher</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProjectName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProjectName)
-            @Html.ValidationMessageFor(model => model.ProjectName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CheckNumber)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CheckNumber)
-            @Html.ValidationMessageFor(model => model.CheckNumber)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Date)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Date)
-            @Html.ValidationMessageFor(model => model.Date)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PaidTo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PaidTo)
-            @Html.ValidationMessageFor(model => model.PaidTo)
-        </div>
-        
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Entries)
-        </div>
-        <div class="editor-field">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Cost Element</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @Html.EditorFor(model => model.Entries)
-                    @Html.ValidationMessageFor(model => model.Entries)
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PreparedBy)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PreparedBy)
-            @Html.ValidationMessageFor(model => model.PreparedBy)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ApprovedBy)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ApprovedBy)
-            @Html.ValidationMessageFor(model => model.ApprovedBy)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.RBCApproval)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.RBCApproval)
-            @Html.ValidationMessageFor(model => model.RBCApproval)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+        div#paymentVoucherArea {
+            margin-left: 200px;
+        }
+    </style>
 }
+@section scripts {
+    <script src="~/Scripts/knockout-2.2.0.js"></script>
+    <script type="text/javascript">
+        $(function () {
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+            ko.applyBindings(new VoucherViewModel);
+
+            //prevent the form from being submitted directly
+            $("form").submit(function (e) {
+                e.preventDefault();
+            });
+
+            //Load a vouher when we click on it in the list
+            $("tr.clickable").click(function () {
+                var id = $(this).attr("id");
+                loadVoucher(id);
+            });
+
+            //load a vouchrer from ther server into the voucher area
+            function loadVoucher(id) {
+
+                $("div#paymentVoucherArea").html("");
+                $.get("/PaymentVoucher/GetVoucher/" + id, function (result) {
+                    $("div#paymentVoucherArea").html(result);
+
+                    //prevent the form from being submitted directly
+                    $("form").submit(function (e) {
+                        e.preventDefault();
+                        saveVoucher();
+                    });
+                });
+            }
+
+            //upload a voucher to the server
+            function saveVoucher() {
+                $.post("/PaymentVoucher/SaveVoucher", $("form").serialize())
+                    .done(function (result) {
+                        if (result == "Saved")
+                            window.location.href = '/PaymentVoucher';
+                        else {
+                            $("div#paymentVoucherArea").html(result);
+
+                            //prevent the form from being submitted directly
+                            $("form").submit(function (e) {
+                                e.preventDefault();
+                                saveVoucher();
+                            });
+                        }
+                    });
+            }
+
+            ///idk
+            function VoucherViewModel() {
+                var self = this;
+
+                self.ProjectName = ko.observable();
+                self.CheckNumber = ko.observable();
+                self.PaidTo = ko.observable();
+            }
+
+            $("#addNewVoucherButton").click(function () {
+                loadVoucher("");
+            });
+        });
+    </script>
+}
+<div id="paymentVoucherList">
+    <h2>Vouchers</h2>
+    <input type="button" id="addNewVoucherButton" value="New Voucher"/>
+    <table>
+        @foreach (var item in Model)
+        {
+            <tr id="@item.ID" class="clickable">
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaidTo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+            </tr>
+        }
+    </table>
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<div id="paymentVoucherArea">
+</div>
+

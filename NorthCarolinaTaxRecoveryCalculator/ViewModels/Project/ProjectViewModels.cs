@@ -11,7 +11,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.ViewModels.Project
     {
         public IEnumerable<NorthCarolinaTaxRecoveryCalculator.Models.Project> MyProjects { get; set; }
         public IEnumerable<NorthCarolinaTaxRecoveryCalculator.Models.Project> SharedProjects { get; set; }
-
     }
 
     public class ProjectOverviewAndCollaboratorsViewModels

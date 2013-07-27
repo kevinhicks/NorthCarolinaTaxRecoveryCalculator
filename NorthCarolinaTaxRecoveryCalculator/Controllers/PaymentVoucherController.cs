@@ -1,4 +1,5 @@
 ﻿using NorthCarolinaTaxRecoveryCalculator.Models.Data;
+using NorthCarolinaTaxRecoveryCalculator.ViewModels.PaymentVoucher;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +13,76 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         //
         // GET: /PaymentVoucher/
 
+        static List<PaymentVoucher> vouchers = null;
+        static PaymentVoucherController()
+        {
+            vouchers = new List<PaymentVoucher>();
+
+            var paymentVoucher = new PaymentVoucher();
+            paymentVoucher.CheckNumber = "123";
+            paymentVoucher.PaidTo = "Kevin";
+            vouchers.Add(paymentVoucher);
+        }
+
         public ActionResult Index()
         {
-            var paymentVoucher = new PaymentVoucher();
-            var entry = new PaymentVoucherEntry();
-            entry.Item = "Bolt";
-            entry.CostElement = "asd";
-            entry.Amount = 100;
+            //Send it to the view
+            return View(vouchers);
+        }
 
-            paymentVoucher.Entries.Add(entry);
-            return View(paymentVoucher);
+        public ActionResult AddPaymentVoucherEntry(PaymentVoucherViewModel model)
+        {
+            model.Voucher.Entries.Add(new PaymentVoucherEntry());
+            return Json(model);
+        }
+
+        [HttpGet]
+        public ActionResult GetVoucher(Guid? VoucherID)
+        {
+            PaymentVoucher voucher;
+
+            //If we are not asking to a specific voucher, then we must want a new one
+            if (VoucherID == null)
+            {
+                voucher = new PaymentVoucher();
+            }
+            else
+            {
+                voucher = vouchers.Where(m => m.ID == VoucherID).FirstOrDefault();
+                return PartialView("_Edit", voucher);
+            }
+
+            return PartialView("_Create", voucher);
+        }
+
+        [HttpPost]
+        public ActionResult SaveVoucher(PaymentVoucher Voucher)
+        {
+            if (ModelState.IsValid)
+            {
+                //Does it already exist?
+                var v = vouchers.Where(m => m.ID == Voucher.ID).FirstOrDefault();
+                if (v != null)
+                {
+                    //If it does exist, update it
+                    v.ProjectName = Voucher.ProjectName;
+                    v.CheckNumber = Voucher.CheckNumber;
+                    v.Date = Voucher.Date;
+                    v.PaidTo = Voucher.PaidTo;
+                    v.PreparedBy = Voucher.PreparedBy;
+                    v.ApprovedBy = Voucher.ApprovedBy;
+                    v.RBCApproval = Voucher.RBCApproval;                        
+                }
+                else
+                {
+                    //Create it
+                    vouchers.Add(Voucher);
+                }
+
+                return Content("Saved");
+            }
+
+            return PartialView("_Edit", Voucher);
         }
 
     }
