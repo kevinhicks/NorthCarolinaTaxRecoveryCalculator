@@ -22,6 +22,23 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             paymentVoucher.CheckNumber = "123";
             paymentVoucher.PaidTo = "Kevin";
             vouchers.Add(paymentVoucher);
+
+            var entry = new PaymentVoucherEntry();
+            entry.Item = "Bolts";
+            entry.CostElement = "102-2";
+            entry.Amount = 100.22;
+            paymentVoucher.Entries.Add(entry);
+            entry = new PaymentVoucherEntry();
+            entry.Item = "Screws";
+            entry.CostElement = "122-2";
+            entry.Amount = 10.22;
+            paymentVoucher.Entries.Add(entry);
+            entry = new PaymentVoucherEntry();
+            entry.Item = "Nuts";
+            entry.CostElement = "102.2";
+            entry.Amount = 143.22;
+            paymentVoucher.Entries.Add(entry);
+            
         }
 
         public ActionResult Index()
@@ -50,11 +67,11 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             {
                 voucher = vouchers.Where(m => m.ID == VoucherID).FirstOrDefault();
                 ViewBag.SaveButtonLabel = "Update";
-                return PartialView("_Edit", voucher);
+                return PartialView("_EditVoucher", voucher);
             }
             
             ViewBag.SaveButtonLabel = "Create";
-            return PartialView("_Edit", voucher);
+            return PartialView("_EditVoucher", voucher);
         }
 
         [HttpPost]
@@ -73,7 +90,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
                     v.PaidTo = Voucher.PaidTo;
                     v.PreparedBy = Voucher.PreparedBy;
                     v.ApprovedBy = Voucher.ApprovedBy;
-                    v.RBCApproval = Voucher.RBCApproval;                        
+                    v.RBCApproval = Voucher.RBCApproval;
+                    v.Entries = Voucher.Entries;
                 }
                 else
                 {
@@ -85,8 +103,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             }
 
             ViewBag.SaveButtonLabel = "Update";
-            return PartialView("_Edit", Voucher);
+            return PartialView("_EditVoucher", Voucher);
         }
-
     }
 }

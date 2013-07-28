@@ -52,7 +52,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
 
         public string Item { get; set; }
         public string CostElement { get; set; }
-        public float Amount { get; set; }
+        public double Amount { get; set; }
 
         public PaymentVoucherEntry()
         {

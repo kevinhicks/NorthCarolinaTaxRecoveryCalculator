@@ -395,9 +395,9 @@
     <Content Include="Views\Shared\_PrintLayout.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\PaymentVoucherEntry.cshtml" />
     <Content Include="Views\PaymentVoucher\Index.cshtml" />
-    <Content Include="Views\PaymentVoucher\_Create.cshtml" />
-    <Content Include="Views\PaymentVoucher\_Edit.cshtml" />
+    <Content Include="Views\PaymentVoucher\_EditVoucher.cshtml" />
     <Content Include="App_Browsers\qt.browser" />
+    <None Include="Views\PaymentVoucher\_EntryRow.cshtml" />
     <None Include="_AppStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
