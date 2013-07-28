@@ -48,9 +48,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         [Display(Name = "County")]
         public int County { get; set; }
 
+        private float _salesTax = 0;
         [Display(Name = "Sales Tax")]
         [DataType(DataType.Currency)]
-        private float _salesTax = 0;
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
         public float SalesTax
         {
             get
@@ -66,9 +67,11 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             }
         }
 
+
+        private float _foodTax = 0;
         [Display(Name = "Food Tax")]
         [DataType(DataType.Currency)]
-        private float _foodTax = 0;
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
         public float FoodTax
         {
             get
@@ -87,6 +90,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         [Required]
         [Display(Name = "Sales Amount")]
         [DataType(DataType.Currency)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
         public float SalesAmount { get; set; }
 
         [Display(Name = "Notes")]
@@ -153,7 +157,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
                 throw new ArgumentOutOfRangeException("County");
             if (County == NorthCarolinaTaxRecoveryCalculator.Models.County.NON_TAXABLE)
                 return 0;
-            
+
             double totalTaxRates = TaxCalculator.TotalTaxRate(County, DateOfSale);
             double transitRate = TaxCalculator.CountyTransitTaxRate(County, DateOfSale);
 
