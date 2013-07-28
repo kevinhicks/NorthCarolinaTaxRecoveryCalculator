@@ -49,10 +49,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             else
             {
                 voucher = vouchers.Where(m => m.ID == VoucherID).FirstOrDefault();
+                ViewBag.SaveButtonLabel = "Update";
                 return PartialView("_Edit", voucher);
             }
-
-            return PartialView("_Create", voucher);
+            
+            ViewBag.SaveButtonLabel = "Create";
+            return PartialView("_Edit", voucher);
         }
 
         [HttpPost]
@@ -82,6 +84,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
                 return Content("Saved");
             }
 
+            ViewBag.SaveButtonLabel = "Update";
             return PartialView("_Edit", Voucher);
         }
 

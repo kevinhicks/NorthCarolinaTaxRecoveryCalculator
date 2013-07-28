@@ -38,13 +38,7 @@
 
                 $("div#paymentVoucherArea").html("");
                 $.get("/PaymentVoucher/GetVoucher/" + id, function (result) {
-                    $("div#paymentVoucherArea").html(result);
-
-                    //prevent the form from being submitted directly
-                    $("form").submit(function (e) {
-                        e.preventDefault();
-                        saveVoucher();
-                    });
+                    initFormArea(result);
                 });
             }
 
@@ -55,15 +49,27 @@
                         if (result == "Saved")
                             window.location.href = '/PaymentVoucher';
                         else {
-                            $("div#paymentVoucherArea").html(result);
+                            initFormArea(result);
 
-                            //prevent the form from being submitted directly
-                            $("form").submit(function (e) {
-                                e.preventDefault();
-                                saveVoucher();
-                            });
+                           
                         }
                     });
+            }
+
+            //Configure the form. 
+            //Make sure that it does not submit normally ules we wan it to
+            function initFormArea(html) {
+                //load the form area with fresh html
+                $("div#paymentVoucherArea").html(html);
+
+                //prevent the form from being submitted directly
+                $("form").submit(function (e) {
+                    e.preventDefault();
+                    saveVoucher();
+                });
+
+                //focus on the first field
+                $("input#ProjectName").focus();
             }
 
             ///idk
