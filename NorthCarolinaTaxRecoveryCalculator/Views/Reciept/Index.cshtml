@@ -153,7 +153,6 @@
             initTable();
 
             initNotesPopup();
-            //initSignalR();
             //initForm();
 
             initEditingMode();
@@ -359,36 +358,7 @@
 
             $("table").trigger("update"); 
         }
-
-        function unusedStuff() {
-            $("input#createBtn").show();
-            $("input#updateBtn").hide();
-            $("#RIF").keyup(function () {
-                var found = false;
-
-                $("table.tablesorter tr").each(function () {
-                    var cell = $(this).find("td:first").text();
-
-                    //If there is already a record with this RIF,
-                    //then hide then create button, and show
-                    //the update button
-                    if ((cell != "") && ($.trim(cell) == $.trim($("#RIF").val()))) {
-                        found = true;
-                        return false;
-                    }
-                });
-
-                if (found) {
-                    $("input#createBtn").hide();
-                    $("input#updateBtn").show();
-                } else {
-                    $("input#updateBtn").hide();
-                    $("input#createBtn").show();
-                }
-
-            });
-        }
-
+        
         //Allow the list of recipets to fill the remaining width, and height of the window
         function initViewport() {   
             var top = $("div#recieptRecords").offset().top;
