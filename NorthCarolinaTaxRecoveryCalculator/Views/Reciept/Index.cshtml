@@ -22,7 +22,13 @@
                 @Html.LabelFor(model => model.DateOfSale)
             </div>
             <div class="editor-field">
-                @Html.TextBoxFor(model => model.DateOfSale, new { autocomplete = "off" })
+                @if(Model.DateOfSale == DateTime.MinValue)
+                {
+                    @Html.TextBoxFor(model => model.DateOfSale, new { autocomplete = "off", Value = "" })
+                } else {
+                    @Html.TextBoxFor(model => model.DateOfSale, new { autocomplete = "off" })                    
+                }
+
                 @Html.ValidationMessageFor(model => model.DateOfSale)
             </div>
             <div class="editor-label">
