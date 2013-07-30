@@ -1,6 +1,5 @@
 ﻿using NorthCarolinaTaxRecoveryCalculator.Models.Data;
 using NorthCarolinaTaxRecoveryCalculator.ViewModels.PaymentVoucher;
-using PerpetuumSoft.Knockout;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +8,7 @@ using System.Web.Mvc;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
-    public class PaymentVoucherController : KnockoutController
+    public class PaymentVoucherController : Controller
     {
         //
         // GET: /PaymentVoucher/

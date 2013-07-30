@@ -7,12 +7,6 @@
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/Scripts/jquery.watermark.min.js")
-    @Scripts.Render("~/Scripts/jquery.collapsible.min.js")
-    @Scripts.Render("~/Scripts/jquery.tablesorter.min.js")
-    @RenderSection("scripts", required: false)
     <style type="text/css">
         div#loginArea {
             float: right;
@@ -78,6 +72,12 @@
         </section>
     </div>
     <footer></footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/Scripts/jquery.watermark.min.js")
+    @Scripts.Render("~/Scripts/jquery.collapsible.min.js")
+    @Scripts.Render("~/Scripts/jquery.tablesorter.min.js")
+    @RenderSection("scripts", required: false)
     <script type="text/javascript">
         $(function () {
             //ping the server every 10 seconds

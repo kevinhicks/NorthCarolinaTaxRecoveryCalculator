@@ -1,0 +1,14 @@
+﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Data.PaymentVoucherEntry
+
+<tr>
+    @Html.HiddenFor(o => o.ID)
+    <td>
+        @Html.EditorFor(o => o.Item)
+    </td>
+    <td>
+        @Html.EditorFor(o => o.CostElement)
+    </td>
+    <td>
+        @Html.EditorFor(o => o.Amount)
+    </td>
+</tr>
