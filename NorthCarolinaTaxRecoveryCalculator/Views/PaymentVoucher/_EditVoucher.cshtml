@@ -1,5 +1,4 @@
 ﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Data.PaymentVoucher
-
 @using (Html.BeginForm("SaveVoucher", "PaymentVoucher", new { VoucherID = Model.ID }, FormMethod.Post))
 {
     @Html.ValidationSummary(true)
@@ -67,16 +66,32 @@
         <div id="entries">
             <table>
                 <thead>
-                    <tr>
+                    <tr class="entryItem">
+                        <th></th>
                         <th>Item</th>
                         <th>Cost Element</th>
                         <th>Amount</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var entry in Model.Entries)
+                    @for (int i = 0; i < Model.Entries.Count; i++)
                     {
-                        @Html.RenderPartial("_EntryRow", entry);
+                        //Html.RenderPartial("_EntryRow", entry);
+                        <tr>
+                            @Html.HiddenFor(o => Model.Entries[i].ID)
+                            <td>
+                                <input type="button" value="X" class="removeItemBtn"/>
+                            </td>
+                            <td>
+                                @Html.EditorFor(o => Model.Entries[i].Item)
+                            </td>
+                            <td>
+                                @Html.EditorFor(o => Model.Entries[i].CostElement)
+                            </td>
+                            <td>
+                                @Html.EditorFor(o => Model.Entries[i].Amount)
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>

@@ -20,6 +20,7 @@ namespace NorthCarolinaTaxRecoveryCalculator
     {
         protected void Application_Start()
         {
+      ModelBinders.Binders.DefaultBinder = new PerpetuumSoft.Knockout.KnockoutModelBinder();
             ApplicationDBContext db = new ApplicationDBContext();
 
             //Init the datbase, and apply any pending updates/changes 
