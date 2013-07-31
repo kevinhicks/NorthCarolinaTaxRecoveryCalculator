@@ -26,49 +26,34 @@
     </style>
 }
 @section scripts {
-    <script src="~/Scripts/knockout-2.3.0.debug.js"></script>
-    <script src="~/Scripts/knockout.mapping-latest.js"></script>
-    <script src="~/Scripts/moment.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            var data = {
-                "Voucher": {
-                    "ID": "",
-                    "PaidTo": "",
-                    "CheckNumber": "",
-                    "Date": new Date()
-                },
-                "Vouchers": [
-                    @{int i = 0;}
-                    @foreach (var v in Model)
-                    {
-                        if (i > 0)
-                        {
-                            @Html.Raw(",");
-                        }
-                        i++;                        
-                        @Html.Raw("{");
-                        @Html.Raw("'ID': '" + v.ID + "',");
-                        @Html.Raw("'PaidTo': '" + v.PaidTo + "',");
-                        @Html.Raw("'CheckNumber': '" + v.CheckNumber + "',");
-                        @Html.Raw("'Date': new Date('" + v.Date + "')");
-                        @Html.Raw("}")
-                                                                       i++;
-                    }
-                ]
-            }
+            var data = @Html.Raw(Json.Encode(Model))
 
             ///idk
             function VoucherViewModel() {
                 var self = this;
 
-                self.Voucher = {}
-                self.Voucher.ID = ko.observable(GenerateGuid());
-                self.Voucher.CheckNumber = ko.observable("");
-                self.Voucher.PaidTo = ko.observable("");
-                self.Voucher.Date = ko.observable("");
+                self.newVoucher = function () {
+                    var v = ko.observable();
+                    v.ID = ko.observable(GenerateGuid());
+                    v.CheckNumber = ko.observable("");
+                    v.PaidTo = ko.observable("");
+                    v.Date = ko.observable("");
 
-                self.Vouchers = ko.observableArray(data.Vouchers);
+                    return v;
+                }
+
+                self.Vouchers = ko.observableArray(data);
+                self.Vouchers().every(function (v) {
+                    v.ID = ko.protectedObservable(v.ID);
+                    v.CheckNumber = ko.protectedObservable(v.CheckNumber);
+                    v.PaidTo = ko.protectedObservable(v.PaidTo);
+                    v.Date = ko.protectedObservable(moment(v.Date).format('l'));
+                });
+                
+                self.Voucher = self.newVoucher();
+                self.SelectedVoucher = ko.observable("");
 
 
                 self.addVoucher = function () {
@@ -78,16 +63,36 @@
                         "CheckNumber": "",
                         "Date": ""                      
                     });*/
+                    //self.Voucher = newVoucher();
                 }
 
                 self.saveVoucher = function () {
                     //$.post("/api/PaymentVoucher/saveVoucher", self.Voucher);
+                    //ko.mapping.fromJS(ko.mapping.toJS(voucher), {}, self.Voucher);
+                    /*if (self.SelectedVoucher != null) {
+                        self.Vouchers.replace(self.SelectedVoucher, self.Voucher);
+                        self.SelectedVoucher = null;
+                    } else {
+                        self.Vouchers.push(self.Voucher);
+                        self.Voucher = newVoucher();
+                    }*/
 
-                    ko.mapping.fromJSON(ko.mapping.toJSON(voucher), {}, self.Voucher);
+                    //self.Vouchers()..replace(self.SelectedVoucher, self.Voucher());
+                    //self.Voucher.commit();
+                    self.Voucher().ID.commit();
+                    self.Voucher().CheckNumber.commit();
+                    self.Voucher().PaidTo.commit();
+                    self.Voucher().Date.commit();
+                    self.Vouchers.valueHasMutated();
                 }
 
                 self.loadVoucherFromList = function (voucher) {
-                    ko.mapping.fromJSON(ko.mapping.toJSON(voucher),{}, self.Voucher);
+                    //ko.mapping.fromJSON(ko.mapping.toJSON(voucher), {}, self.Voucher);
+                    //self.Voucher.Date(moment(voucher.Date).format('l'));
+                    //self.Voucher = voucher;
+                    //self.Voucher(voucher);
+                    self.Voucher(voucher);
+                    //self.SelectedVoucher;
                 }
             }
 
@@ -148,5 +153,5 @@
         </fieldset>
     </form>
 </div>
-<div id="entryListArea"></div>
+<div id="entryListArea" data-bind="visible: Voucher.PaidTo == 'Kevin'">lalala</div>
 
