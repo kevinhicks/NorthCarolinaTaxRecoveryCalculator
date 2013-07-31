@@ -72,11 +72,12 @@
         </section>
     </div>
     <footer></footer>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/Scripts/jquery.watermark.min.js")
-    @Scripts.Render("~/Scripts/jquery.collapsible.min.js")
-    @Scripts.Render("~/Scripts/jquery.tablesorter.min.js")
+    @Scripts.Render("~/bundles/jquery",
+                    "~/bundles/jqueryui",
+                    "~/Scripts/jquery.watermark.min.js",
+                    "~/Scripts/jquery.collapsible.min.js",
+                    "~/Scripts/jquery.tablesorter.min.js",
+                    "~/Scripts/common.js")
     @RenderSection("scripts", required: false)
     <script type="text/javascript">
         $(function () {

@@ -15,7 +15,7 @@
         }
 
         div#voucher {
-            float:left;
+            float: left;
             margin-right: 20px;
         }
 
@@ -26,99 +26,127 @@
     </style>
 }
 @section scripts {
-    <script src="~/Scripts/knockout-2.2.0.js"></script>
+    <script src="~/Scripts/knockout-2.3.0.debug.js"></script>
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
     <script type="text/javascript">
         $(function () {
-
-            ko.applyBindings(new VoucherViewModel);
-
-            //prevent the form from being submitted directly
-            $("form").submit(function (e) {
-                e.preventDefault();
-            });
-
-            //Load a vouher when we click on it in the list
-            $("tr.clickable").click(function () {
-                var id = $(this).attr("id");
-                loadVoucher(id);
-            });
-
-            //load a vouchrer from ther server into the voucher area
-            function loadVoucher(id) {
-
-                $("div#paymentVoucherArea").html("");
-                $.get("/PaymentVoucher/GetVoucher/" + id, function (result) {
-                    initFormArea(result);
-                });
-            }
-
-            //upload a voucher to the server
-            function saveVoucher() {
-                $.post("/PaymentVoucher/SaveVoucher", $("form").serialize())
-                    .done(function (result) {
-                        if (result == "Saved")
-                            window.location.href = '/PaymentVoucher';
-                        else {
-                            initFormArea(result);
-
-                           
+            var data = {
+                "Voucher": {
+                    "ID": "",
+                    "PaidTo": "",
+                    "CheckNumber": "",
+                    "Date": new Date()
+                },
+                "Vouchers": [
+                    @{int i = 0;}
+                    @foreach (var v in Model)
+                    {
+                        if (i > 0)
+                        {
+                            @Html.Raw(",");
                         }
-                    });
-            }
-
-            //Configure the form. 
-            //Make sure that it does not submit normally ules we wan it to
-            function initFormArea(html) {
-                //load the form area with fresh html
-                $("div#paymentVoucherArea").html(html);
-
-                //prevent the form from being submitted directly
-                $("form").submit(function (e) {
-                    e.preventDefault();
-                    saveVoucher();
-                });
-
-                //focus on the first field
-                $("input#ProjectName").focus();
+                        i++;                        
+                        @Html.Raw("{");
+                        @Html.Raw("'ID': '" + v.ID + "',");
+                        @Html.Raw("'PaidTo': '" + v.PaidTo + "',");
+                        @Html.Raw("'CheckNumber': '" + v.CheckNumber + "',");
+                        @Html.Raw("'Date': new Date('" + v.Date + "')");
+                        @Html.Raw("}")
+                                                                       i++;
+                    }
+                ]
             }
 
             ///idk
             function VoucherViewModel() {
                 var self = this;
 
-                self.ProjectName = ko.observable();
-                self.CheckNumber = ko.observable();
-                self.PaidTo = ko.observable();
+                self.Voucher = {}
+                self.Voucher.ID = ko.observable(GenerateGuid());
+                self.Voucher.CheckNumber = ko.observable("");
+                self.Voucher.PaidTo = ko.observable("");
+                self.Voucher.Date = ko.observable("");
+
+                self.Vouchers = ko.observableArray(data.Vouchers);
+
+
+                self.addVoucher = function () {
+                    /*self.Vouchers.push({
+                        "ID" : GenerateGuid(),
+                        "PaidTo": "",
+                        "CheckNumber": "",
+                        "Date": ""                      
+                    });*/
+                }
+
+                self.saveVoucher = function () {
+                    //$.post("/api/PaymentVoucher/saveVoucher", self.Voucher);
+
+                    ko.mapping.fromJSON(ko.mapping.toJSON(voucher), {}, self.Voucher);
+                }
+
+                self.loadVoucherFromList = function (voucher) {
+                    ko.mapping.fromJSON(ko.mapping.toJSON(voucher),{}, self.Voucher);
+                }
             }
 
-            $("#addNewVoucherButton").click(function () {
-                loadVoucher("");
-            });
+            ko.applyBindings(new VoucherViewModel());
         });
     </script>
 }
 <div id="paymentVoucherList">
     <h2>Vouchers</h2>
-    <input type="button" id="addNewVoucherButton" value="New Voucher"/>
+    <input type="button" data-bind="click: addVoucher" value="New Voucher" />
     <table>
-        @foreach (var item in Model)
-        {
-            <tr id="@item.ID" class="clickable">
-                <td>
-                    @Html.DisplayFor(modelItem => item.CheckNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PaidTo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
+        <tbody data-bind="foreach: Vouchers">
+            <tr class="clickable" data-bind="click: $parent.loadVoucherFromList">
+                <td data-bind="text: CheckNumber"></td>
+                <td data-bind="text: PaidTo"></td>
+                <td data-bind="text: moment(Date).format('l')"></td>
             </tr>
-        }
+        </tbody>
+
     </table>
+
 </div>
 
-<div id="paymentVoucherArea">
+<div id="paymentVoucherArea" data-bind="with: Voucher" >
+    <form>
+        <fieldset>
+            <legend>PaymentVoucher</legend>
+            <input data-bind="value: ID" />
+            <div id="voucher">
+                <div class="editor-label">
+                    Paid To
+                </div>
+                <div class="editor-field">
+                    <input data-bind="value: PaidTo" />
+                </div>
+
+                <div class="editor-label">
+                    Check Number
+                </div>
+                <div class="editor-field">
+                    <input data-bind="value: CheckNumber" />
+                </div>
+
+                <div class="editor-label">
+                    Date
+                </div>
+                <div class="editor-field">
+                    <input data-bind="value: Date" />
+                </div>
+
+            </div>
+            <div id="entries">
+            </div>
+            <div class="clear"></div>
+            <p>
+                <input type="submit" value="@ViewBag.SaveButtonLabel" data-bind="click: $parent.saveVoucher"/>
+            </p>
+        </fieldset>
+    </form>
 </div>
 <div id="entryListArea"></div>
 

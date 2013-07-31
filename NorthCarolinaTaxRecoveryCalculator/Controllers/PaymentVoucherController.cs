@@ -1,4 +1,6 @@
-﻿using NorthCarolinaTaxRecoveryCalculator.Models.Data;
+﻿using Newtonsoft.Json;
+using NorthCarolinaTaxRecoveryCalculator.Misc;
+using NorthCarolinaTaxRecoveryCalculator.Models.Data;
 using NorthCarolinaTaxRecoveryCalculator.ViewModels.PaymentVoucher;
 using System;
 using System.Collections.Generic;
@@ -24,6 +26,48 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             vouchers.Add(paymentVoucher);
 
             var entry = new PaymentVoucherEntry();
+            entry.Item = "Bolts";
+            entry.CostElement = "102-2";
+            entry.Amount = 100.22;
+            paymentVoucher.Entries.Add(entry);
+            entry = new PaymentVoucherEntry();
+            entry.Item = "Screws";
+            entry.CostElement = "122-2";
+            entry.Amount = 10.22;
+            paymentVoucher.Entries.Add(entry);
+            entry = new PaymentVoucherEntry();
+            entry.Item = "Nuts";
+            entry.CostElement = "102.2";
+            entry.Amount = 143.22;
+            paymentVoucher.Entries.Add(entry);
+
+            paymentVoucher = new PaymentVoucher();
+            paymentVoucher.CheckNumber = "456";
+            paymentVoucher.PaidTo = "Joe";
+            vouchers.Add(paymentVoucher);
+
+            entry = new PaymentVoucherEntry();
+            entry.Item = "Bolts";
+            entry.CostElement = "102-2";
+            entry.Amount = 100.22;
+            paymentVoucher.Entries.Add(entry);
+            entry = new PaymentVoucherEntry();
+            entry.Item = "Screws";
+            entry.CostElement = "122-2";
+            entry.Amount = 10.22;
+            paymentVoucher.Entries.Add(entry);
+            entry = new PaymentVoucherEntry();
+            entry.Item = "Nuts";
+            entry.CostElement = "102.2";
+            entry.Amount = 143.22;
+            paymentVoucher.Entries.Add(entry);
+
+            paymentVoucher = new PaymentVoucher();
+            paymentVoucher.CheckNumber = "789";
+            paymentVoucher.PaidTo = "Sue";
+            vouchers.Add(paymentVoucher);
+
+            entry = new PaymentVoucherEntry();
             entry.Item = "Bolts";
             entry.CostElement = "102-2";
             entry.Amount = 100.22;
