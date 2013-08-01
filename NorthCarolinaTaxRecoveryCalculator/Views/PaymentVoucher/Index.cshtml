@@ -49,7 +49,7 @@
                     v.ID = ko.protectedObservable(v.ID);
                     v.CheckNumber = ko.protectedObservable(v.CheckNumber);
                     v.PaidTo = ko.protectedObservable(v.PaidTo);
-                    v.Date = ko.protectedObservable(v.Date);
+                    v.Date = ko.protectedObservable(moment(v.Date).format('l'));
                 });
                 
                 self.Voucher = self.newVoucher();
