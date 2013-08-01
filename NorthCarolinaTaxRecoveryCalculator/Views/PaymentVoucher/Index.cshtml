@@ -28,8 +28,7 @@
 @section scripts {
     <script type="text/javascript">
         $(function () {
-            var data = @Html.Raw(Json.Encode(Model))
-
+            
             ///idk
             function VoucherViewModel() {
                 var self = this;
@@ -44,12 +43,13 @@
                     return v;
                 }
 
-                self.Vouchers = ko.observableArray(data);
-                self.Vouchers().every(function (v) {
+                self.Vouchers = ko.observableArray(@Html.Raw(Json.Encode(Model)));
+                ko.utils.arrayForEach(self.Vouchers(), function (v) {
+                    
                     v.ID = ko.protectedObservable(v.ID);
                     v.CheckNumber = ko.protectedObservable(v.CheckNumber);
                     v.PaidTo = ko.protectedObservable(v.PaidTo);
-                    v.Date = ko.protectedObservable(moment(v.Date).format('l'));
+                    v.Date = ko.protectedObservable(v.Date);
                 });
                 
                 self.Voucher = self.newVoucher();
@@ -108,7 +108,7 @@
             <tr class="clickable" data-bind="click: $parent.loadVoucherFromList">
                 <td data-bind="text: CheckNumber"></td>
                 <td data-bind="text: PaidTo"></td>
-                <td data-bind="text: moment(Date).format('l')"></td>
+                <td data-bind="text: Date"></td>
             </tr>
         </tbody>
 
@@ -154,4 +154,5 @@
     </form>
 </div>
 <div id="entryListArea" data-bind="visible: Voucher.PaidTo == 'Kevin'">lalala</div>
-
+<div class="clear"></div>
+ <pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
