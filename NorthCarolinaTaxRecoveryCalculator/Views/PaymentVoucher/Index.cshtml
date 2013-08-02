@@ -1,187 +1,67 @@
-﻿@model IEnumerable<NorthCarolinaTaxRecoveryCalculator.Models.Data.PaymentVoucher>
+﻿@model NorthCarolinaTaxRecoveryCalculator.ViewModels.PaymentVoucher.PaymentVouchersViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Payment Vouchers";
 }
-@section style {
-    <style>
-        div#paymentVoucherList {
-            width: 200px;
-            float: left;
-        }
 
-        div#paymentVoucherArea {
-            margin-left: 200px;
-        }
+<h2>@Model.Project.Name - @ViewBag.Title</h2>
 
-        div#voucher {
-            float: left;
-            margin-right: 20px;
+<p>
+    @Html.ActionLink("Create New", "Create", new { ProjectID = Model.Project.ID })
+</p>
+<table class="tablesorter">
+    <thead>
+        <tr>
+            <th>Check Number
+            </th>
+            <th>Date
+            </th>
+            <th>Paid To
+            </th>
+            <th>Prepared By
+            </th>
+            <th>Approved By
+            </th>
+            <th>RBC Approval
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Vouchers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckNumber)
+                </td>
+                <td>
+                    @item.Date.ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaidTo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PreparedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApprovedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RBCApproval)
+                </td>
+                <td>
+                    @Html.ActionLink("View/Edit", "Edit", new { VoucherID = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new {ProjectID = Model.Project.ID, VoucherID = item.ID })
+                </td>
+            </tr>
         }
-
-        div#entries {
-            float: left;
-            background-color: red;
-        }
-    </style>
-}
+    </tbody>
+</table>
 @section scripts {
     <script type="text/javascript">
         $(function () {
-
-            ///idk
-            function VoucherViewModel() {
-                var self = this;
-
-                self.newVoucher = function () {
-                    var v = ko.observable();
-                    v.ID = ko.observable("");
-                    v.CheckNumber = ko.observable("");
-                    v.PaidTo = ko.observable("");
-                    v.Date = ko.observable("");
-                    v.Entries = ko.observableArray();
-                    return v;
-                }
-
-                self.newBlankVoucher = function () {
-                    var v = ko.protectedObservable();
-                    v.ID = ko.protectedObservable("");
-                    v.CheckNumber = ko.protectedObservable("");
-                    v.PaidTo = ko.protectedObservable("");
-                    v.Date = ko.protectedObservable("");
-                    v.Entries = ko.protectedObservableArray(undefined);
-                    return v;
-                }
-
-                self.Vouchers = ko.observableArray(@Html.Raw(Json.Encode(Model)));
-                ko.utils.arrayForEach(self.Vouchers(), function (v) {
-
-                    v.ID = ko.protectedObservable(v.ID);
-                    v.CheckNumber = ko.protectedObservable(v.CheckNumber);
-                    v.PaidTo = ko.protectedObservable(v.PaidTo);
-                    v.Date = ko.protectedObservable(moment(v.Date).format('l'));
-                    v.Entries = ko.protectedObservableArray(v.Entries);
-                    ko.utils.arrayForEach(v.Entries(), function (e) {
-                        e.Item = ko.protectedObservable(e.Item);
-                        e.CostElement = ko.protectedObservable(e.CostElement);
-                        e.Amount = ko.protectedObservable(e.Amount);
-                    });
-                });
-
-                self.Voucher = self.newVoucher();
-                self.SelectedVoucher = ko.observable("");
-
-
-                self.addVoucher = function () {
-                    self.loadVoucherFromList(self.newBlankVoucher());
-                }
-
-                self.saveVoucher = function () {
-                    //$.post("/api/PaymentVoucher/saveVoucher", self.Voucher);
-                    if (self.Voucher().ID() == "") {
-
-                        self.Voucher().ID(GenerateGuid());
-                        self.Vouchers.push({
-                            'ID': ko.protectedObservable(self.Voucher().ID),
-                            'CheckNumber': ko.protectedObservable(self.Voucher().CheckNumber),
-                            'PaidTo': ko.protectedObservable(self.Voucher().PaidTo),
-                            'Date': ko.protectedObservable(self.Voucher().Date),
-                            'Entries': ko.protectedObservableArray(self.Voucher().Entries)
-                        });
-                        self.Vouchers.valueHasMutated();
-                        self.loadVoucherFromList(self.Voucher());
-                    } else {
-                        self.Voucher().ID.commit();
-                        self.Voucher().CheckNumber.commit();
-                        self.Voucher().PaidTo.commit();
-                        self.Voucher().Date.commit();
-                        ko.utils.arrayForEach(self.Voucher().Entries(), function (e) {
-                            //e.ID().commit();
-                            e.Item.commit();
-                            e.CostElement.commit();
-                            e.Amount.commit();
-                        });
-                        self.Vouchers.valueHasMutated();
-                    }
-                }
-
-                self.loadVoucherFromList = function (voucher) {
-                    self.Voucher(voucher);
-                    ko.utils.arrayForEach(voucher, function (e) {
-                        self.Voucher().Entries.push({
-                            "ID": ko.protectedObservable(e.ID),
-                            "Item": ko.protectedObservable(e.Item),
-                            "CostElement": ko.protectedObservable(e.CostElement),
-                            "Amount": ko.protectedObservable(e.Amount)
-                        });
-                    });
-                }
-            }
-
-            ko.applyBindings(new VoucherViewModel());
+            //init table
+            $("table").tablesorter({ sortList: [[0, 0]] });
         });
     </script>
 }
-<div id="paymentVoucherList">
-    <h2>Vouchers</h2>
-    <input type="button" data-bind="click: addVoucher" value="New Voucher" />
-    <table>
-        <tbody data-bind="foreach: Vouchers">
-            <tr class="clickable" data-bind="click: $parent.loadVoucherFromList">
-                <td data-bind="text: CheckNumber"></td>
-                <td data-bind="text: PaidTo"></td>
-                <td data-bind="text: Date"></td>
-            </tr>
-        </tbody>
-
-    </table>
-
-</div>
-
-<div id="paymentVoucherArea" data-bind="with: Voucher">
-    <form>
-        <fieldset>
-            <legend>PaymentVoucher</legend>
-            <input data-bind="value: ID" disabled="disabled"/>
-            <div id="voucher">
-                <div class="editor-label">
-                    Paid To
-                </div>
-                <div class="editor-field">
-                    <input data-bind="value: PaidTo" />
-                </div>
-
-                <div class="editor-label">
-                    Check Number
-                </div>
-                <div class="editor-field">
-                    <input data-bind="value: CheckNumber" />
-                </div>
-
-                <div class="editor-label">
-                    Date
-                </div>
-                <div class="editor-field">
-                    <input data-bind="value: Date" />
-                </div>
-            </div>
-            <div id="entries">
-            </div>
-            <div class="clear"></div>
-            <p>
-                <input type="submit" value="@ViewBag.SaveButtonLabel" data-bind="click: $parent.saveVoucher"/>
-            </p>
-        </fieldset>
-    </form>
-    <div id="entryListArea" data-bind="foreach: Entries">
-        <div class="editor-field">
-            <input type="hidden" data-bind="value: ID" />
-            <input data-bind="value: Item" />
-            <input data-bind="value: CostElement" />
-            <input data-bind="value: Amount" />
-        </div>
-    </div>
-</div>
-
-<div class="clear"></div>
- <pre data-bind="text: ko.toJSON($data, null, 2)"></pre>

@@ -15,9 +15,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
         public Guid ID { get; set; }
 
         [Required]
-        public string ProjectName { get; set; }
-
-        [Required]
         public string CheckNumber { get; set; }
 
         [Required]
@@ -41,6 +38,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
 
             Entries = new List<PaymentVoucherEntry>();
         }
+
+        public Project Project { get; set; }
     }
 
     public class PaymentVoucherEntry

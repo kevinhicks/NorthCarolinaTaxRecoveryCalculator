@@ -98,17 +98,41 @@ namespace NorthCarolinaTaxRecoveryCalculator
             );
 
             routes.MapRoute(
-                name: "TO: Get A Payment Voucher",
-                url: "PaymentVoucher/GetVoucher/{VoucherID}",
-                defaults: new { controller = "PaymentVoucher", action = "GetVoucher", VoucherID = UrlParameter.Optional }
+                name: "TO: Get All Payment Vouchers for a project",
+                url: "PaymentVoucher/{ProjectID}",
+                defaults: new { controller = "PaymentVoucher", action = "Index", ProjectID = UrlParameter.Optional }
             );
 
+            routes.MapRoute(
+                name: "TO: View/Edit a Payment Voucher",
+                url: "PaymentVoucher/Edit/{VoucherID}",
+                defaults: new { controller = "PaymentVoucher", action = "Edit", VoucherID = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "TO: Submit changes to Payment Voucher",
+                url: "PaymentVoucher/EditPost/{ProjectID}",
+                defaults: new { controller = "PaymentVoucher", action = "EditPost", ProjectID = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "TO: get the Create New Payment Voucher view",
+                url: "PaymentVoucher/Create/{ProjectID}",
+                defaults: new { controller = "PaymentVoucher", action = "Create", ProjectID = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "TO: Submit a new to Payment Voucher",
+                url: "PaymentVoucher/Create",
+                defaults: new { controller = "PaymentVoucher", action = "Create" }
+            );
+            /*
             routes.MapRoute(
                 name: "TO: Save A Payment Voucher",
                 url: "PaymentVoucher/SaveVoucher/{VoucherID}",
                 defaults: new { controller = "PaymentVoucher", action = "SaveVoucher", VoucherID = UrlParameter.Optional }
             );
-
+            */
             //When all else fails, route to the HomePage
             routes.MapRoute(
                 name: "Default",

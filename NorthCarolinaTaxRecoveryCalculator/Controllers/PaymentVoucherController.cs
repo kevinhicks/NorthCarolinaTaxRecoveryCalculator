@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using NorthCarolinaTaxRecoveryCalculator.Misc;
+using NorthCarolinaTaxRecoveryCalculator.Models;
 using NorthCarolinaTaxRecoveryCalculator.Models.Data;
 using NorthCarolinaTaxRecoveryCalculator.ViewModels.PaymentVoucher;
 using System;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Omu.ValueInjecter;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
@@ -15,12 +17,17 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         //
         // GET: /PaymentVoucher/
 
+        static Project project = null;
         static List<PaymentVoucher> vouchers = null;
         static PaymentVoucherController()
         {
+            project = new Project();
+            project.ID = Guid.NewGuid();
+            project.Name = "Test UI Proejct";
+            
             vouchers = new List<PaymentVoucher>();
-
             var paymentVoucher = new PaymentVoucher();
+            paymentVoucher.Project = project;
             paymentVoucher.CheckNumber = "123";
             paymentVoucher.PaidTo = "Kevin";
             vouchers.Add(paymentVoucher);
@@ -42,6 +49,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             paymentVoucher.Entries.Add(entry);
 
             paymentVoucher = new PaymentVoucher();
+            paymentVoucher.Project = project;
             paymentVoucher.CheckNumber = "456";
             paymentVoucher.PaidTo = "Joe";
             vouchers.Add(paymentVoucher);
@@ -63,6 +71,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             paymentVoucher.Entries.Add(entry);
 
             paymentVoucher = new PaymentVoucher();
+            paymentVoucher.Project = project;
             paymentVoucher.CheckNumber = "789";
             paymentVoucher.PaidTo = "Sue";
             vouchers.Add(paymentVoucher);
@@ -82,72 +91,94 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             entry.CostElement = "102.2";
             entry.Amount = 143.22;
             paymentVoucher.Entries.Add(entry);
-            
+                        
         }
 
-        public ActionResult Index()
+        /// <summary>
+        /// When we go to /PaymentVouchers we want to see a list of all our payment vouchers
+        /// </summary>
+        /// <param name="ProjectID"></param>
+        /// <returns></returns>
+        public ActionResult Index(Guid? ProjectID)
         {
+            var vm = new PaymentVouchersViewModel();
+            vm.Vouchers = vouchers;
+            vm.Project = project;
+
             //Send it to the view
-            return View(vouchers);
+            return View(vm);
         }
 
-        public ActionResult AddPaymentVoucherEntry(PaymentVoucherViewModel model)
-        {
-            model.Voucher.Entries.Add(new PaymentVoucherEntry());
-            return Json(model);
-        }
-
+        /// <summary>
+        /// When we go to /PaymentVouchers/Edit we want to see a payment voucher. which we can edit
+        /// </summary>
+        /// <param name="VoucherID"></param>
+        /// <returns></returns>
         [HttpGet]
-        public ActionResult GetVoucher(Guid? VoucherID)
+        public ActionResult Edit(Guid VoucherID)
         {
-            PaymentVoucher voucher;
+            var voucher = vouchers.Where(col => col.ID == VoucherID).FirstOrDefault();
 
-            //If we are not asking to a specific voucher, then we must want a new one
-            if (VoucherID == null)
+            //If there is no such Payment Voucher,then go back to the list of Vouchers
+            if (voucher == null)
             {
-                voucher = new PaymentVoucher();
+                return HttpNotFound();
+            }
+
+            return View(voucher);
+        }
+        
+        /// <summary>
+        /// When we are posting to /PaymentVouchers/Edit we want to update the payment voucher in the store
+        /// </summary>
+        /// <param name="VoucherID"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Edit(PaymentVoucher model)
+        {
+            var v = vouchers.Where(col => col.ID == model.ID).FirstOrDefault();
+                
+            if (ModelState.IsValid)
+            {
+                v.InjectFrom(model);
+                return RedirectToAction("Index", model.Project.ID);
             }
             else
             {
-                voucher = vouchers.Where(m => m.ID == VoucherID).FirstOrDefault();
-                ViewBag.SaveButtonLabel = "Update";
-                return PartialView("_EditVoucher", voucher);
+                return View(model);
             }
-            
-            ViewBag.SaveButtonLabel = "Create";
-            return PartialView("_EditVoucher", voucher);
         }
 
+        /// <summary>
+        /// When we go to /Paymentvoucher/Create we want to be able to add a new payment voucher
+        /// </summary>
+        /// <param name="ProjectID"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult Create(Guid ProjectID)
+        {
+            var v = new PaymentVoucher();
+            v.Project = project;
+            return View(v);
+        }
+
+        /// <summary>
+        /// When we are posting to /Paymentvoucher/Create we want to save the new voucher in the store
+        /// </summary>
+        /// <param name="ProjectID"></param>
+        /// <returns></returns>
         [HttpPost]
-        public ActionResult SaveVoucher(PaymentVoucher Voucher)
+        public ActionResult Create(PaymentVoucher model)
         {
             if (ModelState.IsValid)
             {
-                //Does it already exist?
-                var v = vouchers.Where(m => m.ID == Voucher.ID).FirstOrDefault();
-                if (v != null)
-                {
-                    //If it does exist, update it
-                    v.ProjectName = Voucher.ProjectName;
-                    v.CheckNumber = Voucher.CheckNumber;
-                    v.Date = Voucher.Date;
-                    v.PaidTo = Voucher.PaidTo;
-                    v.PreparedBy = Voucher.PreparedBy;
-                    v.ApprovedBy = Voucher.ApprovedBy;
-                    v.RBCApproval = Voucher.RBCApproval;
-                    v.Entries = Voucher.Entries;
-                }
-                else
-                {
-                    //Create it
-                    vouchers.Add(Voucher);
-                }
-
-                return Content("Saved");
+                vouchers.Add(model);
+                return RedirectToAction("Index");
             }
-
-            ViewBag.SaveButtonLabel = "Update";
-            return PartialView("_EditVoucher", Voucher);
+            else
+            {
+                return View(model);
+            }
         }
     }
 }

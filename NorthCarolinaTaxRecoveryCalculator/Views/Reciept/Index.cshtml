@@ -4,7 +4,7 @@
 </div>
 <div id="fixedFormDiv">
     @Html.ValidationSummary(true)
-    @using (Html.BeginForm("AddUpdate", "Reciept", FormMethod.Post ))
+    @using (Html.BeginForm("AddUpdate", "Reciept", FormMethod.Post))
     {
         @Html.HiddenFor(model => model.Project.ID)
         @Html.HiddenFor(model => model.Project.Name)
@@ -93,22 +93,23 @@
     @{Html.RenderAction("List", new { ProjectID = Model.Project.ID });}
 </div>
 @section style {
-<style type="text/css">    
-    table.tablesorter tbody tr td
-    {
-        white-space: nowrap;
-    }
-    
-    table.tablesorter tbody tr td.negitiveNumber
-    {
-        color: Red;
-    }
+    <style type="text/css">
+        table.tablesorter tbody tr td {
+            white-space: nowrap;
+        }
 
-    #addUpdateBtn {
-        width: 100%;
-    }
+            table.tablesorter tbody tr td.negitiveNumber {
+                color: Red;
+            }
 
-    /*.ui-autocomplete, .autocomplete-area {
+        #addUpdateBtn {
+            width: 100%;
+        }
+
+        div#body {
+            margin: 0px;
+        }
+        /*.ui-autocomplete, .autocomplete-area {
 	    background-color: white;
 	    border-color: black;
 	    border-style: solid;
@@ -122,8 +123,8 @@
     .ui-menu-item:hover {
 	    text-decoration: underline;
     }
-    */  
-</style>
+    */
+    </style>
 }
 @section scripts {
     <script src="~/Scripts/accounting.min.js" type="text/javascript"></script>
@@ -190,28 +191,28 @@
         //Return an object containtn all the form values that may be sumitted to the server
         function getFormValues() {
             var v = {
-                    ProjectID: getProjectID(),
-                    RIF:  $("input#RIF").val(),
-                    DateOfSale: $("input#DateOfSale").val(),
-                    StoreName: $("input#StoreName").val(),
-                    County: Number($("select#County").val()),
-                    SalesTax: $("input#SalesTax").val(),
-                    FoodTax: $("input#FoodTax").val(),
-                    SalesAmount: $("input#SalesAmount").val(),
-                    OnBillDetail: ($("input#OnBillDetail").is(":checked")),
-                    Notes: $("input#Notes").val()
-                }
+                ProjectID: getProjectID(),
+                RIF:  $("input#RIF").val(),
+                DateOfSale: $("input#DateOfSale").val(),
+                StoreName: $("input#StoreName").val(),
+                County: Number($("select#County").val()),
+                SalesTax: $("input#SalesTax").val(),
+                FoodTax: $("input#FoodTax").val(),
+                SalesAmount: $("input#SalesAmount").val(),
+                OnBillDetail: ($("input#OnBillDetail").is(":checked")),
+                Notes: $("input#Notes").val()
+            }
             return v;
         }
 
         //make sure the form ONLY submits if there is an RIF entered, and then append the rif to the end of the form action
         function initForm() {
             $("form").submit(function (e) {
-               if($("input#RIF").val().trim() != "") {
-                   var url = $("form").attr("action");
-                   var rif = $("input#RIF").val();
-                   $("form").attr("action", url + "/" + rif);
-                   return true;
+                if($("input#RIF").val().trim() != "") {
+                    var url = $("form").attr("action");
+                    var rif = $("input#RIF").val();
+                    $("form").attr("action", url + "/" + rif);
+                    return true;
                 } else {
                     return false;
                 }
@@ -271,13 +272,13 @@
 
         function formatMoney(number) {
             return accounting.formatMoney(number, {
-	            precision: 2,
-	            thousand: ",",
-	            format: {
-		            pos : "%s%v",
-		            neg : "%s(%v)",
-		            zero: "%s%v"
-	            }
+                precision: 2,
+                thousand: ",",
+                format: {
+                    pos : "%s%v",
+                    neg : "%s(%v)",
+                    zero: "%s%v"
+                }
             });
         }
 
@@ -382,22 +383,22 @@
 
         //Configure the table containing the list of recipets to be sortable
         function initTable() {
-        try {
-            $("table").tablesorter({
-                sortList: [[0, 0]], //sort by rif automatically
-                headers: {          //This is for sorting large accounting-formatted numbers correctly
-                    4: {
-                        sorter: 'accountingNumbers'
-                    },
-                    5: {
-                        sorter: 'accountingNumbers'
-                    },
-                    6: {
-                        sorter: 'accountingNumbers'
+            try {
+                $("table").tablesorter({
+                    sortList: [[0, 0]], //sort by rif automatically
+                    headers: {          //This is for sorting large accounting-formatted numbers correctly
+                        4: {
+                            sorter: 'accountingNumbers'
+                        },
+                        5: {
+                            sorter: 'accountingNumbers'
+                        },
+                        6: {
+                            sorter: 'accountingNumbers'
+                        }
                     }
-                }
                     
-            });
+                });
             } catch(err) {}
             
             $.tablesorter.addParser({ 

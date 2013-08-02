@@ -7,18 +7,21 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NorthCarolinaTaxRecoveryCalculator.ViewModels.PaymentVoucher
 {
-    public class PaymentVoucherViewModel
+    /// <summary>
+    /// This is a viewmodel that hold a list of Payment vouchers and related data
+    /// </summary>
+    public class PaymentVouchersViewModel
     {
-        public PaymentVoucherViewModel()
+        public PaymentVouchersViewModel()
         {
-            Voucher = new Models.Data.PaymentVoucher();
             Vouchers = new List<Models.Data.PaymentVoucher>();
         }
 
         public List<Models.Data.PaymentVoucher> Vouchers { get; set; }
-        public Models.Data.PaymentVoucher Voucher { get; set; }
+        public Models.Project Project { get; set; }
 
-        public void AddPaymentVoucher() {
+        public void AddPaymentVoucher()
+        {
             Vouchers.Add(new Models.Data.PaymentVoucher());
         }
 
@@ -30,5 +33,19 @@ namespace NorthCarolinaTaxRecoveryCalculator.ViewModels.PaymentVoucher
         {
             Vouchers.ElementAt(voucherIndex).Entries.RemoveAt(entryIndex);
         }
+    }
+
+    /// <summary>
+    /// This is a viewmodel that hold a single Payment voucher and related data
+    /// </summary>
+    public class PaymentVoucherViewModel
+    {
+        public PaymentVoucherViewModel()
+        {
+            Voucher = new Models.Data.PaymentVoucher();
+        }
+
+        public Models.Data.PaymentVoucher Voucher { get; set; }
+        public Models.Project Project { get; set; }
     }
 }

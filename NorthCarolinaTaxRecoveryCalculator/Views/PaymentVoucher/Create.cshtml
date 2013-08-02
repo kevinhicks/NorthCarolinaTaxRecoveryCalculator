@@ -1,0 +1,11 @@
+﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Data.PaymentVoucher
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@Model.Project.Name - @ViewBag.Title</h2>
+
+@{
+    Html.RenderPartial("_VoucherForm", Model);
+}

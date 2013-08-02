@@ -134,6 +134,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Omu.ValueInjecter">
+      <HintPath>..\packages\ValueInjecter.2.3.3\lib\net35\Omu.ValueInjecter.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
@@ -416,9 +419,11 @@
     <Content Include="Views\Project\PrintReciepts.cshtml" />
     <Content Include="Views\Shared\_PrintLayout.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\PaymentVoucherEntry.cshtml" />
-    <Content Include="Views\PaymentVoucher\Index.cshtml" />
-    <Content Include="Views\PaymentVoucher\_EditVoucher.cshtml" />
+    <Content Include="Views\PaymentVoucher\_VoucherForm.cshtml" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Views\PaymentVoucher\Index.cshtml" />
+    <Content Include="Views\PaymentVoucher\Edit.cshtml" />
+    <Content Include="Views\PaymentVoucher\Create.cshtml" />
     <None Include="Views\PaymentVoucher\_EntryRow.cshtml" />
     <None Include="_AppStart.cshtml" />
   </ItemGroup>
