@@ -35,11 +35,21 @@
 
                 self.newVoucher = function () {
                     var v = ko.observable();
-                    v.ID = ko.observable();
+                    v.ID = ko.observable("");
                     v.CheckNumber = ko.observable("");
                     v.PaidTo = ko.observable("");
                     v.Date = ko.observable("");
                     v.Entries = ko.observableArray();
+                    return v;
+                }
+
+                self.newBlankVoucher = function () {
+                    var v = ko.protectedObservable();
+                    v.ID = ko.protectedObservable("");
+                    v.CheckNumber = ko.protectedObservable("");
+                    v.PaidTo = ko.protectedObservable("");
+                    v.Date = ko.protectedObservable("");
+                    v.Entries = ko.protectedObservableArray(undefined);
                     return v;
                 }
 
@@ -63,7 +73,7 @@
 
 
                 self.addVoucher = function () {
-                    self.loadVoucherFromList(self.newVoucher());
+                    self.loadVoucherFromList(self.newBlankVoucher());
                 }
 
                 self.saveVoucher = function () {
@@ -71,7 +81,15 @@
                     if (self.Voucher().ID() == "") {
 
                         self.Voucher().ID(GenerateGuid());
-                        self.Vouchers.push(self.Voucher);
+                        self.Vouchers.push({
+                            'ID': ko.protectedObservable(self.Voucher().ID),
+                            'CheckNumber': ko.protectedObservable(self.Voucher().CheckNumber),
+                            'PaidTo': ko.protectedObservable(self.Voucher().PaidTo),
+                            'Date': ko.protectedObservable(self.Voucher().Date),
+                            'Entries': ko.protectedObservableArray(self.Voucher().Entries)
+                        });
+                        self.Vouchers.valueHasMutated();
+                        self.loadVoucherFromList(self.Voucher());
                     } else {
                         self.Voucher().ID.commit();
                         self.Voucher().CheckNumber.commit();
@@ -124,7 +142,7 @@
     <form>
         <fieldset>
             <legend>PaymentVoucher</legend>
-            <input data-bind="value: ID" />
+            <input data-bind="value: ID" disabled="disabled"/>
             <div id="voucher">
                 <div class="editor-label">
                     Paid To
