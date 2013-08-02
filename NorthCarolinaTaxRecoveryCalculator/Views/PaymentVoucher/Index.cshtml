@@ -28,71 +28,75 @@
 @section scripts {
     <script type="text/javascript">
         $(function () {
-            
+
             ///idk
             function VoucherViewModel() {
                 var self = this;
 
                 self.newVoucher = function () {
                     var v = ko.observable();
-                    v.ID = ko.observable(GenerateGuid());
+                    v.ID = ko.observable();
                     v.CheckNumber = ko.observable("");
                     v.PaidTo = ko.observable("");
                     v.Date = ko.observable("");
-
+                    v.Entries = ko.observableArray();
                     return v;
                 }
 
                 self.Vouchers = ko.observableArray(@Html.Raw(Json.Encode(Model)));
                 ko.utils.arrayForEach(self.Vouchers(), function (v) {
-                    
+
                     v.ID = ko.protectedObservable(v.ID);
                     v.CheckNumber = ko.protectedObservable(v.CheckNumber);
                     v.PaidTo = ko.protectedObservable(v.PaidTo);
                     v.Date = ko.protectedObservable(moment(v.Date).format('l'));
+                    v.Entries = ko.protectedObservableArray(v.Entries);
+                    ko.utils.arrayForEach(v.Entries(), function (e) {
+                        e.Item = ko.protectedObservable(e.Item);
+                        e.CostElement = ko.protectedObservable(e.CostElement);
+                        e.Amount = ko.protectedObservable(e.Amount);
+                    });
                 });
-                
+
                 self.Voucher = self.newVoucher();
                 self.SelectedVoucher = ko.observable("");
 
 
                 self.addVoucher = function () {
-                    /*self.Vouchers.push({
-                        "ID" : GenerateGuid(),
-                        "PaidTo": "",
-                        "CheckNumber": "",
-                        "Date": ""                      
-                    });*/
-                    //self.Voucher = newVoucher();
+                    self.loadVoucherFromList(self.newVoucher());
                 }
 
                 self.saveVoucher = function () {
                     //$.post("/api/PaymentVoucher/saveVoucher", self.Voucher);
-                    //ko.mapping.fromJS(ko.mapping.toJS(voucher), {}, self.Voucher);
-                    /*if (self.SelectedVoucher != null) {
-                        self.Vouchers.replace(self.SelectedVoucher, self.Voucher);
-                        self.SelectedVoucher = null;
-                    } else {
-                        self.Vouchers.push(self.Voucher);
-                        self.Voucher = newVoucher();
-                    }*/
+                    if (self.Voucher().ID() == "") {
 
-                    //self.Vouchers()..replace(self.SelectedVoucher, self.Voucher());
-                    //self.Voucher.commit();
-                    self.Voucher().ID.commit();
-                    self.Voucher().CheckNumber.commit();
-                    self.Voucher().PaidTo.commit();
-                    self.Voucher().Date.commit();
-                    self.Vouchers.valueHasMutated();
+                        self.Voucher().ID(GenerateGuid());
+                        self.Vouchers.push(self.Voucher);
+                    } else {
+                        self.Voucher().ID.commit();
+                        self.Voucher().CheckNumber.commit();
+                        self.Voucher().PaidTo.commit();
+                        self.Voucher().Date.commit();
+                        ko.utils.arrayForEach(self.Voucher().Entries(), function (e) {
+                            //e.ID().commit();
+                            e.Item.commit();
+                            e.CostElement.commit();
+                            e.Amount.commit();
+                        });
+                        self.Vouchers.valueHasMutated();
+                    }
                 }
 
                 self.loadVoucherFromList = function (voucher) {
-                    //ko.mapping.fromJSON(ko.mapping.toJSON(voucher), {}, self.Voucher);
-                    //self.Voucher.Date(moment(voucher.Date).format('l'));
-                    //self.Voucher = voucher;
-                    //self.Voucher(voucher);
                     self.Voucher(voucher);
-                    //self.SelectedVoucher;
+                    ko.utils.arrayForEach(voucher, function (e) {
+                        self.Voucher().Entries.push({
+                            "ID": ko.protectedObservable(e.ID),
+                            "Item": ko.protectedObservable(e.Item),
+                            "CostElement": ko.protectedObservable(e.CostElement),
+                            "Amount": ko.protectedObservable(e.Amount)
+                        });
+                    });
                 }
             }
 
@@ -116,7 +120,7 @@
 
 </div>
 
-<div id="paymentVoucherArea" data-bind="with: Voucher" >
+<div id="paymentVoucherArea" data-bind="with: Voucher">
     <form>
         <fieldset>
             <legend>PaymentVoucher</legend>
@@ -142,7 +146,6 @@
                 <div class="editor-field">
                     <input data-bind="value: Date" />
                 </div>
-
             </div>
             <div id="entries">
             </div>
@@ -152,7 +155,15 @@
             </p>
         </fieldset>
     </form>
+    <div id="entryListArea" data-bind="foreach: Entries">
+        <div class="editor-field">
+            <input type="hidden" data-bind="value: ID" />
+            <input data-bind="value: Item" />
+            <input data-bind="value: CostElement" />
+            <input data-bind="value: Amount" />
+        </div>
+    </div>
 </div>
-<div id="entryListArea" data-bind="visible: Voucher.PaidTo == 'Kevin'">lalala</div>
+
 <div class="clear"></div>
  <pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
