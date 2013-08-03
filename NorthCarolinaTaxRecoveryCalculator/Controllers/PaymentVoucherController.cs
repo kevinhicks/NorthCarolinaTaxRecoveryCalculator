@@ -180,5 +180,18 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
                 return View(model);
             }
         }
+
+        /// <summary>
+        /// When we are posting to /Paymentvoucher/Create we want to save the new voucher in the store
+        /// </summary>
+        /// <param name="ProjectID"></param>
+        /// <param name="VoucherID"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Delete(Guid VoucherID)
+        {
+            vouchers.Remove(vouchers.Where(v => v.ID == VoucherID).FirstOrDefault());
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -126,13 +126,13 @@ namespace NorthCarolinaTaxRecoveryCalculator
                 url: "PaymentVoucher/Create",
                 defaults: new { controller = "PaymentVoucher", action = "Create" }
             );
-            /*
+
             routes.MapRoute(
-                name: "TO: Save A Payment Voucher",
-                url: "PaymentVoucher/SaveVoucher/{VoucherID}",
-                defaults: new { controller = "PaymentVoucher", action = "SaveVoucher", VoucherID = UrlParameter.Optional }
+                name: "TO: Delete A Payment Voucher",
+                url: "PaymentVoucher/Delete/{VoucherID}",
+                defaults: new { controller = "PaymentVoucher", action = "Delete", VoucherID = UrlParameter.Optional }
             );
-            */
+            
             //When all else fails, route to the HomePage
             routes.MapRoute(
                 name: "Default",
