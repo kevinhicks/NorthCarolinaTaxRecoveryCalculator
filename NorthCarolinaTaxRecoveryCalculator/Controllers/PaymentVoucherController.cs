@@ -125,7 +125,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
                 return HttpNotFound();
             }
 
-            return View(voucher);
+            return View("Edit", voucher);
         }
         
         /// <summary>
@@ -145,7 +145,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             }
             else
             {
-                return View(model);
+                return View("Edit", model);
             }
         }
 
@@ -159,7 +159,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         {
             var v = new PaymentVoucher();
             v.Project = project;
-            return View(v);
+            return View("Edit",v);
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             }
             else
             {
-                return View(model);
+                return View("Edit", model);
             }
         }
 
