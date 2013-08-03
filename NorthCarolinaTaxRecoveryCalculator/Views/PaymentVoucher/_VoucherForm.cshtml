@@ -1,6 +1,9 @@
 ﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Data.PaymentVoucher
 
-@using (Html.BeginForm()) {
+<h2>@Model.Project.Name - @ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -9,58 +12,64 @@
         @Html.HiddenFor(model => model.Project.ID)
         @Html.HiddenFor(model => model.Project.Name)
         @Html.HiddenFor(model => model.ID)
-        
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CheckNumber)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CheckNumber)
-            @Html.ValidationMessageFor(model => model.CheckNumber)
-        </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Date)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Date)
-            @Html.ValidationMessageFor(model => model.Date)
-        </div>
+        <div id="voucherArea">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CheckNumber)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.CheckNumber)
+                @Html.ValidationMessageFor(model => model.CheckNumber)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PaidTo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PaidTo)
-            @Html.ValidationMessageFor(model => model.PaidTo)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Date)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Date)
+                @Html.ValidationMessageFor(model => model.Date)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PreparedBy)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PreparedBy)
-            @Html.ValidationMessageFor(model => model.PreparedBy)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PaidTo)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.PaidTo)
+                @Html.ValidationMessageFor(model => model.PaidTo)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ApprovedBy)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ApprovedBy)
-            @Html.ValidationMessageFor(model => model.ApprovedBy)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PreparedBy)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.PreparedBy)
+                @Html.ValidationMessageFor(model => model.PreparedBy)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.RBCApproval)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.RBCApproval)
-            @Html.ValidationMessageFor(model => model.RBCApproval)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ApprovedBy)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ApprovedBy)
+                @Html.ValidationMessageFor(model => model.ApprovedBy)
+            </div>
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.RBCApproval)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.RBCApproval)
+                @Html.ValidationMessageFor(model => model.RBCApproval)
+            </div>
+
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </div>
+        <div id="entriesArea">
+            asopid
+
+        </div>
     </fieldset>
 }
 
