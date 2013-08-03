@@ -51,17 +51,26 @@
                 </td>
                 <td>
                     @Html.ActionLink("View/Edit", "Edit", new { VoucherID = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new {ProjectID = Model.Project.ID, VoucherID = item.ID })
+                    @Html.ActionLink("Delete", "Delete", new { ProjectID = Model.Project.ID, VoucherID = item.ID }, new { Class = "deleteLink" })
                 </td>
             </tr>
         }
     </tbody>
 </table>
+@section styles {
+    <style type="text/css">
+    </style>
+}
 @section scripts {
     <script type="text/javascript">
         $(function () {
             //init table
             $("table").tablesorter({ sortList: [[0, 0]] });
+
+            //When someone clicks the dele button, amke sue that it wasnt by accidnet
+            $(".deleteLink").click(function () {                
+                return confirm("Are you sure that you want to delete this voucher? It cannot be undone!");
+            });
         });
     </script>
 }
