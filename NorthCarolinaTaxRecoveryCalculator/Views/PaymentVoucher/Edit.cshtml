@@ -1,6 +1,6 @@
 ﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Data.PaymentVoucher
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Create/Edit";
 }
 
 <h2>@Model.Project.Name - @ViewBag.Title</h2>
@@ -12,11 +12,11 @@
 
     <fieldset>
         <legend>PaymentVoucher</legend>
-        @Html.HiddenFor(model => model.Project.ID)
-        @Html.HiddenFor(model => model.Project.Name)
-        @Html.HiddenFor(model => model.ID)
-
         <div id="voucherArea">
+            @Html.HiddenFor(model => model.Project.ID)
+            @Html.HiddenFor(model => model.Project.Name)
+            @Html.HiddenFor(model => model.ID)
+
             <div class="editor-label">
                 @Html.LabelFor(model => model.CheckNumber)
             </div>
@@ -70,7 +70,25 @@
             </p>
         </div>
         <div id="entriesArea">
-            
+            <table class="tablesorter">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Cost Element</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var entry in Model.Entries)
+                    {
+                        <tr>
+                            <td>@Html.TextBoxFor(model => entry.Item)</td>
+                            <td>@Html.TextBoxFor(model => entry.CostElement)</td>
+                            <td>@Html.TextBoxFor(model => entry.Amount)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
 
         </div>
     </fieldset>
@@ -79,3 +97,28 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section style {
+    <style type="text/css">
+
+        div#voucherArea {
+            float: left;
+            width: 230px;
+            margin-left:20px;
+        }
+
+        div#entriesArea {
+            margin-left:250px;
+        }
+
+    </style>
+}
+
+@section scripts {
+    <script type="text/javascript">
+
+        $(function () {
+            $("table").tablesorter({ sortList: [[0, 0]] });
+        });
+    </script>
+}
