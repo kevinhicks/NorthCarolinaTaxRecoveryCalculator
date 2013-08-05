@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Linq;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
 {
@@ -39,6 +40,36 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
             Entries = new List<PaymentVoucherEntry>();
         }
 
+        /// <summary>
+        /// Remove any entry that does not contain at least 1 value
+        /// </summary>
+        public void RemoveBlankEntries()
+        {
+            Entries = Entries.Where(v => !v.IsBlankEntry()).ToList();
+            /*
+            //loop backwards thru list to keep indexes in order
+            for(int i = Entries.Count - 1; i >= 0; i--)
+            {
+                //Find at least 1 value in this entry
+                if (Entries[i].IsBlankEntry())
+                {
+                    Entries.RemoveAt(i);
+                }
+            }*/
+        }
+
+        /// <summary>
+        /// Add new rows to the list of entries
+        /// </summary>
+        /// <param name="number"></param>
+        public void AddBlankRows(int number)
+        {
+            for (int i = 0; i < number; i++)
+            {
+                this.Entries.Add(new PaymentVoucherEntry());
+            }
+        }
+
         public Project Project { get; set; }
     }
 
@@ -56,6 +87,19 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
         public PaymentVoucherEntry()
         {
             ID = Guid.NewGuid();
+        }
+
+        //Is any field, other than the ID, filled in?
+        public bool IsBlankEntry()
+        {
+            if ((Item == null || Item.Trim() == "") &&
+                   (CostElement == null || CostElement.Trim() == "") &&
+                   (Amount == 0.0))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

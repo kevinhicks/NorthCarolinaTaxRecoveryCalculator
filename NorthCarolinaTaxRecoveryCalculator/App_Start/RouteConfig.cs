@@ -98,12 +98,6 @@ namespace NorthCarolinaTaxRecoveryCalculator
             );
 
             routes.MapRoute(
-                name: "TO: Get All Payment Vouchers for a project",
-                url: "PaymentVoucher/{ProjectID}",
-                defaults: new { controller = "PaymentVoucher", action = "Index", ProjectID = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
                 name: "TO: View/Edit a Payment Voucher",
                 url: "PaymentVoucher/Edit/{VoucherID}",
                 defaults: new { controller = "PaymentVoucher", action = "Edit", VoucherID = UrlParameter.Optional }
@@ -131,6 +125,18 @@ namespace NorthCarolinaTaxRecoveryCalculator
                 name: "TO: Delete A Payment Voucher",
                 url: "PaymentVoucher/Delete/{VoucherID}",
                 defaults: new { controller = "PaymentVoucher", action = "Delete", VoucherID = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "TO: Add Rows To A Payment Voucher",
+                url: "PaymentVoucher/AddRows",
+                defaults: new { controller = "PaymentVoucher", action = "AddRows" }
+            );
+
+            routes.MapRoute(
+                name: "TO: Get All Payment Vouchers for a project",
+                url: "PaymentVoucher/{ProjectID}",
+                defaults: new { controller = "PaymentVoucher", action = "Index", ProjectID = UrlParameter.Optional }
             );
             
             //When all else fails, route to the HomePage

@@ -12,6 +12,7 @@
 
     <fieldset>
         <legend>PaymentVoucher</legend>
+        @Html.ValidationSummary()
         <div id="voucherArea">
             @Html.HiddenFor(model => model.Project.ID)
             @Html.HiddenFor(model => model.Project.Name)
@@ -70,27 +71,9 @@
             </p>
         </div>
         <div id="entriesArea">
-            <table class="tablesorter">
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Cost Element</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var entry in Model.Entries)
-                    {
-                        <tr>
-                            <td>@Html.TextBoxFor(model => entry.Item)</td>
-                            <td>@Html.TextBoxFor(model => entry.CostElement)</td>
-                            <td>@Html.TextBoxFor(model => entry.Amount)</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-
+            @Html.Partial("_EntryList")
         </div>
+            <input id="addRows" type="button" value="Add Rows" />
     </fieldset>
 }
 
@@ -100,17 +83,15 @@
 
 @section style {
     <style type="text/css">
-
         div#voucherArea {
             float: left;
             width: 230px;
-            margin-left:20px;
+            margin-left: 20px;
         }
 
         div#entriesArea {
-            margin-left:250px;
+            margin-left: 250px;
         }
-
     </style>
 }
 
@@ -118,7 +99,27 @@
     <script type="text/javascript">
 
         $(function () {
+            //sort on check numbers by default
             $("table").tablesorter({ sortList: [[0, 0]] });
+
+            //clicking the delete link wil remove the row from the table
+            $(".deleteLink").click(function () {
+                $(this).parent().parent().remove();
+            });
+
+            $.ajaxSetup({ cache: false });
+
+            //click the add rows button, should adjust the form url, and post it
+            $("#addRows").click(function () {
+                $.post("@Url.Action("AddRows")", $("form").serialize(), function (data, status) {
+                    $("#entriesArea").html(data);
+
+                    //Refresh bindings
+                    $(".deleteLink").click(function () {
+                        $(this).parent().parent().remove();
+                    });
+                });
+            });
         });
     </script>
 }

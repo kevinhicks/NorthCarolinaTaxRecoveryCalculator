@@ -120,6 +120,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Data\PaymentVoucherModelsTest.cs" />
     <Compile Include="Models\Data\ProjectModelsTest.cs" />
     <Compile Include="Models\Data\TestProjectsData.cs" />
     <Compile Include="Models\Service\TaxServicesTest.cs" />

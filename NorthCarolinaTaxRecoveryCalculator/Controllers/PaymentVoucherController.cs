@@ -140,6 +140,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
                 
             if (ModelState.IsValid)
             {
+                model.RemoveBlankEntries();
                 v.InjectFrom(model);
                 return RedirectToAction("Index", model.Project.ID);
             }
@@ -159,6 +160,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         {
             var v = new PaymentVoucher();
             v.Project = project;
+            for (int i = 0; i < 30; i++)
+            {
+                v.Entries.Add(new PaymentVoucherEntry());
+            }
             return View("Edit",v);
         }
 
@@ -172,6 +177,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.RemoveBlankEntries();
                 vouchers.Add(model);
                 return RedirectToAction("Index");
             }
@@ -192,6 +198,25 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         {
             vouchers.Remove(vouchers.Where(v => v.ID == VoucherID).FirstOrDefault());
             return RedirectToAction("Index");
+        }
+
+        /// <summary>
+        /// When we need to add moew rows to the voucher, we can click Add Rows
+        /// This will simply add new blank linke to the voucher, and return it.
+        /// We dont really even care about validation right now
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult AddRows(PaymentVoucher v)
+        {
+            //Remove any empty rows
+            v.RemoveBlankEntries();
+
+            //Add 30 more rows
+            v.AddBlankRows(30);
+
+            return PartialView("_EntryList", v);
         }
     }
 }
