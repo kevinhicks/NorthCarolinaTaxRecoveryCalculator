@@ -74,6 +74,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             }
             else
             {
+                model.Project = v.Project;
                 return View("Edit", model);
             }
         }
@@ -110,6 +111,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             }
             else
             {
+                model.Project = new ProjectManager().Get(ProjectID);
                 return View("Edit", model);
             }
         }
@@ -149,6 +151,13 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             v.AddBlankRows(30);
 
             return PartialView("_EntryList", v);
+        }
+
+        public ActionResult Print(Guid VoucherID)
+        {
+            var voucher = new PaymentVoucherManager().Get(VoucherID);
+            
+            return File(voucher.Print(), "application/pdf");
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Linq;
+using NorthCarolinaTaxRecoveryCalculator.Misc;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
 {
@@ -49,16 +50,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
         public void RemoveBlankEntries()
         {
             Entries = Entries.Where(v => !v.IsBlankEntry()).ToList();
-            /*
-            //loop backwards thru list to keep indexes in order
-            for(int i = Entries.Count - 1; i >= 0; i--)
-            {
-                //Find at least 1 value in this entry
-                if (Entries[i].IsBlankEntry())
-                {
-                    Entries.RemoveAt(i);
-                }
-            }*/
         }
 
         /// <summary>
@@ -73,6 +64,24 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
                 entry.PaymentVoucherID = ID;
                 this.Entries.Add(entry);
             }
+        }
+
+        /// <summary>
+        /// Print this vouhcer to PDF, and return the bytes
+        /// </summary>
+        /// <returns></returns>
+        public byte[] Print()
+        {
+            //We do not do anythign if there is not a project associated with this
+            if (this.Project == null)
+                return null;
+
+            //Or, if ther are no entires
+            if (this.Entries == null)
+                return null;
+
+            //Generate the report, and retun the bytes
+            return new PaymentVoucherReportGenerator().GeneratePDFForVoucher(this);           
         }
     }
 
