@@ -21,12 +21,12 @@
             border-color: black;
             border-style: solid;
             padding: 15px;
+            margin-bottom: 20px;
         }
 
         h3#taxPeriodHeader {
             text-align: center;
         }
-
     </style>
 }
 @section scripts {
@@ -45,10 +45,18 @@
         });
     </script>
 }
+<div id="paymentVoucherOverviewArea">
+    <fieldset>
+        <legend>Payment Vouchers</legend>
+        <div>
+            @Html.ActionLink("Goto Payment Vouchers", "Index", "PaymentVoucher", new { ProjectID = Model.Project.ID }, null)
+        </div>
+    </fieldset>
+</div>
 
 <div id="taxPeriodsOverviewArea">
     <fieldset>
-        <legend>County Taxes By Period(s)</legend>
+        <legend>Tax Recovery</legend>
         <div>
             <form id="filtersForm">
                 @Html.DisplayNameFor(model => model.FilterStartDate)
@@ -56,12 +64,12 @@
                 @Html.DisplayNameFor(model => model.FilterEndDate)
                 @Html.EditorFor(model => model.FilterEndDate)
                 <input type="submit" value="Filter By Date(s)" />
-                <input type="button" id="clearFiltersButton" value="Clear Filters"/>
+                <input type="button" id="clearFiltersButton" value="Clear Filters" />
             </form>
         </div>
-        <div>@Html.ActionLink("Reciepts List", "Index", "Reciept", new { ProjectID = Model.Project.ID }, new { @class = "blueLink" }) </div>
-        <div>@Html.ActionLink("Reciepts To PDF", "PrintRecieptsPDF", "Project", new { ProjectID = Model.Project.ID , filterStartDate = Model.FilterStartDate, filterEndDate = Model.FilterEndDate }, new { @class = "blueLink" })</div>
-        <div>@Html.ActionLink("Reciepts To Excel", "ExportToExcel", "Project", new { ProjectID = Model.Project.ID , filterStartDate = Model.FilterStartDate, filterEndDate = Model.FilterEndDate}, new { @class = "blueLink" })</div>
+        <div>@Html.ActionLink("Goto Reciepts List", "Index", "Reciept", new { ProjectID = Model.Project.ID }, new { @class = "blueLink" }) </div>
+        <div>@Html.ActionLink("Reciepts To PDF", "PrintRecieptsPDF", "Project", new { ProjectID = Model.Project.ID, filterStartDate = Model.FilterStartDate, filterEndDate = Model.FilterEndDate }, new { @class = "blueLink" })</div>
+        <div>@Html.ActionLink("Reciepts To Excel", "ExportToExcel", "Project", new { ProjectID = Model.Project.ID, filterStartDate = Model.FilterStartDate, filterEndDate = Model.FilterEndDate }, new { @class = "blueLink" })</div>
         <div class="display-label">
             @Html.DisplayNameFor(model => model.Project.Name)
         </div>
@@ -118,8 +126,8 @@
                             {
                                 //Dont show empty rows
                                 if (county.Name == null)
-                                { 
-                                    continue; 
+                                {
+                                    continue;
                                 }
 
                                 double _county = county.CountyTax;

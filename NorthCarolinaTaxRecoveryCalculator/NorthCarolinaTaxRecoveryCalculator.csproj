@@ -439,6 +439,7 @@
     <Content Include="Views\PaymentVoucher\Index.cshtml" />
     <Content Include="Views\PaymentVoucher\Edit.cshtml" />
     <Content Include="Views\PaymentVoucher\_EntryList.cshtml" />
+    <Content Include="Views\Project\Dashboard.cshtml" />
     <None Include="_AppStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -524,7 +525,7 @@
     <Content Include="Views\Reciept\_ListReciepts.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Project\Details.cshtml" />
+    <Content Include="Views\Project\OwnerDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Project\_ProjectTotals.cshtml" />

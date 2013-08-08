@@ -1,0 +1,70 @@
+﻿@model NorthCarolinaTaxRecoveryCalculator.Models.Project
+@{
+    ViewBag.Title = "Dashboard";
+}
+@section styles {
+    <style>
+        legend {
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            background-color: #999CFF;
+            padding: 5px;
+            margin-left: 20px;
+        }
+
+        fieldset {
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-width: 1px;
+            border-color: black;
+            border-style: solid;
+            padding: 15px;
+        }
+
+        h3#taxPeriodHeader {
+            text-align: center;
+        }
+
+        div#linkContainer {
+            width: 700px;
+            margin: auto;
+            margin-top: 100px;            
+        }
+
+        div.areaLink {
+            float: left;
+            height: 150px;
+            width: 200px;
+            text-align: center;
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            background-color: #5a864f;
+            margin: 20px;
+        }
+
+            div.areaLink:hover {
+                background-color: #5f9c34;
+            }
+
+            div.areaLink a {
+                font-size: larger;
+                line-height: 150px;
+            }
+    </style>
+}
+
+<div id="linkContainer">
+    <div class="areaLink">
+        @Html.ActionLink("Payment Vouchers", "Index", "PaymentVoucher", new { ProjectID = Model.ID }, new { @class = "blueLink" })
+    </div>
+    <div class="areaLink">
+        @Html.ActionLink("Tax Recovery", "Index", "Reciept", new { ProjectID = Model.ID }, new { @class = "blueLink" })
+    </div>
+</div>
+
+<p class="clear">
+    @Html.ActionLink("Back to List of Projects", "Index")
+</p>

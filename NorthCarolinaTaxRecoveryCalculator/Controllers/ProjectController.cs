@@ -92,10 +92,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
             ViewModel.Project = project;
 
-            //Only the Project owner whould see the overview page
+            //Only the Project owner whould see the admin dashboard page
             if (!project.BelongsTo(WebSecurity.CurrentUserId))
             {
-                return RedirectToAction("Index");
+                return View("DashBoard", project);
             }
 
             //Find all the reciepts for this view
@@ -116,7 +116,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             ViewModel.TotalFoodTaxForProject = project.GetTotalFoodTax(reciepts);
             ViewModel.TotalTransitTaxForProject = project.GetTotalTransitTax(reciepts);
 
-            return View(ViewModel);
+            return View("OwnerDashboard", ViewModel);
         }
 
         //
