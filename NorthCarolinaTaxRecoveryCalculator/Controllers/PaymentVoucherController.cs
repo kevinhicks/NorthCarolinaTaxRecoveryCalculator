@@ -16,94 +16,19 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
     {
         //
         // GET: /PaymentVoucher/
-
-        static Project project = null;
-        static List<PaymentVoucher> vouchers = null;
-        static PaymentVoucherController()
-        {
-            project = new Project();
-            project.ID = Guid.NewGuid();
-            project.Name = "Test UI Proejct";
-            
-            vouchers = new List<PaymentVoucher>();
-            var paymentVoucher = new PaymentVoucher();
-            paymentVoucher.Project = project;
-            paymentVoucher.CheckNumber = "123";
-            paymentVoucher.PaidTo = "Kevin";
-            vouchers.Add(paymentVoucher);
-
-            var entry = new PaymentVoucherEntry();
-            entry.Item = "Bolts";
-            entry.CostElement = "102-2";
-            entry.Amount = 100.22;
-            paymentVoucher.Entries.Add(entry);
-            entry = new PaymentVoucherEntry();
-            entry.Item = "Screws";
-            entry.CostElement = "122-2";
-            entry.Amount = 10.22;
-            paymentVoucher.Entries.Add(entry);
-            entry = new PaymentVoucherEntry();
-            entry.Item = "Nuts";
-            entry.CostElement = "102.2";
-            entry.Amount = 143.22;
-            paymentVoucher.Entries.Add(entry);
-
-            paymentVoucher = new PaymentVoucher();
-            paymentVoucher.Project = project;
-            paymentVoucher.CheckNumber = "456";
-            paymentVoucher.PaidTo = "Joe";
-            vouchers.Add(paymentVoucher);
-
-            entry = new PaymentVoucherEntry();
-            entry.Item = "Bolts";
-            entry.CostElement = "102-2";
-            entry.Amount = 100.22;
-            paymentVoucher.Entries.Add(entry);
-            entry = new PaymentVoucherEntry();
-            entry.Item = "Screws";
-            entry.CostElement = "122-2";
-            entry.Amount = 10.22;
-            paymentVoucher.Entries.Add(entry);
-            entry = new PaymentVoucherEntry();
-            entry.Item = "Nuts";
-            entry.CostElement = "102.2";
-            entry.Amount = 143.22;
-            paymentVoucher.Entries.Add(entry);
-
-            paymentVoucher = new PaymentVoucher();
-            paymentVoucher.Project = project;
-            paymentVoucher.CheckNumber = "789";
-            paymentVoucher.PaidTo = "Sue";
-            vouchers.Add(paymentVoucher);
-
-            entry = new PaymentVoucherEntry();
-            entry.Item = "Bolts";
-            entry.CostElement = "102-2";
-            entry.Amount = 100.22;
-            paymentVoucher.Entries.Add(entry);
-            entry = new PaymentVoucherEntry();
-            entry.Item = "Screws";
-            entry.CostElement = "122-2";
-            entry.Amount = 10.22;
-            paymentVoucher.Entries.Add(entry);
-            entry = new PaymentVoucherEntry();
-            entry.Item = "Nuts";
-            entry.CostElement = "102.2";
-            entry.Amount = 143.22;
-            paymentVoucher.Entries.Add(entry);
-                        
-        }
-
         /// <summary>
         /// When we go to /PaymentVouchers we want to see a list of all our payment vouchers
         /// </summary>
         /// <param name="ProjectID"></param>
         /// <returns></returns>
-        public ActionResult Index(Guid? ProjectID)
+        public ActionResult Index(Guid ProjectID)
         {
             var vm = new PaymentVouchersViewModel();
-            vm.Vouchers = vouchers;
-            vm.Project = project;
+            IProjectRepository projects = new ProjectManager();
+            IPaymentVoucherRepository vouchers = new PaymentVoucherManager();
+
+            vm.Vouchers = vouchers.GetAllForProject(ProjectID).ToList();
+            vm.Project = projects.Get(ProjectID);
 
             //Send it to the view
             return View(vm);
@@ -117,7 +42,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [HttpGet]
         public ActionResult Edit(Guid VoucherID)
         {
-            var voucher = vouchers.Where(col => col.ID == VoucherID).FirstOrDefault();
+            var voucher = new PaymentVoucherManager().Get(VoucherID);
 
             //If there is no such Payment Voucher,then go back to the list of Vouchers
             if (voucher == null)
@@ -136,13 +61,16 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [HttpPost]
         public ActionResult Edit(PaymentVoucher model)
         {
-            var v = vouchers.Where(col => col.ID == model.ID).FirstOrDefault();
-                
+            var v = new PaymentVoucherManager().Get(model.ID);
+            var vouchers = new PaymentVoucherManager();
+
             if (ModelState.IsValid)
             {
-                model.RemoveBlankEntries();
-                v.InjectFrom(model);
-                return RedirectToAction("Index", model.Project.ID);
+                //model.RemoveBlankEntries();
+                //v.InjectFrom(model);
+
+                vouchers.Update(model);
+                return RedirectToAction("Index", new { ProjectID = model.ProjectID });
             }
             else
             {
@@ -159,7 +87,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         public ActionResult Create(Guid ProjectID)
         {
             var v = new PaymentVoucher();
-            v.Project = project;
+            v.Project = new ProjectManager().Get(ProjectID);
             for (int i = 0; i < 30; i++)
             {
                 v.Entries.Add(new PaymentVoucherEntry());
@@ -173,12 +101,11 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// <param name="ProjectID"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Create(PaymentVoucher model)
+        public ActionResult Create(Guid ProjectID, PaymentVoucher model)
         {
             if (ModelState.IsValid)
             {
-                model.RemoveBlankEntries();
-                vouchers.Add(model);
+                new PaymentVoucherManager().Create(model);
                 return RedirectToAction("Index");
             }
             else
@@ -195,9 +122,14 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// <returns></returns>
         [HttpPost]
         public ActionResult Delete(Guid VoucherID)
-        {
-            vouchers.Remove(vouchers.Where(v => v.ID == VoucherID).FirstOrDefault());
-            return RedirectToAction("Index");
+        {            
+            var vouchers = new PaymentVoucherManager();
+            var voucher = vouchers.Get(VoucherID);
+            var projID = voucher.ProjectID;
+
+            vouchers.Delete(voucher);
+
+            return RedirectToAction("Index", new { ProjectID = projID });
         }
 
         /// <summary>

@@ -31,6 +31,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
         public string PreparedBy { get; set; }
         public string ApprovedBy { get; set; }
         public string RBCApproval { get; set; }
+
+        public Guid ProjectID { get; set; }
+        public virtual Project Project { get; set; }
         
         public PaymentVoucher()
         {
@@ -66,11 +69,11 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
         {
             for (int i = 0; i < number; i++)
             {
-                this.Entries.Add(new PaymentVoucherEntry());
+                var entry = new PaymentVoucherEntry();
+                entry.PaymentVoucherID = ID;
+                this.Entries.Add(entry);
             }
         }
-
-        public Project Project { get; set; }
     }
 
     public class PaymentVoucherEntry

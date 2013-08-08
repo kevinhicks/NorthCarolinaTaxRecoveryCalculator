@@ -298,12 +298,21 @@
     <Compile Include="Migrations\201211222112454_Remove Forien Key From ACL to User Profile.Designer.cs">
       <DependentUpon>201211222112454_Remove Forien Key From ACL to User Profile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201308072309425_Added Payment Vouchers.cs" />
+    <Compile Include="Migrations\201308072309425_Added Payment Vouchers.Designer.cs">
+      <DependentUpon>201308072309425_Added Payment Vouchers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308072318479_Chnahed Reference to project from Payment Voucher.cs" />
+    <Compile Include="Migrations\201308072318479_Chnahed Reference to project from Payment Voucher.Designer.cs">
+      <DependentUpon>201308072318479_Chnahed Reference to project from Payment Voucher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Data\AccountModels.cs" />
     <Compile Include="Misc\EmailSender.cs" />
     <Compile Include="Models\Data\PaymentVoucherModels.cs" />
     <Compile Include="Models\Data\TaxModels.cs" />
     <Compile Include="Models\Service\AccountServices.cs" />
+    <Compile Include="Models\Service\PaymentVoucherServices.cs" />
     <Compile Include="Models\Service\ProjectServices.cs" />
     <Compile Include="Models\Service\TaxServices.cs" />
     <Compile Include="Models\Data\CountyModels.cs" />
@@ -531,6 +540,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201211222112454_Remove Forien Key From ACL to User Profile.resx">
       <DependentUpon>201211222112454_Remove Forien Key From ACL to User Profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308072309425_Added Payment Vouchers.resx">
+      <DependentUpon>201308072309425_Added Payment Vouchers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308072318479_Chnahed Reference to project from Payment Voucher.resx">
+      <DependentUpon>201308072318479_Chnahed Reference to project from Payment Voucher.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

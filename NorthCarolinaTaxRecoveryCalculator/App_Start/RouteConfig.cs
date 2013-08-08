@@ -117,8 +117,8 @@ namespace NorthCarolinaTaxRecoveryCalculator
 
             routes.MapRoute(
                 name: "TO: Submit a new to Payment Voucher",
-                url: "PaymentVoucher/Create",
-                defaults: new { controller = "PaymentVoucher", action = "Create" }
+                url: "PaymentVoucher/Create/{ProjectID}",
+                defaults: new { controller = "PaymentVoucher", action = "Create", ProjectID = UrlParameter.Optional }
             );
 
             routes.MapRoute(

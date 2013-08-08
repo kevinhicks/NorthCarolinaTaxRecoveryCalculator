@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NorthCarolinaTaxRecoveryCalculator.Models.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,5 +16,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         public DbSet<Project> Projects { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<UsersAccessProjects> UsersAccessProjects { get; set; }
+        public DbSet<PaymentVoucher> PaymentVouchers { get; set; }
+        public DbSet<PaymentVoucherEntry> PaymentVouchersEntries { get; set; }
     }
 }
