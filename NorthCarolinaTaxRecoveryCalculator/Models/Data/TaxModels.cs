@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Globalization;
+using System.IO;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Xml;
@@ -39,10 +40,26 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             //initialize/clear any previous information
             Periods = new List<TaxPeriod>();
 
+            //Find my xml file
+            string path = System.AppDomain.CurrentDomain.BaseDirectory + "/TaxPeriods.xml";
+
+            //If we did  not find the file, try an alternat location. mabey we are testing?
+            if (!File.Exists(path))
+            {
+                path = "TaxPeriods.xml";
+            }
+
+            //Did the alternate path work?
+            if (!File.Exists(path))
+            {
+                throw new Exception("Could Not Load My PDF");
+            }
+
+
             var settings = new XmlReaderSettings();
             settings.IgnoreWhitespace = true;
             settings.IgnoreComments = true;
-            var xmlIn = XmlReader.Create(System.AppDomain.CurrentDomain.BaseDirectory + "/TaxPeriods.xml", settings);
+            var xmlIn = XmlReader.Create(path, settings);
 
             //get XML header stuff out of the way
             xmlIn.Read();
