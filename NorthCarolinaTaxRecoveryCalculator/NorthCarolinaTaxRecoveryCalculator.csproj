@@ -398,9 +398,9 @@
     <Content Include="Rotativa\README.txt" />
     <Content Include="Rotativa\ssleay32.dll" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
-    <Resource Include="PaymentVoucher.pdf">
+    <EmbeddedResource Include="PaymentVoucher.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </EmbeddedResource>
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\glimpse-knockout.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />

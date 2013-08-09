@@ -16,10 +16,21 @@ namespace NorthCarolinaTaxRecoveryCalculator.Misc
         {
             var path = HostingEnvironment.MapPath("~/PaymentVoucher.pdf");
 
+            //Try alternate filepath. mabey we are in tesing?
+            if (!File.Exists(path))
+            {
+                path = "PaymentVoucher.pdf";
+            }
+
+            //Did the alternate path work?
+            if (!File.Exists(path))
+            {
+                throw new Exception("Could Not Load My PDF");
+            }
+
             //Open our template pdf
-            string pdfTemplate = @"~/PaymentVoucher.pdf";
-            PdfReader pdfReader = new PdfReader(path);          
-            
+            PdfReader pdfReader = new PdfReader(path);
+
 
             var stream = new MemoryStream();//(tempFileName, FileMode.Create);
             var pdfStamper = new PdfStamper(pdfReader, stream);
