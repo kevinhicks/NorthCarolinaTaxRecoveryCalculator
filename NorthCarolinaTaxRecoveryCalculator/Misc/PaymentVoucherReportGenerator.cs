@@ -14,7 +14,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Misc
     {
         public byte[] GeneratePDFForVoucher(PaymentVoucher Voucher)
         {
-            var path = HostingEnvironment.MapPath("~/PaymentVoucher.pdf");
+            var path = FileFinder.FindFile("PaymentVoucher.pdf");
+            /*HostingEnvironment.MapPath("~/PaymentVoucher.pdf");
 
             //Try alternate filepath. mabey we are in tesing?
             if (!File.Exists(path))
@@ -22,11 +23,17 @@ namespace NorthCarolinaTaxRecoveryCalculator.Misc
                 path = "PaymentVoucher.pdf";
             }
 
+            //still no?
+            if (!File.Exists(path))
+            {
+                path = System.AppDomain.CurrentDomain.BaseDirectory + "/PaymentVoucher.pdf";
+            }
+
             //Did the alternate path work?
             if (!File.Exists(path))
             {
                 throw new Exception("Could Not Load My PDF");
-            }
+            }*/
 
             //Open our template pdf
             PdfReader pdfReader = new PdfReader(path);

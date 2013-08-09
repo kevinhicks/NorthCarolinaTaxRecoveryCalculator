@@ -310,6 +310,7 @@
       <DependentUpon>201308072318479_Chnahed Reference to project from Payment Voucher.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Misc\FileFinder.cs" />
     <Compile Include="Misc\PaymentVoucherReportGenerator.cs" />
     <Compile Include="Models\Data\AccountModels.cs" />
     <Compile Include="Misc\EmailSender.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NorthCarolinaTaxRecoveryCalculator.Misc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -41,7 +42,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             Periods = new List<TaxPeriod>();
 
             //Find my xml file
-            string path = System.AppDomain.CurrentDomain.BaseDirectory + "/TaxPeriods.xml";
+            string path = FileFinder.FindFile("TaxPeriods.xml");
+                /*System.AppDomain.CurrentDomain.BaseDirectory + "/TaxPeriods.xml";
 
             //If we did  not find the file, try an alternat location. mabey we are testing?
             if (!File.Exists(path))
@@ -54,7 +56,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             {
                 throw new Exception("Could Not Load My PDF");
             }
-
+                */
 
             var settings = new XmlReaderSettings();
             settings.IgnoreWhitespace = true;
