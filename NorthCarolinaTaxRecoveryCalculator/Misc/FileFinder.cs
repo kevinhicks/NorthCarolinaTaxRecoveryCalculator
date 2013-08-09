@@ -34,12 +34,20 @@ namespace NorthCarolinaTaxRecoveryCalculator.Misc
             }
             TriedPaths.Add(path);
 
-            //Buidl an error msg
+            path = System.AppDomain.CurrentDomain.BaseDirectory + "./" + filename;
+            if (File.Exists(path))
+            {
+                return path;
+            }
+            TriedPaths.Add(path);
+
+            //Build an error msg
             string msg = "Could Not Find " + filename + " in:\n";
             foreach (var p in TriedPaths)
             {
                 msg += p + "\n";
             }
+            msg += "Current Dir: " + Directory.GetCurrentDirectory();
             throw new Exception(msg);
         }
     }

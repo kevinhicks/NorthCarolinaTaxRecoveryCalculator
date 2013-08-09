@@ -21,6 +21,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// </summary>
         /// <param name="ProjectID"></param>
         /// <returns></returns>
+        [Authorize]
         public ActionResult Index(Guid ProjectID)
         {
             var vm = new PaymentVouchersViewModel();
@@ -39,6 +40,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// </summary>
         /// <param name="VoucherID"></param>
         /// <returns></returns>
+        [Authorize]
         [HttpGet]
         public ActionResult Edit(Guid VoucherID)
         {
@@ -58,6 +60,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// </summary>
         /// <param name="VoucherID"></param>
         /// <returns></returns>
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(PaymentVoucher model)
         {
@@ -84,6 +87,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// </summary>
         /// <param name="ProjectID"></param>
         /// <returns></returns>
+        [Authorize]        
         [HttpGet]
         public ActionResult Create(Guid ProjectID)
         {
@@ -101,6 +105,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// </summary>
         /// <param name="ProjectID"></param>
         /// <returns></returns>
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Guid ProjectID, PaymentVoucher model)
         {
@@ -122,6 +127,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// <param name="ProjectID"></param>
         /// <param name="VoucherID"></param>
         /// <returns></returns>
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(Guid VoucherID)
         {            
@@ -141,6 +147,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
+        [Authorize]
         [HttpPost]
         public ActionResult AddRows(PaymentVoucher v)
         {
@@ -153,6 +160,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             return PartialView("_EntryList", v);
         }
 
+        /// <summary>
+        /// We want to view the payment voucher as a pdf for printing
+        /// </summary>
+        /// <param name="VoucherID"></param>
+        /// <returns></returns>
+        [Authorize]
         public ActionResult Print(Guid VoucherID)
         {
             var voucher = new PaymentVoucherManager().Get(VoucherID);
