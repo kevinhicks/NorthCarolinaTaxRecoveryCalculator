@@ -93,6 +93,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.1.13153\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
     </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
     <Reference Include="EPPlus, Version=3.1.3.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EPPlus.3.1.3.3\lib\net35\EPPlus.dll</HintPath>
@@ -334,6 +337,7 @@
     <Compile Include="Models\Data\RecieptModels.cs" />
     <Compile Include="Api\PaymentVoucherAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Scripts\common.js" />
     <Compile Include="ViewModels\PaymentVoucher\PaymentVoucherViewModels.cs" />
     <Compile Include="ViewModels\Project\ProjectViewModels.cs" />
