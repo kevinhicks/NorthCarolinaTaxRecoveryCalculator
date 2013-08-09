@@ -51,7 +51,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         private float _salesTax = 0;
         [Display(Name = "Sales Tax")]
         [DataType(DataType.Currency)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:c}")]
         public float SalesTax
         {
             get
@@ -71,7 +71,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         private float _foodTax = 0;
         [Display(Name = "Food Tax")]
         [DataType(DataType.Currency)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:c}")]
         public float FoodTax
         {
             get
@@ -90,7 +90,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         [Required]
         [Display(Name = "Sales Amount")]
         [DataType(DataType.Currency)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:c}")]
         public float SalesAmount { get; set; }
 
         [Display(Name = "Notes")]
