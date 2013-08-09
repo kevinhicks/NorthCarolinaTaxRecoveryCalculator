@@ -90,7 +90,7 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(item.Name, "Index", "Reciept", new { ProjectID = item.ID }, null)
+                    @Html.ActionLink(item.Name, "Details",  new { ProjectID = item.ID })
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Owner.UserName)
