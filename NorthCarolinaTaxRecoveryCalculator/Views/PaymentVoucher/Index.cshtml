@@ -51,7 +51,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("View/Edit", "Edit", new { VoucherID = item.ID }) |
-                    @Html.ActionLink("Print", "Print", new { VoucherID = item.ID }) |
+                    @Html.ActionLink("Print", "Print", new { VoucherID = item.ID }, new { target = "_blank" }) |
                     @Html.ActionLink("Delete", "Delete", new { VoucherID = item.ID }, new { Class = "deleteLink" })
                 </td>
             </tr>
