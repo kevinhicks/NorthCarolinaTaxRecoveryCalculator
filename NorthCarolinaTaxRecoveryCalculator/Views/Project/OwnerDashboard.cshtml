@@ -194,7 +194,7 @@
         Add Collaborator
         @using (Html.BeginForm("SendInvitation", "Project", FormMethod.Post, new { ProjectID = Model.Project.ID }))
         {
-            <input name="emailAddress" type="email" />
+            @Html.EditorFor(m => m.InvitationEmail, new { type = "email" });
             <input type="submit" />
         }
     </fieldset>

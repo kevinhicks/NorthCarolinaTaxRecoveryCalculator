@@ -107,9 +107,29 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         public int ID { get; set; }
         public Guid ProjectID { get; set; }
         public int? UserID { get; set; }
-        public virtual UserProfile User { get; set;}
+        public virtual UserProfile User { get; set; }
         public string Email { get; set; }
         public bool invitationAccepted { get; set; }
+        public SecurityLevel SecurityLevel { get; set; }
+        public UserType UserType { get; set; }
+    }
+
+    public enum UserType {
+        Admin, 
+        DataEntry,
+        TaxRecovery,
+        ProjectCoordinator
+    }
+
+    /// <summary>
+    /// Enumerates the differnt levels of security
+    /// </summary>
+    public enum SecurityLevel
+    {
+        MOS = 0,
+        ProjectAdmin = 1,
+        Collaborator = 2,
+        None = 10
     }
 
 }

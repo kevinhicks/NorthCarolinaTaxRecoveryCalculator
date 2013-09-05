@@ -35,6 +35,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.ViewModels.Project
         public double TotalFoodTaxForProject { get; set; }
         public double TotalTransitTaxForProject { get; set; }
         public double TotalSpentOnProject { get; set; }
+
+        public string InvitationEmail { get; set; }
+        public UserType UserType { get; set; }
     }
 
     public class CountyTotals

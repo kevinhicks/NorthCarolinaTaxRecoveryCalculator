@@ -193,29 +193,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         // POST: /Project/SendInvitation
         [Authorize]
         [HttpPost]
-        public ActionResult SendInvitation(FormCollection inputs, Guid ProjectID)
+        public ActionResult SendInvitation(ProjectOverviewAndCollaboratorsViewModels model, Guid ProjectID)
         {
-            string email = inputs["emailAddress"];
-
-            //as long as there isnt already an invitaion sent
-            if (db.UsersAccessProjects.Where(acl => acl.Email == email && acl.ProjectID == ProjectID).Count() == 0)
-            {
-
-                var acl = new UsersAccessProjects();
-                acl.Email = email;
-                acl.invitationAccepted = false;
-                acl.ProjectID = ProjectID;
-                acl.UserID = null;
-                db.UsersAccessProjects.Add(acl);
-                db.SaveChanges();
-
-                string body;
-                body = "You have been invited to a new project.\n";
-                body += "Click the link to accept the invitation.\n";
-                body += "http://northcarolinataxrecoverycalculator.apphb.com/Project/AcceptInvite/" + acl.ID;
-
-                emailSender.SendMail(email, "You have been invited to a project", body);
-            }
+            //string email = inputs["emailAddress"];
+            
+            var acl = new ACLManager();
+            acl.SendInvitation(model.InvitationEmail, ProjectID, UserType.DataEntry, emailSender);
 
             return RedirectToAction("Details", new { ProjectID = ProjectID });
         }
