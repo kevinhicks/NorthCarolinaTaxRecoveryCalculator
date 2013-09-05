@@ -138,6 +138,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ProjectControllerTest.cs" />
     <Compile Include="Misc\MiscTest.cs" />
     <Compile Include="Models\Data\PaymentVoucherModelsTest.cs" />
     <Compile Include="Models\Data\ProjectModelsTest.cs" />

@@ -195,6 +195,7 @@
         @using (Html.BeginForm("SendInvitation", "Project", FormMethod.Post, new { ProjectID = Model.Project.ID }))
         {
             @Html.EditorFor(m => m.InvitationEmail, new { type = "email" });
+            @Html.DropDownListFor(m => m.UserType, new SelectList(Enum.GetValues(typeof(NorthCarolinaTaxRecoveryCalculator.Models.UserType))));
             <input type="submit" />
         }
     </fieldset>

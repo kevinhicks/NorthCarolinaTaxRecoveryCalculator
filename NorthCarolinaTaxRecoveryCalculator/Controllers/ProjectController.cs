@@ -102,12 +102,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             var reciepts = project.FindReciepts(filterStartDate, filterEndDate);
 
             //Used to hold all the tax periods
-            ViewModel.CountyTotals =  CalcProjectTotalsByTaxPeriodForAllCounties(reciepts);
-            
+            ViewModel.CountyTotals = CalcProjectTotalsByTaxPeriodForAllCounties(reciepts);
+
 
             //Find all the collaborators on this project            
             ViewModel.UsersAccessProjects = new ACLManager().FindAllCollaborators(ProjectID);
-            
+
             ViewModel.FilterStartDate = filterStartDate;
             ViewModel.FilterEndDate = filterEndDate;
 
@@ -196,9 +196,13 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         public ActionResult SendInvitation(ProjectOverviewAndCollaboratorsViewModels model, Guid ProjectID)
         {
             //string email = inputs["emailAddress"];
-            
-            var acl = new ACLManager();
-            acl.SendInvitation(model.InvitationEmail, ProjectID, UserType.DataEntry, emailSender);
+
+            //poor mans validation of missing email
+            if (model.InvitationEmail.Trim() != "")
+            {
+                var acl = new ACLManager();
+                acl.SendInvitation(model.InvitationEmail, ProjectID, UserType.DataEntry, emailSender);
+            }
 
             return RedirectToAction("Details", new { ProjectID = ProjectID });
         }
@@ -284,9 +288,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
             //used to hold all the tax periods
             ViewBag.TaxPeriods = new IEnumerable<RecieptEntity>[TaxPeriods.Periods.Count()];
-            
+
             //save each reciept for each tax period 
-            for(int i = 0; i < TaxPeriods.Periods.Count(); i++)
+            for (int i = 0; i < TaxPeriods.Periods.Count(); i++)
             {
                 //ViewBag.TaxPeriods[i] = CalcProjectTotalsByTaxPeriodForAllCounties(reciepts, TaxPeriods.Periods[i]);
             }
@@ -303,7 +307,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         /// in that county
         /// </returns>
         private IEnumerable<CountyTotals> CalcProjectTotalsByTaxPeriodForAllCounties(IEnumerable<RecieptEntity> reciepts)
-        {   
+        {
             //Hold the totals for 100 counties + non taxable
             var countyTotals = new CountyTotals[101];
 
