@@ -328,7 +328,9 @@
     <Compile Include="Models\Data\PaymentVoucherModels.cs" />
     <Compile Include="Models\Data\TaxModels.cs" />
     <Compile Include="Models\Service\AccountServices.cs" />
+    <Compile Include="Models\Service\AclRepository.cs" />
     <Compile Include="Models\Service\PaymentVoucherServices.cs" />
+    <Compile Include="Models\Service\ProjectRepository.cs" />
     <Compile Include="Models\Service\ProjectServices.cs" />
     <Compile Include="Models\Service\TaxServices.cs" />
     <Compile Include="Models\Data\CountyModels.cs" />
@@ -339,6 +341,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Scripts\common.js" />
+    <Compile Include="Models\Service\UserRepository.cs" />
     <Compile Include="ViewModels\PaymentVoucher\PaymentVoucherViewModels.cs" />
     <Compile Include="ViewModels\Project\ProjectViewModels.cs" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />

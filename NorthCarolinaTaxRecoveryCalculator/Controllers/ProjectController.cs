@@ -14,6 +14,7 @@ using Rotativa;
 using System.Text.RegularExpressions;
 using OfficeOpenXml;
 using System.Globalization;
+using NorthCarolinaTaxRecoveryCalculator.Security;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
@@ -22,10 +23,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         private ApplicationDBContext db = new ApplicationDBContext();
 
         IEmailSender emailSender;
+        IUserRepository user;
 
-        public ProjectController(IEmailSender emailSender)
+        public ProjectController(IUserRepository user, IEmailSender emailSender)
         {
             this.emailSender = emailSender;
+            this.user = user;
         }
 
         //
@@ -33,7 +36,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            int userID = WebSecurity.CurrentUserId;
+            int userID = user.CurrentUserId;
 
             //We should ONLY show MY Projects & the Projects SHARED with me
             var ViewModel = new OwnedAndSharedProjectViewModels();
@@ -93,7 +96,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             ViewModel.Project = project;
 
             //Only the Project owner whould see the admin dashboard page
-            if (!project.BelongsTo(WebSecurity.CurrentUserId))
+            if (!project.BelongsTo(user.CurrentUserId))
             {
                 return View("DashBoard", project);
             }
@@ -127,7 +130,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         {
             if (ModelState.IsValid)
             {
-                project.OwnerID = WebSecurity.CurrentUserId;
+                project.OwnerID = user.CurrentUserId;
                 db.Projects.Add(project);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -258,7 +261,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             //is the inviation still valid? maeby it was revoked?
             if (acl != null)
             {
-                acl.UserID = WebSecurity.CurrentUserId;
+                acl.UserID = user.CurrentUserId;
                 acl.invitationAccepted = true;
 
                 db.SaveChanges();
