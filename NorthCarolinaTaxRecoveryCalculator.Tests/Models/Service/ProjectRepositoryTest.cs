@@ -8,6 +8,8 @@ using NorthCarolinaTaxRecoveryCalculator;
 using NorthCarolinaTaxRecoveryCalculator.Controllers;
 using NorthCarolinaTaxRecoveryCalculator.Models;
 using NorthCarolinaTaxRecoveryCalculator.Models.Service;
+using NorthCarolinaTaxRecoveryCalculator.Misc;
+using FakeItEasy;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
 {
@@ -111,6 +113,78 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
 
             repo.Delete(project);
             Assert.IsNull(repo.FindProjectByID(project.ID));
+        }
+
+
+        private Project createTestProject(int OwnerID)
+        {
+            var project = new Project();
+            project.DateStarted = DateTime.Now;
+            project.Name = "test" + new Random().NextDouble();
+            project.OwnerID = OwnerID;
+
+            return project;
+        }
+
+        /// <summary>
+        /// removes existing proejcts from teh database so we can count the projects correctly
+        /// </summary>
+        /// <param name="userID"></param>
+        private void removeExistingProjectsFromUser(int userID)
+        {
+            var projects = new ProjectRepository();
+            var ownedProjects = projects.FindProjectsOwnedByUser(userID);
+            foreach (var project in ownedProjects)
+            {
+                var foundProject = projects.FindProjectByID(project.ID);
+                projects.Delete(foundProject);
+            }
+        }
+
+        [TestMethod]
+        public void ProjectRepository_FindProjectsOwnedByUser_ShouldReturnAllOwedProjectsOfUser()
+        {
+            removeExistingProjectsFromUser(1);
+            removeExistingProjectsFromUser(2);
+
+            var project = new ProjectRepository();
+            project.Create(createTestProject(1));
+            project.Create(createTestProject(2));
+            project.Create(createTestProject(1));
+            
+            var ownedProjects = project.FindProjectsOwnedByUser(1);
+            Assert.AreEqual(2, ownedProjects.Count());
+
+            ownedProjects = project.FindProjectsOwnedByUser(2);
+            Assert.AreEqual(1, ownedProjects.Count());
+        }
+
+        [TestMethod]
+        public void ProjectRepository_CreateCollaboration_ShouldCreateNewCollaborationInDB()
+        {
+            var projects = new ProjectRepository();
+            var mockProjectID = Guid.NewGuid();
+
+            var invitation = projects.CreateCollaboration(mockProjectID, "test@test.com");
+
+            Assert.AreEqual(mockProjectID, invitation.ProjectID);
+            Assert.AreEqual("test@test.com", invitation.Email);
+        }
+
+        [TestMethod]
+        public void ProjectRepository_SendInvitation_ShoudltryToSendAnEmailWithInvitaion()
+        {
+            var projects = new ProjectRepository();
+            var mockProjectID = Guid.NewGuid();
+            var mockEmailSender = A.Fake<IEmailSender>();
+            var invitation = projects.CreateCollaboration(mockProjectID, "test@test.com");
+
+            A.CallTo(() => mockEmailSender.SendMail("", "", "")).WithAnyArguments().MustNotHaveHappened();
+            projects.SendInvitation(invitation, mockEmailSender);
+            A.CallTo(() => mockEmailSender.SendMail("", "", "")).WithAnyArguments().MustHaveHappened();
+
+            Assert.AreEqual(mockProjectID, invitation.ProjectID);
+            Assert.AreEqual("test@test.com", invitation.Email);
         }
 
     }
