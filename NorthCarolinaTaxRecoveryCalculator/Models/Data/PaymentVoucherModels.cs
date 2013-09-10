@@ -42,6 +42,16 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
             Date = DateTime.Now;
 
             Entries = new List<PaymentVoucherEntry>();
+
+            AddBlankRows(NumberOfEntriesInAVoucher);
+        }
+
+        /// <summary>
+        /// How mant rows(entries) are on a payment voucher
+        /// </summary>
+        public static int NumberOfEntriesInAVoucher
+        {
+            get { return 20; }
         }
 
         /// <summary>

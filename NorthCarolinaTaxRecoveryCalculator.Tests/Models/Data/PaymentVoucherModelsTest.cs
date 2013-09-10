@@ -35,6 +35,21 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             entry.CostElement = "123";
             entry.Amount = 123;
             Assert.IsFalse(entry.IsBlankEntry());
-        }    
+        }
+    }
+
+    [TestClass]
+    public class PaymentVoucherTest
+    {
+
+        [TestMethod]
+        public void PaymentVoucher_ShouldComeWithEntiresWhenInitialized()
+        {
+            var vouchers = new PaymentVoucherRepository();
+            var voucher = new PaymentVoucher();
+            
+            Assert.IsNotNull(voucher.Entries);
+            Assert.AreEqual(PaymentVoucher.NumberOfEntriesInAVoucher, voucher.Entries.Count);
+        }
     }
 }

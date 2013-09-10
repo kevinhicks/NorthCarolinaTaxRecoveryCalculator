@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using OfficeOpenXml;
 using System.Globalization;
 using NorthCarolinaTaxRecoveryCalculator.Security;
+using NorthCarolinaTaxRecoveryCalculator.Models.Service;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
@@ -24,11 +25,15 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
         IEmailSender emailSender;
         IUserRepository user;
+        IProjectRepository ProjectRepository;
 
-        public ProjectController(IUserRepository user, IEmailSender emailSender)
+        public ProjectController(IUserRepository user, 
+                                 IEmailSender emailSender, 
+                                 IProjectRepository projectRepository)
         {
             this.emailSender = emailSender;
             this.user = user;
+            this.ProjectRepository = projectRepository;
         }
 
         //
@@ -40,27 +45,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
             //We should ONLY show MY Projects & the Projects SHARED with me
             var ViewModel = new OwnedAndSharedProjectViewModels();
-
-            //My Projects
-            var myProjects = db.Projects
-                .Where(proj => proj.OwnerID == userID)
-                .ToList();
-
-            ViewModel.MyProjects = myProjects;
-
-
-            //Shared Projects
-            var acls = db.UsersAccessProjects
-                .Where(acl => acl.UserID == userID)
-                .Select(acl => acl.ProjectID)
-                .ToList();
-
-            var sharedProjects = db.Projects
-                .Where(proj => acls.Contains(proj.ID))
-                .ToList();
-
-            ViewModel.SharedProjects = sharedProjects;
-
+            
+            ViewModel.MyProjects = ProjectRepository.FindProjectsOwnedByUser(userID);
+            ViewModel.SharedProjects = ProjectRepository.FindProjectsSharedWithUser(userID);
 
             return View(ViewModel);
         }
@@ -84,8 +71,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         {
             var ViewModel = new ProjectOverviewAndCollaboratorsViewModels();
 
-            var project = db.Projects.Find(ProjectID);
-            var projectManager = new ProjectManager();
+            var project = ProjectRepository.FindProjectByID(ProjectID);            
 
             //Make sure that it is a valid ProjectID 
             if (project == null)

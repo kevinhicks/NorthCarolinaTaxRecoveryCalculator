@@ -9,11 +9,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Omu.ValueInjecter;
+using NorthCarolinaTaxRecoveryCalculator.Models.Service;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
     public class PaymentVoucherController : Controller
     {
+
+        private IProjectRepository ProjectRepository;
+        private IPaymentVoucherRepository PaymentVoucherRepository;
+        public PaymentVoucherController(IProjectRepository ProjectRepository, IPaymentVoucherRepository PaymentVoucherRepository)
+        {
+            this.ProjectRepository = ProjectRepository;
+            this.PaymentVoucherRepository = PaymentVoucherRepository;
+        }
+
         //
         // GET: /PaymentVoucher/
         /// <summary>
@@ -24,12 +34,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [Authorize]
         public ActionResult Index(Guid ProjectID)
         {
-            var vm = new PaymentVouchersViewModel();
-            IProjectRepository projects = new ProjectManager();
-            IPaymentVoucherRepository vouchers = new PaymentVoucherManager();
+            var vm = new PaymentVouchersViewModel();            
 
-            vm.Vouchers = vouchers.GetAllForProject(ProjectID).ToList();
-            vm.Project = projects.Get(ProjectID);
+            vm.Vouchers = PaymentVoucherRepository.GetAllForProject(ProjectID).ToList();
+            vm.Project = ProjectRepository.FindProjectByID(ProjectID);
 
             //Send it to the view
             return View(vm);
@@ -44,7 +52,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [HttpGet]
         public ActionResult Edit(Guid VoucherID)
         {
-            var voucher = new PaymentVoucherManager().Get(VoucherID);
+            var voucher = new PaymentVoucherRepository().Get(VoucherID);
 
             //If there is no such Payment Voucher,then go back to the list of Vouchers
             if (voucher == null)
@@ -64,8 +72,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [HttpPost]
         public ActionResult Edit(PaymentVoucher model)
         {
-            var v = new PaymentVoucherManager().Get(model.ID);
-            var vouchers = new PaymentVoucherManager();
+            var v = new PaymentVoucherRepository().Get(model.ID);
+            var vouchers = new PaymentVoucherRepository();
 
             if (ModelState.IsValid)
             {
@@ -92,11 +100,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         public ActionResult Create(Guid ProjectID)
         {
             var v = new PaymentVoucher();
-            v.Project = new ProjectManager().Get(ProjectID);
-            for (int i = 0; i < 30; i++)
-            {
-                v.Entries.Add(new PaymentVoucherEntry());
-            }
+            v.Project = ProjectRepository.FindProjectByID(ProjectID);
+            
             return View("Edit",v);
         }
 
@@ -111,12 +116,12 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         {
             if (ModelState.IsValid)
             {
-                new PaymentVoucherManager().Create(model);
+                PaymentVoucherRepository.Create(model);
                 return RedirectToAction("Index");
             }
             else
             {
-                model.Project = new ProjectManager().Get(ProjectID);
+                model.Project = ProjectRepository.FindProjectByID(ProjectID);
                 return View("Edit", model);
             }
         }
@@ -131,7 +136,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [HttpPost]
         public ActionResult Delete(Guid VoucherID)
         {            
-            var vouchers = new PaymentVoucherManager();
+            var vouchers = new PaymentVoucherRepository();
             var voucher = vouchers.Get(VoucherID);
             var projID = voucher.ProjectID;
 
@@ -168,7 +173,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [Authorize]
         public ActionResult Print(Guid VoucherID)
         {
-            var voucher = new PaymentVoucherManager().Get(VoucherID);
+            var voucher = new PaymentVoucherRepository().Get(VoucherID);
             
             return File(voucher.Print(), "application/pdf");
         }

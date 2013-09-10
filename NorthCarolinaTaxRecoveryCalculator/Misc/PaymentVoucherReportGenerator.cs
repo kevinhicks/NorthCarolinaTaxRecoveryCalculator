@@ -15,26 +15,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Misc
         public byte[] GeneratePDFForVoucher(PaymentVoucher Voucher)
         {
             var path = FileFinder.FindFile("PaymentVoucher.pdf");
-            /*HostingEnvironment.MapPath("~/PaymentVoucher.pdf");
-
-            //Try alternate filepath. mabey we are in tesing?
-            if (!File.Exists(path))
-            {
-                path = "PaymentVoucher.pdf";
-            }
-
-            //still no?
-            if (!File.Exists(path))
-            {
-                path = System.AppDomain.CurrentDomain.BaseDirectory + "/PaymentVoucher.pdf";
-            }
-
-            //Did the alternate path work?
-            if (!File.Exists(path))
-            {
-                throw new Exception("Could Not Load My PDF");
-            }*/
-
+            
             //Open our template pdf
             PdfReader pdfReader = new PdfReader(path);
 
@@ -59,9 +40,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Misc
             for (int i = 0; (i < 20) && (i < Voucher.Entries.Count); i++)
             {
                 var entry = Voucher.Entries[i];
-                pdfFormFields.SetField("ItemRow" + (i + 1), entry.Item.ToString());
-                pdfFormFields.SetField("Cost ElementRow" + (i + 1), entry.CostElement.ToString());
-                pdfFormFields.SetField("AmountRow" + (i + 1), entry.Amount.ToString());
+                pdfFormFields.SetField("ItemRow" + (i + 1), entry.Item + "");
+                pdfFormFields.SetField("Cost ElementRow" + (i + 1), entry.CostElement + "");
+                pdfFormFields.SetField("AmountRow" + (i + 1), entry.Amount + "");
                 pdfFormFields.RegenerateField("AmountRow" + (i + 1));
             }
 

@@ -145,6 +145,7 @@
     <Compile Include="Models\Data\TestProjectsData.cs" />
     <Compile Include="Models\Service\AccountServicesTest.cs" />
     <Compile Include="Models\Service\AclRepositoryTest.cs" />
+    <Compile Include="Models\Service\PaymentVoucherRepositoryTest.cs" />
     <Compile Include="Models\Service\ProjectRepositoryTest.cs" />
     <Compile Include="Models\Service\TaxServicesTest.cs" />
     <Compile Include="Security\AuthenticationTest.cs" />
