@@ -187,5 +187,28 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             Assert.AreEqual("test@test.com", invitation.Email);
         }
 
+        [TestMethod]
+        public void ProjectRepository_AcceptInvitation_ShouldSavetheUserIDInTheDB()
+        {
+            //create a test user in the database
+            var db = new ApplicationDBContext();
+            var user = new UserProfile();
+            user.UserName = "test-user-to-accept-invitation" + Guid.NewGuid().ToString();
+            db.UserProfiles.Add(user);
+            db.SaveChanges();
+
+            //ok. on to the test now            
+            var projects = new ProjectRepository();
+            var project = createTestProject(987);
+            projects.Create(project);
+
+            var invitation = projects.CreateCollaboration(project.ID, "test@test.com");
+            projects.AcceptCollaboration(invitation.ID, user.UserId);
+            
+            var sharedProjectIDs = new List<Guid>();
+            CollectionAssert.DoesNotContain(sharedProjectIDs, project.ID);
+            sharedProjectIDs = projects.FindProjectsSharedWithUser(user.UserId).Select(col => col.ID).ToList();
+            CollectionAssert.Contains(sharedProjectIDs, project.ID);
+        }
     }
 }

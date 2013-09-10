@@ -19,6 +19,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Service
         IEnumerable<UsersAccessProjects> FindAllCollaborators(Guid ProjectID);
         UsersAccessProjects CreateCollaboration(Guid ProjectID, string EmailAddress);
         void SendInvitation(UsersAccessProjects acl, IEmailSender emailSender);
+        void RevokeCollaboration(UsersAccessProjects acl);
+        void AcceptCollaboration(int aclID, int UserID);
     }
 
     /// <summary>
@@ -203,6 +205,15 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Service
 
             //send an invitaion email
             emailSender.SendMail(acl.Email, "You have been invited to a project", body);
+        }
+
+        public void AcceptCollaboration(int aclID, int UserID)
+        {
+            var acl = db.UsersAccessProjects.Find(aclID);
+            acl.invitationAccepted = true;
+            acl.UserID = UserID;
+
+            db.SaveChanges();
         }
     }
 }

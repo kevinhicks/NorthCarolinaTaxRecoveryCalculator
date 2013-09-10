@@ -20,7 +20,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
         private IUserRepository validUser;
         private IUserRepository invalidUser;
         private IProjectRepository projectRepository;
-        //private IAclRepository aclRepository;
 
         private ProjectController controller;
 
@@ -32,45 +31,40 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
             invalidUser = A.Fake<IUserRepository>();
             A.CallTo(() => invalidUser.CurrentUserId).Returns(2);
 
-            //aclRepository = new MockAclRepository();
             projectRepository = new MockProjectRepository();
             controller = new ProjectController(validUser, null, projectRepository);
 
             //Create some test data
-            var project = new Project();
-            project.Name = "First";
-            project.OwnerID = validUser.CurrentUserId;
-            projectRepository.Create(project);
+            //User 1 creates a project
+            var firstProject = new Project();
+            firstProject.Name = "Owned Project";
+            firstProject.OwnerID = validUser.CurrentUserId;
+            projectRepository.Create(firstProject);
 
-            project = new Project();
-            project.Name = "Second";
-            project.OwnerID = invalidUser.CurrentUserId;
-            projectRepository.Create(project);
+            //User 2 creates a project
+            var secondProject = new Project();
+            secondProject.Name = "Shared project";
+            secondProject.OwnerID = invalidUser.CurrentUserId;
+            projectRepository.Create(secondProject);
+
+            //User 2 invites user 1 to the project
+            var acl = projectRepository.CreateCollaboration(secondProject.ID, "test@test.com");
+
+            //User 1 accepts
+            projectRepository.AcceptCollaboration(acl.ID, validUser.CurrentUserId);
         }
 
         [TestMethod]
         public void ProjectController_Index_ShouldReturnOwnedAndSharedProjects()
         {
-
-
             var result = controller.Index() as ViewResult;
             var model = result.Model as OwnedAndSharedProjectViewModels;
 
             Assert.AreEqual(1, model.MyProjects.Count());
-            
-            //var model
-            
-            /*
-            // Arrange
-            ProjectController controller = new ProjectController(null);
-
-            // Act
-            ViewResult result = controller.SendInvitation() as ViewResult;
-
-            // Assert
-            Assert.AreEqual("Modify this template to jump-start your ASP.NET MVC application.", result.ViewBag.Message);
-          * */
+            Assert.AreEqual(1, model.SharedProjects.Count());
         }
+
+        //TODO: MUCH more testing
         
         private class MockProjectRepository : IProjectRepository
         {
@@ -124,15 +118,32 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
 
             public UsersAccessProjects CreateCollaboration(Guid ProjectID, string EmailAddress)
             {
-                throw new NotImplementedException();
+                var acl = new UsersAccessProjects();
+                acl.ProjectID = ProjectID;
+                acl.Email = EmailAddress;
+
+                Acl.Add(acl);
+
+                return acl;
             }
 
             public void SendInvitation(UsersAccessProjects acl, NorthCarolinaTaxRecoveryCalculator.Misc.IEmailSender emailSender)
             {
                 throw new NotImplementedException();
             }
+
+
+            public void RevokeCollaboration(UsersAccessProjects acl)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void AcceptCollaboration(int aclID, int UserID)
+            {
+                var acl = Acl.Where(col => col.ID == aclID).FirstOrDefault();
+                acl.invitationAccepted = true;
+                acl.UserID = UserID;
+            }
         }
-
-
     }
 }
