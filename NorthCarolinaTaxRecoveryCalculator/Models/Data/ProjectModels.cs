@@ -30,6 +30,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         [Required]
         [Display(Name = "Date Started")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateStarted { get; set; }
 
         [Required]

@@ -48,6 +48,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             voucher.PaidTo = "321";
             voucher.ProjectID = project.ID;
             voucher.RBCApproval = "321";
+            voucher.TaxCostElement = "blah";
 
             return voucher;
         }

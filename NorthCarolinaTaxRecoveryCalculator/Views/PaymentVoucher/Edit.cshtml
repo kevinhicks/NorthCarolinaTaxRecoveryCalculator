@@ -76,7 +76,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", new { ProjectID = Model.Project.ID } )
+    @Html.ActionLink("Back to List", "Index", new { ProjectID = Model.Project.ID })
 </div>
 
 @section style {
@@ -90,10 +90,27 @@
         div#entriesArea {
             margin-left: 250px;
         }
+
+        table tbody input[type="text"] {
+            width: 100%;
+        }
+
+        .text_left {
+            text-align: left;
+        }
+
+        .text_center {
+            text-align: center;
+        }
+
+        .text_right {
+            text-align: right;
+        }
     </style>
 }
 
 @section scripts {
+    <script src="~/Scripts/accounting.min.js" type="text/javascript"></script>
     <script type="text/javascript">
 
         $(function () {
@@ -103,6 +120,15 @@
             //clicking the delete link wil remove the row from the table
             $(".deleteLink").click(function () {
                 $(this).parent().parent().remove();
+            });
+
+            $("form").submit(function () {
+                $(".amount").each(function () {
+                    var v = unformatMoney($(this).val())
+                    $(this).val(v);
+                });
+
+                return true;
             });
 
             $.ajaxSetup({ cache: false });
@@ -118,6 +144,38 @@
                     });
                 });
             });
+
+            //When we clik on a amount field, convert the number from a pretty currency, to simple decimal
+            $(".amount").focus(function () {
+                var v = unformatMoney($(this).val(), true)
+                $(this).val(v);
+            });
+
+            //when we leave the fields, reformat it
+            $(".amount").blur(function () {
+                var v = formatMoney($(this).val());
+                $(this).val(v);
+            });
+
+            function unformatMoney(number, clearZero) {
+                var v = accounting.unformat(number);
+                if (v == "0" && clearZero) {
+                    return "";
+                }
+                return v;
+            }
+
+            function formatMoney(number) {
+                return accounting.formatMoney(number, {
+                    precision: 2,
+                    thousand: ",",
+                    format: {
+                        pos: "%s%v",
+                        neg: "%s(%v)",
+                        zero: "%s%v"
+                    }
+                });
+            }
         });
     </script>
 }

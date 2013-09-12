@@ -17,13 +17,26 @@
                 <td>
                     @Html.HiddenFor(model => model.Entries[i].PaymentVoucherID)
                     <input name="Entries.Index" value="@i" type="hidden"/>
-                    @Html.TextBoxFor(model => model.Entries[i].Item)
+                    @Html.TextBoxFor(model => model.Entries[i].Item, new {Class = "text_left"})
 
                 </td>
-                <td>@Html.TextBoxFor(model => model.Entries[i].CostElement)</td>
-                <td>@Html.TextBoxFor(model => model.Entries[i].Amount)</td>
+                <td>@Html.TextBoxFor(model => model.Entries[i].CostElement, new {Class = "text_center"})</td>
+                <td>@Html.TextBoxFor(model => model.Entries[i].Amount,"{0:C}", new {Class = "text_right amount"})</td>
                 <td><a class="deleteLink" href="#">Delete</a></td>
             </tr>
         }
+
+        <tr>
+            <td style="text-align:right">
+                Tax:
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.TaxCostElement, new {Class = "text_center"})
+                @Html.ValidationMessageFor(model => model.TaxCostElement)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.TaxAmount,"{0:C}", new {Class = "text_right amount"})
+            </td>
+        </tr>
     </tbody>
 </table>

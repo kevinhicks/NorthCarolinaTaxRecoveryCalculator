@@ -65,7 +65,7 @@
                     @Html.ActionLink(item.Name, "Details", "Project", new { ProjectID = item.ID }, null)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateStarted)
+                    @item.DateStarted.ToShortDateString()
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { ProjectID = item.ID }) |
