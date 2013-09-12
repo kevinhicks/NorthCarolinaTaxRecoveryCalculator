@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using Omu.ValueInjecter;
 using NorthCarolinaTaxRecoveryCalculator.Models.Service;
+using NorthCarolinaTaxRecoveryCalculator.Security;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 {
@@ -18,10 +19,13 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
         private IProjectRepository ProjectRepository;
         private IPaymentVoucherRepository PaymentVoucherRepository;
-        public PaymentVoucherController(IProjectRepository ProjectRepository, IPaymentVoucherRepository PaymentVoucherRepository)
+        private IUserRepository UserRepository;
+
+        public PaymentVoucherController(IProjectRepository ProjectRepository, IPaymentVoucherRepository PaymentVoucherRepository, IUserRepository UserRepository)
         {
             this.ProjectRepository = ProjectRepository;
             this.PaymentVoucherRepository = PaymentVoucherRepository;
+            this.UserRepository = UserRepository;
         }
 
         //
@@ -73,6 +77,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         public ActionResult Edit(PaymentVoucher model)
         {
             var vouchers = new PaymentVoucherRepository();
+            model.PreparedBy = UserRepository.CurrentUserName;
 
             if (ModelState.IsValid)
             {
@@ -98,6 +103,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         {
             var v = new PaymentVoucher();
             v.Project = ProjectRepository.FindProjectByID(ProjectID);
+            v.PreparedBy = UserRepository.CurrentUserName;
             
             return View("Edit",v);
         }
@@ -111,6 +117,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [HttpPost]
         public ActionResult Create(Guid ProjectID, PaymentVoucher model)
         {
+            //model.PreparedBy = repo
             if (ModelState.IsValid)
             {
                 PaymentVoucherRepository.Create(model);

@@ -31,13 +31,15 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
         {
             validUser = A.Fake<IUserRepository>();
             A.CallTo(() => validUser.CurrentUserId).Returns(1);
+            A.CallTo(() => validUser.CurrentUserName).Returns("Valid User");
 
             invalidUser = A.Fake<IUserRepository>();
             A.CallTo(() => invalidUser.CurrentUserId).Returns(2);
+            A.CallTo(() => invalidUser.CurrentUserName).Returns("Invalid User");
 
             projectRepository = new MockProjectRepository();
             paymentVoucherRepository = new MockPaymentVoucherRepository();
-            controller = new PaymentVoucherController(projectRepository, paymentVoucherRepository);
+            controller = new PaymentVoucherController(projectRepository, paymentVoucherRepository, validUser);
 
             //Create some test data
             //User 1 creates a project
@@ -60,7 +62,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
         }
 
         [TestMethod]
-        public void PyamentVoucherController_Index_ShouldReturnAllVouchersForAProject()
+        public void PaymentVoucherController_Index_ShouldReturnAllVouchersForAProject()
         {
             var project = new Project();
             projectRepository.Create(project);
@@ -80,7 +82,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
         }
 
         [TestMethod]
-        public void PyamentVoucherController_Index_ShouldReturnAValidProject()
+        public void PaymentVoucherController_Index_ShouldReturnAValidProject()
         {
             var project = new Project();
             projectRepository.Create(project);
@@ -89,6 +91,19 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
             var model = result.Model as PaymentVouchersViewModel;
 
             Assert.IsNotNull(model.Project);
+        }
+
+        [TestMethod]
+        public void PaymentVoucherController_Create_ShouldPopulateThePreparedByFieldWithTheCurrentUserName()
+        {
+            var project = new Project();
+            projectRepository.Create(project);
+
+            var result = controller.Create(project.ID) as ViewResult;
+            var model = result.Model as PaymentVoucher;
+
+            Assert.IsNotNull(model.PreparedBy);
+            Assert.AreEqual("Valid User", model.PreparedBy);
         }
 
         //TODO: Test the rest of the actions

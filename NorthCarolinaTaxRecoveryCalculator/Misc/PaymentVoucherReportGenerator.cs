@@ -30,21 +30,37 @@ namespace NorthCarolinaTaxRecoveryCalculator.Misc
             pdfFormFields.SetField("Check Number", Voucher.CheckNumber);
             pdfFormFields.SetField("Paid to:", Voucher.PaidTo);
             if (Voucher.PreparedBy != null)
-                pdfFormFields.SetField("Prepared By:", Voucher.PreparedBy);
+                pdfFormFields.SetField("Prepared By", Voucher.PreparedBy);
             if (Voucher.ApprovedBy != null)
                 pdfFormFields.SetField("Approved By:", Voucher.ApprovedBy);
             if (Voucher.RBCApproval != null)
                 pdfFormFields.SetField("Regional Building Committee Approval:", Voucher.RBCApproval);
 
+            //Total amount for all the entries. To be displayed at the bottom of the page
+            double totalAmount = 0;
+
             //List of entries
             for (int i = 0; (i < 20) && (i < Voucher.Entries.Count); i++)
             {
                 var entry = Voucher.Entries[i];
+
+                //skip blank lines
+                if (entry.IsBlankEntry())
+                    continue;
+
                 pdfFormFields.SetField("ItemRow" + (i + 1), entry.Item + "");
                 pdfFormFields.SetField("Cost ElementRow" + (i + 1), entry.CostElement + "");
-                pdfFormFields.SetField("AmountRow" + (i + 1), entry.Amount + "");
+                pdfFormFields.SetField("AmountRow" + (i + 1), entry.Amount.ToString("C"));
                 pdfFormFields.RegenerateField("AmountRow" + (i + 1));
+
+                //keep adding up that total amount for later
+                totalAmount += entry.Amount;
             }
+
+            pdfFormFields.SetField("AmountSubtotal", totalAmount.ToString("C"));
+            pdfFormFields.SetField("Cost ElementTax", "???");
+            pdfFormFields.SetField("AmountTax", "???");
+            pdfFormFields.SetField("AmountTotal amount of check", "???");
 
             //IDK
             pdfStamper.FormFlattening = false;

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.Linq;
 using NorthCarolinaTaxRecoveryCalculator.Misc;
+using System.ComponentModel;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
 {
@@ -27,32 +28,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
         [Required]
         public string PaidTo { get; set; }
 
-        //private List<PaymentVoucherEntry> _entries = null;
-        public List<PaymentVoucherEntry> Entries
-        {
-            get;
-            set;/*
-            //There should ALWAYS be "NumberOfEntriesInAVoucher" in a then the entries list
-            get
-            {
-                if (_entries != null)
-                {
-                    int numberOfEntriesNeededToFillOutVoucher = PaymentVoucher.NumberOfEntriesInAVoucher - _entries.Count;
-                    for (int i = 0; i < numberOfEntriesNeededToFillOutVoucher; i++)
-                    {
-                        var entry = new PaymentVoucherEntry();
-                        entry.PaymentVoucherID = ID;
-                        _entries.Add(entry);
-                    }
-                }
-
-                return _entries;
-            }
-            set
-            {
-                _entries = value;
-            }*/
-        }
+        public List<PaymentVoucherEntry> Entries { get; set; }
 
         public string PreparedBy { get; set; }
         public string ApprovedBy { get; set; }
@@ -61,6 +37,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
         public Guid ProjectID { get; set; }
         public virtual Project Project { get; set; }
 
+        [Required]
+        public string TaxCostElement { get; set; }
+        public double TaxAmount { get; set; }
+
         public PaymentVoucher()
         {
             ID = Guid.NewGuid();
@@ -68,7 +48,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
 
             Entries = new List<PaymentVoucherEntry>();
 
-            AddBlankRows(NumberOfEntriesInAVoucher);
+            AddBlankRows(NumberOfEntriesInAVoucher);            
         }
 
         /// <summary>

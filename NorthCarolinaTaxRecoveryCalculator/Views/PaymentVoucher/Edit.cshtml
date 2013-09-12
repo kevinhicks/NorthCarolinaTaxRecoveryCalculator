@@ -45,7 +45,7 @@
                 @Html.LabelFor(model => model.PreparedBy)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.PreparedBy)
+                @Html.TextBoxFor(model => model.PreparedBy, "", new { disabled = "disabled" })
                 @Html.ValidationMessageFor(model => model.PreparedBy)
             </div>
 

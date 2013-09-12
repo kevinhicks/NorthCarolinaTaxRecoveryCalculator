@@ -17,12 +17,17 @@ namespace NorthCarolinaTaxRecoveryCalculator.Security
         int CurrentUserId { get; }
 
         /// <summary>
+        /// Currently loggedin user
+        /// </summary>
+        string CurrentUserName { get; }
+
+        /// <summary>
         /// Create a new User Account
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        string CreateUserAndAccount(string username, string password);
+        string CreateUserAndAccount(string username, string password);        
     }
 
     /// <summary>
@@ -35,6 +40,14 @@ namespace NorthCarolinaTaxRecoveryCalculator.Security
             get
             {
                 return WebSecurity.CurrentUserId;
+            }
+        }
+
+        public string CurrentUserName
+        {
+            get
+            {
+                return WebSecurity.CurrentUserName;
             }
         }
 
