@@ -3,6 +3,8 @@ using Microsoft.Practices.Unity;
 using Unity.Mvc4;
 using NorthCarolinaTaxRecoveryCalculator.Misc;
 using NorthCarolinaTaxRecoveryCalculator.Security;
+using NorthCarolinaTaxRecoveryCalculator.Models.Service;
+using NorthCarolinaTaxRecoveryCalculator.Models;
 
 namespace NorthCarolinaTaxRecoveryCalculator
 {
@@ -34,6 +36,8 @@ namespace NorthCarolinaTaxRecoveryCalculator
         {
             container.RegisterType<IEmailSender, SendGridEmailSender>();
             container.RegisterType<IUserRepository, UserRepository>();
+            container.RegisterType<IProjectRepository, ProjectRepository>();
+            container.RegisterType<IPaymentVoucherRepository, PaymentVoucherRepository>();
         }
     }
 }

@@ -8,6 +8,7 @@ using NorthCarolinaTaxRecoveryCalculator;
 using NorthCarolinaTaxRecoveryCalculator.Controllers;
 using NorthCarolinaTaxRecoveryCalculator.Models;
 using NorthCarolinaTaxRecoveryCalculator.Models.Data;
+using NorthCarolinaTaxRecoveryCalculator.Models.Service;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
 {
@@ -41,14 +42,30 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
     [TestClass]
     public class PaymentVoucherTest
     {
+        [TestMethod]
+        public void PaymentVoucher_ShouldComeWithEntriesWhenInitialized()
+        {
+            var voucher = new PaymentVoucher();
+
+            Assert.IsNotNull(voucher.Entries);
+            Assert.AreEqual(PaymentVoucher.NumberOfEntriesInAVoucher, voucher.Entries.Count);
+        }
 
         [TestMethod]
-        public void PaymentVoucher_ShouldComeWithEntiresWhenInitialized()
+        public void PaymentVoucher_ShouldComeWithTheRequiredNumberOfEntriesAfterSettingThemWithLessThenTheRequiredNumber()
         {
-            var vouchers = new PaymentVoucherRepository();
             var voucher = new PaymentVoucher();
+
+            var entries = new List<PaymentVoucherEntry>();
+            //Create a list with insufficiant entries
+            for (int i = 0; i < PaymentVoucher.NumberOfEntriesInAVoucher / 2; i++)
+            {
+                entries.Add(new PaymentVoucherEntry());
+            }
+
+            voucher.Entries = entries;
             
-            Assert.IsNotNull(voucher.Entries);
+            //We shoudl still get the required number of entries
             Assert.AreEqual(PaymentVoucher.NumberOfEntriesInAVoucher, voucher.Entries.Count);
         }
     }

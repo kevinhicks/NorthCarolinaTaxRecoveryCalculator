@@ -11,20 +11,23 @@ using FakeItEasy;
 using NorthCarolinaTaxRecoveryCalculator.ViewModels.Project;
 using NorthCarolinaTaxRecoveryCalculator.Models.Service;
 using NorthCarolinaTaxRecoveryCalculator.Models;
+using NorthCarolinaTaxRecoveryCalculator.Models.Data;
 using NorthCarolinaTaxRecoveryCalculator.Tests.Models.Mocks;
+using NorthCarolinaTaxRecoveryCalculator.ViewModels.PaymentVoucher;
 
 namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
 { 
     [TestClass]
-    public class ProjectControllerTest
+    public class PaymentVoucherControllerTest
     {
         private IUserRepository validUser;
         private IUserRepository invalidUser;
         private IProjectRepository projectRepository;
+        private IPaymentVoucherRepository paymentVoucherRepository;
 
-        private ProjectController controller;
+        private PaymentVoucherController controller;
 
-        public ProjectControllerTest() 
+        public PaymentVoucherControllerTest() 
         {
             validUser = A.Fake<IUserRepository>();
             A.CallTo(() => validUser.CurrentUserId).Returns(1);
@@ -33,7 +36,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
             A.CallTo(() => invalidUser.CurrentUserId).Returns(2);
 
             projectRepository = new MockProjectRepository();
-            controller = new ProjectController(validUser, null, projectRepository);
+            paymentVoucherRepository = new MockPaymentVoucherRepository();
+            controller = new PaymentVoucherController(projectRepository, paymentVoucherRepository);
 
             //Create some test data
             //User 1 creates a project
@@ -56,15 +60,39 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
         }
 
         [TestMethod]
-        public void ProjectController_Index_ShouldReturnOwnedAndSharedProjects()
+        public void PyamentVoucherController_Index_ShouldReturnAllVouchersForAProject()
         {
-            var result = controller.Index() as ViewResult;
-            var model = result.Model as OwnedAndSharedProjectViewModels;
+            var project = new Project();
+            projectRepository.Create(project);
 
-            Assert.AreEqual(1, model.MyProjects.Count());
-            Assert.AreEqual(1, model.SharedProjects.Count());
+            int voucherCount = 13;
+            for (int i = 0; i < voucherCount; i++)
+            {
+                var voucher = new PaymentVoucher();
+                voucher.ProjectID = project.ID;
+                paymentVoucherRepository.Create(voucher);
+            }
+
+            var result = controller.Index(project.ID) as ViewResult;
+            var model = result.Model as PaymentVouchersViewModel;
+
+            Assert.AreEqual(voucherCount, model.Vouchers.Count());
+        }
+
+        [TestMethod]
+        public void PyamentVoucherController_Index_ShouldReturnAValidProject()
+        {
+            var project = new Project();
+            projectRepository.Create(project);
+            
+            var result = controller.Index(project.ID) as ViewResult;
+            var model = result.Model as PaymentVouchersViewModel;
+
+            Assert.IsNotNull(model.Project);
         }
 
         //TODO: Test the rest of the actions
+        
+
     }
 }

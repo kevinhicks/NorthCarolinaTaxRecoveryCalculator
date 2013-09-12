@@ -12,7 +12,7 @@ using System.Xml;
 using System.Data;
 using Omu.ValueInjecter;
 
-namespace NorthCarolinaTaxRecoveryCalculator.Models
+namespace NorthCarolinaTaxRecoveryCalculator.Models.Service
 {
     public interface IPaymentVoucherRepository
     {
@@ -53,18 +53,27 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
         {
             db = new ApplicationDBContext();
         }
-        
+
         public PaymentVoucher Get(Guid PaymentVoucherID)
         {
             var voucher = db.PaymentVouchers.Where(col => col.ID == PaymentVoucherID)
                                                              .Include(v => v.Project)
-                                                             .Include(v => v.Entries)
                                                              .FirstOrDefault();
-            
+
+            //doing this as a subquery helps
+            voucher.Entries = db.PaymentVouchersEntries.Where(col => col.PaymentVoucherID == voucher.ID).ToList();
+                                                             
+
             //make sure that there are aloways the neccesary number of rows.
-            int diff = PaymentVoucher.NumberOfEntriesInAVoucher - voucher.Entries.Count;
-            voucher.AddBlankRows(diff);
-            
+            if (voucher != null)
+            {
+                int numberOfEntriesNeededToFillOutVoucher = PaymentVoucher.NumberOfEntriesInAVoucher - voucher.Entries.Count;
+                voucher.AddBlankRows(numberOfEntriesNeededToFillOutVoucher);
+
+                //order entries
+                voucher.Entries = voucher.Entries.OrderBy(c => c.ID).ToList();
+            }
+
             return voucher;
         }
 
@@ -73,26 +82,27 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             if (Voucher == null)
                 return;
 
-            Voucher.RemoveBlankEntries();
-
-            //Get fresh copy from db
-            var org = Get(Voucher.ID);
-            db.Entry(org).CurrentValues.SetValues(Voucher);
-
-            //remove previous entries
-            foreach (var entry in org.Entries.ToList())
+            //Delete the previosu entries
+            var org = db.PaymentVouchersEntries.Where(col => col.PaymentVoucherID == Voucher.ID).ToList();
+            foreach (var entry in org)
             {
                 db.PaymentVouchersEntries.Remove(entry);
             }
+            db.SaveChanges();
 
-            //add new entries
-            foreach (var entry in Voucher.Entries)
+            //Load the original Voucher into our db context
+            var voucher = Get(Voucher.ID);
+
+            //update the voucher
+            db.Entry(voucher).CurrentValues.SetValues(Voucher);
+            //and each entry
+            for (int i = 0; i < Voucher.Entries.Count; i++)
             {
-                db.PaymentVouchersEntries.Add(entry);
+                db.Entry(voucher.Entries[i]).CurrentValues.SetValues(Voucher.Entries[i]);
             }
 
-            //commit            
-            db.SaveChanges();
+            //commit changes
+            db.SaveChanges();            
         }
 
 
@@ -101,7 +111,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models
             if (Voucher == null)
                 return;
 
-            Voucher.RemoveBlankEntries();
+            foreach (var entry in Voucher.Entries)
+            { entry.PaymentVoucherID = Voucher.ID; };
+
+            //Voucher.RemoveBlankEntries();
             db.PaymentVouchers.Add(Voucher);
             db.SaveChanges();
         }

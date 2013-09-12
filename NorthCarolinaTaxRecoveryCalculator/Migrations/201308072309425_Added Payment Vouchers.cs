@@ -27,8 +27,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Migrations
             CreateTable(
                 "dbo.PaymentVoucherEntries",
                 c => new
-                    {
-                        ID = c.Guid(nullable: false),
+                    {   
+                        ID = c.Int(nullable: false, identity: true),
                         PaymentVoucherID = c.Guid(nullable: false),
                         Item = c.String(),
                         CostElement = c.String(),

@@ -47,13 +47,24 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             voucher.Date = DateTime.Now;
             voucher.PaidTo = "321";
             voucher.ProjectID = project.ID;
-            voucher.RBCApproval = "321";            
+            voucher.RBCApproval = "321";
 
             return voucher;
         }
 
+        private PaymentVoucherEntry createTestVoucherEntry(Guid PaymentVoucherID)
+        {
+            var entry = new PaymentVoucherEntry();
+            entry.Amount = 123;
+            entry.CostElement = "123";
+            entry.Item = "stuff";
+            entry.PaymentVoucherID = PaymentVoucherID;
+
+            return entry;
+        }
+
         [TestMethod]
-        public void ProjectRepository_Create_ShouldSaveANewVoucherInTheDB()
+        public void PaymentVoucherRepository_Create_ShouldSaveANewVoucherInTheDB()
         {
             var voucher = createTestVoucher();
             var vouchers = new PaymentVoucherRepository();
@@ -62,7 +73,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         }
 
         [TestMethod]
-        public void ProjectRepository_Get_ShouldReturnAVoucherWithEntries()
+        public void PaymentVoucherRepository_Get_ShouldReturnAVoucherWithEntries()
         {
             var voucher = createTestVoucher();
             var vouchers = new PaymentVoucherRepository();
@@ -82,6 +93,102 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
             Assert.IsNotNull(foundVoucher.Entries);
             Assert.AreEqual(PaymentVoucher.NumberOfEntriesInAVoucher, foundVoucher.Entries.Count);
         }
+
+        public void PaymentVoucherRepository_Create_ShouldSaveEntries()
+        {
+            //Create test voucher with a few entries
+            var voucher = createTestVoucher();
+            var vouchers = new PaymentVoucherRepository();
+
+            var entries = new List<PaymentVoucherEntry>();
+            for (int i = 0; i < 10; i++)
+            {
+                var entry = createTestVoucherEntry(voucher.ID);
+                entries.Add(entry);
+            }
+
+            //save it
+            voucher.Entries = entries;
+            vouchers.Create(voucher);
+
+            //query it back out
+            var newFoundVoucher = vouchers.Get(voucher.ID);
+
+            Assert.IsNotNull(newFoundVoucher.Entries);
+            Assert.AreEqual(PaymentVoucher.NumberOfEntriesInAVoucher, newFoundVoucher.Entries.Count);            
+        }
+
+
+        [TestMethod]
+        public void PaymentVoucherRepository_Update_ShouldSaveNewEntries()
+        {
+            //Create test voucher
+            var voucher = createTestVoucher();
+            var vouchers = new PaymentVoucherRepository();
+
+            //Create a few entries
+            var entries = new List<PaymentVoucherEntry>();
+            for (int i = 0; i < 10; i++)
+            {
+                var entry = createTestVoucherEntry(voucher.ID);
+                entries.Add(entry);
+            }
+
+            //save it
+            voucher.Entries = entries;
+            vouchers.Create(voucher);
+
+            //query it back out
+            var newFoundVoucher = vouchers.Get(voucher.ID);
+
+            //Create new entries
+            entries = new List<PaymentVoucherEntry>();
+            for (int i = 0; i < 10; i++)
+            {
+                var entry = createTestVoucherEntry(newFoundVoucher.ID);
+                entries.Add(entry);
+            }
+
+            //save it
+            newFoundVoucher.Entries = entries;
+            vouchers.Update(newFoundVoucher);
+
+            //query it back out. again to check for Updates
+            newFoundVoucher = vouchers.Get(voucher.ID);
+
+            Assert.IsNotNull(newFoundVoucher);
+            Assert.IsNotNull(newFoundVoucher.Entries);
+            Assert.AreEqual(PaymentVoucher.NumberOfEntriesInAVoucher, newFoundVoucher.Entries.Count);    
+        }
+/*
+        [TestMethod]
+        public void PaymentVoucher_Update_ShouldOverwriteEntriesWhenUpdating()
+        {
+            var vouchers = new PaymentVoucherRepository();           
+            var voucher = createTestVoucher();
+
+            voucher.Entries =  new List<PaymentVoucherEntry>();
+            for(int i = 0; i < 10; i++)
+            {
+                voucher.Entries.Add(createTestVoucherEntry(voucher.ID));
+            }
+
+            //save a refernce to an origianl entry
+            var originalEntry = voucher.Entries[0];            
+
+            //save it
+            vouchers.Create(voucher);
+
+            var newVoucher = vouchers.Get(voucher.ID);
+            CollectionAssert.Contains(newVoucher.Entries, originalEntry);
+
+            voucher.Entries[0].Amount = 12030;
+            vouchers.Update(voucher);
+
+            CollectionAssert.DoesNotContain(newVoucher.Entries, originalEntry);
+            CollectionAssert.AllItemsAreUnique(newVoucher.Entries);
+            Assert.AreEqual(PaymentVoucher.NumberOfEntriesInAVoucher, newVoucher.Entries.Count);
+        }    */ 
 
     }
 }

@@ -34,10 +34,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [Authorize]
         public ActionResult Index(Guid ProjectID)
         {
-            var vm = new PaymentVouchersViewModel();            
+            var vm = new PaymentVouchersViewModel();
 
-            vm.Vouchers = PaymentVoucherRepository.GetAllForProject(ProjectID).ToList();
             vm.Project = ProjectRepository.FindProjectByID(ProjectID);
+            vm.Vouchers = PaymentVoucherRepository.GetAllForProject(ProjectID).ToList();            
 
             //Send it to the view
             return View(vm);
@@ -72,19 +72,16 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
         [HttpPost]
         public ActionResult Edit(PaymentVoucher model)
         {
-            var v = new PaymentVoucherRepository().Get(model.ID);
             var vouchers = new PaymentVoucherRepository();
 
             if (ModelState.IsValid)
             {
-                //model.RemoveBlankEntries();
-                //v.InjectFrom(model);
-
                 vouchers.Update(model);
                 return RedirectToAction("Index", new { ProjectID = model.ProjectID });
             }
             else
             {
+                var v = vouchers.Get(model.ID);            
                 model.Project = v.Project;
                 return View("Edit", model);
             }
@@ -144,27 +141,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
             return RedirectToAction("Index", new { ProjectID = projID });
         }
-
-        /// <summary>
-        /// When we need to add moew rows to the voucher, we can click Add Rows
-        /// This will simply add new blank linke to the voucher, and return it.
-        /// We dont really even care about validation right now
-        /// </summary>
-        /// <param name="v"></param>
-        /// <returns></returns>
-        [Authorize]
-        [HttpPost]
-        public ActionResult AddRows(PaymentVoucher v)
-        {
-            //Remove any empty rows
-            v.RemoveBlankEntries();
-
-            //Add 30 more rows
-            v.AddBlankRows(30);
-
-            return PartialView("_EntryList", v);
-        }
-
+        
         /// <summary>
         /// We want to view the payment voucher as a pdf for printing
         /// </summary>

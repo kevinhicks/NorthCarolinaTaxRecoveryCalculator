@@ -27,7 +27,32 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
         [Required]
         public string PaidTo { get; set; }
 
-        public List<PaymentVoucherEntry> Entries {get;set;}
+        //private List<PaymentVoucherEntry> _entries = null;
+        public List<PaymentVoucherEntry> Entries
+        {
+            get;
+            set;/*
+            //There should ALWAYS be "NumberOfEntriesInAVoucher" in a then the entries list
+            get
+            {
+                if (_entries != null)
+                {
+                    int numberOfEntriesNeededToFillOutVoucher = PaymentVoucher.NumberOfEntriesInAVoucher - _entries.Count;
+                    for (int i = 0; i < numberOfEntriesNeededToFillOutVoucher; i++)
+                    {
+                        var entry = new PaymentVoucherEntry();
+                        entry.PaymentVoucherID = ID;
+                        _entries.Add(entry);
+                    }
+                }
+
+                return _entries;
+            }
+            set
+            {
+                _entries = value;
+            }*/
+        }
 
         public string PreparedBy { get; set; }
         public string ApprovedBy { get; set; }
@@ -35,7 +60,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
 
         public Guid ProjectID { get; set; }
         public virtual Project Project { get; set; }
-        
+
         public PaymentVoucher()
         {
             ID = Guid.NewGuid();
@@ -59,7 +84,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
         /// </summary>
         public void RemoveBlankEntries()
         {
-            Entries = Entries.Where(v => !v.IsBlankEntry()).ToList();
+            //Entries = Entries.Where(v => !v.IsBlankEntry()).ToList();
         }
 
         /// <summary>
@@ -91,14 +116,14 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
                 return null;
 
             //Generate the report, and retun the bytes
-            return new PaymentVoucherReportGenerator().GeneratePDFForVoucher(this);           
+            return new PaymentVoucherReportGenerator().GeneratePDFForVoucher(this);
         }
     }
 
     public class PaymentVoucherEntry
     {
         [Key]
-        public Guid ID { get; set; }
+        public int ID { get; set; }
 
         public Guid PaymentVoucherID { get; set; }
 
@@ -108,7 +133,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
 
         public PaymentVoucherEntry()
         {
-            ID = Guid.NewGuid();
+            ID = 0;// Guid.NewGuid();
         }
 
         //Is any field, other than the ID, filled in?
