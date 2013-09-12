@@ -58,9 +58,10 @@ namespace NorthCarolinaTaxRecoveryCalculator.Misc
             }
 
             pdfFormFields.SetField("AmountSubtotal", totalAmount.ToString("C"));
-            pdfFormFields.SetField("Cost ElementTax", "???");
-            pdfFormFields.SetField("AmountTax", "???");
-            pdfFormFields.SetField("AmountTotal amount of check", "???");
+            pdfFormFields.SetField("Cost ElementTax", Voucher.TaxCostElement);
+            pdfFormFields.SetField("AmountTax", Voucher.TaxAmount.ToString("C"));
+            totalAmount += Voucher.TaxAmount;
+            pdfFormFields.SetField("AmountTotal amount of check", totalAmount.ToString("C"));
 
             //IDK
             pdfStamper.FormFlattening = false;
