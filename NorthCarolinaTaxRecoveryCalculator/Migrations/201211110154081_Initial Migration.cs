@@ -59,7 +59,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Migrations
             DropIndex("dbo.Reciepts", new[] { "ProjectID" });
             DropForeignKey("dbo.Projects", "Owner_UserId", "dbo.UserProfile");
             DropForeignKey("dbo.Reciepts", "ProjectID", "dbo.Projects");
-           // DropTable("dbo.UserProfile");
+            DropTable("dbo.UserProfile");
             DropTable("dbo.Projects");
             DropTable("dbo.Reciepts");
         }
