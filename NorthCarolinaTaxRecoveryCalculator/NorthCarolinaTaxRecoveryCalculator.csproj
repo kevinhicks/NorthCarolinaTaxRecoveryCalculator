@@ -320,10 +320,6 @@
     <Compile Include="Migrations\201308072318479_Chnahed Reference to project from Payment Voucher.Designer.cs">
       <DependentUpon>201308072318479_Chnahed Reference to project from Payment Voucher.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201309112025143_Change PaymentVoucherEntry_ID into an int.cs" />
-    <Compile Include="Migrations\201309112025143_Change PaymentVoucherEntry_ID into an int.Designer.cs">
-      <DependentUpon>201309112025143_Change PaymentVoucherEntry_ID into an int.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201309121621444_Addedd Tax information to PaymentVoucher.cs" />
     <Compile Include="Migrations\201309121621444_Addedd Tax information to PaymentVoucher.Designer.cs">
       <DependentUpon>201309121621444_Addedd Tax information to PaymentVoucher.cs</DependentUpon>
@@ -577,9 +573,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201308072318479_Chnahed Reference to project from Payment Voucher.resx">
       <DependentUpon>201308072318479_Chnahed Reference to project from Payment Voucher.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201309112025143_Change PaymentVoucherEntry_ID into an int.resx">
-      <DependentUpon>201309112025143_Change PaymentVoucherEntry_ID into an int.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201309121621444_Addedd Tax information to PaymentVoucher.resx">
       <DependentUpon>201309121621444_Addedd Tax information to PaymentVoucher.cs</DependentUpon>

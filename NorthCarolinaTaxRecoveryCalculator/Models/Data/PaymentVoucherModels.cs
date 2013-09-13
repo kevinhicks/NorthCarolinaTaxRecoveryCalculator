@@ -103,7 +103,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
     public class PaymentVoucherEntry
     {
         [Key]
-        public int ID { get; set; }
+        public Guid ID { get; set; }
 
         public Guid PaymentVoucherID { get; set; }
 
@@ -113,7 +113,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
 
         public PaymentVoucherEntry()
         {
-            ID = 0;// Guid.NewGuid();
+            ID = Guid.NewGuid();
         }
 
         //Is any field, other than the ID, filled in?
