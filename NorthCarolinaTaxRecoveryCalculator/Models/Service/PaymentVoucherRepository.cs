@@ -61,7 +61,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Service
                                                              .FirstOrDefault();
 
             //doing this as a subquery helps
-            voucher.Entries = db.PaymentVouchersEntries.Where(col => col.PaymentVoucherID == voucher.ID).ToList();
+            voucher.Entries = db.PaymentVouchersEntries.Where(col => col.PaymentVoucherID == voucher.ID)
+                                                       .OrderBy(col => col.Index)
+                                                       .ToList();
                                                              
 
             //make sure that there are aloways the neccesary number of rows.
@@ -69,9 +71,6 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Service
             {
                 int numberOfEntriesNeededToFillOutVoucher = PaymentVoucher.NumberOfEntriesInAVoucher - voucher.Entries.Count;
                 voucher.AddBlankRows(numberOfEntriesNeededToFillOutVoucher);
-
-                //order entries
-                voucher.Entries = voucher.Entries.OrderBy(c => c.ID).ToList();
             }
 
             return voucher;

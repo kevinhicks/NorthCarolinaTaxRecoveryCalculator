@@ -105,15 +105,21 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
         [Key]
         public Guid ID { get; set; }
 
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Index { get; set; }
+
         public Guid PaymentVoucherID { get; set; }
 
         public string Item { get; set; }
         public string CostElement { get; set; }
         public double Amount { get; set; }
 
+        private static int indexCount;
+
         public PaymentVoucherEntry()
         {
             ID = Guid.NewGuid();
+            Index = indexCount++;
         }
 
         //Is any field, other than the ID, filled in?

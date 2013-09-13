@@ -328,6 +328,10 @@
     <Compile Include="Migrations\201309131524202_IDK.Designer.cs">
       <DependentUpon>201309131524202_IDK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201309131615441_Adding INdex To Sort On IN PaymentVoucherEntries.cs" />
+    <Compile Include="Migrations\201309131615441_Adding INdex To Sort On IN PaymentVoucherEntries.Designer.cs">
+      <DependentUpon>201309131615441_Adding INdex To Sort On IN PaymentVoucherEntries.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Misc\FileFinder.cs" />
     <Compile Include="Misc\PaymentVoucherReportGenerator.cs" />
@@ -583,6 +587,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201309131524202_IDK.resx">
       <DependentUpon>201309131524202_IDK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309131615441_Adding INdex To Sort On IN PaymentVoucherEntries.resx">
+      <DependentUpon>201309131615441_Adding INdex To Sort On IN PaymentVoucherEntries.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
