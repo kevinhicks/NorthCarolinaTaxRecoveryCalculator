@@ -22,7 +22,7 @@
                 </td>
                 <td>@Html.TextBoxFor(model => model.Entries[i].CostElement, new {Class = "text_center"})</td>
                 <td>@Html.TextBoxFor(model => model.Entries[i].Amount,"{0:C}", new {Class = "text_right amount"})</td>
-                <td><a class="deleteLink" href="#">Delete</a></td>
+                <td><a class="deleteLink" href="#" tabindex="-1">Delete</a></td>
             </tr>
         }
 

@@ -18,6 +18,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
         public Guid ID { get; set; }
 
         [Required]
+        [DisplayName("Check Number")]
         public string CheckNumber { get; set; }
 
         [Required]
@@ -26,12 +27,16 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
         public DateTime Date { get; set; }
 
         [Required]
+        [DisplayName("Paid To")]
         public string PaidTo { get; set; }
 
         public List<PaymentVoucherEntry> Entries { get; set; }
 
+        [DisplayName("Prepared By")]
         public string PreparedBy { get; set; }
+        [DisplayName("Approved By")]
         public string ApprovedBy { get; set; }
+        [DisplayName("RBC Approval")]
         public string RBCApproval { get; set; }
 
         public Guid ProjectID { get; set; }
@@ -120,6 +125,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Data
         {
             ID = Guid.NewGuid();
             Index = indexCount++;
+            Amount = 0;
         }
 
         //Is any field, other than the ID, filled in?
