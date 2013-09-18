@@ -13,7 +13,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
     public class HomeControllerTest
     {
         [TestMethod]
-        public void Index()
+        public void HomeController_Index()
         {
             // Arrange
             HomeController controller = new HomeController();
@@ -26,7 +26,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
         }
 
         [TestMethod]
-        public void About()
+        public void HomeController_About()
         {
             // Arrange
             HomeController controller = new HomeController();
@@ -39,7 +39,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Controllers
         }
 
         [TestMethod]
-        public void Contact()
+        public void HomeController_Contact()
         {
             // Arrange
             HomeController controller = new HomeController();

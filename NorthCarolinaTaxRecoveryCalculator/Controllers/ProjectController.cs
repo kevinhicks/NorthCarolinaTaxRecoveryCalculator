@@ -95,6 +95,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
 
 
             //Find all the collaborators on this project            
+            //TODO: THIS USES ACLMANAGER, AND SHOUD BE REWITEEN TO USE PROJECTREPOSITORY.
             ViewModel.UsersAccessProjects = new ACLManager().FindAllCollaborators(ProjectID);
 
             ViewModel.FilterStartDate = filterStartDate;
@@ -189,8 +190,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             //poor mans validation of missing email
             if (model.InvitationEmail.Trim() != "")
             {
+                //TODO: THIS USES ACLMANAGER, AND SHOUD BE REWITEEN TO USE PROJECTREPOSITORY.
                 var acl = new ACLManager();
-                acl.SendInvitation(model.InvitationEmail, ProjectID, UserType.DataEntry, emailSender);
+                acl.SendInvitation(model.InvitationEmail, ProjectID, UserType.DataEntry, emailSender);                
             }
 
             return RedirectToAction("Details", new { ProjectID = ProjectID });

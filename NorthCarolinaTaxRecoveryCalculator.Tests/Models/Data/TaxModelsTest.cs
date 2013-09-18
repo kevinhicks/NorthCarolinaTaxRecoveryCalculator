@@ -14,13 +14,13 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
     public class TaxPeriodsTest
     {
         [TestMethod]
-        public void TestLoad()
+        public void TaxPeriods_ShouldLoadInformationByFirstCall()
         {
             Assert.IsNotNull(TaxPeriods.Periods);
         }
 
         [TestMethod]
-        public void TestEveryTaxPeriodShouldHave100Counties()
+        public void TaxPeriods_EveryTaxPeriodShouldHave100Counties()
         {
             foreach (var period in TaxPeriods.Periods)
             {
@@ -29,7 +29,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         }
 
         [TestMethod]
-        public void TestEveryCountyInATaxPeriodShouldBeUnique()
+        public void TaxPeriods_EveryCountyInATaxPeriodShouldBeUnique()
         {
             foreach (var period in TaxPeriods.Periods)
             {
@@ -46,7 +46,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         }
 
         [TestMethod]
-        public void TestTaxPeriodsShouldBeOrderedFromNewestToOldest()
+        public void TaxPeriods_TaxPeriodsShouldBeOrderedFromNewestToOldest()
         {
             DateTime last = DateTime.MaxValue;
 
@@ -60,7 +60,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         }
 
         [TestMethod]
-        public void TestGetPeriodByDate()
+        public void TaxPeriods_GetPeriodByDate_ShouldReturnThePeriodThatTheDateLiesIn()
         {
             var today = DateTime.Now;
 
@@ -72,13 +72,13 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         }
 
         [TestMethod]
-        public void TestGetPeriodByDateShouldReturnNullForReallyOldDates()
+        public void TaxPeriods_GetPeriodByDate_ShouldReturnNullForReallyOldDates()
         {
             Assert.IsNull(TaxPeriods.GetPeriodByDate(DateTime.MinValue));
         }
 
         [TestMethod]
-        public void TestPeriodsToString()
+        public void TaxPeriods_ShouldBeAbleToPrintToString()
         {
             foreach(var period in TaxPeriods.Periods) {
                 Console.WriteLine(period);

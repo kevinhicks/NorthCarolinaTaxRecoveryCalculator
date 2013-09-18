@@ -14,21 +14,21 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
     public class TaxCalculatorTest
     {
         [TestMethod]
-        public void TestCountyTransitTaxRate()
+        public void TaxCalculator_CountyTransitTaxRate_ShouldReturnAValidRate()
         {
             Assert.AreEqual(0, TaxCalculator.CountyTransitTaxRate(County.CLAY, DateTime.Now));
             Assert.AreEqual(.5, TaxCalculator.CountyTransitTaxRate(County.ORANGE, DateTime.Now));
         }
 
         [TestMethod]
-        public void TestCountyTaxRate()
+        public void TaxCalculator_CountyTaxRate_ShouldReturnAValidRate()
         {
             Assert.AreEqual(2, TaxCalculator.CountyTaxRate(County.CLAY, DateTime.Now));
             Assert.AreEqual(2.25, TaxCalculator.CountyTaxRate(County.ORANGE, DateTime.Now));
         }
 
         [TestMethod]
-        public void TestTotalTaxRate()
+        public void TaxCalculator_TotalTaxRate_ShouldReturnAValidRate()
         {
             Assert.AreEqual(6.75, TaxCalculator.TotalTaxRate(County.CLAY, DateTime.Now));
             Assert.AreEqual(7.5, TaxCalculator.TotalTaxRate(County.ORANGE, DateTime.Now));

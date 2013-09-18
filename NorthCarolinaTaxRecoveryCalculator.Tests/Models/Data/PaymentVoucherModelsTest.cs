@@ -16,7 +16,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
     public class PaymentVoucherEntryTest
     {
         [TestMethod]
-        public void TestBankEntriesShouldReturnTrueIfBlank()
+        public void PaymentVoucherEntry_IsBankEntry_ShouldReturnTrueIfBlank()
         {
             var entry = new PaymentVoucherEntry();
             Assert.IsTrue(entry.IsBlankEntry());

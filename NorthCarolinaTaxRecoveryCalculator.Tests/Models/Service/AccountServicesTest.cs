@@ -23,7 +23,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         }
 
         [TestMethod]
-        public void TestEmailSender()
+        public void ACLManager_SendInvitation_ShouldSendAnEmailViaTheIEmailSender()
         {
             var manager = new ACLManager();
             manager.SendInvitation("test" + new Random().NextDouble(), Guid.NewGuid(), UserType.DataEntry, emailSender);
@@ -32,7 +32,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         }
 
         [TestMethod]
-        public void TestEmailSenderWithDuplicateEmail()
+        public void ACLManager_SendInvitation_ShouldNotSentDuplicateEmails()
         {
             var manager = new ACLManager();
             //Use a guid to kep the test unique

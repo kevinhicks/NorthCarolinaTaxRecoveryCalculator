@@ -46,14 +46,14 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Misc
         }
 
         [TestMethod]
-        public void TestGeneratePDFForVoucherShouldNotReturnNull()
+        public void PaymentVoucherReportGenerator_GeneratePDFForVoucher_ShouldNotReturnNull()
         {
             var result = new PaymentVoucherReportGenerator().GeneratePDFForVoucher(Voucher);
             Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void TestGeneratePDFForVoucherShouldReturnAValidPDF()
+        public void PaymentVoucherReportGenerator_GeneratePDFForVoucher_ShouldReturnAValidPDF()
         {
             var result = new PaymentVoucherReportGenerator().GeneratePDFForVoucher(Voucher);
 
