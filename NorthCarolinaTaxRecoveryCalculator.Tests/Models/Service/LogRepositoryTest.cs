@@ -15,10 +15,10 @@ using NorthCarolinaTaxRecoveryCalculator.Models.Data;
 namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
 {
     [TestClass]
-    public class LogRepositoryTest
+    public class AzureLogRepositoryTest
     {
         private UserProfile user;
-        public LogRepositoryTest()
+        public AzureLogRepositoryTest()
         {
             user = new UserProfile();
             user.UserId = 1;
@@ -26,26 +26,26 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         }
 
         [TestMethod]
-        public void LogRepository_Create_ShouldCreateNewLogEntry()
+        public void AzureLogRepository_Create_ShouldCreateNewLogEntry()
         {
             var log = new Log();
             log.UserID = "1";
             log.UserName = "Kevin";
             log.Message = "A Test Log Message";
 
-            var logRepository = new LogRepository();
+            var logRepository = new AzureLogRepository();
             logRepository.Create(log);
         }
 
         [TestMethod]
-        public void LogRepository_FindAll_ShouldReturnAllTheLogEntries()
+        public void AzureLogRepository_FindAll_ShouldReturnAllTheLogEntries()
         {
             var log = new Log();
             log.UserID = "1";
             log.UserName = "Kevin";
             log.Message = "A Test Log Message";
 
-            var logRepository = new LogRepository();
+            var logRepository = new AzureLogRepository();
             logRepository.Create(log);
 
             var logs = logRepository.FindAll();

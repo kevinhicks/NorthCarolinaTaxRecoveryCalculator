@@ -1,4 +1,5 @@
-﻿using NorthCarolinaTaxRecoveryCalculator.Models.Service;
+﻿using NorthCarolinaTaxRecoveryCalculator.Models.Data;
+using NorthCarolinaTaxRecoveryCalculator.Models.Service;
 using RestSharp;
 using SendGridMail;
 using SendGridMail.Transport;
@@ -149,14 +150,22 @@ namespace NorthCarolinaTaxRecoveryCalculator.Misc
     /// </summary>
     public class AzureLogger : ILogger
     {
+        private ILogRepository logRepository;
         public AzureLogger(ILogRepository logRepository)
         {
-
+            this.logRepository = logRepository;
         }
 
         public bool Log(string userID, string userName, string messageString, LogMessageType messageType)
         {
-            throw new NotImplementedException();
+            var log = new Log();
+            log.UserID = userID;
+            log.UserName = userName;            
+            log.Message = messageString;
+
+            logRepository.Create(log);
+
+            return true;
         }
     }
 }

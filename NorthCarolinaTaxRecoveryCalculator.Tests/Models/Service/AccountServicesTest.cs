@@ -34,6 +34,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Tests.Models
         [TestMethod]
         public void ACLManager_SendInvitation_ShouldNotSentDuplicateEmails()
         {
+            //TODO: THIS USES ACLMANAGER, AND SHOUD BE REWITEEN TO USE PROJECTREPOSITORY.
             var manager = new ACLManager();
             //Use a guid to kep the test unique
             Guid r = Guid.NewGuid();

@@ -24,16 +24,25 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Service
     /// <summary>
     /// Save a long in azure table storage
     /// </summary>
-    public class LogRepository : ILogRepository
+    public class AzureLogRepository : ILogRepository
     {
         private CloudStorageAccount storageAccount;
         private CloudTableClient tableClient;
         private CloudTable table;
+
+#if DEBUG
+        private readonly string tableName = "TESTNorthCarolinaTaxRecoveryLogs";
+#else
         private readonly string tableName = "NorthCarolinaTaxRecoveryLogs";
+#endif
         
-        public LogRepository()
+        public AzureLogRepository()
         {
+#if DEBUG
             storageAccount = CloudStorageAccount.DevelopmentStorageAccount;
+#else
+            storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("AzureStorageConnectionString"));
+#endif
             tableClient = storageAccount.CreateCloudTableClient();
             table = tableClient.GetTableReference(tableName);
             table.CreateIfNotExists();
