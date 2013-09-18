@@ -42,7 +42,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Service
 #if DEBUG
             storageAccount = CloudStorageAccount.DevelopmentStorageAccount;
 #else
-            storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("AzureStorageConnectionString"));
+            storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("AZURE_STORAGE_ACCOUNT"));
 #endif
             tableClient = storageAccount.CreateCloudTableClient();
             table = tableClient.GetTableReference(tableName);
