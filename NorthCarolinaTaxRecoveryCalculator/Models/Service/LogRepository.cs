@@ -4,6 +4,7 @@ using Microsoft.WindowsAzure.Storage.Table;
 using NorthCarolinaTaxRecoveryCalculator.Models.Data;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using WebMatrix.WebData;
@@ -42,7 +43,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Service
 #if DEBUG
             storageAccount = CloudStorageAccount.DevelopmentStorageAccount;
 #else
-            storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("AZURE_STORAGE_ACCOUNT"));
+            storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AzureStorageConnectionString"].ConnectionString);
 #endif
             tableClient = storageAccount.CreateCloudTableClient();
             table = tableClient.GetTableReference(tableName);
