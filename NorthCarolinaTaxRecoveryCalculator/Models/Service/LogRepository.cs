@@ -33,9 +33,9 @@ namespace NorthCarolinaTaxRecoveryCalculator.Models.Service
         private CloudTable table;
 
 #if DEBUG
-        private readonly string tableName = "TESTNorthCarolinaTaxRecoveryLogs";
+        private string tableName = "TESTNorthCarolinaTaxRecoveryLogs";
 #else
-        private readonly string tableName = "NorthCarolinaTaxRecoveryLogs";
+        private string tableName = "NorthCarolinaTaxRecoveryLogs";
 #endif
         
         public AzureLogRepository()
