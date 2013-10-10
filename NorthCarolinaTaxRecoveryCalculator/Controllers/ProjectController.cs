@@ -302,6 +302,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
             //Hold the totals for 100 counties + non taxable
             var countyTotals = new CountyTotals[101];
 
+            //for each county
             for (int i = 0; i < 101; i++)
             {
                 countyTotals[i] = new CountyTotals();
@@ -309,7 +310,7 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
                 //Get all the reciepts for a single county
                 var recipetsFromACounty = reciepts.Where(rec => rec.County == i - 1);
 
-                //Total the taex for all recitpes of this county
+                //Total the tax for all recitpes of this county
                 foreach (var reciept in recipetsFromACounty)
                 {
                     countyTotals[i].CountyTax += reciept.CountyTaxPortion();
@@ -317,7 +318,16 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
                     countyTotals[i].FoodTax += reciept.FoodTax;
                     countyTotals[i].TransitTax += reciept.TransitTaxPortion();
                     countyTotals[i].Name = reciept.CountyName;
+
+                    //total Net sales = total sales - all taxes
+                    double allTaxes = countyTotals[i].CountyTax +
+                                      countyTotals[i].StateTax +
+                                      countyTotals[i].FoodTax +
+                                      countyTotals[i].TransitTax;
+
+                    countyTotals[i].NetSales += reciept.SalesAmount - allTaxes;
                 }
+                
             }
             return countyTotals;
 

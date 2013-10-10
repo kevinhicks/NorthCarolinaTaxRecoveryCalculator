@@ -99,6 +99,8 @@ namespace NorthCarolinaTaxRecoveryCalculator.Controllers
            //All the counties
             ViewBag.Counties = County.AsJsonArray();
 
+            
+
             //All the stores in this project
             var stores = db.Reciepts.Where(rec => rec.ProjectID == reciept.ProjectID).Select(rec => rec.StoreName).Distinct().ToList();
             JavaScriptSerializer jss = new JavaScriptSerializer();

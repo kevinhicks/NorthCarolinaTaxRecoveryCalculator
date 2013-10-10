@@ -1,6 +1,9 @@
 ﻿@model NorthCarolinaTaxRecoveryCalculator.Models.RecieptEntity
+@{
+    ViewBag.Title = "Reciepts List";
+}
 <div>
-    Project: @Model.Project.Name
+    @Html.ActionLink("Project: " + Model.Project.Name, "Details", "Project",  new { ProjectID = Model.Project.ID }, null)
 </div>
 <div id="fixedFormDiv">
     @Html.ValidationSummary(true)

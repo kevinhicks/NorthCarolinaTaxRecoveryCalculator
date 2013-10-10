@@ -105,6 +105,8 @@
                             <tr>
                                 <th>County
                                 </th>
+                                <th>Net Sales
+                                </th>
                                 <th>County Tax
                                 </th>
                                 <th>State Tax
@@ -117,6 +119,7 @@
                         </thead>
                         <tbody>
                             @{
+                                double totalNetSales = 0;
                                 double totalCounty = 0;
                                 double totalState = 0;
                                 double totalFood = 0;
@@ -129,29 +132,29 @@
                                 {
                                     continue;
                                 }
-
-                                double _county = county.CountyTax;
-                                double _state = county.StateTax;
-                                double _food = county.FoodTax;
-                                double _transit = county.TransitTax;
-
-                                totalCounty += _county;
-                                totalState += _state;
-                                totalFood += _food;
-                                totalTransit += _transit;
+                                
+                                //Accumulate our totals for the bottom of the table
+                                totalNetSales += county.NetSales;
+                                totalCounty += county.CountyTax;
+                                totalState += county.StateTax;
+                                totalFood += county.FoodTax;
+                                totalTransit += county.TransitTax;
                             
+                                //Diplay the totals of each county
                                 <tr>
                                     <td>@county.Name</td>
-                                    <td>@_county.ToString("C")</td>
-                                    <td>@_state.ToString("C")</td>
-                                    <td>@_food.ToString("C")</td>
-                                    <td>@_transit.ToString("C")</td>
+                                    <td>@county.NetSales.ToString("C")</td>
+                                    <td>@county.CountyTax.ToString("C")</td>
+                                    <td>@county.StateTax.ToString("C")</td>
+                                    <td>@county.FoodTax.ToString("C")</td>
+                                    <td>@county.TransitTax.ToString("C")</td>
                                 </tr>
                             }
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th></th>
+                                <th>@totalNetSales.ToString("C")</th>
                                 <th>@totalCounty.ToString("C")</th>
                                 <th>@totalState.ToString("C")</th>
                                 <th>@totalFood.ToString("C")</th>

@@ -42,7 +42,18 @@ namespace NorthCarolinaTaxRecoveryCalculator.ViewModels.Project
 
     public class CountyTotals
     {
+        public CountyTotals()
+        {
+            NetSales = 0;
+            CountyTax = 0;
+            StateTax = 0;
+            FoodTax = 0;
+            TransitTax = 0;
+        }
+
         public string Name { get; set; }
+        //total sales - all taxes
+        public double NetSales { get; set; }
         public double CountyTax { get; set; }
         public double StateTax { get; set; }
         public double FoodTax { get; set; }

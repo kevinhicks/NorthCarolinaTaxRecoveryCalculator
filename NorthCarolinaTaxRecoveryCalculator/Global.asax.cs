@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -25,15 +26,28 @@ namespace NorthCarolinaTaxRecoveryCalculator
             //Init the datbase, and apply any pending updates/changes 
             //NOTE: Entity Framework MUST update the database BEFORE the following WebSecurity block.
             //  If Entity Framework does not find that database thet why it left it, then it gets testy
-            var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
-            updateDBInit.InitializeDatabase(db);
-
+            try
+            {
+                var updateDBInit = new MigrateDatabaseToLatestVersion<ApplicationDBContext, Configuration>();
+                updateDBInit.InitializeDatabase(db);
+            }
+            catch (Exception e)
+            {
+            }
             //Init Security
             //NOTE: Entity Framework MUST update the database BEFORE this WebSecurity block.
             //  If Entity Framework does not find that database thet why it left it, then it gets testy
-            if (!WebSecurity.Initialized)
+
+            try
             {
-                WebSecurity.InitializeDatabaseConnection("ApplicationDBContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                if (!WebSecurity.Initialized)
+                {
+                    WebSecurity.InitializeDatabaseConnection("ApplicationDBContext", "UserProfile", "UserId", "UserName",
+                        autoCreateTables: true);
+                }
+            }
+            catch (Exception e)
+            {
             }
 
             AreaRegistration.RegisterAllAreas();
